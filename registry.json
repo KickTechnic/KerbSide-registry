@@ -6,19 +6,45 @@
       "gss": "E07000240",
       "name": "St Albans City & District",
       "tier": 1,
-      "inputNeeds": ["postcode"],
+      "inputNeeds": [
+        "postcode"
+      ],
       "attribution": "Collection data from St Albans City & District Council",
       "streams": {
         "matches": [
-          { "match": "food", "type": "FOOD" },
-          { "match": "refuse", "type": "REFUSE" },
-          { "match": "recycling", "type": "RECYCLING" },
-          { "match": "garden", "type": "GARDEN" },
-          { "match": "glass", "type": "GLASS" },
-          { "match": "textile", "type": "TEXTILES" },
-          { "match": "bulky", "type": "BULKY" }
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "textile",
+            "type": "TEXTILES"
+          },
+          {
+            "match": "bulky",
+            "type": "BULKY"
+          }
         ],
-        "optInMatch": ["paid", "subscription"]
+        "optInMatch": [
+          "paid",
+          "subscription"
+        ]
       },
       "recipe": {
         "engine": 1,
@@ -53,20 +79,38 @@
           "recurrenceParser": "en-gb",
           "emptyMeansNotServiced": true
         }
+      },
+      "holidayPolicy": {
+        "mode": "SHIFT_PER_HOLIDAY",
+        "shiftDays": 1
       }
     },
     {
       "gss": "E07000103",
       "name": "Watford Borough Council",
       "tier": 1,
-      "inputNeeds": ["postcode"],
+      "inputNeeds": [
+        "postcode"
+      ],
       "attribution": "Collection data from Watford Borough Council",
       "streams": {
         "matches": [
-          { "match": "non-recyclable", "type": "REFUSE" },
-          { "match": "recycling", "type": "RECYCLING" },
-          { "match": "food", "type": "FOOD" },
-          { "match": "garden", "type": "GARDEN" }
+          {
+            "match": "non-recyclable",
+            "type": "REFUSE"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          }
         ],
         "optInMatch": []
       },
@@ -78,12 +122,18 @@
           "sessionUrl": "https://watfordbc-self.achieveservice.com/authapi/isauthenticated?uri=https%253A%252F%252Fwatfordbc-self.achieveservice.com%252Fen%252Fservice%252FBin_collections%253Faccept%253Dyes%2526consentMessageIds%255B%255D%253D4&hostname=watfordbc-self.achieveservice.com&withCredentials=true",
           "scheduleLookupId": "5e79edf15b2ec",
           "scheduleBodyTemplate": "{\"formValues\":{\"Address\":{\"echoUprn\":{\"value\":\"{ref}\"}}}}",
-          "scheduleRows": { "mode": "disp-html", "htmlField": "dispHTML" },
+          "scheduleRows": {
+            "mode": "disp-html",
+            "htmlField": "dispHTML"
+          },
           "dateFormat": "dd/MM/yyyy",
           "addressInitLookupId": "5e5fdd43c137a",
           "addressLookupId": "5e5fec0be83f4",
           "addressBodyTemplate": "{\"formValues\":{\"Address\":{\"postcode_search\":{\"value\":\"{postcode}\"},\"trdc_address_list\":{\"value\":\"{init.trdc_address_list}\"},\"schd2_address_list\":{\"value\":\"{init.schd2_address_list}\"}}}}",
-          "addressRows": { "addressField": "display", "refField": "uprn" }
+          "addressRows": {
+            "addressField": "display",
+            "refField": "uprn"
+          }
         }
       }
     },
@@ -91,14 +141,28 @@
       "gss": "E07000243",
       "name": "Stevenage Borough Council",
       "tier": 1,
-      "inputNeeds": ["postcode"],
+      "inputNeeds": [
+        "postcode"
+      ],
       "attribution": "Collection data from Stevenage Borough Council",
       "streams": {
         "matches": [
-          { "match": "general", "type": "REFUSE" },
-          { "match": "recycling", "type": "RECYCLING" },
-          { "match": "food", "type": "FOOD" },
-          { "match": "garden", "type": "GARDEN" }
+          {
+            "match": "general",
+            "type": "REFUSE"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          }
         ],
         "optInMatch": []
       },
@@ -111,11 +175,18 @@
           "tokenLookupId": "5e55337a540d4",
           "scheduleLookupId": "64ba8cee353e6",
           "scheduleBodyTemplate": "{\"formValues\":{\"Section 1\":{\"token\":{\"value\":\"{token}\"},\"LLPGUPRN\":{\"value\":\"{ref}\"},\"MinimumDateLookAhead\":{\"value\":\"{dateMin}\"},\"MaximumDateLookAhead\":{\"value\":\"{dateMax}\"}}}}",
-          "scheduleRows": { "mode": "dict-rows", "typeField": "bintype", "dateField": "collectiondate" },
+          "scheduleRows": {
+            "mode": "dict-rows",
+            "typeField": "bintype",
+            "dateField": "collectiondate"
+          },
           "dateFormat": "weekday-day-month-year",
           "addressLookupId": "5bacaad975c70",
           "addressBodyTemplate": "{\"formValues\":{\"Section 1\":{\"postcode_search\":{\"value\":\"{postcode}\"},\"token\":{\"value\":\"{token}\"}}}}",
-          "addressRows": { "addressField": "display", "refField": "uprn" }
+          "addressRows": {
+            "addressField": "display",
+            "refField": "uprn"
+          }
         }
       }
     },
@@ -123,15 +194,32 @@
       "gss": "E07000242",
       "name": "East Hertfordshire District Council",
       "tier": 1,
-      "inputNeeds": ["postcode"],
+      "inputNeeds": [
+        "postcode"
+      ],
       "attribution": "Collection data from East Herts Council",
       "streams": {
         "matches": [
-          { "match": "paper", "type": "PAPER" },
-          { "match": "recycling", "type": "RECYCLING" },
-          { "match": "food", "type": "FOOD" },
-          { "match": "garden", "type": "GARDEN" },
-          { "match": "refuse", "type": "REFUSE" }
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
         ],
         "optInMatch": []
       },
@@ -143,11 +231,18 @@
           "sessionUrl": "https://eastherts-self.achieveservice.com/authapi/isauthenticated?uri=https%253A%252F%252Feastherts-self.achieveservice.com%252FAchieveForms%252F%253Fmode%253Dfill%2526consentMessage%253Dyes%2526form_uri%253Dsandbox-publish%253A%252F%252FAF-Process-98782935-6101-4962-9a55-5923e76057b6%252FAF-Stage-dcd0ec18-dfb4-496a-a266-bd8fadaa28a7%252Fdefinition.json%2526process%253D1%2526process_uri%253Dsandbox-processes%253A%252F%252FAF-Process-98782935-6101-4962-9a55-5923e76057b6%2526process_id%253DAF-Process-98782935-6101-4962-9a55-5923e76057b6&hostname=eastherts-self.achieveservice.com&withCredentials=true",
           "scheduleLookupId": "683d9ff0e299d",
           "scheduleBodyTemplate": "{\"formValues\":{\"Collection Days\":{\"inputUPRN\":{\"value\":\"{ref}\"}}}}",
-          "scheduleRows": { "mode": "flat-pairs", "nameSuffix": "ServiceName", "dateSuffix": "NextDate" },
+          "scheduleRows": {
+            "mode": "flat-pairs",
+            "nameSuffix": "ServiceName",
+            "dateSuffix": "NextDate"
+          },
           "dateFormat": "weekday-day-ordinal-month-noyear",
           "addressLookupId": "ffd7cff10d464",
           "addressBodyTemplate": "{\"formValues\":{\"Collection Days\":{\"postcode_search\":{\"value\":\"{postcode}\"}}}}",
-          "addressRows": { "addressField": "display", "refField": "uprn" }
+          "addressRows": {
+            "addressField": "display",
+            "refField": "uprn"
+          }
         }
       }
     },
@@ -155,17 +250,36 @@
       "gss": "E07000116",
       "name": "Tunbridge Wells Borough Council",
       "tier": 1,
-      "inputNeeds": ["postcode"],
+      "inputNeeds": [
+        "postcode"
+      ],
       "attribution": "Collection data from Tunbridge Wells Borough Council",
       "streams": {
         "matches": [
-          { "match": "refuse", "type": "REFUSE" },
-          { "match": "recycling", "type": "RECYCLING" },
-          { "match": "food", "type": "FOOD" },
-          { "match": "garden", "type": "GARDEN" },
-          { "match": "glass", "type": "GLASS" }
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "glass",
+            "type": "GLASS"
+          }
         ],
-        "optInMatch": ["garden"]
+        "optInMatch": [
+          "garden"
+        ]
       },
       "platform": {
         "kind": "achieve",
@@ -175,21 +289,60 @@
           "sessionUrl": "https://mytwbc.tunbridgewells.gov.uk/authapi/isauthenticated?uri=https%253A%252F%252Fmytwbc.tunbridgewells.gov.uk%252FAchieveForms%252F%253Fmode%253Dfill%2526consentMessage%253Dyes%2526form_uri%253Dsandbox-publish%253A%252F%252FAF-Process-e01af4d4-eb0f-4cfe-a5ac-c47b63f017ed%252FAF-Stage-88caf66c-378f-4082-ad1d-07b7a850af38%252Fdefinition.json%2526process%253D1%2526process_uri%253Dsandbox-processes%253A%252F%252FAF-Process-e01af4d4-eb0f-4cfe-a5ac-c47b63f017ed%2526process_id%253DAF-Process-e01af4d4-eb0f-4cfe-a5ac-c47b63f017ed&hostname=mytwbc.tunbridgewells.gov.uk&withCredentials=true",
           "scheduleLookupId": "6314720683f30",
           "scheduleBodyTemplate": "{\"formValues\":{\"Property\":{\"siteReference\":{\"value\":\"{ref}\"}}}}",
-          "scheduleRows": { "mode": "dict-rows", "typeField": "collectionType", "dateField": "nextDateUnformatted" },
+          "scheduleRows": {
+            "mode": "dict-rows",
+            "typeField": "collectionType",
+            "dateField": "nextDateUnformatted"
+          },
           "dateFormat": "dd/MM/yyyy",
           "addressLookupId": "11c66af5fbe94",
           "addressBodyTemplate": "{\"formValues\":{\"Property\":{\"postcode_search\":{\"value\":\"{postcode}\"}}}}",
-          "addressRows": { "addressField": "display", "refField": "uprn" }
+          "addressRows": {
+            "addressField": "display",
+            "refField": "uprn"
+          }
         }
       }
     },
-    { "gss": "E07000096", "name": "Dacorum Borough Council", "tier": 3 },
-    { "gss": "E07000102", "name": "Three Rivers District Council", "tier": 3 },
-    { "gss": "E07000098", "name": "Hertsmere Borough Council", "tier": 3 },
-    { "gss": "E07000099", "name": "North Hertfordshire District Council", "tier": 3 },
-    { "gss": "E07000095", "name": "Broxbourne Borough Council", "tier": 3 },
-    { "gss": "E07000241", "name": "Welwyn Hatfield Borough Council", "tier": 3 },
-    { "gss": "E08000034", "name": "Kirklees Council", "tier": 3 },
-    { "gss": "E06000042", "name": "Milton Keynes Council", "tier": 3 }
+    {
+      "gss": "E07000096",
+      "name": "Dacorum Borough Council",
+      "tier": 3
+    },
+    {
+      "gss": "E07000102",
+      "name": "Three Rivers District Council",
+      "tier": 3
+    },
+    {
+      "gss": "E07000098",
+      "name": "Hertsmere Borough Council",
+      "tier": 3
+    },
+    {
+      "gss": "E07000099",
+      "name": "North Hertfordshire District Council",
+      "tier": 3
+    },
+    {
+      "gss": "E07000095",
+      "name": "Broxbourne Borough Council",
+      "tier": 3
+    },
+    {
+      "gss": "E07000241",
+      "name": "Welwyn Hatfield Borough Council",
+      "tier": 3
+    },
+    {
+      "gss": "E08000034",
+      "name": "Kirklees Council",
+      "tier": 3
+    },
+    {
+      "gss": "E06000042",
+      "name": "Milton Keynes Council",
+      "tier": 3
+    }
   ]
 }
