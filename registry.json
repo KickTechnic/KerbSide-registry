@@ -13,22 +13,6 @@
       "streams": {
         "matches": [
           {
-            "match": "food",
-            "type": "FOOD"
-          },
-          {
-            "match": "refuse",
-            "type": "REFUSE"
-          },
-          {
-            "match": "recycling",
-            "type": "RECYCLING"
-          },
-          {
-            "match": "garden",
-            "type": "GARDEN"
-          },
-          {
             "match": "glass",
             "type": "GLASS"
           },
@@ -39,6 +23,22 @@
           {
             "match": "bulky",
             "type": "BULKY"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
           }
         ],
         "optInMatch": [
@@ -96,20 +96,20 @@
       "streams": {
         "matches": [
           {
-            "match": "non-recyclable",
-            "type": "REFUSE"
-          },
-          {
-            "match": "recycling",
-            "type": "RECYCLING"
-          },
-          {
             "match": "food",
             "type": "FOOD"
           },
           {
             "match": "garden",
             "type": "GARDEN"
+          },
+          {
+            "match": "non-recyclable",
+            "type": "REFUSE"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
           }
         ],
         "optInMatch": []
@@ -148,20 +148,20 @@
       "streams": {
         "matches": [
           {
-            "match": "general",
-            "type": "REFUSE"
-          },
-          {
-            "match": "recycling",
-            "type": "RECYCLING"
-          },
-          {
             "match": "food",
             "type": "FOOD"
           },
           {
             "match": "garden",
             "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "general",
+            "type": "REFUSE"
           }
         ],
         "optInMatch": []
@@ -205,16 +205,16 @@
             "type": "PAPER"
           },
           {
-            "match": "recycling",
-            "type": "RECYCLING"
-          },
-          {
             "match": "food",
             "type": "FOOD"
           },
           {
             "match": "garden",
             "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
           },
           {
             "match": "refuse",
@@ -257,12 +257,8 @@
       "streams": {
         "matches": [
           {
-            "match": "refuse",
-            "type": "REFUSE"
-          },
-          {
-            "match": "recycling",
-            "type": "RECYCLING"
+            "match": "glass",
+            "type": "GLASS"
           },
           {
             "match": "food",
@@ -273,8 +269,12 @@
             "type": "GARDEN"
           },
           {
-            "match": "glass",
-            "type": "GLASS"
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
           }
         ],
         "optInMatch": [
@@ -297,6 +297,58 @@
           "dateFormat": "dd/MM/yyyy",
           "addressLookupId": "11c66af5fbe94",
           "addressBodyTemplate": "{\"formValues\":{\"Property\":{\"postcode_search\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "uprn"
+          }
+        }
+      }
+    },
+    {
+      "gss": "E08000027",
+      "name": "Dudley Metropolitan Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Dudley Metropolitan Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "my.dudley.gov.uk",
+          "sessionUrl": "https://my.dudley.gov.uk/authapi/isauthenticated?uri=https%253A%252F%252Fmy.dudley.gov.uk%252FAchieveForms%252F%253Fmode%253Dfill%2526consentMessage%253Dyes%2526form_uri%253Dsandbox-publish%253A%252F%252FAF-Process-373f5628-9aae-4e9e-ae09-ea7cd0588201%252FAF-Stage-52ec040b-10e6-440f-b964-23f924741496%252Fdefinition.json%2526process%253D1%2526process_uri%253Dsandbox-processes%253A%252F%252FAF-Process-373f5628-9aae-4e9e-ae09-ea7cd0588201%2526process_id%253DAF-Process-373f5628-9aae-4e9e-ae09-ea7cd0588201&hostname=my.dudley.gov.uk&withCredentials=true",
+          "scheduleLookupId": "64899d4c2574c",
+          "scheduleBodyTemplate": "{\"formValues\":{\"My bins\":{\"uprnToCheck\":{\"value\":\"{ref}\"}}}}",
+          "scheduleRows": {
+            "mode": "fixed-fields",
+            "dateSuffix": "Date",
+            "excludeFields": [
+              "gardenEndDate"
+            ]
+          },
+          "dateFormat": "iso-local-date",
+          "addressLookupId": "3c9f54d0cf944",
+          "addressBodyTemplate": "{\"formValues\":{\"My bins\":{\"postcode_search\":{\"value\":\"{postcode}\"}}}}",
           "addressRows": {
             "addressField": "display",
             "refField": "uprn"
