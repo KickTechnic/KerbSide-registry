@@ -97,7 +97,8 @@
         "matches": [
           {
             "match": "food",
-            "type": "FOOD"
+            "type": "FOOD",
+            "color": "#90661E"
           },
           {
             "match": "garden",
@@ -105,11 +106,13 @@
           },
           {
             "match": "non-recyclable",
-            "type": "REFUSE"
+            "type": "REFUSE",
+            "color": "#000000"
           },
           {
             "match": "recycling",
-            "type": "RECYCLING"
+            "type": "RECYCLING",
+            "color": "#2C74D8"
           }
         ],
         "optInMatch": []
@@ -202,23 +205,28 @@
         "matches": [
           {
             "match": "paper",
-            "type": "PAPER"
+            "type": "PAPER",
+            "color": "#1A73E8"
           },
           {
             "match": "food",
-            "type": "FOOD"
+            "type": "FOOD",
+            "color": "#73462B"
           },
           {
             "match": "garden",
-            "type": "GARDEN"
+            "type": "GARDEN",
+            "color": "#804F31"
           },
           {
             "match": "recycling",
-            "type": "RECYCLING"
+            "type": "RECYCLING",
+            "color": "#585858"
           },
           {
             "match": "refuse",
-            "type": "REFUSE"
+            "type": "REFUSE",
+            "color": "#9422C1"
           }
         ],
         "optInMatch": []
