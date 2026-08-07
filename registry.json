@@ -370,6 +370,77 @@
       }
     },
     {
+      "gss": "E06000050",
+      "name": "Cheshire West and Chester Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Cheshire West and Chester Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "caddy",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "green",
+            "type": "GARDEN"
+          },
+          {
+            "match": "180l blue",
+            "type": "PAPER"
+          },
+          {
+            "match": "180l red",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "180l domestic",
+            "type": "REFUSE"
+          },
+          {
+            "match": "collect",
+            "type": "BULKY"
+          }
+        ],
+        "optInMatch": [
+          "garden",
+          "green"
+        ]
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "my.cheshirewestandchester.gov.uk",
+          "sessionUrl": "https://my.cheshirewestandchester.gov.uk/authapi/isauthenticated?uri=https://my.cheshirewestandchester.gov.uk/fillform/?iframe_id=fillform-frame-1&db_id=&hostname=my.cheshirewestandchester.gov.uk&withCredentials=true",
+          "appName": "AchieveForms",
+          "tokenLookupId": "609b918c7dd6d",
+          "tokenField": "AuthenticateResponse",
+          "tokenMethod": "POST",
+          "scheduleLookupId": "6101d23110243",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Section 1\":{\"UPRN\":{\"value\":\"{ref}\"},\"AuthenticateResponse\":{\"value\":\"{token}\"}}}}",
+          "scheduleRows": {
+            "mode": "dict-rows",
+            "typeField": "serviceType",
+            "dateField": "collectionDateTime"
+          },
+          "dateFormat": "iso-datetime",
+          "addressLookupId": "580f214c7f5b5",
+          "addressBodyTemplate": "{\"formValues\":{\"Whats your collection day?\":{\"postcode_search\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "uprn"
+          }
+        }
+      }
+    },
+    {
       "gss": "E07000096",
       "name": "Dacorum Borough Council",
       "tier": 3
