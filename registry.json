@@ -590,6 +590,68 @@
       }
     },
     {
+      "gss": "S12000048",
+      "name": "Perth and Kinross Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Perth and Kinross Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "blue",
+            "type": "PAPER"
+          },
+          {
+            "match": "grey",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "general",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "pkc-self.achieveservice.com",
+          "sessionUrl": "https://pkc-self.achieveservice.com/authapi/isauthenticated?uri=https%253A%252F%252Fpkc-self.achieveservice.com%252Fen%252FAchieveForms%252F%253Fform_uri%253Dsandbox-publish%253A%252F%252FAF-Process-de9223b1-a7c6-408f-aaa3-aee33fd7f7fa%252FAF-Stage-9fa33e2e-4c1b-4963-babf-4348ab8154bc%252Fdefinition.json%2526redirectlink%253D%25252Fen%2526cancelRedirectLink%253D%25252Fen%2526consentMessage%253Dyes&hostname=pkc-self.achieveservice.com&withCredentials=true",
+          "scheduleLookupId": "5c9267cee5efe",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Bin collections\":{\"propertyUPRNQuery\":{\"value\":\"{ref}\"}}}}",
+          "scheduleRows": {
+            "mode": "fixed-fields",
+            "dateSuffixPattern": "Date(?:2nd)?",
+            "streamAliases": {
+              "nextBlueWasteCollection": "nextBlueCollection"
+            }
+          },
+          "dateFormat": "dd/MM/yyyy",
+          "addressLookupId": "5876a68c6c9f0",
+          "addressBodyTemplate": "{\"formValues\":{\"Bin collections\":{\"postcode_search\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "uprn"
+          }
+        }
+      }
+    },
+    {
       "gss": "E07000096",
       "name": "Dacorum Borough Council",
       "tier": 3
