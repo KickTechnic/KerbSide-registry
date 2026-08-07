@@ -970,6 +970,64 @@
       }
     },
     {
+      "gss": "E07000009",
+      "name": "East Cambridgeshire District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from East Cambridgeshire District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "eastcambs-self.achieveservice.com",
+          "sessionUrl": "https://eastcambs-self.achieveservice.com/authapi/isauthenticated?uri=https%3A%2F%2Feastcambs-self.achieveservice.com&hostname=eastcambs-self.achieveservice.com&withCredentials=true",
+          "appName": "AchieveForms",
+          "tokenLookupId": "64f7354c7f8a9",
+          "tokenField": "AuthenticateResponse",
+          "tokenMethod": "POST",
+          "tokenBody": "{\"formValues\":{\"Section 1\":{}}}",
+          "scheduleLookupId": "6784e74793b68",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Section 1\":{\"AuthenticateResponse\":{\"value\":\"{token}\"},\"selected_uprn\":{\"value\":\"{ref}\"},\"MinimumDateForNextDates\":{\"value\":\"{dateMin}\"},\"MaximumDateFormattedNext\":{\"value\":\"{dateMax}\"}}}}",
+          "scheduleRows": {
+            "mode": "xml-rows",
+            "xmlField": "data",
+            "typeField": "name",
+            "dateField": "ScheduledStart"
+          },
+          "dateFormat": "dd/MM/yyyy",
+          "addressLookupId": "54915cbced788",
+          "addressBodyTemplate": "{\"formValues\":{\"Section 1\":{\"PostcodeSearch\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "uprn"
+          }
+        }
+      }
+    },
+    {
       "gss": "E07000096",
       "name": "Dacorum Borough Council",
       "tier": 3
