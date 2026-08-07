@@ -652,6 +652,61 @@
       }
     },
     {
+      "gss": "E07000138",
+      "name": "City of Lincoln Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from City of Lincoln Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycle",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "contact.lincoln.gov.uk",
+          "sessionUrl": "https://contact.lincoln.gov.uk/authapi/isauthenticated?uri=https://contact.lincoln.gov.uk/AchieveForms/?mode=fill&consentMessage=yes&form_uri=sandbox-publish://AF-Process-503f9daf-4db9-4dd8-876a-6f2029f11196/AF-Stage-a1c0af0f-fec1-4419-80c0-0dd4e1d965c9/definition.json&process=1&process_uri=sandbox-processes://AF-Process-503f9daf-4db9-4dd8-876a-6f2029f11196&process_id=AF-Process-503f9daf-4db9-4dd8-876a-6f2029f11196&hostname=contact.lincoln.gov.uk&withCredentials=true",
+          "scheduleLookupId": "62aafd258f72c",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Section 1\":{\"chooseaddress\":{\"value\":\"{ref}\"},\"postcode\":{\"value\":\"{postcode}\"}}}}",
+          "scheduleRows": {
+            "mode": "fixed-fields",
+            "dateSuffix": "nextdate",
+            "rowKey": "{ref}",
+            "intervalSuffix": "_freq",
+            "intervalDays": {
+              "weekly": 7,
+              "fortnightly": 14
+            }
+          },
+          "dateFormat": "iso-local-date",
+          "addressLookupId": "62aafd258f72c",
+          "addressBodyTemplate": "{\"formValues\":{\"Section 1\":{\"chooseaddress\":{\"value\":\"\"},\"postcode\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "{key}"
+          }
+        }
+      }
+    },
+    {
       "gss": "E07000096",
       "name": "Dacorum Borough Council",
       "tier": 3
