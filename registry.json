@@ -787,6 +787,62 @@
       }
     },
     {
+      "gss": "W06000001",
+      "name": "Isle of Anglesey County Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Isle of Anglesey County Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "green",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "black bin",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "myaccount.anglesey.gov.wales",
+          "sessionUrl": "https://myaccount.anglesey.gov.wales/authapi/isauthenticated?uri=https%3A%2F%2Fmyaccount.anglesey.gov.wales&hostname=myaccount.anglesey.gov.wales&withCredentials=true",
+          "scheduleLookupId": "6362261cd6bd9",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Section 1\":{\"calcUPRN\":{\"value\":\"{ref}\"},\"calcDate\":{\"value\":\"{dateMin}\"},\"calcLang\":{\"value\":\"en\"}}}}",
+          "scheduleRows": {
+            "mode": "dict-rows",
+            "typeField": "Service",
+            "dateField": "Date"
+          },
+          "dateFormat": "weekday-day-ordinal-month-noyear",
+          "addressLookupId": "61c43f6dabddb",
+          "addressBodyTemplate": "{\"formValues\":{\"Section 1\":{\"postcode_search\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "{key}"
+          }
+        }
+      }
+    },
+    {
       "gss": "E07000096",
       "name": "Dacorum Borough Council",
       "tier": 3
