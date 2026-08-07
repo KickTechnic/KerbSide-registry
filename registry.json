@@ -400,7 +400,15 @@
             "type": "RECYCLING"
           },
           {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
             "match": "180l domestic",
+            "type": "REFUSE"
+          },
+          {
+            "match": "black sack",
             "type": "REFUSE"
           },
           {
@@ -557,6 +565,10 @@
           },
           {
             "match": "refuse",
+            "type": "REFUSE"
+          },
+          {
+            "match": "communal",
             "type": "REFUSE"
           }
         ],
