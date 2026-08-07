@@ -855,6 +855,69 @@
       }
     },
     {
+      "gss": "E08000005",
+      "name": "Rochdale Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Rochdale Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "glass and bottles",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "general",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "rochdale-self.achieveservice.com",
+          "sessionUrl": "https://rochdale-self.achieveservice.com/authapi/isauthenticated?uri=https%253A%252F%252Frochdale-self.achieveservice.com%252Fservice%252FBins___view_your_waste_collection_calendar&hostname=rochdale-self.achieveservice.com&withCredentials=true",
+          "tokenLookupId": "6846c784a46b5",
+          "tokenField": "bartecToken",
+          "tokenMethod": "POST",
+          "scheduleLookupId": "686e9147a867e",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Location details\":{\"propertyUPRN\":{\"value\":\"{ref}\"},\"postcode_search\":{\"value\":\"{postcode}\"},\"bartecToken\":{\"value\":\"{token}\"},\"dateMinimum\":{\"value\":\"{dateMin}\"},\"dateMaximum\":{\"value\":\"{dateMax}\"}}}}",
+          "scheduleRows": {
+            "mode": "dict-rows",
+            "typeField": "bartecBinType",
+            "dateField": "bartecBinStartDate"
+          },
+          "dateFormat": "iso-datetime",
+          "addressLookupId": "689de2aea6584",
+          "addressBodyTemplate": "{\"formValues\":{\"Location details\":{\"postcode_search\":{\"value\":\"{postcode}\"},\"postcode\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "uprn"
+          }
+        }
+      }
+    },
+    {
       "gss": "E07000096",
       "name": "Dacorum Borough Council",
       "tier": 3
