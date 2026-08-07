@@ -441,6 +441,95 @@
       }
     },
     {
+      "gss": "E08000028",
+      "name": "Sandwell Metropolitan Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Sandwell Metropolitan Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "household",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "my.sandwell.gov.uk",
+          "sessionUrl": "https://my.sandwell.gov.uk/authapi/isauthenticated?uri=https%253A%252F%252Fmy.sandwell.gov.uk%252Fen%252FAchieveForms%252F%253Fform_uri%253Dsandbox-publish%253A%252F%252FAF-Process-ebaa26a2-393c-4a3c-84f5-e61564192a8a%252FAF-Stage-e4c2cb32-db55-4ff5-845c-8b27f87346c4%252Fdefinition.json%2526redirectlink%253D%25252Fen%2526cancelRedirectLink%253D%25252Fen%2526consentMessage%253Dyes&hostname=my.sandwell.gov.uk&withCredentials=true",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Property details\":{\"Uprn\":{\"value\":\"{ref}\"},\"NextCollectionFromDate\":{\"value\":\"{dateMin}\"}}}}",
+          "scheduleLookups": [
+            {
+              "id": "686294de50729",
+              "streamName": "Household Waste",
+              "rows": {
+                "mode": "dict-rows",
+                "typeField": "DWCollection",
+                "dateField": "DWDate"
+              }
+            },
+            {
+              "id": "68629dd642423",
+              "streamName": "Mixed Dry Recycling",
+              "rows": {
+                "mode": "dict-rows",
+                "typeField": "MDRCollection",
+                "dateField": "MDRDate"
+              }
+            },
+            {
+              "id": "6863a78a1dd8e",
+              "streamName": "Food Recycling",
+              "rows": {
+                "mode": "dict-rows",
+                "typeField": "FWCollection",
+                "dateField": "FWDate"
+              }
+            },
+            {
+              "id": "686295a88a750",
+              "streamName": "Garden Waste",
+              "rows": {
+                "mode": "dict-rows",
+                "typeField": "GWCollection",
+                "dateField": "GWDate"
+              }
+            }
+          ],
+          "scheduleRows": {
+            "mode": "dict-rows"
+          },
+          "dateFormat": "dd/MM/yyyy",
+          "addressLookupId": "55dee71f20a9a",
+          "addressBodyTemplate": "{\"formValues\":{\"Property details\":{\"postcode\":{\"value\":\"{postcode}\"},\"postcode_search\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "uprn"
+          }
+        }
+      }
+    },
+    {
       "gss": "E07000096",
       "name": "Dacorum Borough Council",
       "tier": 3
