@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-08-07",
+  "updated": "2026-08-08",
   "councils": [
     {
       "gss": "E07000240",
@@ -1020,6 +1020,57 @@
           "dateFormat": "dd/MM/yyyy",
           "addressLookupId": "54915cbced788",
           "addressBodyTemplate": "{\"formValues\":{\"Section 1\":{\"PostcodeSearch\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "uprn"
+          }
+        }
+      }
+    },
+    {
+      "gss": "E07000046",
+      "name": "Torridge District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Torridge District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING",
+            "color": "#4A58AA"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE",
+            "color": "#000000"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "torridgedc-self.achieveservice.com",
+          "sessionUrl": "https://torridgedc-self.achieveservice.com/authapi/isauthenticated?uri=https%3A%2F%2Ftorridgedc-self.achieveservice.com&hostname=torridgedc-self.achieveservice.com&withCredentials=true",
+          "scheduleLookupId": "65956fdb70ea4",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Section 1\":{\"uprn\":{\"value\":\"{ref}\"}}}}",
+          "scheduleRows": {
+            "mode": "bold-label-pairs",
+            "htmlField": "getRoundCalendarForUPRNResponse"
+          },
+          "dateFormat": "relative-day-phrase",
+          "addressLookupId": "5a3aefaf052d9",
+          "addressBodyTemplate": "{\"formValues\":{\"Section 1\":{\"postcode_search\":{\"value\":\"{postcode}\"}}}}",
           "addressRows": {
             "addressField": "display",
             "refField": "uprn"
