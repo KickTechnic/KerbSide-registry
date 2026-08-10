@@ -1180,6 +1180,53 @@
       }
     },
     {
+      "gss": "E07000126",
+      "name": "South Ribble Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from South Ribble Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "xfp",
+        "version": 1,
+        "xfp": {
+          "host": "forms.chorleysouthribble.gov.uk",
+          "formId": "70",
+          "rows": {
+            "mode": "html-table",
+            "tableClass": "data-table",
+            "typeColumn": 0,
+            "dateColumn": 1
+          },
+          "dateFormat": "dd/MM/yy"
+        }
+      }
+    },
+    {
       "gss": "E07000096",
       "name": "Dacorum Borough Council",
       "tier": 3
