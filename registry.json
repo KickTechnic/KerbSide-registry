@@ -1135,6 +1135,51 @@
       }
     },
     {
+      "gss": "E07000178",
+      "name": "Oxford City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Oxford City Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "xfp",
+        "version": 1,
+        "xfp": {
+          "host": "www.oxford.gov.uk",
+          "formId": "142",
+          "rows": {
+            "mode": "prose-paragraphs",
+            "blockClass": "editor",
+            "pattern": "Your next (.+?) collections?:\\s*(.+)",
+            "separator": ","
+          },
+          "dateFormat": "weekday-day-anymonth-year"
+        }
+      }
+    },
+    {
       "gss": "E07000096",
       "name": "Dacorum Borough Council",
       "tier": 3
