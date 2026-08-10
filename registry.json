@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-08-08",
+  "updated": "2026-08-10",
   "councils": [
     {
       "gss": "E07000240",
@@ -1075,6 +1075,62 @@
             "addressField": "display",
             "refField": "uprn"
           }
+        }
+      }
+    },
+    {
+      "gss": "E07000067",
+      "name": "Braintree District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Braintree District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN",
+            "color": "#00754A"
+          },
+          {
+            "match": "food",
+            "type": "FOOD",
+            "color": "#187F7C"
+          },
+          {
+            "match": "paper",
+            "type": "PAPER",
+            "color": "#D3282F"
+          },
+          {
+            "match": "non-recyclable",
+            "type": "REFUSE",
+            "color": "#56504C"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING",
+            "color": "#375AB0"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "xfp",
+        "version": 1,
+        "xfp": {
+          "host": "www.braintree.gov.uk",
+          "formId": "554",
+          "rows": {
+            "mode": "div-blocks",
+            "blockClass": "date_display",
+            "typeTag": "h3",
+            "dateTag": "p"
+          },
+          "dateFormat": "dd/MM/yyyy"
         }
       }
     },
