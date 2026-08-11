@@ -1615,6 +1615,95 @@
       }
     },
     {
+      "gss": "E06000002",
+      "name": "Middlesbrough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Middlesbrough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "paper",
+            "type": "PAPER",
+            "color": "#BF0000"
+          },
+          {
+            "match": "food",
+            "type": "FOOD",
+            "color": "#757575"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING",
+            "color": "#0000FF"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE",
+            "color": "#000000"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "recollect",
+        "version": 1,
+        "recollect": {
+          "area": "MiddlesbroughUK",
+          "service": "50005"
+        }
+      }
+    },
+    {
+      "gss": "W06000018",
+      "name": "Caerphilly County Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Caerphilly County Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD",
+            "color": "#0B821E"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING",
+            "color": "#633021"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE",
+            "color": "#000000"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "recollect",
+        "version": 1,
+        "recollect": {
+          "area": "CaerphillyCountyUK",
+          "service": "50008"
+        }
+      }
+    },
+    {
       "gss": "E07000096",
       "name": "Dacorum Borough Council",
       "tier": 3
