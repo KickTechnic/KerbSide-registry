@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-08-10",
+  "updated": "2026-08-11",
   "councils": [
     {
       "gss": "E07000240",
@@ -1270,6 +1270,179 @@
             "typeListClass": "collections"
           },
           "dateFormat": "weekday-day-ordinal-month-noyear"
+        }
+      }
+    },
+    {
+      "gss": "E08000039",
+      "name": "Sheffield City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Sheffield City Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "blue",
+            "type": "PAPER"
+          },
+          {
+            "match": "brown",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "black",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "waste-services",
+        "version": 1,
+        "wasteServices": {
+          "host": "wasteservices.sheffield.gov.uk",
+          "councilId": "1",
+          "typeField": "serviceName",
+          "dateFormat": "iso-offset"
+        }
+      }
+    },
+    {
+      "gss": "E09000014",
+      "name": "Haringey Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Haringey Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "waste-services",
+        "version": 1,
+        "wasteServices": {
+          "host": "wastecollections.haringey.gov.uk",
+          "councilId": "45",
+          "typeField": "serviceName",
+          "dateFormat": "iso-offset"
+        }
+      }
+    },
+    {
+      "gss": "E09000007",
+      "name": "Camden Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Camden Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "waste-services",
+        "version": 1,
+        "wasteServices": {
+          "host": "recyclingandrubbishcollections.camden.gov.uk",
+          "councilId": "27",
+          "typeField": "serviceName",
+          "dateFormat": "iso-offset"
+        }
+      }
+    },
+    {
+      "gss": "E07000108",
+      "name": "Dover District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Dover District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ],
+        "exclude": [
+          "deliver"
+        ]
+      },
+      "platform": {
+        "kind": "waste-services",
+        "version": 1,
+        "wasteServices": {
+          "host": "portal.waste.dover.gov.uk",
+          "councilId": "39",
+          "typeField": "serviceName",
+          "dateFormat": "iso-offset"
         }
       }
     },
