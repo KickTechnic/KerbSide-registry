@@ -1447,6 +1447,174 @@
       }
     },
     {
+      "gss": "E08000021",
+      "name": "Newcastle City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Newcastle City Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING",
+            "color": "#0A055E"
+          },
+          {
+            "match": "general",
+            "type": "REFUSE",
+            "color": "#2FBD54"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "recollect",
+        "version": 1,
+        "recollect": {
+          "area": "NewcastleUponTyneUK",
+          "service": "50007"
+        }
+      }
+    },
+    {
+      "gss": "E06000003",
+      "name": "Redcar and Cleveland Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Redcar and Cleveland Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD",
+            "color": "#0B821E"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN",
+            "color": "#0D9139"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING",
+            "color": "#1972AE"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE",
+            "color": "#000000"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "recollect",
+        "version": 1,
+        "recollect": {
+          "area": "RedcarandClevelandUK",
+          "service": "50006"
+        }
+      }
+    },
+    {
+      "gss": "E07000171",
+      "name": "Bassetlaw District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Bassetlaw District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "glass",
+            "type": "GLASS",
+            "color": "#000000"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING",
+            "color": "#5878E4"
+          },
+          {
+            "match": "household",
+            "type": "REFUSE",
+            "color": "#026928"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "recollect",
+        "version": 1,
+        "recollect": {
+          "area": "BassetlawUK",
+          "service": "50015"
+        }
+      }
+    },
+    {
+      "gss": "S12000008",
+      "name": "East Ayrshire Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from East Ayrshire Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "general waste+food",
+            "type": "REFUSE",
+            "color": "#33815F"
+          },
+          {
+            "match": "trolley",
+            "type": "RECYCLING",
+            "color": "#3E3F43"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN",
+            "color": "#773319"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "recollect",
+        "version": 1,
+        "recollect": {
+          "area": "EastAyrshireUK",
+          "service": "50014"
+        }
+      }
+    },
+    {
       "gss": "E07000096",
       "name": "Dacorum Borough Council",
       "tier": 3
