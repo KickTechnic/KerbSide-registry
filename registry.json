@@ -4387,6 +4387,106 @@
           "dateFormat": "dd/MM/yyyy"
         }
       }
+    },
+    {
+      "gss": "S12000034",
+      "name": "Aberdeenshire Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Aberdeenshire Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressPrimeUrl": "https://online.aberdeenshire.gov.uk/Apps/Waste-Collections/",
+          "addressPrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"",
+          "addressUrl": "https://online.aberdeenshire.gov.uk/Apps/Waste-Collections/",
+          "addressForm": {
+            "PageModel.searchTerms": "{postcode}",
+            "SearchButton": "Search",
+            "__RequestVerificationToken": "{token}"
+          },
+          "addressPattern": "<a href=\"/Apps/Waste-Collections/Routes/Route/(?<ref>\\d+)\">(?<label>[^<]+)</a>",
+          "scheduleUrl": "https://online.aberdeenshire.gov.uk/Apps/Waste-Collections/Routes/Route/{ref}",
+          "blockPattern": "<td[^>]*>(?<date>\\d{2}/\\d{2}/\\d{4})[^<]*</td>\\s*<td[^>]*>(?<type>[^<]+)</td>",
+          "dateFormat": "dd/MM/yyyy",
+          "typeSplit": " and "
+        }
+      }
+    },
+    {
+      "gss": "E08000006",
+      "name": "Salford City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Salford City Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "food and garden",
+            "type": "FOOD",
+            "alsoCarries": [
+              "GARDEN"
+            ]
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "domestic waste",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressPrimeUrl": "https://www.salford.gov.uk/bins-and-recycling/bin-collection-days/",
+          "addressPrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"",
+          "addressUrl": "https://www.salford.gov.uk/umbraco/api/SalfordAPI/AddressSearch",
+          "addressForm": {
+            "QueryStr": "{postcode}",
+            "__RequestVerificationToken": "{token}"
+          },
+          "addressPattern": "\"uprn\":\"(?<ref>\\d+)\",\"address\":\"(?<label>[^\"]+)\"",
+          "scheduleUrl": "https://www.salford.gov.uk/bins-and-recycling/bin-collection-days/your-bin-collections/?UPRN={ref}",
+          "blockPattern": "<p><strong>(?<type>[^<:]+):</strong></p>\\s*<ul>(?<body>[\\s\\S]*?)</ul>",
+          "datePattern": "<li>(?<date>[^<]+)</li>",
+          "dateFormat": "weekday-day-month-year"
+        }
+      }
     }
   ]
 }
