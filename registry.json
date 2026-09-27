@@ -4836,6 +4836,104 @@
           "dateFormat": "iso-datetime"
         }
       }
+    },
+    {
+      "gss": "E08000003",
+      "name": "Manchester City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Manchester City Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "pulpable",
+            "type": "PAPER"
+          },
+          {
+            "match": "organic",
+            "type": "FOOD",
+            "alsoCarries": [
+              "GARDEN"
+            ]
+          },
+          {
+            "match": "commingled",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "black",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "headerPrime": {
+            "url": "https://manchester.form.uk.empro.verintcloudservices.com/api/citizen?archived=Y&preview=false&locale=en",
+            "headers": {
+              "auth": "Authorization"
+            }
+          },
+          "requestHeaders": {
+            "Authorization": "{auth}"
+          },
+          "addressUrl": "https://manchester.form.uk.empro.verintcloudservices.com/api/custom?action=widget-property-search&actionedby=location_search_property&loadform=true&access=citizen&locale=en",
+          "addressJson": {
+            "name": "sr_bin_coll_day_checker",
+            "data": {
+              "addressnumber": "",
+              "streetname": "",
+              "postcode": "{postcode}"
+            },
+            "email": "",
+            "caseid": "",
+            "xref": "",
+            "xref1": "",
+            "xref2": ""
+          },
+          "addressPattern": "\"value\":\"(?<ref>\\d{6,12})\",\"label\":\"(?<label>(?:[^\"\\\\]|\\\\.)+)\"",
+          "resolve": [
+            {
+              "url": "https://manchester.form.uk.empro.verintcloudservices.com/api/custom?action=retrieve-property&actionedby=_KDF_optionSelected&loadform=true&access=citizen&locale=en",
+              "json": {
+                "name": "sr_bin_coll_day_checker",
+                "data": {
+                  "object_id": "{ref}"
+                },
+                "email": "",
+                "caseid": "",
+                "xref": "",
+                "xref1": "",
+                "xref2": ""
+              },
+              "pattern": "\"UPRN\":\"(?<ref>\\d{1,12})\""
+            }
+          ],
+          "scheduleUrl": "https://manchester.form.uk.empro.verintcloudservices.com/api/custom?action=bin_checker-get_bin_col_info&actionedby=_KDF_custom&loadform=true&access=citizen&locale=en",
+          "scheduleJson": {
+            "name": "sr_bin_coll_day_checker",
+            "data": {
+              "uprn": "{ref}",
+              "nextCollectionFromDate": "{from}",
+              "nextCollectionToDate": "{to}"
+            },
+            "email": "",
+            "caseid": "",
+            "xref": "",
+            "xref1": "",
+            "xref2": ""
+          },
+          "windowDays": 36,
+          "blockPattern": "\"ahtm_dates_(?<type>[a-z_]+)\":\"(?<body>[^\"]*)\"",
+          "datePattern": "(?<date>\\d{2}/\\d{2}/\\d{4})",
+          "dateFormat": "dd/MM/yyyy"
+        }
+      }
     }
   ]
 }
