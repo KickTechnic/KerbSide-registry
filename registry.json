@@ -4934,6 +4934,171 @@
           "dateFormat": "dd/MM/yyyy"
         }
       }
+    },
+    {
+      "gss": "S12000047",
+      "name": "Fife Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Fife Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "grey",
+            "type": "PAPER"
+          },
+          {
+            "match": "food",
+            "type": "FOOD",
+            "alsoCarries": [
+              "GARDEN"
+            ]
+          },
+          {
+            "match": "garden",
+            "type": "FOOD",
+            "alsoCarries": [
+              "GARDEN"
+            ]
+          },
+          {
+            "match": "brown",
+            "type": "FOOD",
+            "alsoCarries": [
+              "GARDEN"
+            ]
+          },
+          {
+            "match": "plastic",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "cans",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "green",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "landfill",
+            "type": "REFUSE"
+          },
+          {
+            "match": "blue",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "headerPrime": {
+            "url": "https://fife.form.uk.empro.verintcloudservices.com/api/citizen?archived=Y&preview=false&locale=en",
+            "headers": {
+              "auth": "Authorization"
+            }
+          },
+          "requestHeaders": {
+            "Authorization": "{auth}"
+          },
+          "addressUrl": "https://fife.form.uk.empro.verintcloudservices.com/api/widget?action=propertysearch&actionedby=ps_3SHSN93&loadform=true&access=citizen&locale=en",
+          "addressJson": {
+            "name": "bin_calendar",
+            "data": {
+              "postcode": "{postcode}"
+            },
+            "email": "",
+            "caseid": "",
+            "xref": "",
+            "xref1": "",
+            "xref2": ""
+          },
+          "addressPattern": "\"value\":\"(?<ref>\\d{6,12})\",\"label\":\"(?<label>(?:[^\"\\\\]|\\\\.)+)\"",
+          "resolve": [
+            {
+              "url": "https://fife.form.uk.empro.verintcloudservices.com/api/getobjectdata?objecttype=property&objectid={ref}",
+              "emptyPost": true,
+              "pattern": "\"property-UPRN\":\"(?<ref>\\d{1,12})\""
+            }
+          ],
+          "scheduleUrl": "https://fife.form.uk.empro.verintcloudservices.com/api/custom?action=powersuite_bin_calendar_collections&actionedby=bin_calendar&loadform=true&access=citizen&locale=en",
+          "scheduleJson": {
+            "name": "bin_calendar",
+            "data": {
+              "uprn": "{ref}"
+            },
+            "email": "",
+            "caseid": "",
+            "xref": "",
+            "xref1": "",
+            "xref2": ""
+          },
+          "blockPattern": "\\{\"colour\":\"[^\"]*\",\"date\":\"(?:[A-Za-z]+, )?(?<date>[A-Za-z]+ \\d{1,2}, \\d{4})\",\"type\":\"(?<type>[^\"]+)\"\\}",
+          "dateFormat": "month-day-year"
+        }
+      }
+    },
+    {
+      "gss": "E09000009",
+      "name": "Ealing Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Ealing Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "subscription"
+        ]
+      },
+      "platform": {
+        "kind": "json-rows",
+        "version": 1,
+        "jsonRows": {
+          "addressUrl": "https://www.ealing.gov.uk/site/custom_scripts/WasteCollectionWS/home/GetAddress",
+          "addressForm": {
+            "Postcode": "{postcode}"
+          },
+          "addressRowsPath": "param2[*]",
+          "addressLabelPath": "Text",
+          "addressRefPath": "Value",
+          "scheduleUrl": "https://www.ealing.gov.uk/site/custom_scripts/WasteCollectionWS/home/FindCollection",
+          "scheduleForm": {
+            "UPRN": "{ref}"
+          },
+          "scheduleRowsPath": "param2[*]",
+          "typePath": "Service",
+          "datePath": "collectionDate[0]",
+          "dateFormat": "dd/MM/yyyy"
+        }
+      }
     }
   ]
 }
