@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-09-25",
+  "updated": "2026-09-27",
   "councils": [
     {
       "gss": "E07000240",
@@ -3820,6 +3820,145 @@
           "dateFormat": "iso-datetime"
         }
       }
+    },
+    {
+      "gss": "E06000015",
+      "name": "Derby City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Derby City Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "general waste",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://secure.derby.gov.uk/binday/SelectProperty?postcode={postcode}",
+          "postcodeFormat": "nospace",
+          "addressPattern": "<option value=\"(?<ref>\\d{6,})\">(?<label>[^<]+)</option>",
+          "scheduleUrl": "https://secure.derby.gov.uk/binday/BinDays/{ref}",
+          "blockPattern": "<p><strong>(?<date>[^<:]+):</strong>\\s*(?<type>[^<]+)</p>",
+          "dateFormat": "weekday-day-month-year"
+        }
+      }
+    },
+    {
+      "gss": "E06000014",
+      "name": "City of York Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from City of York Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "json-rows",
+        "version": 1,
+        "jsonRows": {
+          "addressUrl": "https://addresses.york.gov.uk/api/address/lookupbypostcode/{postcode}",
+          "addressRowsPath": "[*]",
+          "addressLabelPath": "shortAddress",
+          "addressRefPath": "uprn",
+          "scheduleUrl": "https://waste-api.york.gov.uk/api/Collections/GetBinCollectionDataForUprn/{ref}",
+          "scheduleRowsPath": "services[*]",
+          "typePath": "service",
+          "datePath": "nextCollection",
+          "lastDatePath": "lastCollected",
+          "dateFormat": "iso-datetime"
+        }
+      }
+    },
+    {
+      "gss": "E07000177",
+      "name": "Cherwell District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Cherwell District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "brown",
+            "type": "GARDEN"
+          },
+          {
+            "match": "blue",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "green",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "brown"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://forms.cherwell.gov.uk/site/custom_scripts/bartec_postcode_lookup.php",
+          "addressForm": {
+            "postcode": "{postcode}"
+          },
+          "addressPattern": "\"uprn\":\"?(?<ref>\\d{6,})\"?,\"label\":\"(?<label>(?:[^\"\\\\]|\\\\.)+)\"",
+          "scheduleUrl": "https://www.cherwell.gov.uk/homepage/129/bin-collection-search?uprn={ref}",
+          "blockPattern": "<h3 class=\"bin-collection-tasks__heading\">(?:<span class=\"visually-hidden\">[^<]*</span>)?(?<type>[^<]+)(?:(?!</li>)[\\s\\S])*?<p class=\"bin-collection-tasks__date\">(?<date>[^<]+)</p>",
+          "dateFormat": "weekday-day-ordinal-month-noyear"
+        }
+      },
+      "unpublished": [
+        {
+          "type": "FOOD",
+          "name": "Food waste",
+          "intervalWeeks": 1,
+          "onCollectionDay": true,
+          "source": "https://www.cherwell.gov.uk/info/10/rubbish-and-recycling/825/weekly-food-waste-collections"
+        }
+      ]
     }
   ]
 }
