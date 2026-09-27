@@ -5099,6 +5099,74 @@
           "dateFormat": "dd/MM/yyyy"
         }
       }
+    },
+    {
+      "gss": "E09000027",
+      "name": "London Borough of Richmond upon Thames",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from London Borough of Richmond upon Thames",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "rubbish and food",
+            "type": "REFUSE",
+            "alsoCarries": [
+              "FOOD"
+            ]
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "carton recycling",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS"
+            ]
+          },
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressPrimeUrl": "https://www.richmond.gov.uk/myrichmond",
+          "addressPrimePattern": "value=\"Get details\">[\\s\\S]*?name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\" /><input name=\"ufprt\" type=\"hidden\" value=\"(?<ufprt>[^\"]+)\"",
+          "addressUrl": "https://www.richmond.gov.uk/myrichmond?postcode={postcode}&property=&findproperty=Get%20details&__RequestVerificationToken={token}&ufprt={ufprt}",
+          "addressPattern": "<option value=\"(?<ref>\\d{9,12})\">(?<label>[^<]+)</option>",
+          "scheduleUrl": "https://www.richmond.gov.uk/my_richmond?pid={ref}",
+          "blockPattern": "<h4>(?<type>[^<]+)</h4>\\s*<ul>(?<body>[\\s\\S]*?)</ul>",
+          "datePattern": "(?<date>(?:Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day \\d{1,2} [A-Z][a-z]+ \\d{4})",
+          "dateFormat": "weekday-day-month-year"
+        }
+      }
     }
   ]
 }
