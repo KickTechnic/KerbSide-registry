@@ -4643,6 +4643,108 @@
           "dateFormat": "iso-local-date"
         }
       }
+    },
+    {
+      "gss": "S12000014",
+      "name": "Falkirk Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Falkirk Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "black box",
+            "type": "GLASS",
+            "color": "#000000"
+          },
+          {
+            "match": "burgundy",
+            "type": "PAPER",
+            "color": "#990000"
+          },
+          {
+            "match": "brown",
+            "type": "GARDEN",
+            "color": "#966757"
+          },
+          {
+            "match": "blue",
+            "type": "RECYCLING",
+            "color": "#007DBB"
+          },
+          {
+            "match": "green",
+            "type": "REFUSE",
+            "color": "#038831"
+          }
+        ],
+        "optInMatch": [
+          "brown",
+          "ahp"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://recycling.falkirk.gov.uk/osg/search/{postcode}",
+          "addressPattern": "\"uprn\":\"(?<ref>\\d{6,})\",\"address\":\"(?<label>[^\"]+)\"",
+          "scheduleUrl": "https://recycling.falkirk.gov.uk/api/collections/{ref}",
+          "blockPattern": "\"type\":\\s*\"(?<type>[^\"]+)\"[^\\[\\]]*\"dates\":\\s*\\[(?<body>[^\\]]*)\\]",
+          "datePattern": "\"(?<date>\\d{4}-\\d{2}-\\d{2})\"",
+          "dateFormat": "iso-local-date"
+        }
+      }
+    },
+    {
+      "gss": "E07000130",
+      "name": "Charnwood Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Charnwood Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://my.charnwood.gov.uk/data/ac/addresses.json?term={postcode}",
+          "addressPattern": "\"label\":\"(?<label>(?:[^\"\\\\]|\\\\.)+)\",\"value\":\"(?<ref>cbc\\d{6,})\"",
+          "scheduleUrl": "https://my.charnwood.gov.uk/location?put={ref}&rememberme=0&redirect=%2F",
+          "cookieSession": true,
+          "blockPattern": "<strong class=\"date\">(?<date>[^<]+)</strong>\\s*<a class=\"[^\"]*\"[^>]*>(?<type>[^<]+)</a>",
+          "dateFormat": "weekday-day-ordinal-shortmonth-noyear"
+        }
+      }
     }
   ]
 }
