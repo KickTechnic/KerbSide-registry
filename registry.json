@@ -4487,6 +4487,60 @@
           "dateFormat": "weekday-day-month-year"
         }
       }
+    },
+    {
+      "gss": "E06000008",
+      "name": "Blackburn with Darwen Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Blackburn with Darwen Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "greenwaste",
+            "type": "GARDEN",
+            "color": "#B5651D"
+          },
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "glass, tins and plastics",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE",
+            "color": "#800020"
+          }
+        ],
+        "optInMatch": [
+          "greenwaste"
+        ]
+      },
+      "platform": {
+        "kind": "json-rows",
+        "version": 1,
+        "jsonRows": {
+          "addressUrl": "https://mybins.blackburn.gov.uk/api/mybins/getproperties?text={postcode}",
+          "addressRowsPath": "[*]",
+          "addressLabelPath": "FullAddress",
+          "addressRefPath": "UPRN",
+          "scheduleUrl": "https://mybins.blackburn.gov.uk/api/mybins/getbincollectiondays?uprn={ref}&month={month}&year={year}",
+          "scheduleRowsPath": "BinCollectionDays[*][*]",
+          "typePath": "BinType",
+          "datePath": "CollectionDate",
+          "nextDatePath": "NextScheduledCollectionDate",
+          "dateFormat": "iso-local-date"
+        }
+      }
     }
   ]
 }
