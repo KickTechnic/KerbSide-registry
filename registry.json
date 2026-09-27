@@ -4745,6 +4745,97 @@
           "dateFormat": "weekday-day-ordinal-shortmonth-noyear"
         }
       }
+    },
+    {
+      "gss": "E07000135",
+      "name": "Oadby and Wigston Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Oadby and Wigston Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://my.oadby-wigston.gov.uk/data/ac/addresses.json?term={postcode}",
+          "addressPattern": "\"label\":\"(?<label>(?:[^\"\\\\]|\\\\.)+)\",\"value\":\"(?<ref>ow\\d{6,})\"",
+          "scheduleUrl": "https://my.oadby-wigston.gov.uk/location?put={ref}&rememberme=0&redirect=%2F",
+          "cookieSession": true,
+          "blockPattern": "<strong class=\"date\">(?<date>[^<]+)</strong>\\s*<a class=\"[^\"]*\"[^>]*>(?<type>[^<]+)</a>",
+          "dateFormat": "weekday-day-ordinal-shortmonth-noyear"
+        }
+      }
+    },
+    {
+      "gss": "E06000007",
+      "name": "Warrington Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Warrington Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "green",
+            "type": "GARDEN",
+            "color": "#2B7B34"
+          },
+          {
+            "match": "blue",
+            "type": "RECYCLING",
+            "color": "#4F93D8"
+          },
+          {
+            "match": "black",
+            "type": "REFUSE",
+            "color": "#444444"
+          }
+        ],
+        "optInMatch": [
+          "green"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.warrington.gov.uk/bin-collections/get-addresses/uprn/{postcode}",
+          "postcodeFormat": "nospace",
+          "addressPattern": "\\{\"(?<label>(?:[^\"\\\\]|\\\\.)+)\":\"(?<ref>\\d{6,14})\"\\}",
+          "scheduleUrl": "https://www.warrington.gov.uk/bin-collections/get-jobs/{ref}",
+          "blockPattern": "\"Name\":\"(?<type>[^\"]+)\",\"UPRN\":\"[^\"]*\",\"PhysicalUPRN\"(?:(?!\"PhysicalUPRN\")[\\s\\S])*?\"ScheduledStart\":\"(?<date>[^\"]+)\"",
+          "dateFormat": "iso-datetime"
+        }
+      }
     }
   ]
 }
