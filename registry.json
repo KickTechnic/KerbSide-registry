@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-08-11",
+  "updated": "2026-09-25",
   "councils": [
     {
       "gss": "E07000240",
@@ -196,7 +196,16 @@
             "refField": "uprn"
           }
         }
-      }
+      },
+      "unpublished": [
+        {
+          "type": "FOOD",
+          "name": "Food waste",
+          "intervalWeeks": 1,
+          "onCollectionDay": false,
+          "source": "https://www.stevenage.gov.uk/waste-and-recycling/food-waste-collection-march-2026"
+        }
+      ]
     },
     {
       "gss": "E07000242",
@@ -367,7 +376,16 @@
             "refField": "uprn"
           }
         }
-      }
+      },
+      "unpublished": [
+        {
+          "type": "FOOD",
+          "name": "Food waste",
+          "intervalWeeks": 1,
+          "onCollectionDay": false,
+          "source": "https://www.dudley.gov.uk/residents/my-bins/dudleys-new-waste-service/"
+        }
+      ]
     },
     {
       "gss": "E06000050",
@@ -381,6 +399,10 @@
         "matches": [
           {
             "match": "caddy",
+            "type": "FOOD"
+          },
+          {
+            "match": "food",
             "type": "FOOD"
           },
           {
@@ -599,7 +621,16 @@
             "refField": "{key}"
           }
         }
-      }
+      },
+      "unpublished": [
+        {
+          "type": "FOOD",
+          "name": "Food waste",
+          "intervalWeeks": 1,
+          "onCollectionDay": true,
+          "source": "https://www.luton.gov.uk/news/2026/weekly-food-waste-fortnightly-glass-collections-begin-luton"
+        }
+      ]
     },
     {
       "gss": "S12000048",
@@ -716,7 +747,16 @@
             "refField": "{key}"
           }
         }
-      }
+      },
+      "unpublished": [
+        {
+          "type": "FOOD",
+          "name": "Food waste",
+          "intervalWeeks": 1,
+          "onCollectionDay": true,
+          "source": "https://www.lincoln.gov.uk/bins-recycling/food-waste-1/5"
+        }
+      ]
     },
     {
       "gss": "E07000042",
@@ -822,7 +862,10 @@
           },
           {
             "match": "recycling",
-            "type": "RECYCLING"
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "FOOD"
+            ]
           },
           {
             "match": "black bin",
@@ -967,7 +1010,16 @@
             "refField": "value"
           }
         }
-      }
+      },
+      "unpublished": [
+        {
+          "type": "FOOD",
+          "name": "Food waste",
+          "intervalWeeks": 1,
+          "onCollectionDay": true,
+          "source": "https://www.spelthorne.gov.uk/food-waste"
+        }
+      ]
     },
     {
       "gss": "E07000009",
@@ -1044,7 +1096,10 @@
           {
             "match": "recycling",
             "type": "RECYCLING",
-            "color": "#4A58AA"
+            "color": "#4A58AA",
+            "alsoCarries": [
+              "FOOD"
+            ]
           },
           {
             "match": "refuse",
@@ -1161,7 +1216,9 @@
             "type": "REFUSE"
           }
         ],
-        "optInMatch": []
+        "optInMatch": [
+          "garden"
+        ]
       },
       "platform": {
         "kind": "xfp",
@@ -1584,12 +1641,18 @@
           {
             "match": "general waste+food",
             "type": "REFUSE",
-            "color": "#33815F"
+            "color": "#33815F",
+            "alsoCarries": [
+              "FOOD"
+            ]
           },
           {
             "match": "trolley",
             "type": "RECYCLING",
-            "color": "#3E3F43"
+            "color": "#3E3F43",
+            "alsoCarries": [
+              "FOOD"
+            ]
           },
           {
             "match": "garden",
@@ -1675,7 +1738,10 @@
           {
             "match": "food",
             "type": "FOOD",
-            "color": "#0B821E"
+            "color": "#0B821E",
+            "alsoCarries": [
+              "GARDEN"
+            ]
           },
           {
             "match": "garden",
@@ -1742,6 +1808,2018 @@
       "gss": "E06000042",
       "name": "Milton Keynes Council",
       "tier": 3
+    },
+    {
+      "gss": "E07000148",
+      "name": "Norwich City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Norwich City Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "domestic waste",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "whitespace-portal",
+        "version": 1,
+        "whitespacePortal": {
+          "host": "https://bnr-wrp.whitespacews.com"
+        }
+      }
+    },
+    {
+      "gss": "E07000214",
+      "name": "Surrey Heath Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Surrey Heath Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "textile",
+            "type": "TEXTILES"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          },
+          {
+            "match": "domestic waste",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "whitespace-portal",
+        "version": 1,
+        "whitespacePortal": {
+          "host": "https://asjwsw-wrpsurreyheathmunicipal-live.whitespacews.com"
+        }
+      }
+    },
+    {
+      "gss": "E08000018",
+      "name": "Rotherham Metropolitan Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Rotherham Metropolitan Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "pink",
+            "type": "REFUSE",
+            "alsoCarries": [
+              "FOOD"
+            ]
+          },
+          {
+            "match": "green",
+            "type": "PAPER"
+          },
+          {
+            "match": "black",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "brown",
+            "type": "GARDEN"
+          }
+        ],
+        "optInMatch": [
+          "brown"
+        ]
+      },
+      "platform": {
+        "kind": "imactivate",
+        "version": 1,
+        "imactivate": {
+          "localAuthority": "Rotherham",
+          "addressAuthority": "Rotherham"
+        }
+      }
+    },
+    {
+      "gss": "E07000010",
+      "name": "Fenland District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Fenland District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "waste",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "imactivate",
+        "version": 1,
+        "imactivate": {
+          "localAuthority": "Fenland"
+        }
+      }
+    },
+    {
+      "gss": "E08000025",
+      "name": "Birmingham City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Birmingham City Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-lookup",
+        "version": 1,
+        "htmlLookup": {
+          "url": "https://www.birmingham.gov.uk/info/50388/check_your_collection_day",
+          "tableClass": "data-table",
+          "dateColumn": 0,
+          "typeColumn": 1,
+          "dateFormat": "weekday-day-ordinal-month-noyear"
+        }
+      }
+    },
+    {
+      "gss": "S12000029",
+      "name": "South Lanarkshire Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from South Lanarkshire Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "glass, cans and plastics",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "food",
+            "type": "FOOD",
+            "alsoCarries": [
+              "GARDEN"
+            ]
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "non-recyclable",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "xfp",
+        "version": 1,
+        "xfp": {
+          "host": "www.southlanarkshire.gov.uk",
+          "formId": "831",
+          "rows": {
+            "mode": "html-table",
+            "tableId": "bin-table",
+            "typeTag": "p",
+            "typeColumn": 1,
+            "dateColumn": 2
+          },
+          "dateFormat": "dd/MM/yyyy"
+        }
+      }
+    },
+    {
+      "gss": "E06000054",
+      "name": "Wiltshire Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Wiltshire Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "mixed dry recycling",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS"
+            ]
+          },
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "household",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "ambassador-forms",
+        "version": 1,
+        "ambassadorForms": {
+          "host": "ilambassadorformsprod.azurewebsites.net",
+          "addressPath": "/wastecollectiondays/addresslist",
+          "schedulePath": "/wastecollectiondays/wastecollectionupcoming"
+        }
+      }
+    },
+    {
+      "gss": "E09000005",
+      "name": "Brent Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Brent Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "wasteworks",
+        "version": 1,
+        "wasteWorks": {
+          "baseUrl": "https://recyclingservices.brent.gov.uk"
+        }
+      }
+    },
+    {
+      "gss": "E09000006",
+      "name": "London Borough of Bromley",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from London Borough of Bromley",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "non-recyclable",
+            "type": "REFUSE"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "wasteworks",
+        "version": 1,
+        "wasteWorks": {
+          "baseUrl": "https://recyclingservices.bromley.gov.uk"
+        }
+      }
+    },
+    {
+      "gss": "E09000021",
+      "name": "Royal Borough of Kingston upon Thames",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Royal Borough of Kingston upon Thames",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "non-recyclable",
+            "type": "REFUSE"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "wasteworks",
+        "version": 1,
+        "wasteWorks": {
+          "baseUrl": "https://waste-services.kingston.gov.uk"
+        }
+      }
+    },
+    {
+      "gss": "E09000029",
+      "name": "London Borough of Sutton",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from London Borough of Sutton",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "non-recyclable",
+            "type": "REFUSE"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "wasteworks",
+        "version": 1,
+        "wasteWorks": {
+          "baseUrl": "https://waste-services.sutton.gov.uk"
+        }
+      }
+    },
+    {
+      "gss": "E09000024",
+      "name": "London Borough of Merton",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from London Borough of Merton",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "non-recyclable",
+            "type": "REFUSE"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "wasteworks",
+        "version": 1,
+        "wasteWorks": {
+          "baseUrl": "https://fixmystreet.merton.gov.uk"
+        }
+      }
+    },
+    {
+      "gss": "E06000031",
+      "name": "Peterborough City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Peterborough City Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "caddy",
+            "type": "FOOD"
+          },
+          {
+            "match": "l grey",
+            "type": "FOOD"
+          },
+          {
+            "match": "l brown",
+            "type": "GARDEN"
+          },
+          {
+            "match": "l green",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "l black",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "l brown"
+        ]
+      },
+      "platform": {
+        "kind": "wasteworks",
+        "version": 1,
+        "wasteWorks": {
+          "baseUrl": "https://report.peterborough.gov.uk"
+        }
+      },
+      "unpublished": [
+        {
+          "type": "FOOD",
+          "name": "Food waste",
+          "intervalWeeks": 1,
+          "onCollectionDay": false,
+          "source": "https://report.peterborough.gov.uk/waste"
+        }
+      ]
+    },
+    {
+      "gss": "E08000010",
+      "name": "Wigan Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Wigan Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "green bin",
+            "type": "FOOD",
+            "alsoCarries": [
+              "GARDEN"
+            ]
+          },
+          {
+            "match": "blue bin",
+            "type": "PAPER"
+          },
+          {
+            "match": "brown bin",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "black bin",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "my-neighbourhood",
+        "version": 1,
+        "myNeighbourhood": {
+          "host": "apps.wigan.gov.uk"
+        }
+      }
+    },
+    {
+      "gss": "E06000056",
+      "name": "Central Bedfordshire Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Central Bedfordshire Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "localgov-waste",
+        "version": 1,
+        "localGovWaste": {
+          "baseUrl": "https://www.centralbedfordshire.gov.uk/waste-and-recycling/waste-collection-schedule",
+          "dateFormat": "dd-MM-yyyy",
+          "typeSplit": " and "
+        }
+      }
+    },
+    {
+      "gss": "E06000063",
+      "name": "Cumberland Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Cumberland Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "green waste",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "domestic waste",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "localgov-waste",
+        "version": 1,
+        "localGovWaste": {
+          "baseUrl": "https://www.cumberland.gov.uk/bins-recycling-and-street-cleaning/waste-collections/bin-collection-schedule",
+          "dateFormat": "iso-local-date"
+        }
+      }
+    },
+    {
+      "gss": "E06000064",
+      "name": "Westmorland and Furness Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Westmorland and Furness Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "non-recyclable",
+            "type": "REFUSE"
+          },
+          {
+            "match": "recyclable",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "general",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "localgov-waste",
+        "version": 1,
+        "localGovWaste": {
+          "baseUrl": "https://www.westmorlandandfurness.gov.uk/bins-recycling-and-street-cleaning/waste-collection-schedule",
+          "dateFormat": "iso-local-date"
+        }
+      }
+    },
+    {
+      "gss": "E08000022",
+      "name": "North Tyneside Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from North Tyneside Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "household",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "localgov-waste",
+        "version": 1,
+        "localGovWaste": {
+          "baseUrl": "https://www.northtyneside.gov.uk/waste-collection-schedule",
+          "dateFormat": "iso-local-date"
+        }
+      }
+    },
+    {
+      "gss": "S12000049",
+      "name": "Glasgow City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Glasgow City Council",
+      "streams": {
+        "matches": [],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "refuse-calendar",
+        "version": 1,
+        "refuseCalendar": {
+          "host": "onlineservices.glasgow.gov.uk"
+        }
+      }
+    },
+    {
+      "gss": "E06000065",
+      "name": "North Yorkshire Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from North Yorkshire Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "household",
+            "type": "REFUSE"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "bin-calendar",
+        "version": 1,
+        "binCalendar": {
+          "host": "www.northyorks.gov.uk"
+        }
+      }
+    },
+    {
+      "gss": "E06000052",
+      "name": "Cornwall Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Cornwall Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "my-area",
+        "version": 1,
+        "myArea": {
+          "host": "www.cornwall.gov.uk"
+        }
+      }
+    },
+    {
+      "gss": "E06000009",
+      "name": "Blackpool Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Blackpool Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "bartec-api",
+        "version": 1,
+        "bartecApi": {
+          "baseUrl": "https://api.blackpool.gov.uk/live//api/bartec"
+        }
+      }
+    },
+    {
+      "gss": "E06000062",
+      "name": "West Northamptonshire Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from West Northamptonshire Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "json-rows",
+        "version": 1,
+        "jsonRows": {
+          "addressUrl": "https://api.westnorthants.digital/address-search/postcode/{postcode}?address=&defaultSearch=false&recordLimit=50",
+          "postcodeFormat": "nospace",
+          "addressRowsPath": "addresses[*]",
+          "addressLabelPath": "single_line_address",
+          "addressRefPath": "uprn",
+          "scheduleUrl": "https://api.westnorthants.digital/openapi/v1/unified-waste-collections/{ref}",
+          "scheduleRowsPath": "collectionItems[*]",
+          "typePath": "type",
+          "datePath": "date",
+          "dateFormat": "iso-local-date"
+        }
+      }
+    },
+    {
+      "gss": "E06000061",
+      "name": "North Northamptonshire Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from North Northamptonshire Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "caddy",
+            "type": "FOOD"
+          },
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "json-rows",
+        "version": 1,
+        "jsonRows": {
+          "addressUrl": "https://cms.northnorthants.gov.uk/bin-collection-search/premiselist/{postcode}",
+          "addressRowsPath": "data[*]",
+          "addressLabelPath": "Address",
+          "addressRefPath": "UPRN",
+          "scheduleUrl": "https://cms.northnorthants.gov.uk/bin-collection-search/calendarevents/{ref}/{from}/{to}",
+          "windowDays": 70,
+          "scheduleRowsPath": "[*]",
+          "typePath": "title",
+          "datePath": "start",
+          "dateFormat": "dotnet-json-date"
+        }
+      }
+    },
+    {
+      "gss": "E06000016",
+      "name": "Leicester City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Leicester City Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "json-rows",
+        "version": 1,
+        "jsonRows": {
+          "addressUrl": "https://biffaleicester.co.uk/wp-admin/admin-ajax.php",
+          "addressForm": {
+            "action": "get_uprn_api",
+            "postcode": "{postcode}"
+          },
+          "addressRowsPath": "anyType[*]",
+          "addressLabelPath": "UPRNAddress",
+          "addressRefPath": "UPRNID",
+          "scheduleUrl": "https://biffaleicester.co.uk/wp-admin/admin-ajax.php",
+          "scheduleForm": {
+            "action": "get_details_api",
+            "uprn": "{ref}"
+          },
+          "scheduleRowsPath": "anyType[*]",
+          "typePath": "ServiceModeDesc",
+          "datePath": "ServiceDueDate",
+          "intervalPath": "ServiceFrequency",
+          "dateFormat": "dd/MM/yy"
+        }
+      }
+    },
+    {
+      "gss": "E09000032",
+      "name": "Wandsworth Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Wandsworth Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.wandsworth.gov.uk/my-property/?postcode={postcode}",
+          "addressPattern": "<option value=\"(?<ref>\\d+)\">(?<label>[^<]+)</option>",
+          "scheduleUrl": "https://www.wandsworth.gov.uk/my-property/?UPRN={ref}",
+          "blockPattern": "class=\"collection-heading\">(?<type>[^<]+)</h4>(?<body>[\\s\\S]*?)(?=<h4|<p class=\"text-right\")",
+          "datePattern": "</strong>\\s*(?<date>[^<]+)",
+          "dateFormat": "weekday-day-month-year",
+          "typeSplit": "/"
+        }
+      }
+    },
+    {
+      "gss": "E06000051",
+      "name": "Shropshire Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Shropshire Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "general waste",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://bins.shropshire.gov.uk/property/",
+          "addressForm": {
+            "id": "",
+            "aj": "true",
+            "if": "",
+            "gac": "FALSE",
+            "search_property": "{postcode}",
+            "search_subpremise": "",
+            "search_streetnumber": "",
+            "search_locality": "",
+            "search_postalcode": ""
+          },
+          "addressJsonPath": "result",
+          "addressPattern": "href=\"/property/(?<ref>\\d+)\">(?<label>[^<]+)",
+          "scheduleUrl": "https://bins.shropshire.gov.uk/property/{ref}",
+          "blockPattern": "class=\"toggle-events[^\"]*\"[^>]*>(?<type>[^<]+)</a>(?<body>[\\s\\S]*?)</tr>",
+          "datePattern": "(?<date>\\d{2}/\\d{2}/\\d{4})",
+          "dateFormat": "dd/MM/yyyy"
+        }
+      }
+    },
+    {
+      "gss": "E09000028",
+      "name": "Southwark Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Southwark Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://services.southwark.gov.uk/llpg/lookup?postcode={postcode}&classification=R",
+          "addressPattern": "\"Uprn\":\"(?<ref>\\d+)\".*?\"AddressLine1\":\"(?<label>[^\"]*)\",\"AddressLine2\":\"(?<label2>[^\"]*)\"",
+          "scheduleUrl": "https://services.southwark.gov.uk/bins/lookup/{ref}",
+          "blockPattern": "id=\"\\w+CollectionTitle\">(?<type>[^<]+)</p>(?<body>[\\s\\S]*?)</div>",
+          "datePattern": "collection: (?<date>[^<]+)</p>",
+          "dateFormat": "weekday-day-month-year"
+        }
+      }
+    },
+    {
+      "gss": "E06000035",
+      "name": "Medway Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Medway Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "normal waste",
+            "type": "REFUSE",
+            "alsoCarries": [
+              "RECYCLING",
+              "FOOD"
+            ]
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "json-rows",
+        "version": 1,
+        "jsonRows": {
+          "addressUrl": "https://api.medway.gov.uk/api/addressing/getaddresses/{postcode}",
+          "addressRowsPath": "[*]",
+          "addressLabelPath": "addressText",
+          "addressRefPath": "uprn",
+          "scheduleUrl": "https://api.medway.gov.uk/api/waste/getwasteday/{ref}",
+          "scheduleRowsPath": "$",
+          "typeName": "Normal waste collection",
+          "datePath": "nextCollection",
+          "dateFormat": "iso-offset"
+        }
+      }
+    },
+    {
+      "gss": "E08000031",
+      "name": "City of Wolverhampton Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from City of Wolverhampton Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "general waste",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.wolverhampton.gov.uk/waste-and-recycling/bin-collection-dates?ajax_form=1&_wrapper_format=drupal_ajax",
+          "addressPrimeUrl": "https://www.wolverhampton.gov.uk/waste-and-recycling/bin-collection-dates",
+          "addressPrimePattern": "name=\"form_build_id\" value=\"(?<buildId>[^\"]+)\"[^>]*>\\s*<input[^>]*value=\"cwc_find_my_nearest_search\"",
+          "addressForm": {
+            "form_build_id": "{buildId}",
+            "form_id": "cwc_find_my_nearest_search",
+            "postcode": "{postcode}",
+            "op": "Look up address",
+            "_triggering_element_name": "op",
+            "_triggering_element_value": "Look up address"
+          },
+          "addressJsonPath": "[*].data",
+          "addressPattern": "<option value=\"(?<ref>\\d+)\">(?<label>[^<]+)</option>",
+          "scheduleUrl": "https://www.wolverhampton.gov.uk/find-my-nearest/{postcode}/{ref}",
+          "blockPattern": "<h3>(?<type>[^<]+)</h3>(?<body>[\\s\\S]*?)</div>",
+          "datePattern": "<h4>Next date: (?<date>[^<]+)</h4>",
+          "dateFormat": "month-day-year"
+        }
+      }
+    },
+    {
+      "gss": "W06000011",
+      "name": "Swansea Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Swansea Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "pink week",
+            "type": "REFUSE"
+          },
+          {
+            "match": "green week",
+            "type": "RECYCLING"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www1.swansea.gov.uk/recyclingsearch/",
+          "addressPrimeUrl": "https://www1.swansea.gov.uk/recyclingsearch/",
+          "addressPrimePattern": "name=\"__VIEWSTATE\" id=\"__VIEWSTATE\" value=\"(?<viewState>[^\"]*)\"[\\s\\S]*?name=\"__VIEWSTATEGENERATOR\" id=\"__VIEWSTATEGENERATOR\" value=\"(?<generator>[^\"]*)\"[\\s\\S]*?name=\"__EVENTVALIDATION\" id=\"__EVENTVALIDATION\" value=\"(?<validation>[^\"]*)\"",
+          "addressForm": {
+            "__VIEWSTATE": "{viewState}",
+            "__VIEWSTATEGENERATOR": "{generator}",
+            "__VIEWSTATEENCRYPTED": "",
+            "__EVENTVALIDATION": "{validation}",
+            "txtRoadName": "",
+            "txtPostCode": "{postcode}",
+            "btnSearch": "Search"
+          },
+          "addressPattern": "id=\"lblAddress\"[^>]*><b><font[^>]*>(?<label>[^<]+)<",
+          "refIsPostcode": true,
+          "scheduleUrl": "https://www1.swansea.gov.uk/recyclingsearch/",
+          "scheduleForm": {
+            "__VIEWSTATE": "{viewState}",
+            "__VIEWSTATEGENERATOR": "{generator}",
+            "__VIEWSTATEENCRYPTED": "",
+            "__EVENTVALIDATION": "{validation}",
+            "txtRoadName": "",
+            "txtPostCode": "{postcode}",
+            "btnSearch": "Search"
+          },
+          "schedulePrimeUrl": "https://www1.swansea.gov.uk/recyclingsearch/",
+          "schedulePrimePattern": "name=\"__VIEWSTATE\" id=\"__VIEWSTATE\" value=\"(?<viewState>[^\"]*)\"[\\s\\S]*?name=\"__VIEWSTATEGENERATOR\" id=\"__VIEWSTATEGENERATOR\" value=\"(?<generator>[^\"]*)\"[\\s\\S]*?name=\"__EVENTVALIDATION\" id=\"__EVENTVALIDATION\" value=\"(?<validation>[^\"]*)\"",
+          "blockPattern": ">Next (?<type>[^<]+?) Collection: </font></span>\\s*<span id=\"lblNext\\w+\"[^>]*><b><font[^>]*>(?<date>[^<]+)<",
+          "dateFormat": "dd/MM/yyyy"
+        }
+      }
+    },
+    {
+      "gss": "E06000030",
+      "name": "Swindon Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Swindon Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food bin",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.swindon.gov.uk/info/20122/rubbish_and_recycling_collection_days",
+          "addressForm": {
+            "postcode": "{postcode}",
+            "post-code-submit": ""
+          },
+          "addressPattern": "<option value='(?<ref>\\d+)\\|[^']*'>(?<label>[^<]+)",
+          "scheduleUrl": "https://www.swindon.gov.uk/info/20122/rubbish_and_recycling_collection_days?addressList={ref}&uprnSubmit=Yes",
+          "blockPattern": "<div class=\"content-left\">\\s*<h3>(?<type>[^<]+)</h3>(?<body>[\\s\\S]*?)(?=<div class=\"bin-collection-container|<!----Bin Collection Dates Section Ends)",
+          "datePattern": "<span class='(?:nextCollectionDate|even|odd)'>(?<date>[^<]+)</span>",
+          "dateFormat": "weekday-day-month-year"
+        }
+      }
+    },
+    {
+      "gss": "W06000016",
+      "name": "Rhondda Cynon Taf County Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Rhondda Cynon Taf County Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "black bag",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.rctcbc.gov.uk/EN/Resident/RecyclingandWaste/RecyclingandWasteCollectionDays.aspx?PropertyNumber=&Postcode={postcode}",
+          "addressPattern": "<option value=\"(?<ref>\\d+)\">(?<label>[^<]+)",
+          "scheduleUrl": "https://www.rctcbc.gov.uk/EN/Resident/RecyclingandWaste/RecyclingandWasteCollectionDays.aspx?uprn={ref}",
+          "blockPattern": "class='[\\w-]+-tablecell'><a[^>]*>(?<type>[^<]+)</a></td><td>(?:[^<,]*, )?(?<date>[^<]+)</td>",
+          "dateFormat": "weekday-ordinal-of-month-year"
+        }
+      }
+    },
+    {
+      "gss": "E09000019",
+      "name": "Islington Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Islington Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.islington.gov.uk/your-area?Postcode={postcode}",
+          "addressPattern": "<option value=\"(?<ref>\\d+)\">(?<label>[^<]+)",
+          "scheduleUrl": "https://www.islington.gov.uk/your-area?Postcode={postcode}&Uprn={ref}",
+          "blockPattern": "<li>\\s*(?<type>[^<]+?) - (?<date>[^<]*collected every[^<]*?)\\s*</li>",
+          "dateFormat": "weekly-weekday-phrase"
+        }
+      }
+    },
+    {
+      "gss": "E08000029",
+      "name": "Solihull Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Solihull Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "household",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://digital.solihull.gov.uk/BinCollectionCalendar/",
+          "addressPrimeUrl": "https://digital.solihull.gov.uk/BinCollectionCalendar/",
+          "addressPrimePattern": "name=\"__VIEWSTATE\" id=\"__VIEWSTATE\" value=\"(?<viewState>[^\"]*)\"[\\s\\S]*?name=\"__VIEWSTATEGENERATOR\" id=\"__VIEWSTATEGENERATOR\" value=\"(?<generator>[^\"]*)\"[\\s\\S]*?name=\"__EVENTVALIDATION\" id=\"__EVENTVALIDATION\" value=\"(?<validation>[^\"]*)\"",
+          "addressForm": {
+            "__VIEWSTATE": "{viewState}",
+            "__VIEWSTATEGENERATOR": "{generator}",
+            "__EVENTVALIDATION": "{validation}",
+            "txtPostCode": "{postcode}",
+            "butFindAddress": "Find Address"
+          },
+          "addressPattern": "<option value=\"(?<ref>\\d{6,})\">(?<label>[^<]+)",
+          "scheduleUrl": "https://digital.solihull.gov.uk/BinCollectionCalendar/Calendar.aspx?UPRN={ref}",
+          "blockPattern": "<div class=\"card-title\"><h4>[^<]*</h4> <h5>(?<type>[^<]+)</h5></div>(?<body>[\\s\\S]*?)(?=<div class=\"mb-4 card|$)",
+          "datePattern": "<strong>(?<date>[^<]+)</strong>",
+          "dateFormat": "weekday-day-month-year"
+        }
+      }
+    },
+    {
+      "gss": "E06000020",
+      "name": "Telford & Wrekin Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Telford & Wrekin Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "silver",
+            "type": "FOOD"
+          },
+          {
+            "match": "green",
+            "type": "GARDEN"
+          },
+          {
+            "match": "purple",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "red top",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "green"
+        ]
+      },
+      "platform": {
+        "kind": "json-rows",
+        "version": 1,
+        "jsonRows": {
+          "addressUrl": "https://dac.telford.gov.uk/BinDayFinder/Find/PostcodeSearch?postcode={postcode}",
+          "addressRowsPath": "properties[*]",
+          "addressLabelPath": "Description",
+          "addressRefPath": "UPRN",
+          "scheduleUrl": "https://dac.telford.gov.uk/BinDayFinder/Find/PropertySearch?uprn={ref}",
+          "scheduleRowsPath": "bincollections[*]",
+          "typePath": "name",
+          "datePath": "nextDate",
+          "lastDatePath": "lastDate",
+          "dateFormat": "weekday-day-ordinal-month-noyear"
+        }
+      }
+    },
+    {
+      "gss": "E08000002",
+      "name": "Bury Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Bury Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "green",
+            "type": "PAPER"
+          },
+          {
+            "match": "brown",
+            "type": "GARDEN",
+            "alsoCarries": [
+              "FOOD"
+            ]
+          },
+          {
+            "match": "blue",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "grey",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "json-rows",
+        "version": 1,
+        "jsonRows": {
+          "addressUrl": "https://www.bury.gov.uk/app-services/getProperties?postcode={postcode}",
+          "postcodeFormat": "nospace",
+          "addressRowsPath": "response[*]",
+          "addressLabelPath": "addressLine1",
+          "addressRefPath": "id",
+          "scheduleUrl": "https://www.bury.gov.uk/app-services/getPropertyById?id={ref}",
+          "scheduleRowsPath": "response.bins.*",
+          "typePath": "_key",
+          "datePath": "nextCollection",
+          "dateFormat": "weekday-ordinal-of-month-year"
+        }
+      }
+    },
+    {
+      "gss": "E07000084",
+      "name": "Basingstoke and Deane Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Basingstoke and Deane Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.basingstoke.gov.uk/rte.aspx?id=1270",
+          "addressPrimeUrl": "https://www.basingstoke.gov.uk/bincollections",
+          "addressPrimePattern": "name=\"__VIEWSTATE\" id=\"__VIEWSTATE\" value=\"(?<viewState>[^\"]*)\"[\\s\\S]*?name=\"__VIEWSTATEGENERATOR\" id=\"__VIEWSTATEGENERATOR\" value=\"(?<generator>[^\"]*)\"[\\s\\S]*?name=\"__EVENTVALIDATION\" id=\"__EVENTVALIDATION\" value=\"(?<validation>[^\"]*)\"",
+          "addressForm": {
+            "__VIEWSTATE": "{viewState}",
+            "__VIEWSTATEGENERATOR": "{generator}",
+            "__EVENTVALIDATION": "{validation}",
+            "rteelem$ctl03$gapAddress$txtStage1_SearchValue": "{postcode}",
+            "rteelem$ctl03$gapAddress$ctl04": "Search"
+          },
+          "addressPattern": "<option value=\"UPRN:(?<ref>\\d+)\">(?<label>[^<]+)",
+          "scheduleUrl": "https://www.basingstoke.gov.uk/bincollections",
+          "scheduleCookies": {
+            "WhenAreMyBinsCollected": "{ref}"
+          },
+          "blockPattern": "id=\"rteelem_ctl03_pnlCollections_(?<type>\\w+)\"(?<body>[\\s\\S]*?)</ul>",
+          "datePattern": "<li>(?<date>[^<]+)</li>",
+          "dateFormat": "weekday-day-month-year"
+        }
+      }
+    },
+    {
+      "gss": "E06000019",
+      "name": "Herefordshire Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Herefordshire Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.herefordshire.gov.uk/rubbish-recycling/check-bin-collection-day?postcode={postcode}",
+          "addressPattern": "<a href=\"/rubbish-recycling/check-bin-collection-day\\?blpu_uprn=(?<ref>\\d+)&amp;[^\"]*\">(?<label>[^<]+)",
+          "scheduleUrl": "https://www.herefordshire.gov.uk/rubbish-recycling/check-bin-collection-day?blpu_uprn={ref}",
+          "blockPattern": "<h3 class=\"c-supplement__heading\">(?<type>[^<]+)</h3>\\s*<ul class=\"c-supplement__list\">(?<body>[\\s\\S]*?)</ul>",
+          "datePattern": "<li>(?<date>[^<(]+?)\\s*\\(",
+          "dateFormat": "weekday-day-month-year"
+        }
+      }
+    },
+    {
+      "gss": "W06000010",
+      "name": "Carmarthenshire County Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Carmarthenshire County Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "blue bag",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "FOOD"
+            ]
+          },
+          {
+            "match": "black bag",
+            "type": "REFUSE",
+            "alsoCarries": [
+              "GLASS"
+            ]
+          }
+        ],
+        "optInMatch": [
+          "garden",
+          "hygiene"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.carmarthenshire.gov.wales/Umbraco/Api/ApiNewAddress/Get?postcode={postcode}&lang=en-GB",
+          "addressPattern": "\"text\":\"(?<label>[^\"]+)\",\"value\":\"(?<ref>\\d+)\"",
+          "scheduleUrl": "https://www.carmarthenshire.gov.wales/umbraco/Surface/SurfaceRecycling/Index/?uprn={ref}&lang=en-GB",
+          "blockPattern": "</span> Your next (?<type>[^<]+?) collection</p>\\s*<p class=\"font11 text-center\">(?<date>[^<]+)</p>",
+          "dateFormat": "weekday-dd/MM/yyyy"
+        }
+      }
+    },
+    {
+      "gss": "E07000012",
+      "name": "South Cambridgeshire District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from South Cambridgeshire District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "organic",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycle",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "domestic",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "json-rows",
+        "version": 1,
+        "jsonRows": {
+          "addressUrl": "https://servicelayer3c.azure-api.net/wastecalendar/address/search/?postCode={postcode}",
+          "addressRowsPath": "[*]",
+          "addressLabelPath": "houseNumber",
+          "addressLabelExtraPaths": [
+            "street",
+            "town"
+          ],
+          "addressRefPath": "id",
+          "scheduleUrl": "https://servicelayer3c.azure-api.net/wastecalendar/collection/search/{ref}/",
+          "scheduleRowsPath": "collections[*]",
+          "typePath": "roundTypes[*]",
+          "datePath": "date",
+          "dateFormat": "iso-offset"
+        }
+      }
+    },
+    {
+      "gss": "E07000008",
+      "name": "Cambridge City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Cambridge City Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "organic",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycle",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "domestic",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "json-rows",
+        "version": 1,
+        "jsonRows": {
+          "addressUrl": "https://servicelayer3c.azure-api.net/wastecalendar/address/search/?postCode={postcode}",
+          "addressRowsPath": "[*]",
+          "addressLabelPath": "houseNumber",
+          "addressLabelExtraPaths": [
+            "street",
+            "town"
+          ],
+          "addressRefPath": "id",
+          "scheduleUrl": "https://servicelayer3c.azure-api.net/wastecalendar/collection/search/{ref}/?authority=CCC",
+          "scheduleRowsPath": "collections[*]",
+          "typePath": "roundTypes[*]",
+          "datePath": "date",
+          "dateFormat": "iso-offset"
+        }
+      }
+    },
+    {
+      "gss": "E07000065",
+      "name": "Wealden District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Wealden District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "json-rows",
+        "version": 1,
+        "jsonRows": {
+          "addressUrl": "https://www.wealden.gov.uk/wp-admin/admin-ajax.php",
+          "addressForm": {
+            "action": "wealden_get_properties_in_postcode",
+            "postcode": "{postcode}"
+          },
+          "addressRowsPath": "properties[*]",
+          "addressLabelPath": "address",
+          "addressRefPath": "uprn",
+          "scheduleUrl": "https://www.wealden.gov.uk/wp-admin/admin-ajax.php",
+          "scheduleForm": {
+            "action": "wealden_get_collections_for_uprn",
+            "uprn": "{ref}"
+          },
+          "scheduleRowsPath": "$",
+          "fixedFields": {
+            "Refuse": "collection.refuseCollectionDate",
+            "Recycling": "collection.recyclingCollectionDate",
+            "Food waste": "collection.foodCollectionDate",
+            "Garden waste": "collection.gardenCollectionDate"
+          },
+          "datePath": "collection.refuseCollectionDate",
+          "dateFormat": "iso-datetime"
+        }
+      }
     }
   ]
 }
