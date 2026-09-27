@@ -4343,6 +4343,50 @@
           "dateFormat": "weekday-day-month-year"
         }
       }
+    },
+    {
+      "gss": "E08000004",
+      "name": "Oldham Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Oldham Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "blue",
+            "type": "PAPER"
+          },
+          {
+            "match": "green",
+            "type": "FOOD",
+            "alsoCarries": [
+              "GARDEN"
+            ]
+          },
+          {
+            "match": "brown",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "grey",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://portal.oldham.gov.uk/Common/GetAddressList?term={postcode}&type=Postcode",
+          "addressPattern": "\"UPRN\":\"(?<ref>\\d+)\"[^{}]*\"FULL_ADDRESS\":\"(?<label>[^\"]+)\"",
+          "scheduleUrl": "https://portal.oldham.gov.uk/bincollectiondates/details?uprn={ref}",
+          "blockPattern": "<th[^>]*><b>(?<type>[^<]+)</b></th>(?:(?!</table>)[\\s\\S])*?<b>Collection Date</b>\\s*</td>\\s*<td class=\"coltwo\">(?<date>[^<]+)</td>",
+          "dateFormat": "dd/MM/yyyy"
+        }
+      }
     }
   ]
 }
