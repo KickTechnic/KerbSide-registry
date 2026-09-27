@@ -3959,6 +3959,128 @@
           "source": "https://www.cherwell.gov.uk/info/10/rubbish-and-recycling/825/weekly-food-waste-collections"
         }
       ]
+    },
+    {
+      "gss": "E06000039",
+      "name": "Slough Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Slough Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "waste",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressPrimeUrl": "https://waste.slough.gov.uk/PublicDashboard",
+          "addressPrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"",
+          "addressUrl": "https://waste.slough.gov.uk/PublicDashboard?handler=SearchPostcode",
+          "addressForm": {
+            "SelectedPostcode": "{postcode}",
+            "__RequestVerificationToken": "{token}"
+          },
+          "addressPattern": "\"UPRN\": (?<ref>\\d+)\\.0,\\s*\"USRN\": [^,]*,\\s*\"UserDefinedAddress\": [^,]*,\\s*\"Premises\": \"(?<label>[^\"]+)\"",
+          "cookieSession": true,
+          "schedulePrimeUrl": "https://waste.slough.gov.uk/PublicDashboard",
+          "schedulePrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"",
+          "scheduleUrl": "https://waste.slough.gov.uk/PublicDashboard?handler=SelectPrem",
+          "scheduleForm": {
+            "SelectedPostcode": "{postcode}",
+            "SelectedPremises": "{ref}",
+            "__RequestVerificationToken": "{token}"
+          },
+          "blockPattern": "\"Subject\": \"(?<type>[^\"]+)\"(?:(?!\"Subject\")[\\s\\S])*?\"StartTime\": \"(?<date>[^\"]+)\"",
+          "dateFormat": "iso-datetime"
+        }
+      },
+      "unpublished": [
+        {
+          "type": "FOOD",
+          "name": "Food waste",
+          "intervalWeeks": 1,
+          "onCollectionDay": true,
+          "source": "https://www.slough.gov.uk/bins-waste-recycling/food-waste"
+        }
+      ]
+    },
+    {
+      "gss": "E06000024",
+      "name": "North Somerset Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from North Somerset Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://forms.n-somerset.gov.uk/Waste/CollectionSchedule",
+          "addressForm": {
+            "PreviousHouse": "",
+            "PreviousPostcode": "",
+            "Postcode": "{postcode}"
+          },
+          "addressPattern": "<option value=\"(?<ref>\\d+)\">(?<label>[^<]+)</option>",
+          "cookieSession": true,
+          "scheduleUrl": "https://forms.n-somerset.gov.uk/Waste/CollectionSchedule",
+          "scheduleForm": {
+            "PreviousHouse": "",
+            "PreviousPostcode": "{postcode}",
+            "Postcode": "{postcode}",
+            "SelectedUprn": "{ref}"
+          },
+          "blockPattern": "<tr>\\s*<td>(?<type>[^<]+)</td>(?<body>(?:(?!</tr>)[\\s\\S])*)</tr>",
+          "datePattern": "<td>(?<date>[^<]+)</td>",
+          "dateFormat": "weekday-day-ordinal-month-noyear"
+        }
+      }
     }
   ]
 }
