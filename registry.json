@@ -4186,6 +4186,163 @@
           "dateFormat": "weekday-day-ordinal-month-noyear"
         }
       }
+    },
+    {
+      "gss": "S12000050",
+      "name": "North Lanarkshire Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from North Lanarkshire Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "glass, metals, plastics",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "blue-lidded",
+            "type": "PAPER"
+          },
+          {
+            "match": "food",
+            "type": "FOOD",
+            "alsoCarries": [
+              "GARDEN"
+            ]
+          },
+          {
+            "match": "general waste",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressPrimeUrl": "https://www.northlanarkshire.gov.uk/bin-collection-dates",
+          "addressPrimePattern": "name=\"form_build_id\" value=\"(?<buildId>[^\"]+)\"[^>]*>\\s*<input[^>]*value=\"ace_bin_collection_dates_address_finder_form\"",
+          "addressUrl": "https://www.northlanarkshire.gov.uk/bin-collection-dates?element_parents=address_finder&ajax_form=1&_wrapper_format=drupal_ajax",
+          "addressForm": {
+            "address_finder_postcode_search_text": "{postcode}",
+            "form_build_id": "{buildId}",
+            "form_id": "ace_bin_collection_dates_address_finder_form",
+            "_triggering_element_name": "address_finder_postcode_search_button",
+            "_triggering_element_value": "Find address"
+          },
+          "addressJsonPath": "[*].data",
+          "addressPattern": "<option value=\"(?<ref>[^\"]+)\">(?<label>[^<]+)</option>",
+          "resolve": [
+            {
+              "url": "https://www.northlanarkshire.gov.uk/bin-collection-dates",
+              "pattern": "name=\"form_build_id\" value=\"(?<buildId>[^\"]+)\"[^>]*>\\s*<input[^>]*value=\"ace_bin_collection_dates_address_finder_form\""
+            },
+            {
+              "url": "https://www.northlanarkshire.gov.uk/bin-collection-dates?element_parents=address_finder&ajax_form=1&_wrapper_format=drupal_ajax",
+              "form": {
+                "address_finder_postcode_search_text": "{postcode}",
+                "form_build_id": "{buildId}",
+                "form_id": "ace_bin_collection_dates_address_finder_form",
+                "_triggering_element_name": "address_finder_postcode_search_button",
+                "_triggering_element_value": "Find address"
+              },
+              "pattern": "\"command\":\"update_build_id\",\"old\":\"[^\"]*\",\"new\":\"(?<buildId>[^\"]+)\""
+            },
+            {
+              "url": "https://www.northlanarkshire.gov.uk/bin-collection-dates?element_parents=address_finder&ajax_form=1&_wrapper_format=drupal_ajax",
+              "form": {
+                "address_finder_postcode_search_text": "{postcode}",
+                "address_finder[address_select][address_options]": "{ref}",
+                "form_build_id": "{buildId}",
+                "form_id": "ace_bin_collection_dates_address_finder_form",
+                "_triggering_element_name": "address_finder_confirm_address_selection",
+                "_triggering_element_value": "Confirm"
+              },
+              "pattern": "\"command\":\"update_build_id\",\"old\":\"[^\"]*\",\"new\":\"(?<buildId>[^\"]+)\"[\\s\\S]*?name=\"address_finder\\[address_line_2\\]\" value=\"(?<line2>[^\"]*)\"[\\s\\S]*?name=\"submit_address_selection\""
+            },
+            {
+              "url": "https://www.northlanarkshire.gov.uk/bin-collection-dates",
+              "form": {
+                "address_finder_postcode_search_text": "{postcode}",
+                "address_finder_confirm_address_selection": "Confirm",
+                "address_finder[address_line_2]": "{line2}",
+                "form_build_id": "{buildId}",
+                "form_id": "ace_bin_collection_dates_address_finder_form",
+                "submit_address_selection": "Next"
+              },
+              "pattern": "/bin-collection-dates/(?<uprn>\\d+)/(?<usrn>\\d+)"
+            }
+          ],
+          "refParts": [
+            "uprn",
+            "usrn"
+          ],
+          "scheduleUrl": "https://www.northlanarkshire.gov.uk/bin-collection-dates/{uprn}/{usrn}",
+          "blockPattern": "<div class=\"waste-type-container[^\"]*\">\\s*<div>\\s*<h3>(?<type>[^<]+)</h3>(?<body>[\\s\\S]*?)</div>",
+          "datePattern": "<p>(?<date>[^<]+)</p>",
+          "dateFormat": "weekday-day-month-year"
+        }
+      }
+    },
+    {
+      "gss": "E08000008",
+      "name": "Tameside Metropolitan Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Tameside Metropolitan Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "brown",
+            "type": "FOOD",
+            "alsoCarries": [
+              "GARDEN"
+            ]
+          },
+          {
+            "match": "blue",
+            "type": "PAPER"
+          },
+          {
+            "match": "black",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "green",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://public.tameside.gov.uk/forms/bin-dates.asp",
+          "addressForm": {
+            "F01_I02_Postcode": "{postcode}",
+            "Form_1": "Continue",
+            "history": ",1,"
+          },
+          "addressPattern": "<option value=\"(?<ref>\\d+)-[^\"]*\">(?<label>[^<]+)</option>",
+          "scheduleUrl": "https://public.tameside.gov.uk/forms/bin-dates.asp",
+          "scheduleForm": {
+            "F03_I01_SelectAddress": "{ref}-{postcode}",
+            "AdvanceSearch": "Continue",
+            "F01_I02_Postcode": "{postcode}",
+            "F01_I03_Street": "",
+            "history": ",1,3,"
+          },
+          "blockPattern": "<h3 class=\"yearHeader\">(?<year>\\d{4})</h3>|<td class=\"month\">(?<month>[A-Za-z]+)</td>|<div class=\"day\">(?<day>\\d{1,2})<|alt=\"(?<type>[a-z]+_bin)_Icon\"",
+          "dateTemplate": "{day} {month} {year}",
+          "dateFormat": "weekday-day-month-year"
+        }
+      }
     }
   ]
 }
