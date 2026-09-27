@@ -4541,6 +4541,108 @@
           "dateFormat": "iso-local-date"
         }
       }
+    },
+    {
+      "gss": "E07000011",
+      "name": "Huntingdonshire District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Huntingdonshire District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "organic",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "domestic",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "organic"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://huntingdonshire.gov.uk/address/search?postcode={postcode}&authority=HDC",
+          "postcodeFormat": "nospace",
+          "addressPattern": "\"id\":\"(?<ref>\\d{6,})\",\"houseNumber\":(?:\"(?<label>(?:[^\"\\\\]|\\\\.)*)\"|null),\"street\":(?:\"(?<label2>(?:[^\"\\\\]|\\\\.)*)\"|null),\"town\":(?:\"(?<label3>(?:[^\"\\\\]|\\\\.)*)\"|null)",
+          "scheduleUrl": "https://www.huntingdonshire.gov.uk/refuse-calendar/results?uprn={ref}",
+          "blockPattern": "<tr class=\"month-name\"><th[^>]*>(?<month>[A-Za-z]+)</th>|<td class=\"(?<type>[a-z]+(?:-[a-z]+)*)\">(?<day>\\d{1,2})</td>",
+          "dateTemplate": "{day} {month}",
+          "dateFormat": "weekday-day-ordinal-month-noyear",
+          "typeSplit": "-and-"
+        }
+      }
+    },
+    {
+      "gss": "S12000038",
+      "name": "Renfrewshire Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Renfrewshire Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "brown",
+            "type": "FOOD",
+            "alsoCarries": [
+              "GARDEN"
+            ],
+            "color": "#935733"
+          },
+          {
+            "match": "blue",
+            "type": "PAPER",
+            "color": "#0871D2"
+          },
+          {
+            "match": "green",
+            "type": "RECYCLING",
+            "color": "#098046"
+          },
+          {
+            "match": "grey",
+            "type": "REFUSE",
+            "color": "#4B6575"
+          },
+          {
+            "match": "black",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.renfrewshire.gov.uk/bins-and-recycling/bin-collection/bin-collection-calendar/check-your-bin-collection-day/find?postcode={postcode}",
+          "addressPattern": "<option value=\"(?<ref>\\d{6,})\">(?<label>[^<]+)</option>",
+          "scheduleUrl": "https://www.renfrewshire.gov.uk/bins-and-recycling/bin-collection/bin-collection-calendar/check-your-bin-collection-day/view/{ref}",
+          "blockPattern": "\\{\"Name\":\"(?<type>[^\"]+)\"[^{}]*\"ScheduledStart\":\"(?<date>\\d{4}-\\d{2}-\\d{2})",
+          "dateFormat": "iso-local-date"
+        }
+      }
     }
   ]
 }
