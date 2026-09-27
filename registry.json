@@ -4081,6 +4081,111 @@
           "dateFormat": "weekday-day-ordinal-month-noyear"
         }
       }
+    },
+    {
+      "gss": "S12000026",
+      "name": "Scottish Borders Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Scottish Borders Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "waste",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressPrimeUrl": "https://scotborders-live-portal.bartecmunicipal.com/Embeddable/CollectionCalendar",
+          "addressPrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"",
+          "addressUrl": "https://scotborders-live-portal.bartecmunicipal.com/Embeddable/CollectionCalendar?handler=SearchPostcode",
+          "addressForm": {
+            "SelectedPostcode": "{postcode}",
+            "__RequestVerificationToken": "{token}"
+          },
+          "addressPattern": "\"UPRN\": (?<ref>\\d+)\\.0,\\s*\"USRN\": [^,]*,\\s*\"UserDefinedAddress\": [^,]*,\\s*\"Premises\": \"(?<label>[^\"]+)\"",
+          "cookieSession": true,
+          "schedulePrimeUrl": "https://scotborders-live-portal.bartecmunicipal.com/Embeddable/CollectionCalendar",
+          "schedulePrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"",
+          "scheduleUrl": "https://scotborders-live-portal.bartecmunicipal.com/Embeddable/CollectionCalendar?handler=SelectPrem",
+          "scheduleForm": {
+            "SelectedPostcode": "{postcode}",
+            "SelectedPremises": "{ref}",
+            "__RequestVerificationToken": "{token}"
+          },
+          "blockPattern": "\"Subject\": \"(?<type>[^\"]+)\"(?:(?!\"Subject\")[\\s\\S])*?\"StartTime\": \"(?<date>[^\"]+)\"",
+          "dateFormat": "iso-datetime"
+        }
+      }
+    },
+    {
+      "gss": "E07000245",
+      "name": "West Suffolk Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from West Suffolk Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "green",
+            "type": "PAPER"
+          },
+          {
+            "match": "blue",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "brown",
+            "type": "GARDEN"
+          },
+          {
+            "match": "black",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "brown"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://maps.westsuffolk.gov.uk/getdata.aspx?RequestType=LocationSearch&location={postcode}&pagesize=100&startnum=1&gettotals=false&type=json",
+          "addressPattern": "\\[\\s*\"(?<ref>\\d+)\", \"[^\"]*\", \"[^\"]*\", \"Property\", \"[^\"]*\", \"[^\"]*\", \"[^\"]*\", \"(?<label>[^\"]+)\"",
+          "cookieSession": true,
+          "scheduleUrl": "https://maps.westsuffolk.gov.uk/MyWestSuffolk.aspx?action=SetAddress&UniqueId={ref}",
+          "blockPattern": "<strong>(?<type>[^<:]*Bins)\\s*:</strong>(?<date>[^<]+)",
+          "dateFormat": "weekday-day-ordinal-month-noyear"
+        }
+      }
     }
   ]
 }
