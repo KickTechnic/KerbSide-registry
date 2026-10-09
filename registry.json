@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-09-27",
+  "updated": "2026-10-09",
   "councils": [
     {
       "gss": "E07000240",
@@ -3318,9 +3318,9 @@
         "kind": "html-regex",
         "version": 1,
         "htmlRegex": {
-          "addressUrl": "https://www.rctcbc.gov.uk/EN/Resident/RecyclingandWaste/RecyclingandWasteCollectionDays.aspx?PropertyNumber=&Postcode={postcode}",
+          "addressUrl": "https://www.rctcbc.gov.uk/EN/Resident/RecyclingandWasteServices/Findyourrecyclingandwastecollectionday.aspx?PropertyNumber=&Postcode={postcode}",
           "addressPattern": "<option value=\"(?<ref>\\d+)\">(?<label>[^<]+)",
-          "scheduleUrl": "https://www.rctcbc.gov.uk/EN/Resident/RecyclingandWaste/RecyclingandWasteCollectionDays.aspx?uprn={ref}",
+          "scheduleUrl": "https://www.rctcbc.gov.uk/EN/Resident/RecyclingandWasteServices/Findyourrecyclingandwastecollectionday.aspx?uprn={ref}",
           "blockPattern": "class='[\\w-]+-tablecell'><a[^>]*>(?<type>[^<]+)</a></td><td>(?:[^<,]*, )?(?<date>[^<]+)</td>",
           "dateFormat": "weekday-ordinal-of-month-year"
         }
@@ -3910,6 +3910,127 @@
       }
     },
     {
+      "gss": "E08000038",
+      "name": "Barnsley Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Barnsley Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "blue",
+            "type": "PAPER"
+          },
+          {
+            "match": "green",
+            "type": "GARDEN"
+          },
+          {
+            "match": "brown",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "grey",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://waste.barnsley.gov.uk/ViewCollection/SelectAddress",
+          "addressForm": {
+            "personInfo.person1.HouseNumberOrName": "",
+            "personInfo.person1.Postcode": "{postcode}",
+            "person1_FindAddress": "Find address"
+          },
+          "addressPattern": "<option value=\"(?<ref>\\d{6,})\">(?<label>[^<]+)</option>",
+          "scheduleUrl": "https://waste.barnsley.gov.uk/ViewCollection/SelectAddress",
+          "scheduleForm": {
+            "personInfo.person1.HouseNumberOrName": "",
+            "personInfo.person1.Postcode": "{postcode}",
+            "personInfo.person1.UPRN": "{ref}",
+            "person1_SelectAddress": "Select address"
+          },
+          "cookieSession": true,
+          "blockPattern": "(?<date>(?:Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day, [A-Z][a-z]+ \\d{1,2}, \\d{4}|Today|Tomorrow)\\s*</(?:em|td)>(?:\\s*</p>\\s*<p class=\"ui-bin-next-type\">|\\s*<td>)\\s*(?<type>[^<]*[^<\\s])\\s*</(?:p|td)>",
+          "dateFormat": "weekday-month-day-year",
+          "typeSplit": ", "
+        }
+      }
+    },
+    {
+      "gss": "E08000014",
+      "name": "Sefton Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Sefton Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "green",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "residual",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressPrimeUrl": "https://www.sefton.gov.uk/bins-and-recycling/bins-and-recycling/when-is-my-bin-collection-day/",
+          "addressPrimePattern": "name=\"Postcode\"[\\s\\S]*?name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"><input name=\"ufprt\" type=\"hidden\" value=\"(?<ufprt>[^\"]+)\"",
+          "addressUrl": "https://www.sefton.gov.uk/bins-and-recycling/bins-and-recycling/when-is-my-bin-collection-day/",
+          "addressForm": {
+            "Postcode": "{postcode}",
+            "Streetname": "",
+            "__RequestVerificationToken": "{token}",
+            "ufprt": "{ufprt}"
+          },
+          "addressPattern": "<option value=\"(?<ref>~[^\"]*)\">(?<label>[^<]+)</option>",
+          "scheduleUrl": "https://www.sefton.gov.uk/bins-and-recycling/bins-and-recycling/when-is-my-bin-collection-day/",
+          "scheduleForm": {
+            "selectedValue": "{ref}",
+            "Action": "Select",
+            "__RequestVerificationToken": "{token}",
+            "ufprt": "{ufprt}"
+          },
+          "cookieSession": true,
+          "schedulePrimeUrl": "https://www.sefton.gov.uk/bins-and-recycling/bins-and-recycling/when-is-my-bin-collection-day/",
+          "schedulePrimePattern": "name=\"Postcode\"[\\s\\S]*?name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"><input name=\"ufprt\" type=\"hidden\" value=\"(?<ufprt>[^\"]+)\"",
+          "blockPattern": "<td><img[^>]*>\\s*(?<type>[^<]+)</td>\\s*<td>[^<]*</td>\\s*<td>(?<date>\\d{2}/\\d{2}/\\d{4})</td>",
+          "dateFormat": "dd/MM/yyyy",
+          "scheduleSteps": [
+            {
+              "url": "https://www.sefton.gov.uk/bins-and-recycling/bins-and-recycling/when-is-my-bin-collection-day/",
+              "form": {
+                "Postcode": "{postcode}",
+                "Streetname": "",
+                "__RequestVerificationToken": "{token}",
+                "ufprt": "{ufprt}"
+              },
+              "pattern": "name=\"selectedValue\"[\\s\\S]*?name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"><input name=\"ufprt\" type=\"hidden\" value=\"(?<ufprt>[^\"]+)\""
+            }
+          ],
+          "refIsFormValue": true
+        }
+      }
+    },
+    {
       "gss": "E07000177",
       "name": "Cherwell District Council",
       "tier": 1,
@@ -3980,11 +4101,13 @@
           },
           {
             "match": "recycling",
-            "type": "RECYCLING"
+            "type": "RECYCLING",
+            "color": "#B20933"
           },
           {
             "match": "waste",
-            "type": "REFUSE"
+            "type": "REFUSE",
+            "color": "#36454F"
           }
         ],
         "optInMatch": [
@@ -4523,6 +4646,9 @@
         ],
         "optInMatch": [
           "greenwaste"
+        ],
+        "exclude": [
+          "internal - small"
         ]
       },
       "platform": {
