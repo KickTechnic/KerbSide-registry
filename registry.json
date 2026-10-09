@@ -1896,6 +1896,170 @@
       }
     },
     {
+      "gss": "E07000121",
+      "name": "Lancaster City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Lancaster City Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "domestic waste",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "whitespace-portal",
+        "version": 1,
+        "whitespacePortal": {
+          "host": "https://lcc-wrp.whitespacews.com"
+        }
+      }
+    },
+    {
+      "gss": "E07000216",
+      "name": "Waverley Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Waverley Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "domestic waste",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "whitespace-portal",
+        "version": 1,
+        "whitespacePortal": {
+          "host": "https://wav-wrp.whitespacews.com"
+        }
+      }
+    },
+    {
+      "gss": "E07000217",
+      "name": "Woking Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Woking Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "textile",
+            "type": "TEXTILES"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          },
+          {
+            "match": "domestic waste",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "whitespace-portal",
+        "version": 1,
+        "whitespacePortal": {
+          "host": "https://asjwsw-wrpwokingmunicipal-live.whitespacews.com"
+        }
+      }
+    },
+    {
+      "gss": "E07000228",
+      "name": "Mid Sussex District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Mid Sussex District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "whitespace-portal",
+        "version": 1,
+        "whitespacePortal": {
+          "host": "https://waste.services.midsussex.gov.uk"
+        }
+      }
+    },
+    {
       "gss": "E08000018",
       "name": "Rotherham Metropolitan Borough Council",
       "tier": 1,
@@ -3964,6 +4128,96 @@
       }
     },
     {
+      "gss": "E06000038",
+      "name": "Reading Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Reading Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "domestic",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://api.reading.gov.uk/rbc/getaddresses/{postcode}",
+          "addressPattern": "\"SiteShortAddress\":\\s*\"(?<label>[^\"]+)\"[^{}]*?\"AccountSiteUprn\":\\s*\"(?<ref>\\d+)\"",
+          "scheduleUrl": "https://api.reading.gov.uk/api/collections/{ref}",
+          "blockPattern": "\"service\":\\s*\"(?<type>[^\"]+)\"[^{}]*?\"date\":\\s*\"(?<date>\\d{2}/\\d{2}/\\d{4})",
+          "dateFormat": "dd/MM/yyyy"
+        }
+      }
+    },
+    {
+      "gss": "E08000012",
+      "name": "Liverpool City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Liverpool City Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "green",
+            "type": "GARDEN",
+            "color": "#006C11"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING",
+            "color": "#005DA7"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE",
+            "color": "#663BA3"
+          }
+        ],
+        "optInMatch": [
+          "green"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://liverpool.gov.uk/Address/GetAddressesByPostcode/?postcode={postcode}",
+          "addressPattern": "\"uprn\":\"(?<ref>\\d+)\"[^{}]*?\"addressLines\":\"(?<label>[^\"]+)\"",
+          "scheduleUrl": "https://liverpool.gov.uk/Bins/BinDatesTable?UPRN={ref}",
+          "blockPattern": "<th scope=\"row\">\\s*<span[^>]*>\\s*(?<type>[^<]*[^<\\s])\\s*</span>\\s*</th>(?<body>[\\s\\S]*?)</tr>",
+          "datePattern": "<div class=\"bindate\">\\s*(?<date>[^<]*[^<\\s])\\s*</div>",
+          "dateFormat": "weekday-day-ordinal-month-noyear-relative"
+        }
+      }
+    },
+    {
       "gss": "E08000014",
       "name": "Sefton Council",
       "tier": 1,
@@ -4524,6 +4778,10 @@
           {
             "match": "food",
             "type": "FOOD"
+          },
+          {
+            "match": "blue lid",
+            "type": "PAPER"
           },
           {
             "match": "recycling",
@@ -5170,6 +5428,82 @@
           },
           "blockPattern": "\\{\"colour\":\"[^\"]*\",\"date\":\"(?:[A-Za-z]+, )?(?<date>[A-Za-z]+ \\d{1,2}, \\d{4})\",\"type\":\"(?<type>[^\"]+)\"\\}",
           "dateFormat": "month-day-year"
+        }
+      }
+    },
+    {
+      "gss": "E09000022",
+      "name": "Lambeth Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Lambeth Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          },
+          {
+            "match": "waste",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ],
+        "exclude": [
+          "del-roll",
+          "delivery"
+        ]
+      },
+      "platform": {
+        "kind": "json-rows",
+        "version": 1,
+        "jsonRows": {
+          "addressUrl": "https://wasteservice.lambeth.gov.uk/LLPG/addressSearch",
+          "addressJson": {
+            "number": "",
+            "postcode": "{postcode}",
+            "street": "",
+            "name": "",
+            "ignorePostal": true
+          },
+          "addressRowsPath": "payload.results[*]",
+          "addressLabelPath": "SAO_TEXT",
+          "addressLabelExtraPaths": [
+            "SAO_START_NUMBER",
+            "SAO_START_SUFFIX",
+            "PAO_TEXT",
+            "PAO_START_NUMBER",
+            "PAO_START_SUFFIX",
+            "PAO_END_NUMBER",
+            "STREET",
+            "POSTCODE"
+          ],
+          "addressRefPath": "UPRN",
+          "scheduleUrl": "https://wasteservice.lambeth.gov.uk/WhitespaceComms/GetServicesByUprn",
+          "scheduleJson": {
+            "uprn": "{ref}",
+            "includeEventTypes": false
+          },
+          "scheduleRowsPath": "SiteServices[*]",
+          "typePath": "Container.Name",
+          "datePath": "NextCollectionDate",
+          "dateFormat": "dd/MM/yyyy"
         }
       }
     },
