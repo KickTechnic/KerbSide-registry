@@ -6104,6 +6104,98 @@
         "title": "Privacy Notice For Waste (Version 2)",
         "url": "https://www.calderdale.gov.uk/environment/waste/household-collections/downloadPrivacyNotice.jsp?id=784"
       }
+    },
+    {
+      "gss": "S12000036",
+      "name": "The City of Edinburgh Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "street"
+      ],
+      "attribution": "Collection data from The City of Edinburgh Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "non-recyclable",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "jadu-directory",
+        "version": 1,
+        "jaduDirectory": {
+          "site": "www.edinburgh.gov.uk",
+          "directories": [
+            "10251",
+            "10248",
+            "10250"
+          ],
+          "codes": [
+            {
+              "name": "Grey non-recyclable waste bin",
+              "directory": "10251",
+              "heading": "Calendar code",
+              "pattern": "(?<day>[A-Za-z]{3,9})_(?<week>[12])",
+              "everyWeeks": 2,
+              "weekOne": "2026-01-05"
+            },
+            {
+              "name": "Green bin for recycling",
+              "directory": "10251",
+              "heading": "Calendar code",
+              "pattern": "(?<day>[A-Za-z]{3,9})_(?<week>[12])",
+              "everyWeeks": 2,
+              "weekOne": "2026-01-12"
+            },
+            {
+              "name": "Box for glass",
+              "directory": "10251",
+              "heading": "Calendar code",
+              "pattern": "(?<day>[A-Za-z]{3,9})_(?<week>[12])",
+              "everyWeeks": 2,
+              "weekOne": "2026-01-12"
+            },
+            {
+              "name": "Food waste",
+              "directory": "10248",
+              "heading": "Collection day",
+              "pattern": "(?<day>[A-Za-z]{3,9})",
+              "everyWeeks": 1,
+              "weekOne": "2026-01-05"
+            },
+            {
+              "name": "Brown garden waste bin",
+              "directory": "10250",
+              "heading": "Calendar",
+              "pattern": "garden-waste-calendar-(?<day>[a-z]+)-(?<week>[12])",
+              "everyWeeks": 2,
+              "weekOne": "2026-01-05",
+              "nextDateOnly": true
+            }
+          ]
+        }
+      }
     }
   ]
 }
