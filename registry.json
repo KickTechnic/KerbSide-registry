@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-10-09",
+  "updated": "2026-10-10",
   "councils": [
     {
       "gss": "E07000240",
@@ -2581,6 +2581,53 @@
       ]
     },
     {
+      "gss": "E09000004",
+      "name": "London Borough of Bexley",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from London Borough of Bexley",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "plastics",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "non-recyclable",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "wasteworks",
+        "version": 1,
+        "wasteWorks": {
+          "baseUrl": "https://waste.bexley.gov.uk"
+        }
+      }
+    },
+    {
       "gss": "E08000010",
       "name": "Wigan Council",
       "tier": 1,
@@ -2786,6 +2833,95 @@
         "localGovWaste": {
           "baseUrl": "https://www.northtyneside.gov.uk/waste-collection-schedule",
           "dateFormat": "iso-local-date"
+        }
+      }
+    },
+    {
+      "gss": "S12000006",
+      "name": "Dumfries and Galloway Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Dumfries and Galloway Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "plastic",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "non-recyclable",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "localgov-waste",
+        "version": 1,
+        "localGovWaste": {
+          "baseUrl": "https://www.dumfriesandgalloway.gov.uk/bins-recycling/waste-collection-schedule",
+          "dateFormat": "weekday-day-ordinal-month-noyear"
+        }
+      }
+    },
+    {
+      "gss": "S12000010",
+      "name": "East Lothian Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from East Lothian Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "non recyclable",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "localgov-waste",
+        "version": 1,
+        "localGovWaste": {
+          "baseUrl": "https://www.eastlothian.gov.uk/waste-collection-schedule",
+          "dateFormat": "iso-local-date",
+          "typeSplit": " and "
         }
       }
     },
@@ -3629,6 +3765,139 @@
       }
     },
     {
+      "gss": "E06000013",
+      "name": "North Lincolnshire Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from North Lincolnshire Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "textiles",
+            "type": "TEXTILES"
+          },
+          {
+            "match": "kerbside box - paper",
+            "type": "PAPER",
+            "color": "#0A8FCE"
+          },
+          {
+            "match": "cans, glass",
+            "type": "RECYCLING",
+            "color": "#54B931",
+            "alsoCarries": [
+              "GLASS"
+            ]
+          },
+          {
+            "match": "garden",
+            "type": "FOOD",
+            "color": "#9C5D24",
+            "alsoCarries": [
+              "GARDEN"
+            ]
+          },
+          {
+            "match": "plastic",
+            "type": "RECYCLING",
+            "color": "#9E2547"
+          },
+          {
+            "match": "general waste",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://m.northlincs.gov.uk/findlocation/search.json?authority_code=2003&search_term={postcode}&maxRows=100",
+          "addressPattern": "\"display\"\\s*:\\s*\"(?<label>[^\"]+)\"[^{}]*?\"uprn\"\\s*:\\s*\"(?<ref>\\d+)\"",
+          "scheduleUrl": "https://m.northlincs.gov.uk/bin_collections?uprn={ref}&no_collections=8",
+          "blockPattern": "\"CollectionDate\"\\s*:\\s*\"(?<date>[^\"]*)\"[^{}]*?\"BinCodeDescription\"\\s*:\\s*\"(?<type>[^\"]+)\"",
+          "dateFormat": "iso-local-date"
+        }
+      }
+    },
+    {
+      "gss": "E06000059",
+      "name": "Dorset Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Dorset Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressPrimeUrl": "https://www.dorsetcouncil.gov.uk/my-local-information",
+          "addressPrimePattern": "getCompanyId: function\\(\\) \\{\\s*return '(?<companyId>\\d+)'[\\s\\S]*?Liferay\\.authToken = '(?<pauth>[^']+)'",
+          "addressUrl": "https://www.dorsetcouncil.gov.uk/api/jsonws/invoke",
+          "addressForm": {
+            "cmd": "{\"/placecube_digitalplace.addresscontext/search-address-by-postcode\":{\"companyId\":\"{companyId}\",\"postcode\":\"{postcode}\",\"fallbackToNationalLookup\":false}}",
+            "p_auth": "{pauth}"
+          },
+          "addressPattern": "\"UPRN\":\"(?<ref>\\d+)\"[^{}]*?\"fullAddress\":\"(?<label>[^\"]+)\"",
+          "scheduleUrl": "https://geoapi.dorsetcouncil.gov.uk/v1/services/{service}/{ref}",
+          "scheduleServices": [
+            "refuseday",
+            "recyclingday",
+            "foodwasteday",
+            "gardenwasteday"
+          ],
+          "cookieSession": true,
+          "blockPattern": "\"dateNextVisit\":\"(?<date>\\d{4}-\\d{2}-\\d{2})\"[^{}]*?\"frequency\":\"(?<every>[^\"]*)\"[^{}]*?\"type\":\"(?<type>[^\"]+)\"",
+          "cadence": [
+            {
+              "match": "(?i)^fortnightly$",
+              "days": 14
+            },
+            {
+              "match": "(?i)^weekly$",
+              "days": 7
+            }
+          ],
+          "dateFormat": "iso-local-date"
+        }
+      },
+      "unpublished": [
+        {
+          "type": "GLASS",
+          "name": "Glass box",
+          "intervalWeeks": 2,
+          "onCollectionDay": false,
+          "source": "https://www.dorsetcouncil.gov.uk/box-for-glass"
+        }
+      ]
+    },
+    {
       "gss": "E08000002",
       "name": "Bury Council",
       "tier": 1,
@@ -3982,6 +4251,60 @@
           },
           "datePath": "collection.refuseCollectionDate",
           "dateFormat": "iso-datetime"
+        }
+      }
+    },
+    {
+      "gss": "E06000025",
+      "name": "South Gloucestershire Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from South Gloucestershire Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN",
+            "color": "#77B829"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE",
+            "color": "#333333"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "json-rows",
+        "version": 1,
+        "jsonRows": {
+          "addressUrl": "https://webapps.southglos.gov.uk/Webservices/SGC.RefuseCollectionService/RefuseCollectionService.svc/getAddresses/{postcode}",
+          "addressRowsPath": "[*]",
+          "addressLabelPath": "Property",
+          "addressLabelExtraPaths": [
+            "Street",
+            "Town"
+          ],
+          "addressRefPath": "Uprn",
+          "scheduleUrl": "https://api.southglos.gov.uk/wastecomp/GetCollectionDetails?uprn={ref}",
+          "scheduleRowsPath": "value[*]",
+          "typePath": "hso_servicename",
+          "datePath": "hso_nextcollection",
+          "lastDatePath": "hso_lastcollection",
+          "dateFormat": "iso-offset"
         }
       }
     },
@@ -4808,7 +5131,25 @@
           },
           "addressPattern": "<a href=\"/Apps/Waste-Collections/Routes/Route/(?<ref>\\d+)\">(?<label>[^<]+)</a>",
           "scheduleUrl": "https://online.aberdeenshire.gov.uk/Apps/Waste-Collections/Routes/Route/{ref}",
-          "blockPattern": "<td[^>]*>(?<date>\\d{2}/\\d{2}/\\d{4})[^<]*</td>\\s*<td[^>]*>(?<type>[^<]+)</td>",
+          "blockPattern": "<td[^>]*>(?<date>\\d{2}/\\d{2}/\\d{4})[^<]*</td>\\s*<td[^>]*>(?<type>[^<]+)</td>(?:\\s*<td[^>]*>(?<every>[^<]*)</td>)?",
+          "cadence": [
+            {
+              "match": "(?i)^\\s*2\\s*weekly",
+              "days": 14
+            },
+            {
+              "match": "(?i)^\\s*3\\s*weekly",
+              "days": 21
+            },
+            {
+              "match": "(?i)^\\s*4\\s*weekly",
+              "days": 28
+            },
+            {
+              "match": "(?i)^\\s*weekly",
+              "days": 7
+            }
+          ],
           "dateFormat": "dd/MM/yyyy",
           "typeSplit": " and "
         }
@@ -5556,6 +5897,17 @@
           "scheduleRowsPath": "param2[*]",
           "typePath": "Service",
           "datePath": "collectionDate[0]",
+          "intervalPath": "collectionSchedule",
+          "cadence": [
+            {
+              "match": "Fort\\d?$",
+              "days": 14
+            },
+            {
+              "match": "\\b(Mon|Tue|Wed|Thu|Fri|Sat|Sun)$",
+              "days": 7
+            }
+          ],
           "dateFormat": "dd/MM/yyyy"
         }
       }
