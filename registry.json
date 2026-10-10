@@ -6029,6 +6029,81 @@
           "source": "https://onlineforms.bradford.gov.uk/ufs/collectiondates.eb"
         }
       ]
+    },
+    {
+      "gss": "E08000033",
+      "name": "Calderdale Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Calderdale Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "FOOD"
+            ]
+          },
+          {
+            "match": "waste",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.calderdale.gov.uk/environment/waste/household-collections/collectiondayfinder.jsp",
+          "addressForm": {
+            "postcode": "{postcode}",
+            "email-address": "",
+            "find": "Find an address for this postcode"
+          },
+          "addressPattern": "<option value=\"(?<ref>\\d{6,})\">(?<label>[^<]+)</option>",
+          "noticeIdPattern": "name=\"privacynoticeid\" value=\"(?<id>\\d+)\"",
+          "scheduleUrl": "https://www.calderdale.gov.uk/environment/waste/household-collections/collectiondayfinder.jsp",
+          "scheduleForm": {
+            "postcode": "{postcode}",
+            "email-address": "",
+            "uprn": "{ref}",
+            "gdprTerms": "Yes",
+            "privacynoticeid": "{privacyNotice}",
+            "find": "Show me my collection days"
+          },
+          "blockPattern": "<td class=\"collectiontd-1\">\\s*(?:<img[^>]*>)?\\s*<strong>(?<type>[^<]+)</strong>(?:(?!</tr>)[\\s\\S])*?(?:is your usual (?<every>[a-z]+) collection day(?:(?!</tr>)[\\s\\S])*?)?<strong>(?<date>[A-Z][a-z]+day \\d{1,2} [A-Z][a-z]+ \\d{4})</strong> will be your next collection",
+          "cadence": [
+            {
+              "match": "(?i)^fortnightly$",
+              "days": 14
+            },
+            {
+              "match": "(?i)^weekly$",
+              "days": 7
+            }
+          ],
+          "dateFormat": "weekday-day-month-year"
+        }
+      },
+      "privacyNotice": {
+        "id": "784",
+        "title": "Privacy Notice For Waste (Version 2)",
+        "url": "https://www.calderdale.gov.uk/environment/waste/household-collections/downloadPrivacyNotice.jsp?id=784"
+      }
     }
   ]
 }
