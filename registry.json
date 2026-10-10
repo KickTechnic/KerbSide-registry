@@ -5979,6 +5979,56 @@
           "dateFormat": "weekday-day-month-year"
         }
       }
+    },
+    {
+      "gss": "E08000032",
+      "name": "Bradford Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Bradford Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "general waste",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "ebase",
+        "version": 1,
+        "ebase": {
+          "startUrl": "https://onlineforms.bradford.gov.uk/ufs/collectiondates.eb",
+          "postcodeField": "CTRL:Q2YAUZ5b:_:A",
+          "searchButton": "CTRL:2eDPaBQA:_",
+          "addressControl": "Go9IHRTP",
+          "blockPattern": "<h3>(?<type>[^<]+)</h3>(?<body>(?:(?!<h3>)[\\s\\S])*)",
+          "datePattern": "type=\"text\">(?<date>[A-Z][a-z]{2} [A-Z][a-z]{2,3} \\d{2} \\d{4})",
+          "dateFormat": "weekday-shortmonth-day-year"
+        }
+      },
+      "unpublished": [
+        {
+          "type": "FOOD",
+          "name": "Food waste bin",
+          "intervalWeeks": 1,
+          "onCollectionDay": true,
+          "source": "https://onlineforms.bradford.gov.uk/ufs/collectiondates.eb"
+        }
+      ]
     }
   ]
 }
