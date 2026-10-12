@@ -1342,15 +1342,18 @@
         "matches": [
           {
             "match": "blue",
-            "type": "PAPER"
+            "type": "PAPER",
+            "color": "#237CB8"
           },
           {
             "match": "brown",
-            "type": "RECYCLING"
+            "type": "RECYCLING",
+            "color": "#AD712F"
           },
           {
             "match": "black",
-            "type": "REFUSE"
+            "type": "REFUSE",
+            "color": "#1B1B1A"
           }
         ],
         "optInMatch": []
@@ -1378,7 +1381,8 @@
         "matches": [
           {
             "match": "food",
-            "type": "FOOD"
+            "type": "FOOD",
+            "color": "#347364"
           },
           {
             "match": "garden",
@@ -1386,11 +1390,13 @@
           },
           {
             "match": "recycling",
-            "type": "RECYCLING"
+            "type": "RECYCLING",
+            "color": "#3D692E"
           },
           {
             "match": "refuse",
-            "type": "REFUSE"
+            "type": "REFUSE",
+            "color": "#2A2D33"
           }
         ],
         "optInMatch": [
@@ -1420,7 +1426,8 @@
         "matches": [
           {
             "match": "food",
-            "type": "FOOD"
+            "type": "FOOD",
+            "color": "#81573C"
           },
           {
             "match": "garden",
@@ -1428,11 +1435,13 @@
           },
           {
             "match": "recycling",
-            "type": "RECYCLING"
+            "type": "RECYCLING",
+            "color": "#338433"
           },
           {
             "match": "rubbish",
-            "type": "REFUSE"
+            "type": "REFUSE",
+            "color": "#646464"
           },
           {
             "match": "refuse",
