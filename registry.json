@@ -1682,10 +1682,6 @@
             "match": "garden",
             "type": "GARDEN",
             "color": "#773319"
-          },
-          {
-            "match": "food",
-            "type": "FOOD"
           }
         ],
         "optInMatch": [
