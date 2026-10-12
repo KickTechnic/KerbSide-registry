@@ -1687,8 +1687,10 @@
         "optInMatch": [
           "garden"
         ],
-        "exclude": [
-          "transition_week"
+        "notices": [
+          {
+            "match": "transition_week"
+          }
         ]
       },
       "platform": {
