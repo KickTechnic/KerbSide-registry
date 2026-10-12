@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-10-10",
+  "updated": "2026-10-12",
   "councils": [
     {
       "gss": "E07000240",
@@ -1655,6 +1655,30 @@
             ]
           },
           {
+            "match": "glass",
+            "type": "GLASS",
+            "color": "#E030D1",
+            "alsoCarries": [
+              "FOOD"
+            ]
+          },
+          {
+            "match": "paper",
+            "type": "PAPER",
+            "color": "#427BE2",
+            "alsoCarries": [
+              "FOOD"
+            ]
+          },
+          {
+            "match": "plastic",
+            "type": "RECYCLING",
+            "color": "#F61747",
+            "alsoCarries": [
+              "FOOD"
+            ]
+          },
+          {
             "match": "garden",
             "type": "GARDEN",
             "color": "#773319"
@@ -1666,6 +1690,9 @@
         ],
         "optInMatch": [
           "garden"
+        ],
+        "exclude": [
+          "transition_week"
         ]
       },
       "platform": {
