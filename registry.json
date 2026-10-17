@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-10-12",
+  "updated": "2026-10-17",
   "councils": [
     {
       "gss": "E07000240",
@@ -3518,7 +3518,7 @@
     {
       "gss": "W06000011",
       "name": "Swansea Council",
-      "tier": 1,
+      "tier": 3,
       "inputNeeds": [
         "postcode"
       ],
