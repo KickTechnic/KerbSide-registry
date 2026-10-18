@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-10-17",
+  "updated": "2026-10-18",
   "councils": [
     {
       "gss": "E07000240",
@@ -1831,7 +1831,49 @@
     {
       "gss": "E07000241",
       "name": "Welwyn Hatfield Borough Council",
-      "tier": 3
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Welwyn Hatfield Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "domestic waste",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "xfp",
+        "version": 1,
+        "xfp": {
+          "host": "www.welhat.gov.uk",
+          "formId": "214",
+          "rows": {
+            "mode": "html-table",
+            "tableHeader": "Next collection",
+            "typeColumn": 0,
+            "dateColumn": 1
+          },
+          "dateFormat": "weekday-day-month-year"
+        }
+      }
     },
     {
       "gss": "E08000034",
