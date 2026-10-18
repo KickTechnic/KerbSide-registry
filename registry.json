@@ -6272,6 +6272,72 @@
           ]
         }
       }
+    },
+    {
+      "gss": "E06000047",
+      "name": "Durham County Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Durham County Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "organic",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS"
+            ]
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "organic"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.durham.gov.uk/apiserver/ajaxlibrary/",
+          "postcodeFormat": "nospace",
+          "addressJson": {
+            "jsonrpc": "2.0",
+            "method": "durham.Localities.PostcodeLookup",
+            "params": {
+              "postcode": "{postcode}"
+            },
+            "id": "1",
+            "name": "V2 AJAX End Point Library Worker"
+          },
+          "addressJsonPath": "result",
+          "addressPattern": "<uprn>(?<ref>\\d{6,14})</uprn>\\s*<formatted_address>(?<label>[^<]+)</formatted_address>",
+          "scheduleUrl": "https://www.durham.gov.uk/apiserver/ajaxlibrary/",
+          "scheduleJson": {
+            "jsonrpc": "2.0",
+            "method": "durham.Localities.GetBartecCalendar",
+            "params": {
+              "uprn": "{ref}"
+            },
+            "id": "21",
+            "name": "V2 AJAX End Point Library Worker"
+          },
+          "blockPattern": "<Name[^>]*>(?<type>[^<]+)</Name><UPRN(?:(?!</Job>)[\\s\\S])*?<ScheduledStart>(?<date>[^<]+)</ScheduledStart>",
+          "dateFormat": "iso-datetime"
+        }
+      }
     }
   ]
 }
