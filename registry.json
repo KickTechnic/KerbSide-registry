@@ -1878,7 +1878,52 @@
     {
       "gss": "E08000034",
       "name": "Kirklees Council",
-      "tier": 3
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Kirklees Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "brown wheelie bin",
+            "type": "GARDEN"
+          },
+          {
+            "match": "green",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "grey",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "brown wheelie bin"
+        ]
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "my.kirklees.gov.uk",
+          "sessionUrl": "https://my.kirklees.gov.uk/authapi/isauthenticated?uri=https%253A%252F%252Fmy.kirklees.gov.uk%252Fservice%252FBins_and_recycling___Manage_your_bins&hostname=my.kirklees.gov.uk&withCredentials=true",
+          "scheduleLookupId": "65e08e60b299d",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Search\":{\"validatedUPRN\":{\"value\":\"{ref}\"}}}}",
+          "scheduleRows": {
+            "mode": "dict-rows",
+            "typeField": "label",
+            "dateField": "NextCollectionDate"
+          },
+          "dateFormat": "iso-datetime",
+          "addressLookupId": "58049013ca4c9",
+          "addressBodyTemplate": "{\"formValues\":{\"Section 1\":{\"searchForAddress\":{\"value\":\"yes\"},\"Postcode\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "name"
+          }
+        }
+      }
     },
     {
       "gss": "E06000042",
