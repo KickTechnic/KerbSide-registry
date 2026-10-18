@@ -6492,6 +6492,70 @@
           }
         }
       }
+    },
+    {
+      "gss": "S12000017",
+      "name": "The Highland Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from The Highland Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "containers",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "fibres",
+            "type": "PAPER"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "highland-self.achieveservice.com",
+          "sessionUrl": "https://highland-self.achieveservice.com/authapi/isauthenticated?uri=https%3A%2F%2Fhighland-self.achieveservice.com%2Fen%2Fservice%2FCheck_your_household_bin_collection_days&hostname=highland-self.achieveservice.com&withCredentials=true",
+          "scheduleLookupId": "660d44a698632",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Your address\":{\"propertyuprn\":{\"value\":\"{ref}\"}}}}",
+          "scheduleRows": {
+            "mode": "fixed-fields",
+            "dateSuffix": "NextDateNew",
+            "intervalSuffix": "FrequencyNew",
+            "intervalDays": {
+              "every week": 7,
+              "every 2 weeks": 14,
+              "every 3 weeks": 21,
+              "every 4 weeks": 28
+            }
+          },
+          "dateFormat": "iso-local-date",
+          "addressLookupId": "5af1c13a31337",
+          "addressBodyTemplate": "{\"formValues\":{\"Section 2\":{\"postcode_search\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "name"
+          }
+        }
+      }
     }
   ]
 }
