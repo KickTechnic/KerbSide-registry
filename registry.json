@@ -6338,6 +6338,52 @@
           "dateFormat": "iso-datetime"
         }
       }
+    },
+    {
+      "gss": "E06000049",
+      "name": "Cheshire East Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Cheshire East Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN",
+            "alsoCarries": [
+              "FOOD"
+            ]
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "general waste",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://online.cheshireeast.gov.uk/MyCollectionDay/SearchByAjax/Search?postcode={postcode}&propertyname=",
+          "addressPattern": "data-uprn=\"(?<ref>\\d{6,14})\"\\s+(?:data-onelineaddress=\"(?<label2>[^\"]+)\"[^>]*>[^<]*|[^>]*>(?<label>[^<]+))</a>",
+          "scheduleUrl": "https://online.cheshireeast.gov.uk/MyCollectionDay/SearchByAjax/GetBartecJobList?uprn={ref}",
+          "blockPattern": "BartecSimplifiedJobList\\[\\d+\\]\\.Name\" type=\"hidden\" value=\"(?:Empty (?:Bin )?)?(?<type>[^\"]+)\"[^<]*</td>[^<]*<td[^>]*>[^<]*<input [^>]*\\.ScheduledStart\" type=\"hidden\" value=\"(?<date>\\d{2}/\\d{2}/\\d{4})",
+          "dateFormat": "dd/MM/yyyy"
+        }
+      }
     }
   ]
 }
