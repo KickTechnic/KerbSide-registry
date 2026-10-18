@@ -6384,6 +6384,69 @@
           "dateFormat": "dd/MM/yyyy"
         }
       }
+    },
+    {
+      "gss": "E09000018",
+      "name": "London Borough of Hounslow",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from London Borough of Hounslow",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS",
+              "PAPER",
+              "TEXTILES"
+            ]
+          },
+          {
+            "match": "residual",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "my.hounslow.gov.uk",
+          "sessionUrl": "https://my.hounslow.gov.uk/authapi/isauthenticated?uri=https%253A%252F%252Fmy.hounslow.gov.uk%252Fservice%252FWaste_and_recycling_collections&hostname=my.hounslow.gov.uk&withCredentials=true",
+          "tokenLookupId": "655f4290810cf",
+          "tokenField": "bartecToken",
+          "tokenMethod": "POST",
+          "scheduleLookupId": "659eb39b66d5a",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Your address\":{\"searchUPRN\":{\"value\":\"{ref}\"},\"bartecToken\":{\"value\":\"{token}\"},\"searchFromDate\":{\"value\":\"{dateMin}\"},\"searchToDate\":{\"value\":\"{dateMax}\"}}}}",
+          "scheduleRows": {
+            "mode": "json-field",
+            "jsonField": "jobsJSON",
+            "typeField": "jobType",
+            "dateField": "jobDate"
+          },
+          "dateFormat": "iso-local-date",
+          "addressLookupId": "670cc7533bf71",
+          "addressBodyTemplate": "{\"formValues\":{\"Section 1\":{\"searchPostcode\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "addressFullAddress",
+            "refField": "addressUPRN"
+          }
+        }
+      }
     }
   ]
 }
