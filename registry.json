@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-10-18",
+  "updated": "2026-10-19",
   "councils": [
     {
       "gss": "E07000240",
@@ -4198,11 +4198,16 @@
             "alsoCarries": [
               "GLASS"
             ]
+          },
+          {
+            "match": "black",
+            "type": "REFUSE"
           }
         ],
         "optInMatch": [
           "garden",
-          "hygiene"
+          "hygiene",
+          "nappy"
         ]
       },
       "platform": {
@@ -4212,7 +4217,7 @@
           "addressUrl": "https://www.carmarthenshire.gov.wales/Umbraco/Api/ApiNewAddress/Get?postcode={postcode}&lang=en-GB",
           "addressPattern": "\"text\":\"(?<label>[^\"]+)\",\"value\":\"(?<ref>\\d+)\"",
           "scheduleUrl": "https://www.carmarthenshire.gov.wales/umbraco/Surface/SurfaceRecycling/Index/?uprn={ref}&lang=en-GB",
-          "blockPattern": "</span> Your next (?<type>[^<]+?) collection</p>\\s*<p class=\"font11 text-center\">(?<date>[^<]+)</p>",
+          "blockPattern": "<div class=\"bin-day-container (?<typeFallback>[A-Za-z]+)\">\\s*<p class=\"[^\"]*font1\"><span class=\"[^\"]*\"></span>\\s*(?:Your next )?(?<type>[^<]*?)(?: collection)?\\s*</p>\\s*<p class=\"font11 text-center\">(?<date>[^<]+)</p>",
           "dateFormat": "weekday-dd/MM/yyyy"
         }
       }
@@ -4823,7 +4828,7 @@
             "SelectedPostcode": "{postcode}",
             "__RequestVerificationToken": "{token}"
           },
-          "addressPattern": "\"UPRN\": (?<ref>\\d+)\\.0,\\s*\"USRN\": [^,]*,\\s*\"UserDefinedAddress\": [^,]*,\\s*\"Premises\": \"(?<label>[^\"]+)\"",
+          "addressPattern": "\"UPRN\": (?<ref>\\d+)(?:\\.0)?,[^{}]*?\"Premises\": \"(?<label>[^\"]+)\"",
           "cookieSession": true,
           "schedulePrimeUrl": "https://waste.slough.gov.uk/PublicDashboard",
           "schedulePrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"",
@@ -4945,7 +4950,7 @@
             "SelectedPostcode": "{postcode}",
             "__RequestVerificationToken": "{token}"
           },
-          "addressPattern": "\"UPRN\": (?<ref>\\d+)\\.0,\\s*\"USRN\": [^,]*,\\s*\"UserDefinedAddress\": [^,]*,\\s*\"Premises\": \"(?<label>[^\"]+)\"",
+          "addressPattern": "\"UPRN\": (?<ref>\\d+)(?:\\.0)?,[^{}]*?\"Premises\": \"(?<label>[^\"]+)\"",
           "cookieSession": true,
           "schedulePrimeUrl": "https://scotborders-live-portal.bartecmunicipal.com/Embeddable/CollectionCalendar",
           "schedulePrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"",
