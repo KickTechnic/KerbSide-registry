@@ -6703,6 +6703,63 @@
           }
         }
       }
+    },
+    {
+      "gss": "E06000001",
+      "name": "Hartlepool Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Hartlepool Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD",
+            "color": "#1C1C1B"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING",
+            "color": "#535A6C"
+          },
+          {
+            "match": "general",
+            "type": "REFUSE",
+            "color": "#96C954"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "online.hartlepool.gov.uk",
+          "sessionUrl": "https://online.hartlepool.gov.uk/authapi/isauthenticated?uri=https%253A%252F%252Fonline.hartlepool.gov.uk%252Fservice%252FRefuse_and_recycling___check_bin_day&hostname=online.hartlepool.gov.uk&withCredentials=true",
+          "scheduleLookupId": "5ec67e019ffdd",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Section 1\":{\"collectionLocationUPRN\":{\"value\":\"{ref}\"}}}}",
+          "scheduleRows": {
+            "mode": "html-pattern",
+            "htmlField": "HTMLCollectionDatesText",
+            "entryPattern": "<span[^>]*>\\s*(?<type>[^<]+?)\\s+(?<date>\\d{1,2}/\\d{1,2}/\\d{4})\\s*</span>"
+          },
+          "dateFormat": "dd/MM/yyyy",
+          "addressLookupId": "587f3deed5d4b",
+          "addressBodyTemplate": "{\"formValues\":{\"Section 1\":{\"postcode_search\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "uprn"
+          }
+        }
+      }
     }
   ]
 }
