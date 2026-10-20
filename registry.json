@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-10-19",
+  "updated": "2026-10-20",
   "councils": [
     {
       "gss": "E07000240",
@@ -6558,6 +6558,67 @@
           "addressRows": {
             "addressField": "display",
             "refField": "name"
+          }
+        }
+      }
+    },
+    {
+      "gss": "E07000226",
+      "name": "Crawley Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Crawley Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "caddy",
+            "type": "FOOD"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "green",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycle",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "green"
+        ]
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "crawleybc-self.achieveservice.com",
+          "sessionUrl": "https://crawleybc-self.achieveservice.com/authapi/isauthenticated?uri=https%3A%2F%2Fcrawleybc-self.achieveservice.com%2Fen%2FAchieveForms%2F%3Fform_uri%3Dsandbox-publish%253A%252F%252FAF-Process-fb73f73e-e8f5-4441-9f83-8b5d04d889d6%252FAF-Stage-ec9ada91-d2d9-43bc-9730-597d15fc8108%252Fdefinition.json%26redirectlink%3D%252Fen%26cancelRedirectLink%3D%252Fen%26noLoginPrompt%3D1%26accept%3Dyes&hostname=crawleybc-self.achieveservice.com&withCredentials=true",
+          "scheduleLookupId": "5b4f0ec5f13f4",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Address\":{\"address\":{\"value\":{\"Address\":{\"usrn\":{\"value\":\"{usrn}\"},\"uprn\":{\"value\":\"{uprn}\"}}}},\"dayConverted\":{\"value\":\"{dateMin}\"},\"getCollection\":{\"value\":\"true\"},\"getWorksheets\":{\"value\":\"false\"}}}}",
+          "bodyDateFormat": "dd/MM/yyyy",
+          "scheduleRows": {
+            "mode": "fixed-fields",
+            "dateSuffixPattern": "Date(?:Current|Next)"
+          },
+          "dateFormat": "weekday-day-ordinal-month-noyear",
+          "addressLookupId": "5ae1ea87c883f",
+          "addressBodyTemplate": "{\"formValues\":{\"Address\":{\"PostcodeSearch\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refParts": [
+              "uprn",
+              "usrn"
+            ]
           }
         }
       }
