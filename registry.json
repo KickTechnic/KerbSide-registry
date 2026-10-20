@@ -6760,6 +6760,66 @@
           }
         }
       }
+    },
+    {
+      "gss": "E07000109",
+      "name": "Gravesham Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Gravesham Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "my.gravesham.gov.uk",
+          "sessionUrl": "https://my.gravesham.gov.uk/authapi/isauthenticated?uri=https%253A%252F%252Fmy.gravesham.gov.uk%252Fen%252FAchieveForms%252F%253Fform_uri%253Dsandbox-publish%253A%252F%252FAF-Process-22218d5c-c6d6-492f-b627-c713771126be%252FAF-Stage-905e87c1-144b-4a72-8932-5518ddd3e618%252Fdefinition.json%2526redirectlink%253D%25252Fen%2526cancelRedirectLink%253D%25252Fen%2526consentMessage%253Dyes&hostname=my.gravesham.gov.uk&withCredentials=true",
+          "tokenLookupId": "5ee8854759297",
+          "tokenField": "tokenString",
+          "tokenMethod": "POST",
+          "scheduleLookupId": "5c8f869376376",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Check your bin day\":{\"tokenString\":{\"value\":\"{token}\"},\"UPRNForAPI\":{\"value\":\"{ref}\"},\"formatDateToday\":{\"value\":\"{dateMin}\"},\"formatDateTo\":{\"value\":\"{dateMax}\"}}}}",
+          "bodyDateFormat": "iso-datetime",
+          "bodyDateMaxDays": 60,
+          "scheduleRows": {
+            "mode": "dict-rows",
+            "typeField": "Name",
+            "dateField": "Date",
+            "typeSplit": "Empty Bin "
+          },
+          "dateFormat": "iso-datetime",
+          "addressLookupId": "58c855b298b88",
+          "addressBodyTemplate": "{\"formValues\":{\"Section 1\":{\"postcode_search\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "uprn"
+          }
+        }
+      }
     }
   ]
 }
