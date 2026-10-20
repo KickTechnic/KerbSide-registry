@@ -6622,6 +6622,87 @@
           }
         }
       }
+    },
+    {
+      "gss": "E07000033",
+      "name": "Bolsover District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Bolsover District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "burgundy",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "brown",
+            "type": "FOOD"
+          },
+          {
+            "match": "green",
+            "type": "GARDEN"
+          },
+          {
+            "match": "black",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "selfservice.bolsover.gov.uk",
+          "sessionUrl": "https://selfservice.bolsover.gov.uk/authapi/isauthenticated?uri=https%253A%252F%252Fselfservice.bolsover.gov.uk%252Fservice%252FCheck_your_Bin_Day&hostname=selfservice.bolsover.gov.uk&withCredentials=true",
+          "scheduleLookupId": "6023d37e037c3",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Bin Collection\":{\"uprnLoggedIn\":{\"value\":\"{ref}\"}}}}",
+          "scheduleRows": {
+            "mode": "week-codes",
+            "weekCodes": [
+              {
+                "name": "Black Bin",
+                "dayField": "Route",
+                "dayPattern": "^(?<day>Mo|Tu|We|Th|Fr)",
+                "weekField": "WeekBlack",
+                "everyWeeks": 2,
+                "weekOne": "2026-01-05"
+              },
+              {
+                "name": "Burgundy Bin",
+                "dayField": "Route",
+                "dayPattern": "^(?<day>Mo|Tu|We|Th|Fr)",
+                "weekField": "WeekBandG",
+                "everyWeeks": 2,
+                "weekOne": "2026-01-05"
+              },
+              {
+                "name": "Green Bin",
+                "dayField": "Route",
+                "dayPattern": "^(?<day>Mo|Tu|We|Th|Fr)",
+                "weekField": "WeekBandG",
+                "everyWeeks": 2,
+                "weekOne": "2026-01-05",
+                "nextDateOnly": true
+              },
+              {
+                "name": "Brown Bin",
+                "dayField": "Route",
+                "dayPattern": "^(?<day>Mo|Tu|We|Th|Fr)",
+                "weekOne": "2026-01-05"
+              }
+            ]
+          },
+          "addressLookupId": "6058a5f55dc2e",
+          "addressBodyTemplate": "{\"formValues\":{\"Section 1\":{\"postcode_search\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "address",
+            "refField": "uprn"
+          }
+        }
+      }
     }
   ]
 }
