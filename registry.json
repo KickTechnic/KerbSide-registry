@@ -1992,8 +1992,76 @@
     },
     {
       "gss": "E06000042",
-      "name": "Milton Keynes Council",
-      "tier": 3
+      "name": "Milton Keynes City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Milton Keynes City Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food & garden",
+            "type": "FOOD",
+            "alsoCarries": [
+              "GARDEN"
+            ]
+          },
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "red plastic sack",
+            "type": "PAPER"
+          },
+          {
+            "match": "metal glass",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "blue plastic sack",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "mycouncil.milton-keynes.gov.uk",
+          "sessionUrl": "https://mycouncil.milton-keynes.gov.uk/authapi/isauthenticated?uri=https%253A%252F%252Fmycouncil.milton-keynes.gov.uk%252Fen%252Fservice%252FWaste_Collection_Round_Checker&hostname=mycouncil.milton-keynes.gov.uk&withCredentials=true",
+          "scheduleLookupId": "64d9feda3a507",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Section 1\":{\"uprnCore\":{\"value\":\"{ref}\"}}}}",
+          "scheduleRows": {
+            "mode": "dict-rows",
+            "typeField": "AssetTypeName",
+            "dateField": "NextInstance",
+            "intervalField": "ScheduleDescription",
+            "cadence": [
+              {
+                "match": "fortnightly$",
+                "days": 14
+              },
+              {
+                "match": "^Every (Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day$",
+                "days": 7
+              }
+            ]
+          },
+          "dateFormat": "iso-local-date",
+          "addressLookupId": "56a1f135c2a43",
+          "addressBodyTemplate": "{\"formValues\":{\"Search\":{\"postcode_search\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "uprn"
+          }
+        }
+      }
     },
     {
       "gss": "E07000148",
