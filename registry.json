@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-10-20",
+  "updated": "2026-10-21",
   "councils": [
     {
       "gss": "E07000240",
@@ -1967,7 +1967,18 @@
           "scheduleRows": {
             "mode": "dict-rows",
             "typeField": "label",
-            "dateField": "NextCollectionDate"
+            "dateField": "NextCollectionDate",
+            "intervalField": "ScheduleName",
+            "cadence": [
+              {
+                "match": "WK(AC|BD)$",
+                "days": 14
+              },
+              {
+                "match": "Fort\\d?$",
+                "days": 14
+              }
+            ]
           },
           "dateFormat": "iso-datetime",
           "addressLookupId": "58049013ca4c9",
