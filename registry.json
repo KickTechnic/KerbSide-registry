@@ -1875,7 +1875,61 @@
     {
       "gss": "E07000099",
       "name": "North Hertfordshire District Council",
-      "tier": 3
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from North Hertfordshire District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "cardboard",
+            "type": "PAPER"
+          },
+          {
+            "match": "mixed recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "non-recyclable",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "liberty",
+        "liberty": {
+          "startUrl": "https://waste.nc.north-herts.gov.uk/w/webpage/find-bin-collection-day-input-address",
+          "xhr": true,
+          "rowPattern": "<table\\b(?:(?!</table>)[\\s\\S])*?<strong>(?:<span\\b[^>]*>)?(?<type>[^<]+)(?:(?!</table>)[\\s\\S])*?Next collection</strong>(?:(?!</table>)[\\s\\S])*?<br\\s*/?>(?<date>[^<]+)</p>(?:(?!</table>)[\\s\\S])*?Collection cycle(?:(?!</table>)[\\s\\S])*?<br\\s*/?>(?<every>[^<]+)</p>",
+          "dateFormat": "weekday-ordinal-of-month-year",
+          "cadence": [
+            {
+              "match": "(?i)fortnight",
+              "days": 14
+            },
+            {
+              "match": "(?i)\\b3rd\\b",
+              "days": 21
+            },
+            {
+              "match": "(?i)^every [a-z]+day$",
+              "days": 7
+            }
+          ]
+        }
+      }
     },
     {
       "gss": "E07000095",
