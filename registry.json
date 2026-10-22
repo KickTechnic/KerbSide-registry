@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-10-21",
+  "updated": "2026-10-22",
   "councils": [
     {
       "gss": "E07000240",
@@ -3111,6 +3111,46 @@
         "localGovWaste": {
           "baseUrl": "https://www.westmorlandandfurness.gov.uk/bins-recycling-and-street-cleaning/waste-collection-schedule",
           "dateFormat": "iso-local-date"
+        }
+      }
+    },
+    {
+      "gss": "E08000015",
+      "name": "Wirral Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Wirral Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "non-recyclable",
+            "type": "REFUSE"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "localgov-waste",
+        "version": 1,
+        "localGovWaste": {
+          "baseUrl": "https://www.wirral.gov.uk/bins-and-recycling/bin-collection-dates",
+          "dateFormat": "dd-MM-yyyy"
         }
       }
     },
@@ -6230,6 +6270,54 @@
             }
           ],
           "dateFormat": "dd/MM/yyyy"
+        }
+      }
+    },
+    {
+      "gss": "E09000015",
+      "name": "London Borough of Harrow",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from the London Borough of Harrow",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recyclables",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "residual",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "json-rows",
+        "version": 1,
+        "jsonRows": {
+          "addressUrl": "https://www.harrow.gov.uk/ajax/address?n=&q={postcode}",
+          "addressXhr": true,
+          "addressRowsPath": "results[*]",
+          "addressLabelPath": "Display_Address",
+          "addressRefPath": "UPRN",
+          "scheduleUrl": "https://www.harrow.gov.uk/ajax/bins?u={ref}&r=12345",
+          "scheduleRowsPath": "results.collections.all[*]",
+          "typePath": "binType",
+          "datePath": "eventTime",
+          "dateFormat": "iso-datetime"
         }
       }
     },
