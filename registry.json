@@ -5142,6 +5142,65 @@
       ]
     },
     {
+      "gss": "E06000044",
+      "name": "Portsmouth City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Portsmouth City Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING",
+            "color": "#29B42D"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE",
+            "color": "#000000"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressPrimeUrl": "https://recyclingandrubbish.portsmouth.gov.uk/PublicDashboard",
+          "addressPrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"",
+          "addressUrl": "https://recyclingandrubbish.portsmouth.gov.uk/PublicDashboard?handler=SearchPostcode",
+          "addressForm": {
+            "SelectedPostcode": "{postcode}",
+            "__RequestVerificationToken": "{token}"
+          },
+          "addressPattern": "\"UPRN\": (?<ref>\\d+)(?:\\.0)?,[^{}]*?\"Premises\": \"(?<label>[^\"]+)\"",
+          "cookieSession": true,
+          "schedulePrimeUrl": "https://recyclingandrubbish.portsmouth.gov.uk/PublicDashboard",
+          "schedulePrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"",
+          "scheduleUrl": "https://recyclingandrubbish.portsmouth.gov.uk/PublicDashboard?handler=SelectPrem",
+          "scheduleForm": {
+            "SelectedPostcode": "{postcode}",
+            "SelectedPremises": "{ref}",
+            "__RequestVerificationToken": "{token}"
+          },
+          "blockPattern": "\"Subject\": \"(?<type>[^\"]+)\"(?:(?!\"Subject\")[\\s\\S])*?\"StartTime\": \"(?<date>[^\"]+)\"",
+          "dateFormat": "iso-datetime"
+        }
+      }
+    },
+    {
       "gss": "E06000024",
       "name": "North Somerset Council",
       "tier": 1,
