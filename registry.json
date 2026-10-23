@@ -7509,6 +7509,67 @@
           }
         }
       }
+    },
+    {
+      "gss": "E09000030",
+      "name": "Tower Hamlets Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Tower Hamlets Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "general waste",
+            "type": "REFUSE"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          }
+        ],
+        "optInMatch": []
+      },
+      "unpublished": [
+        {
+          "type": "FOOD",
+          "name": "Food waste",
+          "intervalWeeks": 1,
+          "onCollectionDay": false,
+          "source": "https://www.towerhamlets.gov.uk/lgnl/environment_and_waste/recycling_and_waste/Waste-services/Household-waste-and-recycling/food_waste_collections.aspx"
+        }
+      ],
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "towerhamlets-self.achieveservice.com",
+          "sessionUrl": "https://towerhamlets-self.achieveservice.com/authapi/isauthenticated?uri=https%253A%252F%252Ftowerhamlets-self.achieveservice.com%252Fservice%252FCheck_your_waste_and_recycling_collection_days&hostname=towerhamlets-self.achieveservice.com&withCredentials=true",
+          "scheduleLookupId": "654ba9e6a9886",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Section 2\":{\"TH_uprn\":{\"value\":\"{ref}\"},\"NextCollectionFromDate\":{\"value\":\"{dateMin}\"}}}}",
+          "scheduleRows": {
+            "mode": "dict-rows",
+            "typeField": "CollectionService",
+            "dateField": "CollectionDate"
+          },
+          "dateFormat": "weekday-day-ordinal-month-noyear",
+          "addressLookupId": "679a078a246c0",
+          "addressBodyTemplate": "{\"formValues\":{\"Section 1\":{\"postcodeCustomerEntry\":{\"value\":\"{postcode}\"},\"postcodeToUse\":{\"value\":\"{postcodeNoSpace}\"},\"Version\":{\"value\":\"1.1\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "name"
+          },
+          "timeBanded": {
+            "lookupId": "69370cda669e0",
+            "bodyTemplate": "{\"formValues\":{\"Section 2\":{\"TH_uprn\":{\"value\":\"{ref}\"},\"howCheck\":{\"value\":\"property\"},\"Timeband_street\":{\"value\":\"\"}}}}",
+            "markerFields": [
+              "single_AM_Timeband",
+              "single_PM_Timeband"
+            ]
+          }
+        }
+      }
     }
   ]
 }
