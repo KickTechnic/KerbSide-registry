@@ -7617,6 +7617,113 @@
           "dateFormat": "weekday-dd-MM-yyyy"
         }
       }
+    },
+    {
+      "gss": "E08000017",
+      "name": "City of Doncaster Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from City of Doncaster Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "unpublished": [
+        {
+          "type": "GLASS",
+          "name": "Green box",
+          "intervalWeeks": 2,
+          "onCollectionDay": true,
+          "source": "https://www.doncaster.gov.uk/services/bins-recycling-waste/green-box-recycling"
+        }
+      ],
+      "platform": {
+        "kind": "liberty",
+        "version": 1,
+        "liberty": {
+          "startUrl": "https://doncaster-wasterecycling.oncreate.app/w/webpage/bin-query",
+          "xhr": true,
+          "searchForm": {
+            "postcodeLabel": "Postcode",
+            "linkLabel": "View collection details, "
+          },
+          "rowPattern": "&quot;title&quot;:&quot;(?<type>(?:(?!&quot;)[^{}])+)&quot;,[^{}]*?&quot;date&quot;:&quot;(?<date>\\d{4}-\\d{2}-\\d{2})&quot;",
+          "dateFormat": "iso-local-date"
+        }
+      }
+    },
+    {
+      "gss": "E07000045",
+      "name": "Teignbridge District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Teignbridge District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "green box",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS",
+              "PAPER"
+            ]
+          },
+          {
+            "match": "black box",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "TEXTILES"
+            ]
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.teignbridge.gov.uk/repositories/hidden-pages/address-finder?qtype=bins&term={postcode}",
+          "addressPattern": "\"label\":\"(?<label>[^\"]+)\",\"UPRN\":\"(?<ref>\\d+)\"",
+          "scheduleUrl": "https://www.teignbridge.gov.uk/umbraco/surface/bincollection/GetCollections?uprn={ref}",
+          "blockPattern": "<h3 class=\"binCollectionH3\">(?<when>\\d{1,2} [A-Za-z]+ \\d{4})|(?:</a></span>|</span></a>)\\s*(?<type>[^<]+?)\\s*</div>",
+          "dateTemplate": "{when}",
+          "dateFormat": "weekday-day-month-year"
+        }
+      }
     }
   ]
 }
