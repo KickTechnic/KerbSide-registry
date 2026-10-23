@@ -8237,6 +8237,70 @@
           ]
         }
       }
+    },
+    {
+      "gss": "W06000023",
+      "name": "Powys County Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Powys County Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling and food",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "FOOD"
+            ]
+          },
+          {
+            "match": "general rubbish",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://en.powys.gov.uk/apiserver/postcode?jsonrpc=%7B%22id%22%3A1%2C%22method%22%3A%22postcodeSearch%22%2C%22params%22%3A%7B%22provider%22%3A%22%22%2C%22postcode%22%3A%22{postcode}%22%7D%7D&callback=cb",
+          "addressPattern": "\"udprn\":\"(?<uprn>\\d+)\"[^{}]*?\"postalAddress\":\"(?<address>(?<label>[^\"]+))\"",
+          "refParts": [
+            "uprn",
+            "address"
+          ],
+          "refIsFormValue": true,
+          "cookieSession": true,
+          "schedulePrimeUrl": "https://en.powys.gov.uk/binday?ccp=true",
+          "schedulePrimePattern": "processsubmission\\?pageSessionId=(?<psid>[0-9a-f-]+)&amp;fsid=(?<fsid>[0-9a-f-]+)&amp;fsn=(?<fsn>[0-9a-f-]+)\"[\\s\\S]*?name=\"BINDAYLOOKUP_PAGESESSIONID\" value=\"(?<pagesession>[^\"]*)\"[\\s\\S]*?name=\"BINDAYLOOKUP_SESSIONID\" value=\"(?<session>[^\"]*)\"[\\s\\S]*?name=\"BINDAYLOOKUP_NONCE\" value=\"(?<nonce>[^\"]*)\"",
+          "scheduleUrl": "https://en.powys.gov.uk/apiserver/formsservice/http/processsubmission?pageSessionId={psid}&fsid={fsid}&fsn={fsn}",
+          "scheduleForm": {
+            "BINDAYLOOKUP_PAGENAME": "ADDRESSLOOKUP",
+            "BINDAYLOOKUP_SESSIONID": "{session}",
+            "BINDAYLOOKUP_NONCE": "{nonce}",
+            "BINDAYLOOKUP_FORMACTION_NEXT": "BINDAYLOOKUP_ADDRESSLOOKUP_ADDRESSLOOKUPBUTTONS",
+            "BINDAYLOOKUP_ADDRESSLOOKUP_ADDRESSLOOKUPPOSTCODE": "{postcode}",
+            "BINDAYLOOKUP_ADDRESSLOOKUP_UPRN": "{uprn}",
+            "BINDAYLOOKUP_ADDRESSLOOKUP_POSTALADDRESS": "{address}",
+            "BINDAYLOOKUP_ADDRESSLOOKUP_ADDRESSLOOKUPSEARCH": "Find address",
+            "BINDAYLOOKUP_PAGEINSTANCE": "0",
+            "BINDAYLOOKUP_PAGESESSIONID": "{pagesession}",
+            "BINDAYLOOKUP_VARIABLES": ""
+          },
+          "blockPattern": "<div class=\"bdl-card bdl-card--[a-z]+\">[^<]*<div class=\"bdl-card__header\">[^<]*<span class=\"bdl-card__icon\">[^<]*</span>(?<type>[^<]+)</div>[^<]*<div class=\"bdl-card__body\">(?<body>[\\s\\S]*?)</div>",
+          "datePattern": "<li>(?<date>[^<]+)</li>",
+          "dateFormat": "weekday-ordinal-of-month-year"
+        }
+      }
     }
   ]
 }
