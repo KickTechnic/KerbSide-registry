@@ -7570,6 +7570,53 @@
           }
         }
       }
+    },
+    {
+      "gss": "E09000017",
+      "name": "Hillingdon Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Hillingdon Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "household",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "xfp",
+        "version": 1,
+        "xfp": {
+          "host": "pre.hillingdon.gov.uk",
+          "formId": "379",
+          "rows": {
+            "mode": "labelled-fields",
+            "dateLabel": "Date",
+            "typeLabel": "Types of containers",
+            "typeSplit": ","
+          },
+          "dateFormat": "weekday-dd-MM-yyyy"
+        }
+      }
     }
   ]
 }
