@@ -7899,6 +7899,158 @@
           "dateFormat": "iso-datetime"
         }
       }
+    },
+    {
+      "gss": "E09000003",
+      "name": "London Borough of Barnet",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from London Borough of Barnet",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "general",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://myforms.barnet.gov.uk/homepage/11/find-your-bin-collection-day?postcode={postcode}&submit=Find",
+          "addressPattern": "<option\\s+value=\"(?<ref>\\d+)\"\\s*>\\s*(?<label>[^<]+?)\\s*</option>",
+          "scheduleUrl": "https://myforms.barnet.gov.uk/homepage/11/find-your-bin-collection-day?address={ref}&submit=Find",
+          "blockPattern": "<h4 class=\"bin-collection__heading\">(?<type>[^<]+)</h4>[\\s\\S]*?<p class=\"bin-collection__date\">(?<date>[^<]+)</p>",
+          "dateFormat": "weekday-day-ordinal-month-noyear"
+        }
+      }
+    },
+    {
+      "gss": "E07000227",
+      "name": "Horsham District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Horsham District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://satellite.horsham.gov.uk/environment/refuse/cal2.asp",
+          "addressForm": {
+            "App": "{postcode}",
+            "Submit": "Search"
+          },
+          "addressPattern": "<option value='(?<ref>\\d+)'>\\s*(?<label>[^<]+?)\\s*</option>",
+          "scheduleUrl": "https://satellite.horsham.gov.uk/environment/refuse/cal_details.asp",
+          "scheduleForm": {
+            "uprn": "{ref}"
+          },
+          "blockPattern": "<td class='ApplicationDetail'>(?<when>\\d{2}/\\d{2}/\\d{4})</td>|<span class='text'>(?<type>[^<]+)</span>",
+          "dateTemplate": "{when}",
+          "dateFormat": "dd/MM/yyyy"
+        }
+      }
+    },
+    {
+      "gss": "W06000013",
+      "name": "Bridgend County Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Bridgend County Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "recycling",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "FOOD"
+            ]
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://bridgendportal.azurewebsites.net/property/",
+          "addressForm": {
+            "id": "",
+            "aj": "true",
+            "if": "",
+            "gac": "FALSE",
+            "search_property": "{postcode}",
+            "search_subpremise": "",
+            "search_streetnumber": "",
+            "search_locality": "",
+            "search_postalcode": ""
+          },
+          "addressJsonPath": "result",
+          "addressPattern": "<a href=\"/property/(?<ref>\\d+)\">(?<label>[^<]+)<",
+          "scheduleUrl": "https://bridgendportal.azurewebsites.net/property/{ref}",
+          "blockPattern": "toggle-events[^>]*>(?<type>[^<]+)</a>[\\s\\S]*?<div>(?<every>[^<]+)</div>(?<body>[\\s\\S]*?)</tr>",
+          "cadence": [
+            {
+              "match": "(?i)every other week",
+              "days": 14
+            },
+            {
+              "match": "(?i)every week",
+              "days": 7
+            }
+          ],
+          "datePattern": "(?<date>\\d{2}/\\d{2}/\\d{4})",
+          "dateFormat": "dd/MM/yyyy"
+        }
+      }
     }
   ]
 }
