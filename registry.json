@@ -8051,6 +8051,192 @@
           "dateFormat": "dd/MM/yyyy"
         }
       }
+    },
+    {
+      "gss": "E07000041",
+      "name": "Exeter City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Exeter City Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://exeter.gov.uk/repositories/hidden-pages/address-finder/?qsource=POSTCODE&qtype=bins&term={postcode}",
+          "addressPattern": "\"label\":\"(?<label>[^\"]+)\"[^{}]*?\"UPRN\":\"(?<ref>\\d+)\"",
+          "scheduleUrl": "https://exeter.gov.uk/repositories/hidden-pages/address-finder/?qsource=UPRN&qtype=bins&term={ref}",
+          "scheduleJsonPath": "[*].Results",
+          "blockPattern": "<h2>(?<type>[^<]+)</h2>(?:(?!<h2)[\\s\\S])*?<h3>(?:<img[^>]*>)?(?<date>[^<]+)</h3>",
+          "dateFormat": "weekday-ordinal-of-month-year"
+        }
+      }
+    },
+    {
+      "gss": "E07000075",
+      "name": "Rochford District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Rochford District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "non-recyclables",
+            "type": "REFUSE"
+          },
+          {
+            "match": "recyclables",
+            "type": "RECYCLING"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.rochford.gov.uk/bins-and-collections?ajax_form=1&_wrapper_format=drupal_ajax",
+          "addressPrimeUrl": "https://www.rochford.gov.uk/bins-and-collections",
+          "addressPrimePattern": "name=\"form_build_id\" type=\"hidden\" value=\"(?<buildId>form-[^\"]+)\"[^>]*>[^<]*<input[^>]*name=\"form_id\"[^>]*value=\"waste_collection_block_ajax_form\"",
+          "addressForm": {
+            "_triggering_element_value": "Find",
+            "_triggering_element_name": "op",
+            "form_id": "waste_collection_block_ajax_form",
+            "form_build_id": "{buildId}",
+            "postcode": "{postcode}"
+          },
+          "addressJsonPath": "[*].data",
+          "addressPattern": "<option value=\"(?<ref>[A-Z]\\d{8}-\\d+)\">(?<label>[^<]+)",
+          "schedulePrimeUrl": "https://www.rochford.gov.uk/bins-and-collections",
+          "schedulePrimePattern": "name=\"form_build_id\" type=\"hidden\" value=\"(?<buildId>form-[^\"]+)\"[^>]*>[^<]*<input[^>]*name=\"form_id\"[^>]*value=\"waste_collection_block_ajax_form\"",
+          "scheduleSteps": [
+            {
+              "url": "https://www.rochford.gov.uk/bins-and-collections?ajax_form=1&_wrapper_format=drupal_ajax",
+              "form": {
+                "_triggering_element_value": "Find",
+                "_triggering_element_name": "op",
+                "form_id": "waste_collection_block_ajax_form",
+                "form_build_id": "{buildId}",
+                "postcode": "{postcode}"
+              },
+              "pattern": "name=\"form_build_id\"[^>]*?value=\"(?<buildId>form-[^\"]+)\""
+            }
+          ],
+          "scheduleUrl": "https://www.rochford.gov.uk/bins-and-collections?ajax_form=1&_wrapper_format=drupal_ajax",
+          "scheduleForm": {
+            "_triggering_element_value": "View collection days",
+            "uprn": "{ref}",
+            "form_build_id": "{buildId}",
+            "_triggering_element_name": "op",
+            "form_id": "waste_collection_block_ajax_form"
+          },
+          "scheduleJsonPath": "[*].data",
+          "blockPattern": "waste-collection__day\">[^<]*<td[^>]*><time datetime=\"(?<date>\\d{4}-\\d{2}-\\d{2})\">[^<]*</time></td>[^<]*<td[^>]*>(?<type>[^<]+)</td>",
+          "dateFormat": "iso-local-date"
+        }
+      },
+      "unpublished": [
+        {
+          "type": "FOOD",
+          "name": "Food caddy",
+          "intervalWeeks": 1,
+          "onCollectionDay": true,
+          "source": "https://www.rochford.gov.uk/bins-and-collections"
+        }
+      ]
+    },
+    {
+      "gss": "E09000011",
+      "name": "Royal Borough of Greenwich",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from the Royal Borough of Greenwich",
+      "streams": {
+        "matches": [
+          {
+            "match": "food and garden",
+            "type": "FOOD",
+            "alsoCarries": [
+              "GARDEN"
+            ]
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "general waste",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.royalgreenwich.gov.uk/site/custom_scripts/apps/waste-collection/new2023/source.php?term={postcode}",
+          "addressJsonPath": "[*]",
+          "addressPattern": "(?<ref>(?<label>[^\\n]+))",
+          "refIsFormValue": true,
+          "scheduleUrl": "https://www.royalgreenwich.gov.uk/site/custom_scripts/repo/apps/waste-collection/new2023/ajax-response-uprn.php",
+          "scheduleForm": {
+            "address": "{ref}"
+          },
+          "weekCodes": [
+            {
+              "name": "Black top bin (general waste)",
+              "pattern": "\"Day\":\"(?<day>[A-Za-z]+)\"[^{}]*?\"Frequency\":\"Week (?<week>[A-Za-z0-9]+)\"",
+              "everyWeeks": 2,
+              "weekOne": "2025-12-29",
+              "weeks": {
+                "A": 1,
+                "B": 2
+              }
+            },
+            {
+              "name": "Blue top bin (recycling)",
+              "pattern": "\"Day\":\"(?<day>[A-Za-z]+)\"",
+              "weekOne": "2025-12-29"
+            },
+            {
+              "name": "Green top bin (food and garden waste)",
+              "pattern": "\"Day\":\"(?<day>[A-Za-z]+)\"",
+              "weekOne": "2025-12-29"
+            }
+          ]
+        }
+      }
     }
   ]
 }
