@@ -7724,6 +7724,181 @@
           "dateFormat": "weekday-day-month-year"
         }
       }
+    },
+    {
+      "gss": "E09000023",
+      "name": "Lewisham Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Lewisham Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://lewisham.gov.uk/api/AddressFinder?postcodeOrStreet={postcode}&national=False",
+          "addressForm": {},
+          "addressPattern": "\"Uprn\":(?<ref>\\d+)[^{}]*?\"Title\":\"(?<label>[^\"]+)\"",
+          "scheduleUrl": "https://lewisham.gov.uk/api/roundsinformation?item=%7B23423835-d2a6-41b1-9637-29e5e8cc2df7%7D&uprn={ref}",
+          "scheduleForm": {},
+          "blockPattern": "<strong>(?<type>[^<]+)</strong>[^<]*?is collected[^<]*?(?<date><span[^>]*>(?<every>[A-Za-z]+)</span>(?:(?!<br>|<strong>)[\\s\\S])*)",
+          "cadence": [
+            {
+              "match": "(?i)^fortnightly$",
+              "days": 14
+            },
+            {
+              "match": "(?i)^weekly$",
+              "days": 7
+            }
+          ],
+          "dateFormat": "dd/MM/yyyy-or-weekly-weekday"
+        }
+      }
+    },
+    {
+      "gss": "E06000021",
+      "name": "Stoke-on-Trent City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Stoke-on-Trent City Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "org",
+            "type": "GARDEN"
+          },
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "rec",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "res",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "org"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.stoke.gov.uk/jadu/custom/webserviceLookUps/BarTecWebServices_llpg_lookup_postcode.php?postcode={postcode}",
+          "addressPattern": "<UPRN>(?<ref>\\d+)</UPRN>(?:(?!</Address>)[\\s\\S])*?<HouseNo(?:/>|>(?<label>[^<]*)</HouseNo>)(?:(?!</Address>)[\\s\\S])*?<Building(?:/>|>(?<label2>[^<]*)</Building>)(?:(?!</Address>)[\\s\\S])*?<Street(?:/>|>(?<label3>[^<]*)</Street>)(?:(?!</Address>)[\\s\\S])*?<Locality(?:/>|>(?<label4>[^<]*)</Locality>)",
+          "scheduleUrl": "https://www.stoke.gov.uk/jadu/custom/webserviceLookUps/BarTecWebServices_missed_bin_calendar.php?UPRN={ref}",
+          "blockPattern": "<Bin>(?:EMPTY BINS )?(?<type>[^<]+)</Bin>(?:(?!</BinRound>)[\\s\\S])*?<DateTime>(?<date>\\d{2}/\\d{2}/\\d{4})",
+          "dateFormat": "dd/MM/yyyy"
+        }
+      },
+      "unpublished": [
+        {
+          "type": "FOOD",
+          "name": "Food waste",
+          "intervalWeeks": 1,
+          "onCollectionDay": true,
+          "source": "https://www.stoke.gov.uk/foodwaste"
+        }
+      ]
+    },
+    {
+      "gss": "E08000023",
+      "name": "South Tyneside Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from South Tyneside Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "household",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.southtyneside.gov.uk/apiserver/ajaxlibrary",
+          "postcodeFormat": "nospace",
+          "addressJson": {
+            "jsonrpc": "2.0",
+            "method": "stc.common.snippets.getAddressList",
+            "params": {
+              "postcode": "{postcode}",
+              "localonly": true
+            },
+            "id": "1",
+            "name": "V2 AJAX End Point Library Worker"
+          },
+          "addressPattern": "\"UPRN\":\"(?<uprn>[^\"]+)\"[^{}]*?\"Address\":\"(?<address>[^\"]+)\"[^{}]*?\"ShortAddress\":\"(?<label>[^\"]+)\"",
+          "refIsFormValue": true,
+          "refParts": [
+            "uprn",
+            "address"
+          ],
+          "scheduleUrl": "https://www.southtyneside.gov.uk/apiserver/ajaxlibrary/",
+          "scheduleJson": {
+            "jsonrpc": "2.0",
+            "method": "stc.waste.collections.getDates",
+            "params": {
+              "addresscode": "{uprn}|{address}"
+            },
+            "id": "1",
+            "name": "V2 AJAX End Point Library Worker"
+          },
+          "blockPattern": "\"Type\":\"(?<type>[^\"]+)\"[^{}]*?\"DateofCollection\":\"(?<date>[^\"]+)\"[^{}]*?\"TypeClass\"",
+          "dateFormat": "iso-datetime"
+        }
+      }
     }
   ]
 }
