@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-10-22",
+  "updated": "2026-10-23",
   "councils": [
     {
       "gss": "E07000240",
@@ -7330,6 +7330,182 @@
           "addressRows": {
             "addressField": "display",
             "refField": "uprn"
+          }
+        }
+      }
+    },
+    {
+      "gss": "E09000008",
+      "name": "Croydon Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Croydon Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "plastics",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "communal recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "liberty",
+        "liberty": {
+          "startUrl": "https://service.croydon.gov.uk/wasteservices/w/webpage/bin-day-enter-address",
+          "xhr": true,
+          "rowPattern": "<h2\\b[^>]*>(?<type>[^<]+)</h2>(?:(?!listing_template_record)[\\s\\S])*?Next collection\\s*</span>(?:(?!listing_template_record)[\\s\\S])*?value-as-text\\\">(?<date>[^<]+)<(?:(?:(?!listing_template_record)[\\s\\S])*?completed on (?<last>[^<]+?)\\.<)?",
+          "dateFormat": "weekday-day-month-year",
+          "search": {
+            "component": "CSC0000071EECEC1",
+            "action": "search",
+            "params": {
+              "search_item": "{postcode}",
+              "is_ss": true
+            },
+            "items": "response.items[*]",
+            "id": "id",
+            "label": "address_single_line"
+          }
+        }
+      }
+    },
+    {
+      "gss": "E06000036",
+      "name": "Bracknell Forest Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Bracknell Forest Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "general waste",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "liberty",
+        "liberty": {
+          "startUrl": "https://selfservice.mybfc.bracknell-forest.gov.uk/w/webpage/waste-collection-days",
+          "xhr": true,
+          "rowPattern": "\\\"round\\\":\\\"(?<type>[^\\\"]+)\\\"[^{}]*?\\\"upcomingCollections\\\":\\[(?<body>[^\\]]*)\\]",
+          "datePattern": "\\bis (?<date>[^\\\"]+)\\\"",
+          "dateFormat": "weekday-day-month-year",
+          "search": {
+            "component": "CSC0000060FEFFB1",
+            "action": "find_addresses",
+            "params": {
+              "search": "{postcode}"
+            },
+            "items": "response.addresses.items[*]",
+            "id": "Id",
+            "label": "Description"
+          },
+          "schedule": {
+            "component": "CSC0000060FEFFB1",
+            "action": "find_rounds",
+            "params": {
+              "addressId": "{id}"
+            }
+          }
+        }
+      }
+    },
+    {
+      "gss": "E07000111",
+      "name": "Sevenoaks District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Sevenoaks District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "liberty",
+        "liberty": {
+          "startUrl": "https://sevenoaks-dc-host01.oncreate.app/w/webpage/waste-collection-day",
+          "xhr": true,
+          "rowPattern": "data-fragment_id=\\\"PCF0047557GBDJR1\\\"[^>]*?data-current_value=\\\"(?<type>[^\\\"]+)\\\"(?:(?!</tr>)[\\s\\S])*?data-fragment_id=\\\"PCF0047560GBDJR1\\\"[^>]*?data-current_value=\\\"(?<every>[^\\\"]*)\\\"(?:(?!</tr>)[\\s\\S])*?data-fragment_id=\\\"PCF0047562GBDJR1\\\"[^>]*?data-current_value=\\\"(?<date>\\d{2}/\\d{2}/\\d{4})",
+          "dateFormat": "dd/MM/yyyy",
+          "cadence": [
+            {
+              "match": "(?i)-WK[AB]-",
+              "days": 14
+            }
+          ],
+          "search": {
+            "component": "CSC0000227GBDJR1",
+            "action": "search",
+            "params": {
+              "search_item": "{postcode}"
+            },
+            "items": "response.options[*]",
+            "id": "id",
+            "label": "summary_address"
+          },
+          "select": {
+            "component": "CSC0000227GBDJR1",
+            "action": "address_selected",
+            "params": {
+              "selected": "{id}"
+            }
           }
         }
       }
