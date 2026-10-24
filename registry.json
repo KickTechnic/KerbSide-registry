@@ -9102,6 +9102,291 @@
           "dateFormat": "iso-local-date"
         }
       }
+    },
+    {
+      "gss": "E07000146",
+      "name": "Borough Council of King's Lynn & West Norfolk",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from the Borough Council of King's Lynn & West Norfolk",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "brown bin",
+            "type": "GARDEN"
+          },
+          {
+            "match": "green bin",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "black bin",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden",
+          "brown bin"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.west-norfolk.gov.uk/site/custom_scripts/mynearest/set/results.php",
+          "addressForm": {
+            "validcheck": "true",
+            "address": "{postcode}",
+            "rdm": "0.5"
+          },
+          "addressPattern": "send_address2\\((?<ref>\\d+)\\);\">(?<label>[^<]+)</a>",
+          "resolve": [
+            {
+              "url": "https://www.west-norfolk.gov.uk/site/custom_scripts/mynearest/set/results.php",
+              "form": {
+                "validcheck": "true",
+                "address": "{postcode}",
+                "rdm": "0.5"
+              },
+              "pattern": "send_address2\\(\\d+\\);"
+            },
+            {
+              "url": "https://www.west-norfolk.gov.uk/site/custom_scripts/mynearest/set/index.php?id={ref}",
+              "pattern": "^/mynearest",
+              "cookies": {
+                "ref": "bcklwn_uprn"
+              }
+            }
+          ],
+          "scheduleUrl": "https://www.west-norfolk.gov.uk/info/20174/bins_and_recycling_collection_dates",
+          "scheduleCookies": {
+            "bcklwn_uprn": "{ref}"
+          },
+          "blockPattern": "<h3 class='collectiondate'>(?<when>[^<:]+):?</h3>|<img[^>]*class=\"collection[^\"]*\"[^>]*alt=\"(?<type>[^\"]+)\"",
+          "dateTemplate": "{when}",
+          "dateFormat": "weekday-day-month-year"
+        }
+      },
+      "unpublished": [
+        {
+          "type": "FOOD",
+          "name": "Food waste",
+          "intervalWeeks": 1,
+          "onCollectionDay": true,
+          "source": "https://www.west-norfolk.gov.uk/info/20140/what_goes_in_each_bin/288/food_waste_bin"
+        }
+      ]
+    },
+    {
+      "gss": "E08000013",
+      "name": "St Helens Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from St Helens Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "non-recyclable",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "accept": "text/html",
+          "cookieSession": true,
+          "addressPrimeUrl": "https://sthelens.gov.uk/article/3473/Check-your-collection-dates",
+          "addressPrimePattern": "processsubmission\\?pageSessionId=(?<psid>[0-9a-f-]+)&amp;fsid=(?<fsid>[0-9a-f-]+)&amp;fsn=(?<fsn>[0-9a-f-]+)\"[\\s\\S]*?name=\"RESIDENTCOLLECTIONDATES_PAGESESSIONID\" value=\"(?<pagesession>[^\"]*)\"[\\s\\S]*?name=\"RESIDENTCOLLECTIONDATES_SESSIONID\" value=\"(?<session>[^\"]*)\"[\\s\\S]*?name=\"RESIDENTCOLLECTIONDATES_NONCE\" value=\"(?<nonce>[^\"]*)\"",
+          "addressUrl": "https://sthelens.gov.uk/apiserver/formsservice/http/processsubmission?pageSessionId={psid}&fsid={fsid}&fsn={fsn}",
+          "addressForm": {
+            "RESIDENTCOLLECTIONDATES_PAGESESSIONID": "{pagesession}",
+            "RESIDENTCOLLECTIONDATES_SESSIONID": "{session}",
+            "RESIDENTCOLLECTIONDATES_NONCE": "{nonce}",
+            "RESIDENTCOLLECTIONDATES_VARIABLES": "",
+            "RESIDENTCOLLECTIONDATES_PAGENAME": "PAGE1",
+            "RESIDENTCOLLECTIONDATES_PAGEINSTANCE": "0",
+            "RESIDENTCOLLECTIONDATES_PAGE1_NOADDRESSESLAYOUT": "true",
+            "RESIDENTCOLLECTIONDATES_PAGE1_POSTCODE": "{postcode}",
+            "RESIDENTCOLLECTIONDATES_FORMACTION_NEXT": "RESIDENTCOLLECTIONDATES_PAGE1_FINDADDRESS",
+            "RESIDENTCOLLECTIONDATES_PAGE1_ADDRESSESLAYOUT": "false"
+          },
+          "addressPattern": "<option value=\"(?<ref>\\d+)\"\\s*>(?<label>[^<]+)</option>",
+          "schedulePrimeUrl": "https://sthelens.gov.uk/article/3473/Check-your-collection-dates",
+          "schedulePrimePattern": "processsubmission\\?pageSessionId=(?<psid>[0-9a-f-]+)&amp;fsid=(?<fsid>[0-9a-f-]+)&amp;fsn=(?<fsn>[0-9a-f-]+)\"[\\s\\S]*?name=\"RESIDENTCOLLECTIONDATES_PAGESESSIONID\" value=\"(?<pagesession>[^\"]*)\"[\\s\\S]*?name=\"RESIDENTCOLLECTIONDATES_SESSIONID\" value=\"(?<session>[^\"]*)\"[\\s\\S]*?name=\"RESIDENTCOLLECTIONDATES_NONCE\" value=\"(?<nonce>[^\"]*)\"",
+          "scheduleSteps": [
+            {
+              "url": "https://sthelens.gov.uk/apiserver/formsservice/http/processsubmission?pageSessionId={psid}&fsid={fsid}&fsn={fsn}",
+              "form": {
+                "RESIDENTCOLLECTIONDATES_PAGESESSIONID": "{pagesession}",
+                "RESIDENTCOLLECTIONDATES_SESSIONID": "{session}",
+                "RESIDENTCOLLECTIONDATES_NONCE": "{nonce}",
+                "RESIDENTCOLLECTIONDATES_VARIABLES": "",
+                "RESIDENTCOLLECTIONDATES_PAGENAME": "PAGE1",
+                "RESIDENTCOLLECTIONDATES_PAGEINSTANCE": "0",
+                "RESIDENTCOLLECTIONDATES_PAGE1_NOADDRESSESLAYOUT": "true",
+                "RESIDENTCOLLECTIONDATES_PAGE1_POSTCODE": "{postcode}",
+                "RESIDENTCOLLECTIONDATES_FORMACTION_NEXT": "RESIDENTCOLLECTIONDATES_PAGE1_FINDADDRESS",
+                "RESIDENTCOLLECTIONDATES_PAGE1_ADDRESSESLAYOUT": "false"
+              },
+              "pattern": "processsubmission\\?pageSessionId=[0-9a-f-]+&amp;fsid=[0-9a-f-]+&amp;fsn=(?<addressFsn>[0-9a-f-]+)\"[\\s\\S]*?name=\"RESIDENTCOLLECTIONDATES_NONCE\" value=\"(?<addressNonce>[^\"]*)\"[\\s\\S]*?<select id=\"RESIDENTCOLLECTIONDATES_PAGE1_ADDRESS\""
+            }
+          ],
+          "scheduleUrl": "https://sthelens.gov.uk/apiserver/formsservice/http/processsubmission?pageSessionId={psid}&fsid={fsid}&fsn={addressFsn}",
+          "scheduleForm": {
+            "RESIDENTCOLLECTIONDATES_PAGESESSIONID": "{pagesession}",
+            "RESIDENTCOLLECTIONDATES_SESSIONID": "{session}",
+            "RESIDENTCOLLECTIONDATES_NONCE": "{addressNonce}",
+            "RESIDENTCOLLECTIONDATES_VARIABLES": "",
+            "RESIDENTCOLLECTIONDATES_PAGENAME": "PAGE1",
+            "RESIDENTCOLLECTIONDATES_PAGEINSTANCE": "1",
+            "RESIDENTCOLLECTIONDATES_PAGE1_NOADDRESSESLAYOUT": "false",
+            "RESIDENTCOLLECTIONDATES_PAGE1_ADDRESSESLAYOUT": "true",
+            "RESIDENTCOLLECTIONDATES_PAGE1_ADDRESS": "{ref}",
+            "RESIDENTCOLLECTIONDATES_FORMACTION_NEXT": "RESIDENTCOLLECTIONDATES_PAGE1_ADDRESSNEXT"
+          },
+          "blockPattern": "<th scope=\"row\" colspan=\"4\">\\s*(?<month>[A-Z][a-z]+ \\d{4})\\s*</th>|<td>(?<day>\\d{1,2})</td>\\s*<td>[A-Za-z]+</td>\\s*<td>[\\s\\S]*?</td>\\s*<td>(?<type>[^<]+)</td>",
+          "dateTemplate": "{day} {month}",
+          "dateFormat": "weekday-day-month-year",
+          "typeSplit": " & "
+        }
+      },
+      "unpublished": [
+        {
+          "type": "FOOD",
+          "name": "Food waste",
+          "intervalWeeks": 1,
+          "onCollectionDay": true,
+          "source": "https://www.sthelens.gov.uk/article/2825/Recycling-Waste-Service-Standards"
+        }
+      ]
+    },
+    {
+      "gss": "S12000040",
+      "name": "West Lothian Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from West Lothian Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "brown bin",
+            "type": "FOOD",
+            "alsoCarries": [
+              "GARDEN"
+            ]
+          },
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "blue bin",
+            "type": "PAPER"
+          },
+          {
+            "match": "green bin",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "grey bin",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://westlothian.gov.uk/apiserver/postcode?jsonrpc=%7B%22id%22%3A1%2C%22method%22%3A%22postcodeSearch%22%2C%22params%22%3A%7B%22provider%22%3A%22EndPoint%22%2C%22postcode%22%3A%22{postcode}%22%7D%7D&callback=cb",
+          "addressPattern": "\"udprn\":\"(?<uprn>\\d+)\"[^{}]*?\"company\":(?:null|\"(?<label2>[^\"]*)\")[^{}]*?\"department\":(?:null|\"(?<label>[^\"]*)\")[^{}]*?\"line1\":(?:null|\"(?<label3>[^\"]*)\")[^{}]*?\"line2\":(?:null|\"(?<label4>[^\"]*)\")[^{}]*?\"line3\":(?:null|\"(?<label5>[^\"]*)\")[^{}]*?\"line4\":(?:null|\"(?<label6>[^\"]*)\")[^{}]*?\"line5\":(?:null|\"(?<label7>[^\"]*)\")[^{}]*?\"town\":(?:null|\"(?<label8>[^\"]*)\")[^{}]*?\"county\":(?:null|\"(?<label9>[^\"]*)\")",
+          "refParts": [
+            "uprn",
+            "address"
+          ],
+          "refIsFormValue": true,
+          "addressLinesPart": "address",
+          "accept": "text/html",
+          "cookieSession": true,
+          "schedulePrimeUrl": "https://westlothian.gov.uk/article/31528/Bin-Collection-Calendar-Dates",
+          "schedulePrimePattern": "processsubmission\\?pageSessionId=(?<psid>[0-9a-f-]+)&amp;fsid=(?<fsid>[0-9a-f-]+)&amp;fsn=(?<fsn>[0-9a-f-]+)\"[\\s\\S]*?name=\"WLBINCOLLECTION_PAGESESSIONID\" value=\"(?<pagesession>[^\"]*)\"[\\s\\S]*?name=\"WLBINCOLLECTION_SESSIONID\" value=\"(?<session>[^\"]*)\"[\\s\\S]*?name=\"WLBINCOLLECTION_NONCE\" value=\"(?<nonce>[^\"]*)\"",
+          "scheduleUrl": "https://westlothian.gov.uk/apiserver/formsservice/http/processsubmission?pageSessionId={psid}&fsid={fsid}&fsn={fsn}",
+          "scheduleForm": {
+            "WLBINCOLLECTION_PAGESESSIONID": "{pagesession}",
+            "WLBINCOLLECTION_SESSIONID": "{session}",
+            "WLBINCOLLECTION_NONCE": "{nonce}",
+            "WLBINCOLLECTION_VARIABLES": "",
+            "WLBINCOLLECTION_PAGENAME": "PAGE1",
+            "WLBINCOLLECTION_PAGEINSTANCE": "0",
+            "WLBINCOLLECTION_PAGE1_ADDRESSSTRING": "{address}",
+            "WLBINCOLLECTION_PAGE1_UPRN": "{uprn}",
+            "WLBINCOLLECTION_PAGE1_ADDRESSLOOKUPPOSTCODE": "{postcode}",
+            "WLBINCOLLECTION_FORMACTION_NEXT": "WLBINCOLLECTION_PAGE1_NAVBUTTONS"
+          },
+          "blockPattern": "<div class=\"bin-collect\">\\s*(?:<!--[\\s\\S]*?-->\\s*)?<h3 class=\"bin-collect__title\">(?<type>[^<]+)</h3>(?:\\s*<p class=\"bin-collect__amount\">[^<]*?collected every\\s*(?<every>\\d+ weeks?))?(?:(?!<div class=\"bin-collect\">)[\\s\\S])*?<span class=\"bin-collect__date\">(?<date>[^<]+)</span>",
+          "cadence": [
+            {
+              "match": "^1 week$",
+              "days": 7
+            },
+            {
+              "match": "^2 weeks$",
+              "days": 14
+            },
+            {
+              "match": "^3 weeks$",
+              "days": 21
+            },
+            {
+              "match": "^4 weeks$",
+              "days": 28
+            }
+          ],
+          "dateFormat": "weekday-month-ordinal-day-year"
+        }
+      }
     }
   ]
 }
