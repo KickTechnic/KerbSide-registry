@@ -8886,6 +8886,222 @@
           "dateFormat": "dd/MM/yyyy"
         }
       }
+    },
+    {
+      "gss": "E07000195",
+      "name": "Newcastle-under-Lyme Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Newcastle-under-Lyme Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "household",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ],
+        "exclude": [
+          "trade"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.newcastle-staffs.gov.uk/bartec-ajax/{postcode}",
+          "addressForm": {},
+          "addressPattern": "\"uprn\":\"(?<ref>\\d+)\"[^{}]*?\"label\":\"(?<label>[^\"]+)\"",
+          "scheduleUrl": "https://www.newcastle-staffs.gov.uk/homepage/97/check-your-bin-day?uprn={ref}",
+          "blockPattern": "<td>(?<when>[A-Za-z]+day \\d{1,2} [A-Za-z]+)</td>|(?:<td>|<br>)\\s*(?<type>[^<>\\s][^<>]*?)(?=<br>)",
+          "dateTemplate": "{when}",
+          "dateFormat": "weekday-day-ordinal-month-noyear"
+        }
+      }
+    },
+    {
+      "gss": "E06000041",
+      "name": "Wokingham Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Wokingham Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "household",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressPrimeUrl": "https://www.wokingham.gov.uk/rubbish-and-recycling/waste-collection/find-your-bin-collection-day",
+          "addressPrimePattern": "name=\"form_build_id\" value=\"(?<buildId>[^\"]+)\"",
+          "addressUrl": "https://www.wokingham.gov.uk/rubbish-and-recycling/waste-collection/find-your-bin-collection-day",
+          "addressForm": {
+            "postcode_search": "{postcode}",
+            "op": "Find Address",
+            "form_build_id": "{buildId}",
+            "form_id": "waste_collection_api_form"
+          },
+          "addressPattern": "<option value=\"(?<ref>\\d+)\">(?<label>[^<]+)</option>",
+          "schedulePrimeUrl": "https://www.wokingham.gov.uk/rubbish-and-recycling/waste-collection/find-your-bin-collection-day",
+          "schedulePrimePattern": "name=\"form_build_id\" value=\"(?<buildId>[^\"]+)\"",
+          "scheduleSteps": [
+            {
+              "url": "https://www.wokingham.gov.uk/rubbish-and-recycling/waste-collection/find-your-bin-collection-day",
+              "form": {
+                "postcode_search": "{postcode}",
+                "op": "Find Address",
+                "form_build_id": "{buildId}",
+                "form_id": "waste_collection_api_form"
+              },
+              "pattern": "name=\"form_build_id\" value=\"(?<buildId>[^\"]+)\""
+            }
+          ],
+          "scheduleUrl": "https://www.wokingham.gov.uk/rubbish-and-recycling/waste-collection/find-your-bin-collection-day",
+          "scheduleForm": {
+            "postcode_search": "{postcode}",
+            "address_options": "{ref}",
+            "op": "Show collection dates",
+            "form_build_id": "{buildId}",
+            "form_id": "waste_collection_api_form"
+          },
+          "blockPattern": "<h3\\s+class=\"heading[^\"]*\">\\s*(?<type>[^<]+?)\\s*</h3>\\s*(?:<p\\s+class=\"paragraph\">[^<]*</p>\\s*)?<span\\s+class=\"card__date\">[^<]*?(?<date>\\d{2}/\\d{2}/\\d{4})",
+          "dateFormat": "dd/MM/yyyy"
+        }
+      },
+      "unpublished": [
+        {
+          "type": "FOOD",
+          "name": "Food waste",
+          "intervalWeeks": 1,
+          "onCollectionDay": true,
+          "source": "https://www.wokingham.gov.uk/rubbish-and-recycling/food-waste/food-waste-collection"
+        }
+      ]
+    },
+    {
+      "gss": "E06000022",
+      "name": "Bath & North East Somerset Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Bath & North East Somerset Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://api.bathnes.gov.uk/webapi/api/AddressesAPI/v2/search/{postcode}/150/true",
+          "addressPattern": "\"uprn\":(?<ref>\\d+)(?:\\.0)?,[^{}]*?\"full_Address\":\"(?<label>[^\"]+)\"",
+          "scheduleUrl": "https://api.bathnes.gov.uk/webapi/api/BinsAPI/v2/BartecFeaturesandSchedules/CollectionSummary/{ref}",
+          "blockPattern": "\"nextCollectionDate\":\"(?<iso>\\d{4}-\\d{2}-\\d{2})|\"featureDisplayName\":\"(?<type>[^\"]+)\"",
+          "dateTemplate": "{iso}",
+          "dateFormat": "iso-local-date"
+        }
+      }
+    },
+    {
+      "gss": "E06000033",
+      "name": "Southend-on-Sea City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Southend-on-Sea City Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://apps.cloud9technologies.com/southend/citizenmobile/openapi/addresses?postcode={postcode}",
+          "addressPattern": "\"UPRN\":\"(?<ref>\\d+)\"[^{}]*?\"FullAddress\":\"(?<label>[^\"]+)\"",
+          "scheduleUrl": "https://apps.cloud9technologies.com/southend/citizenmobile/openapi/wastecollections/{ref}",
+          "blockPattern": "\"ContainerDescription\":\"(?<type>[^\"]+)\"[^{}]*?\"CollectionDate\":\"(?<date>\\d{4}-\\d{2}-\\d{2})",
+          "dateFormat": "iso-local-date"
+        }
+      }
     }
   ]
 }
