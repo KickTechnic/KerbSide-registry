@@ -8496,6 +8496,54 @@
           "dateFormat": "iso-local-date"
         }
       }
+    },
+    {
+      "gss": "E08000036",
+      "name": "Wakefield Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Wakefield Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "household",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.wakefield.gov.uk/pick-your-address?where-i-live={postcode}",
+          "addressPattern": "where-i-live\\?uprn=(?<uprn>\\d+)&amp;a=(?<address>[^\"]*?)&amp;usrn=(?<usrn>\\d+)&amp;e=(?<easting>\\d+)&amp;n=(?<northing>\\d+)&amp;p=[^\"]*\">(?<label>[^<]+)</a>",
+          "refParts": [
+            "uprn",
+            "usrn",
+            "easting",
+            "northing",
+            "address"
+          ],
+          "refIsFormValue": true,
+          "scheduleUrl": "https://www.wakefield.gov.uk/where-i-live?uprn={uprn}&a={address}&usrn={usrn}&e={easting}&n={northing}&p={postcode}",
+          "blockPattern": "<div class=\"u-mb-4\"><strong>(?<type>[^<]+)</strong></div>(?<body>(?:(?!<div class=\"u-mb-4\"><strong>|l-col-fb-12)[\\s\\S])*)",
+          "datePattern": "(?:collection - |<li>\\s*)(?<date>[A-Za-z]+day, \\d{1,2} [A-Za-z]+ \\d{4})",
+          "dateFormat": "weekday-day-month-year"
+        }
+      }
     }
   ]
 }
