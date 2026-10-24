@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-10-23",
+  "updated": "2026-10-24",
   "councils": [
     {
       "gss": "E07000240",
@@ -8299,6 +8299,201 @@
           "blockPattern": "<div class=\"bdl-card bdl-card--[a-z]+\">[^<]*<div class=\"bdl-card__header\">[^<]*<span class=\"bdl-card__icon\">[^<]*</span>(?<type>[^<]+)</div>[^<]*<div class=\"bdl-card__body\">(?<body>[\\s\\S]*?)</div>",
           "datePattern": "<li>(?<date>[^<]+)</li>",
           "dateFormat": "weekday-ordinal-of-month-year"
+        }
+      }
+    },
+    {
+      "gss": "E09000026",
+      "name": "Redbridge Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Redbridge Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://my.redbridge.gov.uk/Shared/SearchAddress?searchText={postcode}&commercialOnly=False&searchUkWide=False",
+          "addressPattern": "data-address=\"(?<label>[^\"]+)\"[^>]*?data-uprn=\"(?<ref>\\d+)\"",
+          "scheduleUrl": "https://my.redbridge.gov.uk/RecycleRefuse?Uprn={ref}&Postcode={postcode}",
+          "blockPattern": "<h3>(?<type>[^<]+)</h3>(?<body>(?:(?!<h3>)[\\s\\S])*)",
+          "datePattern": "(?<date>[A-Za-z]+day</div>\\s*<div[^>]*>\\d{1,2}</div>\\s*<div[^>]*>[A-Za-z]+ \\d{4})",
+          "dateFormat": "weekday-day-month-year"
+        }
+      }
+    },
+    {
+      "gss": "E09000002",
+      "name": "Barking and Dagenham Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Barking and Dagenham Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "non-recyclable",
+            "type": "REFUSE",
+            "alsoCarries": [
+              "FOOD"
+            ]
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.lbbd.gov.uk/rest/bins/{postcode}",
+          "addressPattern": "\"id\":\"(?<ref>\\d+)\"[^{}]*?\"address\":\"(?<label>[^\"]+)\"",
+          "scheduleUrl": "https://www.lbbd.gov.uk/rest/bin/{ref}",
+          "blockPattern": "\"bin_name\":\"(?<type>[^\"]+)\"[^{}]*?(?<body>\"nextcollection\":\"[^\"]*\"[^{}]*?\"futurecollections\":\\[[^\\]]*\\])",
+          "datePattern": "\"(?<date>[A-Z][a-z]+day \\d{1,2} [A-Z][a-z]+ \\d{4})\"",
+          "dateFormat": "weekday-day-month-year"
+        }
+      }
+    },
+    {
+      "gss": "E06000055",
+      "name": "Bedford Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Bedford Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "caddy",
+            "type": "FOOD"
+          },
+          {
+            "match": "green",
+            "type": "GARDEN"
+          },
+          {
+            "match": "orange",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "black",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://bbcpro-jeapi.azurewebsites.net/api/addresssearch/bypostcode?Postcode={postcode}&Language=ENG",
+          "addressPattern": "\"uprn\":\"(?<ref>\\d+)\"[^{}]*?\"addressLine1\":\"(?<label>[^\"]*)\"[^{}]*?\"addressLine2\":\"(?<label2>[^\"]*)\"[^{}]*?\"addressLine3\":\"(?<label3>[^\"]*)\"[^{}]*?\"town\":\"(?<label4>[^\"]*)\"",
+          "scheduleUrl": "https://bbaz-as-prod-bartecapi.azurewebsites.net/api/bincollections/residential/getbyuprn/{ref}",
+          "blockPattern": "\"BinType\":\"(?<type>[^\"]+)\"[^{}]*?\"JobScheduledStart\":\"(?<date>[^\"]+)\"",
+          "dateFormat": "iso-datetime"
+        }
+      }
+    },
+    {
+      "gss": "E07000066",
+      "name": "Basildon Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Basildon Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "plastic",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "non-recyclable",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://basildonportal.azurewebsites.net/api/listPropertiesByPostcode",
+          "addressJson": {
+            "postcode": "{postcode}"
+          },
+          "addressPattern": "\"uprn\":\"(?<ref>\\d+)\"[^{}]*?\"line1\":\"(?<label>[^\"]+)\"",
+          "scheduleUrl": "https://basildonportal.azurewebsites.net/api/getPropertyRefuseInformation",
+          "scheduleJson": {
+            "uprn": "{ref}"
+          },
+          "blockPattern": "\"frequency\":\"(?<every>[^\"]+)\"[^{}]*?\"current_collection_active\":true,\"current_collection_date\":\"(?<date>\\d{4}-\\d{2}-\\d{2})\"[^{}]*?\"name\":\"(?<type>[^\"]+)\"",
+          "cadence": [
+            {
+              "match": "^Weekly$",
+              "days": 7
+            },
+            {
+              "match": "^Fortnightly$",
+              "days": 14
+            }
+          ],
+          "dateFormat": "iso-local-date"
         }
       }
     }
