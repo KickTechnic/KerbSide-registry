@@ -9387,6 +9387,330 @@
           "dateFormat": "weekday-month-ordinal-day-year"
         }
       }
+    },
+    {
+      "gss": "E07000118",
+      "name": "Chorley Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Chorley Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "residual",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "xfp",
+        "version": 1,
+        "xfp": {
+          "host": "forms.chorleysouthribble.gov.uk",
+          "formId": "71",
+          "rows": {
+            "mode": "html-table",
+            "tableClass": "data-table",
+            "typeColumn": 0,
+            "dateColumn": 1
+          },
+          "dateFormat": "dd/MM/yy"
+        }
+      }
+    },
+    {
+      "gss": "E07000134",
+      "name": "North West Leicestershire District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from North West Leicestershire District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "blue bag",
+            "type": "PAPER"
+          },
+          {
+            "match": "yellow bag",
+            "type": "PAPER"
+          },
+          {
+            "match": "purple bag",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "red box",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://my.nwleics.gov.uk/data/ac/addresses.json?term={postcode}",
+          "addressPattern": "\"label\":\"(?<label>(?:[^\"\\\\]|\\\\.)+)\",\"value\":\"(?<ref>nwl\\d{6,})\"",
+          "scheduleUrl": "https://my.nwleics.gov.uk/location?put={ref}&rememberme=0&redirect=%2F",
+          "cookieSession": true,
+          "blockPattern": "<strong class=\"date\">(?<date>[^<]+)</strong>\\s*<a class=\"[^\"]*\"[^>]*>(?<type>[^<]+)</a>",
+          "dateFormat": "weekday-day-ordinal-shortmonth-noyear"
+        }
+      }
+    },
+    {
+      "gss": "E07000237",
+      "name": "Worcester City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Worcester City Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "non-recyclable",
+            "type": "REFUSE"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://selfserve.worcester.gov.uk/sw2AddressLookupWS/jaxrs/PostCode?simple=T&pcode={postcode}&authority=WCC&historical=&hidedummyuprn=1",
+          "addressPattern": "\"UPRN\":\"(?<ref>\\d+)\"[^{}]*?\"Address_Short\":\"(?<label>(?:[^\"\\\\]|\\\\.)+)\"",
+          "scheduleUrl": "https://selfserve.worcester.gov.uk/wccroundlookup/HandleSearchScreen",
+          "scheduleForm": {
+            "nmalAddrtxt": "{postcode}",
+            "alAddrsel": "{ref}",
+            "btnSubmit": "Next",
+            "txtPage": "std",
+            "txtSearchPerformedFlag": "false",
+            "futuredate": "",
+            "address": ""
+          },
+          "blockPattern": "<td style=\"width:40%\">\\s*(?<type>[^<]+?)\\s*(?:<div[\\s\\S]*?</div>\\s*)?</td>\\s*<td style=\"width:50%\">(?<body>[\\s\\S]*?)</td>",
+          "datePattern": "(?<date>\\d{2}/\\d{2}/\\d{4})",
+          "dateFormat": "dd/MM/yyyy"
+        }
+      }
+    },
+    {
+      "gss": "E07000235",
+      "name": "Malvern Hills District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Malvern Hills District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "non-recyclable",
+            "type": "REFUSE"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://swict.malvernhills.gov.uk/sw2AddressLookupWS/jaxrs/PostCode?simple=T&pcode={postcode}&authority=MHDC&historical=&hidedummyuprn=1",
+          "addressPattern": "\"UPRN\":\"(?<ref>\\d+)\"[^{}]*?\"Address_Short\":\"(?<label>(?:[^\"\\\\]|\\\\.)+)\"",
+          "scheduleUrl": "https://swict.malvernhills.gov.uk/mhdcroundlookup/HandleSearchScreen",
+          "scheduleForm": {
+            "nmalAddrtxt": "{postcode}",
+            "alAddrsel": "{ref}",
+            "btnSubmit": "Next",
+            "txtPage": "std",
+            "txtSearchPerformedFlag": "false",
+            "futuredate": "",
+            "address": ""
+          },
+          "blockPattern": "<td style=\"width:40%\">\\s*(?<type>[^<]+?)\\s*(?:<div[\\s\\S]*?</div>\\s*)?</td>\\s*<td style=\"width:50%\">(?<body>[\\s\\S]*?)</td>",
+          "datePattern": "(?<date>\\d{2}/\\d{2}/\\d{4})",
+          "dateFormat": "dd/MM/yyyy"
+        }
+      }
+    },
+    {
+      "gss": "E07000238",
+      "name": "Wychavon District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Wychavon District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "non-recyclable",
+            "type": "REFUSE"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "unpublished": [
+        {
+          "type": "TEXTILES",
+          "name": "Textiles, small electricals and batteries",
+          "intervalWeeks": 2,
+          "onCollectionDay": true,
+          "source": "https://www.wychavon.gov.uk/waste-and-recycling/recycling-batteries-small-electrical-items-and-textiles"
+        }
+      ],
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://selfservice.wychavon.gov.uk/sw2AddressLookupWS/jaxrs/PostCode?simple=T&pcode={postcode}&authority=WDC&historical=&hidedummyuprn=1",
+          "addressPattern": "\"UPRN\":\"(?<ref>\\d+)\"[^{}]*?\"Address_Short\":\"(?<label>(?:[^\"\\\\]|\\\\.)+)\"",
+          "scheduleUrl": "https://selfservice.wychavon.gov.uk/wdcroundlookup/HandleSearchScreen",
+          "scheduleForm": {
+            "nmalAddrtxt": "{postcode}",
+            "alAddrsel": "{ref}",
+            "btnSubmit": "Next",
+            "txtPage": "std",
+            "txtSearchPerformedFlag": "false",
+            "futuredate": "",
+            "address": ""
+          },
+          "blockPattern": "<td style=\"width:40%\">\\s*(?<type>[^<]+?)\\s*(?:<div[\\s\\S]*?</div>\\s*)?</td>\\s*<td style=\"width:50%\">(?<body>[\\s\\S]*?)</td>",
+          "datePattern": "(?<date>\\d{2}/\\d{2}/\\d{4})",
+          "dateFormat": "dd/MM/yyyy"
+        }
+      }
+    },
+    {
+      "gss": "E07000092",
+      "name": "Rushmoor Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Rushmoor Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "json-rows",
+        "version": 1,
+        "jsonRows": {
+          "addressUrl": "https://www.rushmoor.gov.uk/Umbraco/Api/AddressLookUpWorkAround/Get?searchText={postcode}",
+          "addressRowsPath": "[*]",
+          "addressLabelPath": "fullAddress",
+          "addressRefPath": "uprn",
+          "scheduleUrl": "https://www.rushmoor.gov.uk/Umbraco/Api/BinLookUpWorkAround/Get?selectedAddress={ref}",
+          "scheduleRowsPath": "$",
+          "fixedFields": {
+            "Refuse": "NextCollection.RefuseCollectionBinDate",
+            "Recycling": "NextCollection.RecyclingCollectionDate",
+            "Garden waste": "NextCollection.GardenWasteCollectionDate",
+            "Food waste": "NextCollection.FoodWasteCollectionDate"
+          },
+          "datePath": "NextCollection.RefuseCollectionBinDate",
+          "dateFormat": "iso-datetime"
+        }
+      }
     }
   ]
 }
