@@ -8726,6 +8726,166 @@
           }
         }
       }
+    },
+    {
+      "gss": "E07000143",
+      "name": "Breckland Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Breckland Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ],
+        "exclude": [
+          "trade"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.breckland.gov.uk/apiserver/ajaxlibrary",
+          "addressJson": {
+            "id": "1",
+            "jsonrpc": "2.0",
+            "method": "Breckland.Whitespace.JointWasteAPI.GetSiteIDsByPostcode",
+            "params": {
+              "postcode": "{postcode}",
+              "environment": "live"
+            }
+          },
+          "addressPattern": "\"number\":\"(?<label2>[^\"]*)\"[^{}]*?\"name\":\"(?<label3>[^\"]*)\"[^{}]*?\"prefix\":\"(?<label>[^\"]*)\"[^{}]*?\"address1\":\"(?<label4>[^\"]*)\"[^{}]*?\"address2\":\"(?<label5>[^\"]*)\"[^{}]*?\"town\":\"(?<label6>[^\"]*)\"[^{}]*?\"uprn\":\"(?<ref>\\d+)\"",
+          "scheduleUrl": "https://www.breckland.gov.uk/apiserver/ajaxlibrary",
+          "scheduleJson": {
+            "id": "1",
+            "jsonrpc": "2.0",
+            "method": "Breckland.Whitespace.JointWasteAPI.GetBinCollectionsByUprn",
+            "params": {
+              "uprn": "{ref}",
+              "environment": "live"
+            }
+          },
+          "blockPattern": "\"collectiontype\":\"(?<type>[^\"]+)\"[^{}]*?\"nextcollection\":\"(?<date>\\d{2}/\\d{2}/\\d{4})",
+          "dateFormat": "dd/MM/yyyy"
+        }
+      }
+    },
+    {
+      "gss": "W06000005",
+      "name": "Flintshire County Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Flintshire County Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "brown bin",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "black bin",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden",
+          "brown bin"
+        ],
+        "exclude": [
+          "new round"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://digital.flintshire.gov.uk/FCC_BinDay/Home/FindAddresses?part=&pcode={postcode}",
+          "addressPattern": "\"AddLanguage\":\"ENG\"[^{}]*?\"FULLADD\":\"(?<label>[^\"]+)\"[^{}]*?\"UNIQUEIDENTIFIER\":\"(?<ref>\\d+)\"",
+          "scheduleUrl": "https://digital.flintshire.gov.uk/FCC_BinDay/Home/Details2/{ref}",
+          "blockPattern": "<div class=\"col-lg-2 col-md-2 col-sm-2\">\\s*(?<date>\\d{2}/\\d{2}/\\d{4})\\s*</div>\\s*<div class=\"col-lg-2 col-md-2 col-sm-2\">[^<]*</div>\\s*<div class=\"col-lg-3 col-md-3 col-sm-3\">\\s*(?<type>[^<]*?)\\s*</div>",
+          "typeSplit": "/",
+          "dateFormat": "dd/MM/yyyy"
+        }
+      }
+    },
+    {
+      "gss": "E07000222",
+      "name": "Warwick District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Warwick District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://estates7.warwickdc.gov.uk/PropertyPortal/Property/Search?postcode={postcode}&show=Recycling",
+          "addressPattern": "<p><a href=\"/PropertyPortal/Property/Recycling/(?<ref>\\d+)\">(?<label>[^<]+)</a></p>",
+          "scheduleUrl": "https://estates7.warwickdc.gov.uk/PropertyPortal/Property/Recycling/{ref}",
+          "blockPattern": "<img src=\"/PropertyPortal/WasteImage/[^\"]*\"[^>]*alt=\"(?<type>[^\"]+)\"[\\s\\S]*?waste-dates[^>]*>(?<body>[\\s\\S]*?)</div>",
+          "datePattern": "<p>\\s*(?<date>\\d{2}/\\d{2}/\\d{4})\\s*</p>",
+          "dateFormat": "dd/MM/yyyy"
+        }
+      }
     }
   ]
 }
