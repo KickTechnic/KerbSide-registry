@@ -8544,6 +8544,188 @@
           "dateFormat": "weekday-day-month-year"
         }
       }
+    },
+    {
+      "gss": "E07000244",
+      "name": "East Suffolk Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from East Suffolk Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "plastic",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS"
+            ]
+          },
+          {
+            "match": "residual",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "my.eastsuffolk.gov.uk",
+          "sessionUrl": "https://my.eastsuffolk.gov.uk/authapi/isauthenticated?uri=https%253A%252F%252Fmy.eastsuffolk.gov.uk%252Fservice%252FBin_collection_dates_finder&hostname=my.eastsuffolk.gov.uk&withCredentials=true",
+          "tokenLookupId": "59e73f8bd860c",
+          "tokenField": "AuthenticateResponse",
+          "tokenMethod": "POST",
+          "tokenBody": "{\"formValues\":{\"Details\":{}}}",
+          "scheduleLookupId": "68f900a32e7a4",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Details\":{\"AuthenticateResponse\":{\"value\":\"{token}\"},\"finalUPRN\":{\"value\":\"{ref}\"},\"minimum_date\":{\"value\":\"{dateMin}\"},\"maximum_date\":{\"value\":\"{dateMax}\"}}}}",
+          "bodyDateFormat": "iso-datetime",
+          "bodyDateMaxDays": 28,
+          "scheduleRows": {
+            "mode": "dict-rows",
+            "typeField": "CollectionType",
+            "dateField": "CollectionDate"
+          },
+          "dateFormat": "iso-datetime",
+          "addressLookupId": "60647bd7e6892",
+          "addressBodyTemplate": "{\"formValues\":{\"Section 1\":{\"alt_postcode_search\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "uprn"
+          }
+        }
+      }
+    },
+    {
+      "gss": "S12000033",
+      "name": "Aberdeen City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Aberdeen City Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN",
+            "alsoCarries": [
+              "FOOD"
+            ]
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "general",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "integration.aberdeencity.gov.uk",
+          "sessionUrl": "https://integration.aberdeencity.gov.uk/authapi/isauthenticated?uri=https%253A%252F%252Fintegration.aberdeencity.gov.uk%252Fservice%252Fbin_collection_calendar___view&hostname=integration.aberdeencity.gov.uk&withCredentials=true",
+          "tokenLookupId": "583c08ffc47fe",
+          "tokenField": "token",
+          "tokenMethod": "POST",
+          "scheduleLookupId": "5a3141caf4016",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Section 1\":{\"nauprn\":{\"value\":\"{ref}\"},\"token\":{\"value\":\"{token}\"},\"mindate\":{\"value\":\"{dateMin}\"},\"maxdate\":{\"value\":\"{dateMax}\"}}}}",
+          "bodyDateMaxDays": 182,
+          "scheduleRows": {
+            "mode": "fixed-fields",
+            "dateSuffixPattern": "Date\\d+"
+          },
+          "dateFormat": "weekday-day-month-year",
+          "addressLookupId": "57e124c27f0d3",
+          "addressBodyTemplate": "{\"formValues\":{\"Section 1\":{\"postcode_search\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "uprn"
+          }
+        }
+      }
+    },
+    {
+      "gss": "E07000110",
+      "name": "Maidstone Borough Council",
+      "tier": 3,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Maidstone Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "bulky",
+            "type": "BULKY"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "residual",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden",
+          "clinical"
+        ],
+        "exclude": [
+          "maintenance"
+        ]
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "my.maidstone.gov.uk",
+          "sessionUrl": "https://my.maidstone.gov.uk/authapi/isauthenticated?uri=https%253A%252F%252Fmy.maidstone.gov.uk%252Fservice%252FFind-your-bin-day&hostname=my.maidstone.gov.uk&withCredentials=true",
+          "scheduleLookupId": "654b7b6478deb",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Lookup\":{\"AddressUPRN\":{\"value\":\"{ref}\"}}}}",
+          "scheduleRows": {
+            "mode": "fixed-fields",
+            "dateSuffixPattern": "(?<!_Default)_(?:Last|Next)CollectionDate",
+            "rowKey": "{ref}"
+          },
+          "dateFormat": "weekday-day-shortmonth-year",
+          "addressLookupId": "5a0032c96c6cf",
+          "addressBodyTemplate": "{\"formValues\":{\"Lookup\":{\"postcode\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "name"
+          }
+        }
+      }
     }
   ]
 }
