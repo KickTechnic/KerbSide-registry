@@ -10486,6 +10486,205 @@
           "typeSplit": "&"
         }
       }
+    },
+    {
+      "gss": "E07000105",
+      "name": "Ashford Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Ashford Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://secure.ashford.gov.uk/waste/collectiondaylookup/",
+          "addressPrimeUrl": "https://secure.ashford.gov.uk/waste/collectiondaylookup/",
+          "addressPrimePattern": "name=\"__VIEWSTATE\" id=\"__VIEWSTATE\" value=\"(?<viewState>[^\"]*)\"[\\s\\S]*?name=\"__VIEWSTATEGENERATOR\" id=\"__VIEWSTATEGENERATOR\" value=\"(?<generator>[^\"]*)\"[\\s\\S]*?name=\"__EVENTVALIDATION\" id=\"__EVENTVALIDATION\" value=\"(?<validation>[^\"]*)\"",
+          "addressForm": {
+            "__VIEWSTATE": "{viewState}",
+            "__VIEWSTATEGENERATOR": "{generator}",
+            "__EVENTVALIDATION": "{validation}",
+            "ctl00$ContentPlaceHolder1$CollectionDayLookup2$HiddenField_UPRN": "",
+            "ctl00$ContentPlaceHolder1$CollectionDayLookup2$TextBox_PostCode": "{postcode}",
+            "ctl00$ContentPlaceHolder1$CollectionDayLookup2$Button_PostCodeSearch": "Continue >"
+          },
+          "addressPattern": "<option value=\"(?<ref>\\d{6,})\">(?<label>[^<]+)</option>",
+          "scheduleUrl": "https://secure.ashford.gov.uk/waste/collectiondaylookup/",
+          "schedulePrimeUrl": "https://secure.ashford.gov.uk/waste/collectiondaylookup/",
+          "schedulePrimePattern": "name=\"__VIEWSTATE\" id=\"__VIEWSTATE\" value=\"(?<viewState>[^\"]*)\"[\\s\\S]*?name=\"__VIEWSTATEGENERATOR\" id=\"__VIEWSTATEGENERATOR\" value=\"(?<generator>[^\"]*)\"[\\s\\S]*?name=\"__EVENTVALIDATION\" id=\"__EVENTVALIDATION\" value=\"(?<validation>[^\"]*)\"",
+          "scheduleSteps": [
+            {
+              "url": "https://secure.ashford.gov.uk/waste/collectiondaylookup/",
+              "form": {
+                "__VIEWSTATE": "{viewState}",
+                "__VIEWSTATEGENERATOR": "{generator}",
+                "__EVENTVALIDATION": "{validation}",
+                "ctl00$ContentPlaceHolder1$CollectionDayLookup2$HiddenField_UPRN": "",
+                "ctl00$ContentPlaceHolder1$CollectionDayLookup2$TextBox_PostCode": "{postcode}",
+                "ctl00$ContentPlaceHolder1$CollectionDayLookup2$Button_PostCodeSearch": "Continue >"
+              },
+              "pattern": "name=\"__VIEWSTATE\" id=\"__VIEWSTATE\" value=\"(?<viewState>[^\"]*)\"[\\s\\S]*?name=\"__VIEWSTATEGENERATOR\" id=\"__VIEWSTATEGENERATOR\" value=\"(?<generator>[^\"]*)\"[\\s\\S]*?name=\"__EVENTVALIDATION\" id=\"__EVENTVALIDATION\" value=\"(?<validation>[^\"]*)\""
+            }
+          ],
+          "scheduleForm": {
+            "__VIEWSTATE": "{viewState}",
+            "__VIEWSTATEGENERATOR": "{generator}",
+            "__EVENTVALIDATION": "{validation}",
+            "ctl00$ContentPlaceHolder1$CollectionDayLookup2$HiddenField_UPRN": "",
+            "ctl00$ContentPlaceHolder1$CollectionDayLookup2$DropDownList_Addresses": "{ref}",
+            "ctl00$ContentPlaceHolder1$CollectionDayLookup2$Button_SelectAddress": "Continue >"
+          },
+          "blockPattern": "<td id=\"ContentPlaceHolder1_CollectionDayLookup2_td_\\w+\" style=\"vertical-align: top;\">\\s*<b>(?<type>[^<]+)</b>(?:(?!</td>)[\\s\\S])*?It is a <b>(?<every>[^<]+)</b> collection(?:(?!</td>)[\\s\\S])*?_Date\"><b>(?<date>[^<]+)</b>",
+          "cadence": [
+            {
+              "match": "(?i)^fortnightly$",
+              "days": 14
+            },
+            {
+              "match": "(?i)^weekly$",
+              "days": 7
+            }
+          ],
+          "dateFormat": "weekday-dd/MM/yyyy-relative"
+        }
+      }
+    },
+    {
+      "gss": "E07000144",
+      "name": "Broadland District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Broadland District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://area.southnorfolkandbroadland.gov.uk/FindAddress",
+          "addressPrimeUrl": "https://area.southnorfolkandbroadland.gov.uk/FindAddress",
+          "addressPrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"",
+          "addressForm": {
+            "Postcode": "{postcode}",
+            "__RequestVerificationToken": "{token}"
+          },
+          "addressPattern": "<option value=\"(?<ref>\\d{6,};[^\"]+)\">(?<label>[^<]+)</option>",
+          "scheduleUrl": "https://area.southnorfolkandbroadland.gov.uk/FindAddress/Submit",
+          "schedulePrimeUrl": "https://area.southnorfolkandbroadland.gov.uk/FindAddress",
+          "schedulePrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"",
+          "scheduleForm": {
+            "Postcode": "{postcode}",
+            "UprnAddress": "{ref}",
+            "__RequestVerificationToken": "{token}"
+          },
+          "cookieSession": true,
+          "blockPattern": "<div class=\"col-9 card-text text--left\">\\s*<strong>(?<type>[^<]+)</strong><br />\\s*(?<date>[A-Z][a-z]+ \\d{1,2} [A-Z][a-z]+ \\d{4})\\s*<br />",
+          "dateFormat": "weekday-day-month-year",
+          "refIsFormValue": true
+        }
+      }
+    },
+    {
+      "gss": "E07000149",
+      "name": "South Norfolk Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from South Norfolk Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://area.southnorfolkandbroadland.gov.uk/FindAddress",
+          "addressPrimeUrl": "https://area.southnorfolkandbroadland.gov.uk/FindAddress",
+          "addressPrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"",
+          "addressForm": {
+            "Postcode": "{postcode}",
+            "__RequestVerificationToken": "{token}"
+          },
+          "addressPattern": "<option value=\"(?<ref>\\d{6,};[^\"]+)\">(?<label>[^<]+)</option>",
+          "scheduleUrl": "https://area.southnorfolkandbroadland.gov.uk/FindAddress/Submit",
+          "schedulePrimeUrl": "https://area.southnorfolkandbroadland.gov.uk/FindAddress",
+          "schedulePrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"",
+          "scheduleForm": {
+            "Postcode": "{postcode}",
+            "UprnAddress": "{ref}",
+            "__RequestVerificationToken": "{token}"
+          },
+          "cookieSession": true,
+          "blockPattern": "<div class=\"col-9 card-text text--left\">\\s*<strong>(?<type>[^<]+)</strong><br />\\s*(?<date>[A-Z][a-z]+ \\d{1,2} [A-Z][a-z]+ \\d{4})\\s*<br />",
+          "dateFormat": "weekday-day-month-year",
+          "refIsFormValue": true
+        }
+      }
     }
   ]
 }
