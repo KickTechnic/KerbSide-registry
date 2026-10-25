@@ -10008,6 +10008,170 @@
           "dateFormat": "dd/MM/yyyy"
         }
       }
+    },
+    {
+      "gss": "E07000211",
+      "name": "Reigate & Banstead Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Reigate & Banstead Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "my.reigate-banstead.gov.uk",
+          "sessionUrl": "https://my.reigate-banstead.gov.uk/authapi/isauthenticated?uri=https%253A%252F%252Fmy.reigate-banstead.gov.uk%252Fen%252Fservice%252FBins_and_recycling___collections_calendar&hostname=my.reigate-banstead.gov.uk&withCredentials=true",
+          "tokenLookupId": "595ce0f243541",
+          "tokenField": "Token",
+          "tokenMethod": "POST",
+          "tokenBody": "{\"formValues\":{\"Section 1\":{}}}",
+          "scheduleLookupId": "609d41ca89251",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Section 1\":{\"tokenString\":{\"value\":\"{token}\"},\"uprnPWB\":{\"value\":\"{ref}\"},\"minDate\":{\"value\":\"{dateMin}\"},\"maxDate\":{\"value\":\"{dateMax}\"}}}}",
+          "bodyDateMaxDays": 28,
+          "scheduleRows": {
+            "mode": "html-pattern",
+            "htmlField": "root",
+            "entryPattern": "<h3[^>]*>(?<date>[^<]+)</h3>(?<body>[\\s\\S]*?)</ul>",
+            "typePattern": "<span[^>]*>(?<type>[^<]+)</span>"
+          },
+          "dateFormat": "weekday-day-month-year",
+          "addressLookupId": "592fe826d4611",
+          "addressBodyTemplate": "{\"formValues\":{\"Section 1\":{\"postcode_search\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "uprn"
+          }
+        }
+      }
+    },
+    {
+      "gss": "W06000006",
+      "name": "Wrexham County Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Wrexham County Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "general",
+            "type": "REFUSE"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "myaccount.wrexham.gov.uk",
+          "sessionUrl": "https://myaccount.wrexham.gov.uk/authapi/isauthenticated?uri=https%253A%252F%252Fmyaccount.wrexham.gov.uk%252Fen%252FAchieveForms%252F%253Fform_uri%253Dsandbox-publish%253A%252F%252FAF-Process-ceb55423-9f5d-4124-b713-805ac7a73e3e%252FAF-Stage-854336b9-1221-4e6a-88d7-785fb2f8e340%252Fdefinition.json%2526redirectlink%253D%252Fen%2526cancelRedirectLink%253D%252Fen%2526consentMessage%253Dyes%2526noLoginPrompt%253D1&hostname=myaccount.wrexham.gov.uk&withCredentials=true",
+          "scheduleLookupId": "5beab9a792bb5",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Section 1\":{\"UPRN\":{\"value\":\"{ref}\"},\"NoWeeks\":{\"value\":\"4\"},\"Language\":{\"value\":\"eng\"}}}}",
+          "scheduleRows": {
+            "mode": "html-pattern",
+            "htmlField": "UpcomingCollections",
+            "entryPattern": "<td>(?<date>\\d{2}/\\d{2}/\\d{4})</td>[^<]*<td>(?<body>[\\s\\S]*?)</td>",
+            "typePattern": "<li[^>]*>(?<type>[^<]+)</li>",
+            "typeSplit": " / "
+          },
+          "dateFormat": "dd/MM/yyyy",
+          "addressLookupId": "5a3bcc9448f28",
+          "addressBodyTemplate": "{\"formValues\":{\"Section 1\":{\"LocationSearch\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "uprn"
+          }
+        }
+      }
+    },
+    {
+      "gss": "E06000005",
+      "name": "Darlington Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Darlington Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.darlington.gov.uk/postaladdress/GetAddressesByPostcode/{postcode}?local=true",
+          "addressPattern": "\"id\":\"(?<ref>\\d+)\",\"description\":\"(?<label>[^\"]+)\"",
+          "scheduleUrl": "https://www.darlington.gov.uk/bins-waste-and-recycling/collection-day-lookup/?uprn={ref}",
+          "blockPattern": "<div class=\"collection-results\">(?<body>(?:(?!<div class=\"refuse-results)[\\s\\S])*?)</div><!--/collection-results-->(?:(?!<div class=\"refuse-results)[\\s\\S])*?<div class=\"collectionDate[^\"]*\">[^<]*<p>(?<date>[A-Za-z]+ \\d{1,2} [A-Za-z]+ \\d{4})",
+          "typePattern": "collection-result-text\">(?<type>[^<]+)</span>",
+          "dateFormat": "weekday-day-month-year"
+        }
+      }
     }
   ]
 }
