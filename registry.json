@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-10-24",
+  "updated": "2026-10-25",
   "councils": [
     {
       "gss": "E07000240",
@@ -9709,6 +9709,303 @@
           },
           "datePath": "NextCollection.RefuseCollectionBinDate",
           "dateFormat": "iso-datetime"
+        }
+      }
+    },
+    {
+      "gss": "E06000040",
+      "name": "Royal Borough of Windsor and Maidenhead",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Royal Borough of Windsor and Maidenhead",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "unpublished": [
+        {
+          "type": "FOOD",
+          "name": "Food waste",
+          "intervalWeeks": 1,
+          "onCollectionDay": true,
+          "source": "https://rbwm.gov.uk/environment-and-waste/recycling-and-rubbish/find-your-bin-collection-day"
+        },
+        {
+          "type": "TEXTILES",
+          "name": "Textiles",
+          "intervalWeeks": 2,
+          "onCollectionDay": true,
+          "source": "https://forms.rbwm.gov.uk/bincollections"
+        }
+      ],
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://forms.rbwm.gov.uk/bincollections?postcode={postcode}&submit=Search+for+address",
+          "addressPattern": "<tr><td>(?<label>[^<]+)</td><td><a href=\"\\?uprn=(?<ref>\\d+)\">",
+          "scheduleUrl": "https://forms.rbwm.gov.uk/bincollections?uprn={ref}",
+          "blockPattern": "<tr><td>(?<type>[^<]+)</td><td>(?<date>\\d{1,2}(?:st|nd|rd|th) [A-Za-z]+ \\d{4})</td></tr>",
+          "dateFormat": "weekday-ordinal-of-month-year"
+        }
+      }
+    },
+    {
+      "gss": "E07000234",
+      "name": "Bromsgrove District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Bromsgrove District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "brown bin",
+            "type": "GARDEN"
+          },
+          {
+            "match": "green bin",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "grey bin",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "brown bin"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://bincollections.bromsgrove.gov.uk/",
+          "addressForm": {
+            "PostCode": "{postcode}"
+          },
+          "addressPattern": "<option value=\"(?<ref>\\d+)\">(?<label>[^<]+)</option>",
+          "scheduleUrl": "https://bincollections.bromsgrove.gov.uk/BinCollections/Details",
+          "scheduleForm": {
+            "UPRN": "{ref}"
+          },
+          "blockPattern": "<div class=\"heading\">\\s*(?<type>[^<]+?)\\s*</div>(?<body>(?:(?!<div class=\"heading\">)[\\s\\S])*)",
+          "datePattern": "(?<date>[A-Z][a-z]+day, \\d{1,2} [A-Z][a-z]+ \\d{4})",
+          "dateFormat": "weekday-day-month-year"
+        }
+      }
+    },
+    {
+      "gss": "E07000236",
+      "name": "Redditch Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Redditch Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "green bin",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "grey bin",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://bincollections.redditchbc.gov.uk/",
+          "addressForm": {
+            "PostCode": "{postcode}"
+          },
+          "addressPattern": "<option value=\"(?<ref>\\d+)\">(?<label>[^<]+)</option>",
+          "scheduleUrl": "https://bincollections.redditchbc.gov.uk/BinCollections/Details",
+          "scheduleForm": {
+            "UPRN": "{ref}"
+          },
+          "blockPattern": "<div class=\"heading\">\\s*(?<type>[^<]+?)\\s*</div>(?<body>(?:(?!<div class=\"heading\">)[\\s\\S])*)",
+          "datePattern": "(?<date>[A-Z][a-z]+day, \\d{1,2} [A-Z][a-z]+ \\d{4})",
+          "dateFormat": "weekday-day-month-year"
+        }
+      }
+    },
+    {
+      "gss": "S12000045",
+      "name": "East Dunbartonshire Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from East Dunbartonshire Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "green bin",
+            "type": "GARDEN"
+          },
+          {
+            "match": "brown bin",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "blue bin",
+            "type": "PAPER"
+          },
+          {
+            "match": "grey bin",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "green bin"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.eastdunbarton.gov.uk/umbraco/api/bincollection/GetUPRNs?address={postcode}",
+          "addressPattern": "\"uprn\":\"(?<ref>\\d+)\"[^{}]*?\"addressLine1\":\"(?<label>(?:[^\"\\\\]|\\\\.)+)\"[^{}]*?\"town\":\"(?<label2>(?:[^\"\\\\]|\\\\.)+)\"",
+          "scheduleUrl": "https://www.eastdunbarton.gov.uk/services/a-z-of-services/bins-waste-and-recycling/bins-and-recycling/collections/?uprn={ref}",
+          "blockPattern": "<td class=\"[a-z-]+\">(?<type>[^<]+)</td>(?:(?!</tr>)[\\s\\S])*?<span>(?<date>[^<]+)</span>",
+          "dateFormat": "weekday-day-month-year"
+        }
+      }
+    },
+    {
+      "gss": "E07000194",
+      "name": "Lichfield District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Lichfield District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "blue bag",
+            "type": "PAPER"
+          },
+          {
+            "match": "purple bin",
+            "type": "PAPER"
+          },
+          {
+            "match": "blue bin",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "brown bin",
+            "type": "GARDEN"
+          },
+          {
+            "match": "black bin",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "brown bin"
+        ]
+      },
+      "unpublished": [
+        {
+          "type": "FOOD",
+          "name": "Food waste",
+          "intervalWeeks": 1,
+          "onCollectionDay": true,
+          "source": "https://www.lichfielddc.gov.uk/homepage/6/bin-collection-dates"
+        }
+      ],
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.lichfielddc.gov.uk/bartec_ajax/{postcode}",
+          "addressForm": {},
+          "addressPattern": "\"uprn\":\"(?<ref>\\d+)\"[^{}]*?\"label\":\"(?<label>[^\"]+)\"",
+          "scheduleUrl": "https://www.lichfielddc.gov.uk/homepage/6/bin-collection-dates?uprn={ref}",
+          "blockPattern": "<h3 class=\"bin-collection-tasks__heading\">(?:<span class=\"visually-hidden\">[^<]*</span>)?(?<type>[^<]+)(?:(?!</li>)[\\s\\S])*?<p class=\"bin-collection-tasks__date\">(?<date>[^<]+)</p>",
+          "dateFormat": "weekday-day-ordinal-month-noyear"
+        }
+      }
+    },
+    {
+      "gss": "E07000114",
+      "name": "Thanet District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Thanet District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.thanet.gov.uk/wp-content/mu-plugins/collection-day/incl/mu-collection-day-calls.php?searchAddress={postcode}",
+          "addressPattern": "\"(?<ref>\\d{6,})\":\"(?<label>(?:[^\"\\\\]|\\\\.)+)\"",
+          "scheduleUrl": "https://www.thanet.gov.uk/wp-content/mu-plugins/collection-day/incl/mu-collection-day-calls.php?pAddress={ref}",
+          "blockPattern": "\"name\":\"(?<type>[^\"]+)\"[^{}]*?\"nextDate\":\"(?<dd>\\d{2})\\\\?/(?<mm>\\d{2})\\\\?/(?<yyyy>\\d{4})",
+          "dateTemplate": "{dd}/{mm}/{yyyy}",
+          "dateFormat": "dd/MM/yyyy"
         }
       }
     }
