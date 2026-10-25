@@ -10172,6 +10172,320 @@
           "dateFormat": "weekday-day-month-year"
         }
       }
+    },
+    {
+      "gss": "E06000027",
+      "name": "Torbay Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Torbay Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "domestic",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://selfservice-torbay.servicebuilder.co.uk/core/addresslookup",
+          "addressPrimeUrl": "https://selfservice-torbay.servicebuilder.co.uk/renderform?t=62&k=09B72FF904A21A4B01A72AB6CCF28DC95105031C",
+          "addressPrimePattern": "name=\"FormGuid\" value=\"[^\"]+\"",
+          "addressForm": {
+            "query": "{postcode}",
+            "searchNlpg": "False",
+            "classification": ""
+          },
+          "addressPattern": "\"Key\":\"U(?<ref>\\d+)\",\"Value\":\"(?<label>[^\"]+)\"",
+          "schedulePrimeUrl": "https://selfservice-torbay.servicebuilder.co.uk/renderform?t=62&k=09B72FF904A21A4B01A72AB6CCF28DC95105031C",
+          "schedulePrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"[^>]*>[^<]*<input type=\"hidden\" name=\"FormGuid\" value=\"(?<guid>[^\"]+)\"",
+          "scheduleUrl": "https://selfservice-torbay.servicebuilder.co.uk/renderform/Form",
+          "scheduleForm": {
+            "__RequestVerificationToken": "{token}",
+            "FormGuid": "{guid}",
+            "ObjectTemplateID": "62",
+            "Trigger": "submit",
+            "CurrentSectionID": "0",
+            "TriggerCtl": "",
+            "FF1168": "U{ref}",
+            "FF1168lbltxt": "Please select your address",
+            "FF1168-text": "{postcode}"
+          },
+          "blockPattern": "<div style=\"width:360px;\" class=\"col\">(?<date>[^<]+)</div><div class=\"col\">(?<type>[^<]+)</div>",
+          "dateFormat": "weekday-day-month-year"
+        }
+      },
+      "unpublished": [
+        {
+          "type": "FOOD",
+          "name": "Food waste bin",
+          "intervalWeeks": 1,
+          "onCollectionDay": true,
+          "source": "https://www.torbay.gov.uk/recycling/bin-collections/"
+        }
+      ]
+    },
+    {
+      "gss": "E07000035",
+      "name": "Derbyshire Dales District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Derbyshire Dales District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "domestic",
+            "type": "REFUSE"
+          },
+          {
+            "match": "trade waste",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://selfserve.derbyshiredales.gov.uk/core/addresslookup",
+          "addressPrimeUrl": "https://selfserve.derbyshiredales.gov.uk/renderform?t=103&k=9644C066D2168A4C21BCDA351DA2642526359DFF",
+          "addressPrimePattern": "name=\"FormGuid\" value=\"[^\"]+\"",
+          "addressForm": {
+            "query": "{postcode}",
+            "searchNlpg": "False",
+            "classification": ""
+          },
+          "addressPattern": "\"U(?<ref>\\d+)\":\"(?<label>[^\"]+)\"",
+          "schedulePrimeUrl": "https://selfserve.derbyshiredales.gov.uk/renderform?t=103&k=9644C066D2168A4C21BCDA351DA2642526359DFF",
+          "schedulePrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"[^>]*>[^<]*<input type=\"hidden\" name=\"FormGuid\" value=\"(?<guid>[^\"]+)\"",
+          "scheduleUrl": "https://selfserve.derbyshiredales.gov.uk/renderform/Form",
+          "scheduleForm": {
+            "__RequestVerificationToken": "{token}",
+            "FormGuid": "{guid}",
+            "ObjectTemplateID": "103",
+            "Trigger": "submit",
+            "CurrentSectionID": "0",
+            "TriggerCtl": "",
+            "FF2924": "U{ref}",
+            "FF2924lbltxt": "Collection address",
+            "FF2924-text": "{postcode}"
+          },
+          "blockPattern": "<div class=\"col-sm-5\">(?<date>[^<]*<strong>[^<]*</strong>[^<]*)</div><div class=\"col-sm-6\"><strong>(?<type>[^<]+)</strong>",
+          "dateFormat": "weekday-day-month-comma-year"
+        }
+      }
+    },
+    {
+      "gss": "E07000141",
+      "name": "South Kesteven District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from South Kesteven District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "green",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "green"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://selfservice.southkesteven.gov.uk/core/addresslookup",
+          "addressPrimeUrl": "https://selfservice.southkesteven.gov.uk/renderform?t=213&k=2074C945A63DDC0D18F1EB74DA230AC3122958B1",
+          "addressPrimePattern": "name=\"FormGuid\" value=\"[^\"]+\"",
+          "addressForm": {
+            "query": "{postcode}",
+            "searchNlpg": "False",
+            "classification": ""
+          },
+          "addressPattern": "\"U(?<ref>\\d+)\":\"(?<label>[^\"]+)\"",
+          "schedulePrimeUrl": "https://selfservice.southkesteven.gov.uk/renderform?t=213&k=2074C945A63DDC0D18F1EB74DA230AC3122958B1",
+          "schedulePrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"[^>]*>[^<]*<input type=\"hidden\" name=\"FormGuid\" value=\"(?<guid>[^\"]+)\"[\\s\\S]*?name=\"CurrentSectionID\" id=\"current-section-id\" value=\"(?<section>\\d+)\"",
+          "scheduleUrl": "https://selfservice.southkesteven.gov.uk/renderform/Form",
+          "scheduleForm": {
+            "__RequestVerificationToken": "{token}",
+            "FormGuid": "{guid}",
+            "ObjectTemplateID": "213",
+            "Trigger": "submit",
+            "CurrentSectionID": "{section}",
+            "FF5265": "U{ref}",
+            "FF5265lbltxt": "Collection Address",
+            "FF5265-text": "{postcode}"
+          },
+          "blockPattern": "<td class='Alloy-table-col'>(?<date>[^<]+)</td>[^<]*<td class='Alloy-table-col'>(?<type>[^<]+)</td>",
+          "dateFormat": "weekday-day-month-comma-year"
+        }
+      }
+    },
+    {
+      "gss": "E07000036",
+      "name": "Erewash Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Erewash Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "domestic",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.erewash.gov.uk/bins-and-recycling/when-my-bin-day?ajax_form=1&_wrapper_format=drupal_ajax",
+          "addressPrimeUrl": "https://www.erewash.gov.uk/bins-and-recycling/when-my-bin-day",
+          "addressPrimePattern": "name=\"form_build_id\" value=\"(?<buildId>form-[^\"]+)\"[^>]*>[^<]*<input[^>]*name=\"form_id\" value=\"bbd_whitespace_bbd_whitespace_address_search\"",
+          "addressForm": {
+            "postcode": "{postcode}",
+            "link_uri": "entity:node/646",
+            "link_text": "View the calendar",
+            "form_build_id": "{buildId}",
+            "form_id": "bbd_whitespace_bbd_whitespace_address_search",
+            "_triggering_element_name": "postcode"
+          },
+          "addressJsonPath": "[*].data",
+          "addressPattern": "<option value=\"(?<ref>\\d{6,})\">(?<label>[^<]+)",
+          "scheduleUrl": "https://www.erewash.gov.uk/bbd-whitespace/one-year-collection-dates-without-christmas?uprn={ref}",
+          "blockPattern": "\"date\":\"(?<date>\\d{4}-\\d{2}-\\d{2})\"[^}]*?\"service\":\"(?<type>[^\"]+)\"",
+          "dateFormat": "iso-local-date"
+        }
+      }
+    },
+    {
+      "gss": "E07000196",
+      "name": "South Staffordshire Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from South Staffordshire Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "general waste",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.sstaffs.gov.uk/viewyourcollectioncalendar?ajax_form=1&_wrapper_format=drupal_ajax",
+          "addressPrimeUrl": "https://www.sstaffs.gov.uk/viewyourcollectioncalendar",
+          "addressPrimePattern": "name=\"form_build_id\" value=\"(?<buildId>form-[^\"]+)\"[^>]*>[^<]*<input[^>]*name=\"form_id\" value=\"bbd_bin_lookup_form\"",
+          "addressForm": {
+            "form_build_id": "{buildId}",
+            "form_id": "bbd_bin_lookup_form",
+            "postcode": "{postcode}",
+            "_triggering_element_name": "op",
+            "_triggering_element_value": "Look up address"
+          },
+          "addressJsonPath": "[*].data",
+          "addressPattern": "<option value=\"(?<ref>\\d{6,})\" ?>(?<label>[^<]+)</option>",
+          "scheduleUrl": "https://www.sstaffs.gov.uk/where-i-live?objectId={ref}",
+          "blockPattern": "<p class=\"collection-date\"><strong>(?<date>[^<]+)</strong></p>[\\s\\S]*?<p class=\"collection-type\"><strong>(?<type>[^<]+)</strong>|<td>[^<]*<img class=\"bin-icon\"[^>]*>(?<typeFallback>[^<]+)</td>[^<]*(?<body><td[^>]*>[^<]+</td>)",
+          "datePattern": "(?<date>[A-Z][a-z]+, \\d{1,2} [A-Z][a-z]+ \\d{4})",
+          "dateFormat": "weekday-day-month-year",
+          "typeSplit": "&"
+        }
+      }
     }
   ]
 }
