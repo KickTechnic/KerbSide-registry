@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-10-25",
+  "updated": "2026-10-26",
   "councils": [
     {
       "gss": "E07000240",
@@ -10683,6 +10683,255 @@
           "blockPattern": "<div class=\"col-9 card-text text--left\">\\s*<strong>(?<type>[^<]+)</strong><br />\\s*(?<date>[A-Z][a-z]+ \\d{1,2} [A-Z][a-z]+ \\d{4})\\s*<br />",
           "dateFormat": "weekday-day-month-year",
           "refIsFormValue": true
+        }
+      }
+    },
+    {
+      "gss": "E07000061",
+      "name": "Eastbourne Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Eastbourne Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://environmentfirst.co.uk/results.php",
+          "addressForm": {
+            "property_no": "",
+            "property_name": "",
+            "street": "",
+            "postcode": "{postcode}"
+          },
+          "addressPattern": "<tr>\\s*<td>(?<label>[^<]*)</td>\\s*<td>(?<label2>[^<]*)</td>\\s*<td>(?<label4>[^<]*)</td>\\s*<td>(?<label3>[^<]*)</td>\\s*<td>(?<label5>[^<]*)</td>\\s*<td>[^<]*</td>\\s*<td><a class=\"button\" href=\"house\\.php\\?uprn=(?<ref>\\d+)\">",
+          "scheduleUrl": "https://environmentfirst.co.uk/house.php?uprn={ref}",
+          "blockPattern": "next (?<type>[a-z ]+?) collection day is: <strong>(?<date>[^<]+)</strong>",
+          "dateFormat": "weekday-ordinal-of-month-year"
+        }
+      },
+      "unpublished": [
+        {
+          "type": "FOOD",
+          "name": "Food waste bin",
+          "intervalWeeks": 1,
+          "onCollectionDay": true,
+          "source": "https://www.lewes-eastbourne.gov.uk/foodwaste"
+        }
+      ]
+    },
+    {
+      "gss": "E07000063",
+      "name": "Lewes District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Lewes District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://environmentfirst.co.uk/results.php",
+          "addressForm": {
+            "property_no": "",
+            "property_name": "",
+            "street": "",
+            "postcode": "{postcode}"
+          },
+          "addressPattern": "<tr>\\s*<td>(?<label>[^<]*)</td>\\s*<td>(?<label2>[^<]*)</td>\\s*<td>(?<label4>[^<]*)</td>\\s*<td>(?<label3>[^<]*)</td>\\s*<td>(?<label5>[^<]*)</td>\\s*<td>[^<]*</td>\\s*<td><a class=\"button\" href=\"house\\.php\\?uprn=(?<ref>\\d+)\">",
+          "scheduleUrl": "https://environmentfirst.co.uk/house.php?uprn={ref}",
+          "blockPattern": "next (?<type>[a-z ]+?) collection day is: <strong>(?<date>[^<]+)</strong>",
+          "dateFormat": "weekday-ordinal-of-month-year"
+        }
+      },
+      "unpublished": [
+        {
+          "type": "FOOD",
+          "name": "Food waste bin",
+          "intervalWeeks": 1,
+          "onCollectionDay": true,
+          "source": "https://www.lewes-eastbourne.gov.uk/AWC"
+        }
+      ]
+    },
+    {
+      "gss": "E07000223",
+      "name": "Adur District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Adur District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.adur-worthing.gov.uk/bin-day/?brlu-address-postcode={postcode}&return-url=%2Fbin-day%2F&action=search",
+          "addressPattern": "<option value=\"(?<ref>\\d{6,})\">(?<label>[^<]+)</option>",
+          "scheduleUrl": "https://www.adur-worthing.gov.uk/bin-day/?brlu-selected-address={ref}&return-url=%2Fbin-day%2F",
+          "blockPattern": "<h2 class=\"mt-2\">(?<type>[^<]+)</h2>(?:(?!<h2)[\\s\\S])*?<strong>Next collection dates:</strong>(?<body>(?:<br/>[^<]*)+)</p>",
+          "datePattern": "<br/>\\s*(?<date>[A-Z][a-z]+day \\d{1,2}(?:st|nd|rd|th) [A-Z][a-z]+)",
+          "dateFormat": "weekday-day-ordinal-month-noyear"
+        }
+      }
+    },
+    {
+      "gss": "E07000229",
+      "name": "Worthing Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Worthing Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.adur-worthing.gov.uk/bin-day/?brlu-address-postcode={postcode}&return-url=%2Fbin-day%2F&action=search",
+          "addressPattern": "<option value=\"(?<ref>\\d{6,})\">(?<label>[^<]+)</option>",
+          "scheduleUrl": "https://www.adur-worthing.gov.uk/bin-day/?brlu-selected-address={ref}&return-url=%2Fbin-day%2F",
+          "blockPattern": "<h2 class=\"mt-2\">(?<type>[^<]+)</h2>(?:(?!<h2)[\\s\\S])*?<strong>Next collection dates:</strong>(?<body>(?:<br/>[^<]*)+)</p>",
+          "datePattern": "<br/>\\s*(?<date>[A-Z][a-z]+day \\d{1,2}(?:st|nd|rd|th) [A-Z][a-z]+)",
+          "dateFormat": "weekday-day-ordinal-month-noyear"
+        }
+      }
+    },
+    {
+      "gss": "E07000192",
+      "name": "Cannock Chase District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Cannock Chase District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycle",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://ccdc.opendata.onl/DynamicCall.dll",
+          "addressForm": {
+            "Method": "PostcodeCheck",
+            "GetPCAddresses": "true",
+            "Postcode": "{postcode}"
+          },
+          "addressPattern": "<Property>\\s*<UPRN>(?<ref>\\d+)</UPRN>\\s*<Address>(?<label>[^\\r\\n<]+)\\s+(?<label2>[^\\r\\n<]+)",
+          "scheduleUrl": "https://ccdc.opendata.onl/DynamicCall.dll",
+          "scheduleForm": {
+            "Method": "CollectionDates",
+            "Postcode": "{postcode}",
+            "UPRN": "{ref}"
+          },
+          "blockPattern": "<Service>(?<type>[^<]+)</Service>(?:(?!</Collection>)[\\s\\S])*?<Date>(?<date>\\d{2}/\\d{2}/\\d{4})",
+          "dateFormat": "dd/MM/yyyy"
         }
       }
     }
