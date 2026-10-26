@@ -3793,6 +3793,7 @@
           "addressUrl": "https://services.southwark.gov.uk/llpg/lookup?postcode={postcode}&classification=R",
           "addressPattern": "\"Uprn\":\"(?<ref>\\d+)\".*?\"AddressLine1\":\"(?<label>[^\"]*)\",\"AddressLine2\":\"(?<label2>[^\"]*)\"",
           "scheduleUrl": "https://services.southwark.gov.uk/bins/lookup/{ref}",
+          "errorPattern": "<div class=\"errorMessage\">[^<]",
           "blockPattern": "id=\"\\w+CollectionTitle\">(?<type>[^<]+)</p>(?<body>[\\s\\S]*?)</div>",
           "datePattern": "collection: (?<date>[^<]+)</p>",
           "dateFormat": "weekday-day-month-year"
@@ -3886,8 +3887,8 @@
           "addressPattern": "<option value=\"(?<ref>\\d+)\">(?<label>[^<]+)</option>",
           "scheduleUrl": "https://www.wolverhampton.gov.uk/find-my-nearest/{postcode}/{ref}",
           "blockPattern": "<h3>(?<type>[^<]+)</h3>(?<body>[\\s\\S]*?)</div>",
-          "datePattern": "<h4>Next date: (?<date>[^<]+)</h4>",
-          "dateFormat": "month-day-year"
+          "datePattern": "<h4>(?<date>[A-Za-z]+ \\d{1,2})</h4>",
+          "dateFormat": "month-day-noyear"
         }
       }
     },
