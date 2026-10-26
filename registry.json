@@ -10934,6 +10934,227 @@
           "dateFormat": "dd/MM/yyyy"
         }
       }
+    },
+    {
+      "gss": "S12000021",
+      "name": "North Ayrshire Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from North Ayrshire Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "brown",
+            "type": "FOOD",
+            "alsoCarries": [
+              "GARDEN"
+            ]
+          },
+          {
+            "match": "purple",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "blue",
+            "type": "PAPER"
+          },
+          {
+            "match": "grey",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.maps.north-ayrshire.gov.uk/arcgis/rest/services/AGOL/CAG_VIEW/MapServer/0/query?f=json&outFields=ADDRESS%2CUPRN&orderByFields=ADDRESS%20ASC&returnGeometry=false&where=UPPER%28ADDRESS%29%20LIKE%20%27%25{postcode}%25%27",
+          "addressPattern": "\"ADDRESS\":\"(?<label>[^\"]+)\",\"UPRN\":\"0*(?<ref>\\d+)\"",
+          "scheduleUrl": "https://www.maps.north-ayrshire.gov.uk/arcgis/rest/services/AGOL/YourLocationLive/MapServer/8/query?f=json&outFields=*&returnGeometry=false&where=UPRN%20%3D%20%27{ref}%27",
+          "blockPattern": "\"(?<type>BLUE|GREY|PURPLE|BROWN)_DATE_TEXT\":\"(?<date>\\d{2}/\\d{2}/\\d{4})\"",
+          "dateFormat": "dd/MM/yyyy"
+        }
+      }
+    },
+    {
+      "gss": "E06000012",
+      "name": "North East Lincolnshire Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from North East Lincolnshire Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "cans",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "household",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.nelincs.gov.uk/wp-admin/admin-ajax.php?action=nelincs_search&nonce={nonce}&q={postcode}",
+          "addressPrimeUrl": "https://www.nelincs.gov.uk/refuse-collection-schedule/",
+          "addressPrimePattern": "\"nonce\":\"(?<nonce>[0-9a-f]+)\"",
+          "addressPattern": "\"address\":\"(?<label>[^\"]+)\",\"uprn\":(?<ref>\\d+)",
+          "scheduleUrl": "https://www.nelincs.gov.uk/refuse-collection-schedule/?uprn={ref}",
+          "blockPattern": "\\{title : '(?<type>[^']+)',start : '(?<date>\\d{4}-\\d{2}-\\d{2})'",
+          "dateFormat": "iso-local-date"
+        }
+      }
+    },
+    {
+      "gss": "E07000129",
+      "name": "Blaby District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Blaby District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://my.blaby.gov.uk/collections?location=change&address={postcode}&rememberloc=&layer=",
+          "addressPattern": "set-location\\.php\\?ref=(?<ref>\\d+)&redirect=collections&rememberloc=\"><strong>(?<label>[^<]+)</strong>",
+          "scheduleUrl": "https://my.blaby.gov.uk/set-location.php?ref={ref}&redirect=collections",
+          "cookieSession": true,
+          "blockPattern": "<h2>(?<type>[^<]+)</h2>\\s*<p>Next [^<]*</p>\\s*<p><strong>(?<body>[^<]+)</strong>",
+          "datePattern": "(?<date>\\d{2}/\\d{2}/\\d{4})",
+          "dateFormat": "dd/MM/yyyy"
+        }
+      }
+    },
+    {
+      "gss": "E07000132",
+      "name": "Hinckley and Bosworth Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Hinckley and Bosworth Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.hinckley-bosworth.gov.uk/address-search?location=change&redirect=refuse&fpcode={postcode}&layer=",
+          "addressPattern": "<a href=\"/set-location\\?id=(?<ref>\\d+)&redirect=refuse&rememberloc=\"><strong>(?<label>[^<]+)</strong>",
+          "scheduleUrl": "https://www.hinckley-bosworth.gov.uk/set-location?id={ref}&redirect=refuse",
+          "cookieSession": true,
+          "blockPattern": "<h3 class=\"collectiondate\">(?<date>[^<:]+):</h3>(?<body>(?:(?!</div>)[\\s\\S])*)",
+          "typePattern": "<img title=\"(?<type>[^\"]+)\" class=\"collection\"",
+          "dateFormat": "weekday-day-ordinal-month-noyear"
+        }
+      }
+    },
+    {
+      "gss": "E07000039",
+      "name": "South Derbyshire District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from South Derbyshire District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "brown",
+            "type": "GARDEN"
+          },
+          {
+            "match": "green",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "black",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://maps.southderbyshire.gov.uk/iShareLive.Web/getdata.aspx?type=json&service=LocationSearch&RequestType=LocationSearch&pagesize=100&startnum=1&mapsource=mapsources/MyHouse&location={postcode}",
+          "addressPattern": "\\[\\s*\"(?<ref>\\d+)\", \"[^\"]*\", \"[^\"]*\", \"Property\", \"[^\"]*\", \"[^\"]*\", \"[^\"]*\", \"(?<label>[^\"]+)\"",
+          "scheduleUrl": "https://maps.southderbyshire.gov.uk/iShareLive.Web/getdata.aspx?RequestType=LocalInfo&ms=mapsources/MyHouse&format=JSONP&group=Recycling%20Bins%20and%20Waste%7CNext%20Bin%20Collections&uid={ref}",
+          "blockPattern": ">(?<date>\\d{1,2} [A-Z][a-z]+ \\d{4})</span><span[^>]*>(?<body>[^<]+)</span>",
+          "typePattern": "(?:^|, | and )(?<type>[A-Z][a-z]+(?: Waste)?)",
+          "dateFormat": "weekday-day-month-year"
+        }
+      }
     }
   ]
 }
