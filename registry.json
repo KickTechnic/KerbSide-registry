@@ -11155,6 +11155,165 @@
           "dateFormat": "weekday-day-month-year"
         }
       }
+    },
+    {
+      "gss": "E07000131",
+      "name": "Harborough District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Harborough District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "non-recyclable",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://harborough.fccenvironment.co.uk/getAddress",
+          "addressJson": {
+            "Postcode": "{postcode}"
+          },
+          "addressPattern": "\"SiteShortAddress\":\"(?<label>[^\"]+)\"[^{}]*?\"AccountSiteUprn\":\"(?<ref>\\d+)\"",
+          "scheduleUrl": "https://harborough.fccenvironment.co.uk/detail-address",
+          "scheduleForm": {
+            "Uprn": "{ref}"
+          },
+          "blockPattern": "<li>(?<type>[^<]+?)\\s*<span class=\"pull-right\">(?<date>[^<]+)</span></li>",
+          "dateFormat": "weekday-day-month-year"
+        }
+      }
+    },
+    {
+      "gss": "E07000179",
+      "name": "South Oxfordshire District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from South Oxfordshire District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "textiles",
+            "type": "TEXTILES"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ],
+        "exclude": [
+          "bulky waste"
+        ]
+      },
+      "platform": {
+        "kind": "ebase",
+        "version": 1,
+        "ebase": {
+          "startUrl": "https://forms.southandvale.gov.uk/binday.eb",
+          "openFunction": {
+            "name": "gotoPage",
+            "parameter": "location"
+          },
+          "postcodeField": "CTRL:QIonQNT1:_:A",
+          "searchFunction": "searchPostcode",
+          "addressControl": "FIIjpkcH",
+          "scheduleUrl": "https://forms.southandvale.gov.uk/api/property/bins/{ref}",
+          "blockPattern": "\"collection_date\"\\s*:\\s*\"(?<date>\\d{2}/\\d{2}/\\d{4})\"(?<body>(?:(?!\"collection_date\")[\\s\\S])*)",
+          "typePattern": "\"bin_type\"\\s*:\\s*\"(?<type>[^\"]+)\"",
+          "dateFormat": "dd/MM/yyyy"
+        }
+      }
+    },
+    {
+      "gss": "E07000180",
+      "name": "Vale of White Horse District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Vale of White Horse District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "textiles",
+            "type": "TEXTILES"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ],
+        "exclude": [
+          "bulky waste"
+        ]
+      },
+      "platform": {
+        "kind": "ebase",
+        "version": 1,
+        "ebase": {
+          "startUrl": "https://forms.southandvale.gov.uk/binday.eb",
+          "openFunction": {
+            "name": "gotoPage",
+            "parameter": "location"
+          },
+          "postcodeField": "CTRL:QIonQNT1:_:A",
+          "searchFunction": "searchPostcode",
+          "addressControl": "FIIjpkcH",
+          "scheduleUrl": "https://forms.southandvale.gov.uk/api/property/bins/{ref}",
+          "blockPattern": "\"collection_date\"\\s*:\\s*\"(?<date>\\d{2}/\\d{2}/\\d{4})\"(?<body>(?:(?!\"collection_date\")[\\s\\S])*)",
+          "typePattern": "\"bin_type\"\\s*:\\s*\"(?<type>[^\"]+)\"",
+          "dateFormat": "dd/MM/yyyy"
+        }
+      }
     }
   ]
 }
