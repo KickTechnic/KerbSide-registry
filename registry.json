@@ -12244,6 +12244,47 @@
           "dateFormat": "weekday-dd/MM/yyyy"
         }
       }
+    },
+    {
+      "gss": "E07000173",
+      "name": "Gedling Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Gedling Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "general",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "liberty",
+        "liberty": {
+          "startUrl": "https://waste.digital.gedling.gov.uk/w/webpage/bin-collections",
+          "xhr": true,
+          "rowPattern": "data-class_name=\"row\"(?:(?!<tr\\b)[\\s\\S])*?data-current_value=\"(?<type>[^\"]+)\"(?:(?!<tr\\b)[\\s\\S])*?data-current_value=\"(?<date>\\d{2}/\\d{2}/\\d{4})\"",
+          "dateFormat": "dd/MM/yyyy"
+        }
+      }
     }
   ]
 }
