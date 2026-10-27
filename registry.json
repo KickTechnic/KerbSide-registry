@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-10-26",
+  "updated": "2026-10-27",
   "councils": [
     {
       "gss": "E07000240",
@@ -11313,6 +11313,175 @@
           "blockPattern": "\"collection_date\"\\s*:\\s*\"(?<date>\\d{2}/\\d{2}/\\d{4})\"(?<body>(?:(?!\"collection_date\")[\\s\\S])*)",
           "typePattern": "\"bin_type\"\\s*:\\s*\"(?<type>[^\"]+)\"",
           "dateFormat": "dd/MM/yyyy"
+        }
+      }
+    },
+    {
+      "gss": "E08000026",
+      "name": "Coventry City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Coventry City Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "myaccount.coventry.gov.uk",
+          "sessionUrl": "https://myaccount.coventry.gov.uk/authapi/isauthenticated?uri=https%253A%252F%252Fmyaccount.coventry.gov.uk%252Fservice%252Ffind_my_bin_day&hostname=myaccount.coventry.gov.uk&withCredentials=true",
+          "scheduleLookupId": "6a675c200be8f",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Section 1\":{\"Address_UPRN\":{\"value\":\"{ref}\"}}}}",
+          "scheduleRows": {
+            "mode": "fixed-fields",
+            "dateSuffix": "_Date",
+            "errorField": "Bartec_Error"
+          },
+          "dateFormat": "iso-datetime",
+          "addressLookupId": "61fa71ad65026",
+          "addressBodyTemplate": "{\"formValues\":{\"Section 1\":{\"AddressSearch\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "uprn"
+          }
+        }
+      }
+    },
+    {
+      "gss": "E07000207",
+      "name": "Elmbridge Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Elmbridge Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "textiles",
+            "type": "TEXTILES"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "domestic waste",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "elmbridge-self.achieveservice.com",
+          "sessionUrl": "https://elmbridge-self.achieveservice.com/authapi/isauthenticated?uri=https%253A%252F%252Felmbridge-self.achieveservice.com%252FAchieveForms%252F%253Fmode%253Dfill%2526consentMessage%253Dyes%2526form_uri%253Dsandbox-publish%253A%252F%252FAF-Process-be7d38c3-325c-4028-95c9-140e896d3ad4%252FAF-Stage-6ee0ea94-54aa-4c8b-9286-08c91e00b4b0%252Fdefinition.json%2526process%253D1%2526process_uri%253Dsandbox-processes%253A%252F%252FAF-Process-be7d38c3-325c-4028-95c9-140e896d3ad4%2526process_id%253DAF-Process-be7d38c3-325c-4028-95c9-140e896d3ad4&hostname=elmbridge-self.achieveservice.com&withCredentials=true",
+          "scheduleLookupId": "663b557cdaece",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Your address\":{\"UPRN\":{\"value\":\"{ref}\"}}}}",
+          "scheduleRows": {
+            "mode": "date-rows",
+            "dateField": "Date",
+            "typeFieldPattern": "Service\\d+"
+          },
+          "dateFormat": "dd/MM/yyyy HH:mm:ss",
+          "addressLookupId": "69d619f23f9fa",
+          "addressBodyTemplate": "{\"formValues\":{\"Your address\":{\"lu_postcode\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "UPRN"
+          }
+        }
+      }
+    },
+    {
+      "gss": "S12000042",
+      "name": "Dundee City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Dundee City Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "brown bin",
+            "type": "GARDEN"
+          },
+          {
+            "match": "green bin",
+            "type": "FOOD"
+          },
+          {
+            "match": "blue bin",
+            "type": "PAPER"
+          },
+          {
+            "match": "burgundy bin",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "grey bin",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "brown bin"
+        ]
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "my.dundeecity.gov.uk",
+          "sessionUrl": "https://my.dundeecity.gov.uk/authapi/isauthenticated?uri=https%253A%252F%252Fmy.dundeecity.gov.uk%252Fservice%252FBin_Collection_Calendar&hostname=my.dundeecity.gov.uk&withCredentials=true",
+          "scheduleUrl": "https://www.dundee-mybins.co.uk/get_calendar.php?rn={ref}",
+          "scheduleRows": {
+            "mode": "json-array",
+            "typeField": "title",
+            "dateField": "start"
+          },
+          "dateFormat": "iso-local-date",
+          "addressLookupId": "58d9170b62b18",
+          "addressBodyTemplate": "{\"formValues\":{\"Calendar\":{\"postcode_search\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "uprn"
+          }
         }
       }
     }
