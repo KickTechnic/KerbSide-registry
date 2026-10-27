@@ -12092,6 +12092,58 @@
           "typeSplit": " and "
         }
       }
+    },
+    {
+      "gss": "E07000175",
+      "name": "Newark and Sherwood District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Newark and Sherwood District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://app.newark-sherwooddc.gov.uk/bincollection/",
+          "addressPrimeUrl": "https://app.newark-sherwooddc.gov.uk/bincollection/",
+          "addressPrimePattern": "name=\"__VIEWSTATE\" id=\"__VIEWSTATE\" value=\"(?<viewState>[^\"]*)\"[\\s\\S]*?name=\"__VIEWSTATEGENERATOR\" id=\"__VIEWSTATEGENERATOR\" value=\"(?<generator>[^\"]*)\"[\\s\\S]*?name=\"__EVENTVALIDATION\" id=\"__EVENTVALIDATION\" value=\"(?<validation>[^\"]*)\"",
+          "addressForm": {
+            "__VIEWSTATE": "{viewState}",
+            "__VIEWSTATEGENERATOR": "{generator}",
+            "__EVENTVALIDATION": "{validation}",
+            "ctl00$MainContent$TextBoxSearch": "{postcode}",
+            "ctl00$MainContent$LinkButtonSearch": "Search"
+          },
+          "addressPattern": "<a href=\"collection\\.aspx\\?pid=(?<ref>\\d+)\"[^>]*>(?:<i[^>]*></i>)?&nbsp;(?<label>[^<]+)</a>",
+          "scheduleUrl": "https://app.newark-sherwooddc.gov.uk/bincollection/collection?pid={ref}",
+          "blockPattern": "<tr class=\"bin_[a-z]+\">[\\s\\S]*?<span class=\"ms-2[^\"]*\">(?<type>[^,<]+), (?<date>[A-Za-z]+ \\d{1,2}(?:st|nd|rd|th) [A-Za-z]+ \\d{4})</span>",
+          "dateFormat": "weekday-ordinal-of-month-year"
+        }
+      }
     }
   ]
 }
