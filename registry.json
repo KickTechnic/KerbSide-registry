@@ -11709,6 +11709,133 @@
           ]
         }
       }
+    },
+    {
+      "gss": "W06000014",
+      "name": "Vale of Glamorgan Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Vale of Glamorgan Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "textiles",
+            "type": "TEXTILES"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "greenwaste",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "residual",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "greenwaste"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://myvale.valeofglamorgan.gov.uk/getdata.aspx?RequestType=LocationSearch&location={postcode}&pagesize=100&startnum=1&gettotals=false&type=json",
+          "addressPattern": "\\[\\s*\"(?<ref>\\d+)\", \"[^\"]*\", \"[^\"]*\", \"[^\"]*\", \"[^\"]*\", \"[^\"]*\", \"[^\"]*\", \"(?<label>[^\"]+)\"",
+          "scheduleUrl": "https://myvale.valeofglamorgan.gov.uk/getdata.aspx?RequestType=LocalInfo&ms=ValeOfGlamorgan/AllMaps&group=Waste%7Cnew_refuse&type=jsonp&callback=AddressInfoCallback&uid={ref}",
+          "blockPattern": "\"(?<type>residual|greenwaste)nextcollectiondate\":\"[A-Za-z]+ +(?<date>\\d{1,2} [A-Za-z]+)\"",
+          "dateFormat": "weekday-day-ordinal-month-noyear",
+          "weekCodes": [
+            {
+              "name": "recycling",
+              "pattern": "\"recycling_food\":\"(?<day>[A-Z][a-z]+)\"",
+              "weekOne": "2026-10-12"
+            },
+            {
+              "name": "food",
+              "pattern": "\"recycling_food\":\"(?<day>[A-Z][a-z]+)\"",
+              "weekOne": "2026-10-12"
+            },
+            {
+              "name": "textiles",
+              "pattern": "\"textiles\":\"Yes\",\"textiles_schedule\":\"(?<day>[A-Z][a-z]+)",
+              "weekOne": "2026-10-12"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "gss": "E07000127",
+      "name": "West Lancashire Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from West Lancashire Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://your.westlancs.gov.uk/yourwestlancs.aspx?address={postcode}",
+          "addressPattern": "SELECT\\$\\d+&#39;\\)\">(?<label>[^<]+)</a></td><td class=\"hiddencol\">[^<]*</td><td>(?<ref>\\d+)</td>",
+          "cookieSession": true,
+          "scheduleSteps": [
+            {
+              "url": "https://your.westlancs.gov.uk/yourwestlancs.aspx?address={postcode}",
+              "pattern": "id=\"__VIEWSTATE\" value=\"(?<viewstate>[^\"]*)\"[\\s\\S]*?id=\"__VIEWSTATEGENERATOR\" value=\"(?<generator>[^\"]*)\"[\\s\\S]*?id=\"__EVENTVALIDATION\" value=\"(?<validation>[^\"]*)\"[\\s\\S]*?SELECT\\$(?<row>\\d+)&#39;\\)\">[^<]*</a></td><td class=\"hiddencol\">[^<]*</td><td>{ref}</td>"
+            }
+          ],
+          "scheduleUrl": "https://your.westlancs.gov.uk/yourwestlancs.aspx?address={postcode}",
+          "scheduleForm": {
+            "__EVENTTARGET": "ctl00$MainContent$GridView1",
+            "__EVENTARGUMENT": "SELECT${row}",
+            "__VIEWSTATE": "{viewstate}",
+            "__VIEWSTATEGENERATOR": "{generator}",
+            "__EVENTVALIDATION": "{validation}",
+            "ctl00$tbWebSB": "Address Search"
+          },
+          "blockPattern": "<strong>Next (?<type>[a-z ]+?) collection:[^<]*</strong>[^<]*</td>[^<]*<td>[^<]*<span id=\"ctl00_MainContent_lbNext\\w+RoundZones\">(?<date>\\d{2}/\\d{2}/\\d{4})</span>",
+          "dateFormat": "dd/MM/yyyy",
+          "weekCodes": [
+            {
+              "name": "food",
+              "pattern": "Docs/calendars/(?<day>[A-Z]{3,5}?)[AB]_refuse_recycling",
+              "weekOne": "2026-10-12"
+            }
+          ]
+        }
+      }
     }
   ]
 }
