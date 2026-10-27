@@ -11836,6 +11836,104 @@
           ]
         }
       }
+    },
+    {
+      "gss": "E07000062",
+      "name": "Hastings Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Hastings Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ],
+        "exclude": [
+          "container rollout"
+        ]
+      },
+      "platform": {
+        "kind": "json-rows",
+        "version": 1,
+        "jsonRows": {
+          "addressUrl": "https://el2.hastings.gov.uk/MyArea/CollectionDays.asmx/GetAddresses",
+          "addressJson": {
+            "PostCode": "{postcode}",
+            "PropertyNumber": ""
+          },
+          "addressRowsPath": "d[*]",
+          "addressLabelPath": "display",
+          "addressRefPath": "name",
+          "scheduleUrl": "https://el2.hastings.gov.uk/MyArea/CollectionDays.asmx/LookupCollectionDaysByService",
+          "scheduleJson": {
+            "Uprn": "{ref}"
+          },
+          "scheduleRowsPath": "d[*]",
+          "typePath": "Service",
+          "datePath": "Dates[*]",
+          "dateFormat": "dotnet-json-date-london"
+        }
+      }
+    },
+    {
+      "gss": "E09000025",
+      "name": "London Borough of Newham",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from London Borough of Newham",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "domestic",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://bincollection.newham.gov.uk/",
+          "addressForm": {
+            "Address": "{postcode}",
+            "btnSearch": "Search"
+          },
+          "addressPattern": "href=\"/Details/Index/(?<ref>\\d{12})\"[^>]*>Select</a></td>\\s*<td>(?<label>[^<]*)</td>\\s*<td>(?<label2>[^<]*)</td>",
+          "scheduleUrl": "https://bincollection.newham.gov.uk/Details/Index/{ref}",
+          "blockPattern": "Your <b>(?<type>[^<]+)</b> Collection Day</div>(?<body>(?:(?!<div class=\"col\">)[\\s\\S])*)",
+          "datePattern": "</mark>[^<\\d]*(?<date>\\d{2}/\\d{2}/\\d{4})",
+          "dateFormat": "dd/MM/yyyy"
+        }
+      }
     }
   ]
 }
