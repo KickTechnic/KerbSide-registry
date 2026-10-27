@@ -11934,6 +11934,100 @@
           "dateFormat": "dd/MM/yyyy"
         }
       }
+    },
+    {
+      "gss": "E08000001",
+      "name": "Bolton Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Bolton Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN",
+            "alsoCarries": [
+              "FOOD"
+            ]
+          },
+          {
+            "match": "beige",
+            "type": "PAPER"
+          },
+          {
+            "match": "burgundy",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS"
+            ]
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "headerPrime": {
+            "url": "https://bolton.form.uk.empro.verintcloudservices.com/api/citizen?archived=Y&preview=false&locale=en",
+            "headers": {
+              "auth": "Authorization"
+            }
+          },
+          "requestHeaders": {
+            "Authorization": "{auth}"
+          },
+          "addressUrl": "https://bolton.form.uk.empro.verintcloudservices.com/api/widget?action=propertysearch&actionedby=ps_address&loadform=true&access=citizen&locale=en",
+          "addressJson": {
+            "name": "es_bin_collection_dates",
+            "data": {
+              "postcode": "{postcode}"
+            },
+            "email": "",
+            "caseid": "",
+            "xref": "",
+            "xref1": "",
+            "xref2": ""
+          },
+          "addressPattern": "\"value\":\"(?<ref>\\d{6,12})\",\"label\":\"(?<label>(?:[^\"\\\\]|\\\\.)+)\"",
+          "resolve": [
+            {
+              "url": "https://bolton.form.uk.empro.verintcloudservices.com/api/getobjectdata?objecttype=property&objectid={ref}",
+              "emptyPost": true,
+              "pattern": "\"property-UPRN\":\"(?<ref>\\d{1,12})\""
+            }
+          ],
+          "scheduleUrl": "https://bolton.form.uk.empro.verintcloudservices.com/api/custom?action=es_get_bin_collection_dates&actionedby=uprn_changed&loadform=true&access=citizen&locale=en",
+          "scheduleJson": {
+            "name": "es_bin_collection_dates",
+            "data": {
+              "uprn": "{ref}",
+              "start_date": "{from}",
+              "end_date": "{to}"
+            },
+            "email": "",
+            "caseid": "",
+            "xref": "",
+            "xref1": "",
+            "xref2": ""
+          },
+          "windowDays": 56,
+          "windowDateFormat": "dd/MM/yyyy",
+          "scheduleJsonPath": "data.collection_dates",
+          "blockPattern": "<strong>(?<type>[^<]+?):?\\s*</strong>(?<body>(?:(?!<strong>)[\\s\\S])*)",
+          "datePattern": "<li>(?<date>[^<]+)</li>",
+          "dateFormat": "weekday-day-month-year"
+        }
+      }
     }
   ]
 }
