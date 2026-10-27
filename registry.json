@@ -12028,6 +12028,70 @@
           "dateFormat": "weekday-day-month-year"
         }
       }
+    },
+    {
+      "gss": "E07000040",
+      "name": "East Devon District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from East Devon District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          },
+          {
+            "match": "green",
+            "type": "GARDEN"
+          }
+        ],
+        "optInMatch": [
+          "green"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://eastdevon.gov.uk/repositories/hidden-pages/address-finder/?qtype=bins&term={postcode}",
+          "addressPattern": "\"label\":\"(?<label>[^\"]+)\"[^{}]*?\"UPRN\":\"(?<ref>\\d+)\"",
+          "scheduleUrl": "https://eastdevon.gov.uk/repositories/hidden-pages/address-finder/?qsource=UPRN&qtype=bins&term={ref}",
+          "scheduleJsonPath": "[*].Results",
+          "blockPattern": "<h2>Your (?<type>[^<]+)</h2>(?<body><p[^>]*>Your next (?:(?!<h2)[\\s\\S])*?every (?<every>(?:two |three |four )?weeks?)(?:(?!<h2)[\\s\\S])*)",
+          "cadence": [
+            {
+              "match": "^week$",
+              "days": 7
+            },
+            {
+              "match": "^two weeks$",
+              "days": 14
+            },
+            {
+              "match": "^three weeks$",
+              "days": 21
+            },
+            {
+              "match": "^four weeks$",
+              "days": 28
+            }
+          ],
+          "datePattern": "(?:<em>[A-Za-z]+<br\\s*/?>|was on [A-Za-z]+ )(?<date>\\d{1,2} [A-Za-z]+ \\d{4})",
+          "dateFormat": "weekday-day-month-year",
+          "typeSplit": " and "
+        }
+      }
     }
   ]
 }
