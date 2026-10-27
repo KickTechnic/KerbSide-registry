@@ -11484,6 +11484,91 @@
           }
         }
       }
+    },
+    {
+      "gss": "E08000030",
+      "name": "Walsall Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Walsall Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "general waste",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://cag.walsall.gov.uk/BinCollections/GetPremises",
+          "addressForm": {
+            "postcode": "{postcode}"
+          },
+          "addressPattern": "<a href=\"/BinCollections/GetBins\\?uprn=(?<ref>\\d+)\">(?<label>[^<]+)</a>",
+          "scheduleUrl": "https://cag.walsall.gov.uk/BinCollections/GetBins?uprn={ref}",
+          "scheduleLinkPattern": "<a class=\"select-bin\" href=\"(?<link>/BinCollections/Details\\?[^\"]+)\"",
+          "blockPattern": "Bin collection schedule for (?<type>[^<]+)</h1>(?<body>[\\s\\S]*?)</table>",
+          "datePattern": "<td>[^<\\d]*(?<date>\\d{2}/\\d{2}/\\d{4})[^<]*</td>",
+          "dateFormat": "dd/MM/yyyy"
+        }
+      }
+    },
+    {
+      "gss": "E09000012",
+      "name": "Hackney Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Hackney Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          },
+          {
+            "match": "wheeled bin",
+            "type": "REFUSE"
+          },
+          {
+            "match": "dustbin",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "ieg4-waste",
+        "version": 1,
+        "ieg4Waste": {
+          "baseUrl": "https://waste-api-hackney-live.ieg4.net/f806d91c-e133-43a6-ba9a-c0ae4f4cccf6"
+        }
+      }
     }
   ]
 }
