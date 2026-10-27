@@ -11569,6 +11569,146 @@
           "baseUrl": "https://waste-api-hackney-live.ieg4.net/f806d91c-e133-43a6-ba9a-c0ae4f4cccf6"
         }
       }
+    },
+    {
+      "gss": "E06000034",
+      "name": "Thurrock Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Thurrock Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "compost",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "compost"
+        ]
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "services.thurrock.gov.uk",
+          "sessionUrl": "https://services.thurrock.gov.uk/authapi/isauthenticated?uri=https%3A%2F%2Fservices.thurrock.gov.uk%2Ffillform%2F%3Fiframe_id%3Dfillform-frame-1%26db_id%3D&hostname=services.thurrock.gov.uk&withCredentials=true",
+          "tokenLookupId": "5f68c66dcc8f6",
+          "tokenField": "AuthenticateResponse",
+          "tokenMethod": "POST",
+          "tokenBody": "{\"formValues\":{\"Section 1\":{}}}",
+          "scheduleLookupId": "6836e0d463cd2",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Section 1\":{\"AuthenticateResponse\":{\"value\":\"{token}\"},\"LookupUPRN\":{\"value\":\"{ref}\"},\"MinLimitDate\":{\"value\":\"{dateMin}\"},\"MaxLimitDate\":{\"value\":\"{dateMax}\"}}}}",
+          "bodyDateMaxDays": 35,
+          "scheduleRows": {
+            "mode": "dict-rows",
+            "typeField": "Name",
+            "dateField": "ScheduledStart"
+          },
+          "dateFormat": "iso-datetime",
+          "addressLookupId": "67f50a0b2b240",
+          "addressBodyTemplate": "{\"formValues\":{\"Section 1\":{\"postcode_search\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "uprn"
+          }
+        }
+      }
+    },
+    {
+      "gss": "E07000219",
+      "name": "Nuneaton and Bedworth Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "street"
+      ],
+      "attribution": "Collection data from Nuneaton and Bedworth Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "household waste",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "jadu-directory",
+        "version": 1,
+        "jaduDirectory": {
+          "site": "www.nuneatonandbedworth.gov.uk",
+          "directories": [
+            "3"
+          ],
+          "codes": [
+            {
+              "name": "Black bin (household waste)",
+              "directory": "3",
+              "heading": "Bin collection day",
+              "pattern": "(?<day>[A-Za-z]{3,9})",
+              "everyWeeks": 2,
+              "weekOne": "2026-10-05",
+              "weekHeading": "Week in cycle",
+              "weeks": {
+                "A": 1,
+                "B": 2
+              }
+            },
+            {
+              "name": "Brown-lid bin (recycling)",
+              "directory": "3",
+              "heading": "Bin collection day",
+              "pattern": "(?<day>[A-Za-z]{3,9})",
+              "everyWeeks": 2,
+              "weekOne": "2026-10-12",
+              "weekHeading": "Week in cycle",
+              "weeks": {
+                "A": 1,
+                "B": 2
+              }
+            },
+            {
+              "name": "Green bin (garden waste)",
+              "directory": "3",
+              "heading": "Bin collection day",
+              "pattern": "(?<day>[A-Za-z]{3,9})",
+              "everyWeeks": 2,
+              "weekOne": "2026-10-12",
+              "nextDateOnly": true,
+              "weekHeading": "Week in cycle",
+              "weeks": {
+                "A": 1,
+                "B": 2
+              }
+            }
+          ]
+        }
+      }
     }
   ]
 }
