@@ -12337,6 +12337,58 @@
           ]
         }
       }
+    },
+    {
+      "gss": "E07000082",
+      "name": "Stroud District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Stroud District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.stroud.gov.uk/webservice/getaddress?postcode={postcode}&page={page}",
+          "addressPattern": "\"uprn\":\"(?<ref>\\d+)\",[^{}]*?\"address\":\"(?<label>[^\"]+)\"",
+          "addressLastPagePattern": "\"pages\":(?<last>\\d+)",
+          "scheduleUrl": "https://www.stroud.gov.uk/webservice/GazData?uprn={ref}&postcode=",
+          "blockPattern": "\"next(?<type>rubbish|recycling)date\":\"(?<date>[^\"]+)\"|\"(?<typeFallback>gardenwaste)Day\":\"(?<body>[^\"]*)\"",
+          "datePattern": "(?<date>[A-Za-z]+ \\d{1,2} [A-Za-z]+ \\d{4})",
+          "dateFormat": "weekday-day-month-year",
+          "weekCodes": [
+            {
+              "name": "Food Waste",
+              "pattern": "\"foodwastecollection\":\"Every (?<day>[A-Z][a-z]+)\"",
+              "weekOne": "2026-10-26"
+            }
+          ]
+        }
+      }
     }
   ]
 }
