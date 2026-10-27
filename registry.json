@@ -12144,6 +12144,61 @@
           "dateFormat": "weekday-ordinal-of-month-year"
         }
       }
+    },
+    {
+      "gss": "E07000202",
+      "name": "Ipswich Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "street"
+      ],
+      "attribution": "Collection data from Ipswich Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "green-lidded",
+            "type": "PAPER"
+          },
+          {
+            "match": "blue recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://app.ipswich.gov.uk/bin-collection/",
+          "addressForm": {
+            "street-name": "{street}",
+            "submit-button": ""
+          },
+          "cookieSession": true,
+          "addressPattern": "<li><a href=\"/bin-collection/weeks/(?<ref>\\d+)\">(?<label>[^<]+)</a></li>",
+          "singleAddressPattern": "<h2>(?<label>[^<]+)(?:<span class=\"ibc-subheading\">(?<label2>[^<]*)</span>)?</h2>[\\s\\S]*?href=\"/bin-collection/months/(?<ref>\\d+)\"",
+          "scheduleUrl": "https://app.ipswich.gov.uk/bin-collection/weeks/{ref}",
+          "blockPattern": "<div class=\"ibc-calendar-entry__date\">(?<date>\\d{1,2}(?:<span class=\"ibc-visually-hidden\">[a-z]{2}</span>)?</div>[^<]*<div class=\"ibc-calendar-entry__month\">[A-Za-z]+ \\d{4})</div></dt>[^<]*<dd class=\"ibc-calendar-entry__details\">(?<body>[\\s\\S]*?)</dd>",
+          "typePattern": "<li class=\"[a-z]+\">(?<type>[^<]+)</li>",
+          "dateFormat": "weekday-ordinal-of-month-year"
+        }
+      }
     }
   ]
 }
