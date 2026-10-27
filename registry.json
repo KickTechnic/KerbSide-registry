@@ -12285,6 +12285,58 @@
           "dateFormat": "dd/MM/yyyy"
         }
       }
+    },
+    {
+      "gss": "E07000087",
+      "name": "Fareham Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Fareham Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.fareham.gov.uk/internetlookups/search_data.aspx?type=CSV&list=DomesticBinCollections2025on&Road%20or%20Postcode={postcode}",
+          "addressPattern": "(?m)^\"(?<label>[^\"]+)\",[^\\n]*?intro\\.aspx\\?ref=(?<ref>\\d+)'",
+          "scheduleUrl": "https://www.fareham.gov.uk/internetlookups/search_data.aspx?type=CSV&list=DomesticBinCollections2025on&Road%20or%20Postcode={postcode}",
+          "scheduleCsvRow": "(?m)^Calendar: [^\\n]*intro\\.aspx\\?ref={ref}'",
+          "blockPattern": "(?<date>\\d{2}/\\d{2}/\\d{4}|[Tt]oday|[Tt]omorrow) \\((?<type>[^)\\n]+)\\)|(?<typeFallback>Garden Waste Bin Day)[^\\n]*?: (?<body>[^\\n]*)",
+          "datePattern": "(?<date>\\d{2}/\\d{2}/\\d{4}|[Tt]oday|[Tt]omorrow)",
+          "dateFormat": "weekday-dd/MM/yyyy-relative",
+          "weekCodes": [
+            {
+              "name": "Food Waste",
+              "pattern": "(?m)^Food Waste Collected On: (?<day>[A-Z][a-z]+)",
+              "weekOne": "2026-10-26"
+            }
+          ]
+        }
+      }
     }
   ]
 }
