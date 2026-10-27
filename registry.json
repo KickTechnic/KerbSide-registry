@@ -12199,6 +12199,51 @@
           "dateFormat": "weekday-ordinal-of-month-year"
         }
       }
+    },
+    {
+      "gss": "W06000002",
+      "name": "Gwynedd Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Gwynedd Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "blue box",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "green bin",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://diogel.gwynedd.llyw.cymru/Daearyddol/en/ChwilioCyfeiriad/Index/LleDwinByw/?CodPost={postcode}",
+          "addressPattern": "<li><a href=\"/Daearyddol/en/ChwilioCyfeiriad/Dewis/LleDwinByw/(?<ref>\\d+)\">(?<label>[^<]+)</a></li>",
+          "addressNextPattern": "<a href=\"(?<next>[^\"]+)\" rel=\"next\">",
+          "scheduleUrl": "https://diogel.gwynedd.llyw.cymru/Daearyddol/en/LleDwinByw/Index/{ref}",
+          "blockPattern": "<li>\\s*(?<type>[^<:]+?):\\s*(?<date>[A-Za-z]+ \\d{2}/\\d{2}/\\d{4})",
+          "typeSplit": " / ",
+          "dateFormat": "weekday-dd/MM/yyyy"
+        }
+      }
     }
   ]
 }
