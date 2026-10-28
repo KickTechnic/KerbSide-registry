@@ -12444,6 +12444,68 @@
           "dateFormat": "dd/MM/yyyy"
         }
       }
+    },
+    {
+      "gss": "W06000003",
+      "name": "Conwy County Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Conwy County Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "textile",
+            "type": "TEXTILES"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          },
+          {
+            "match": "recycle",
+            "type": "RECYCLING"
+          }
+        ],
+        "optInMatch": [
+          "garden",
+          "podback"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.conwy.gov.uk/Contensis-Forms/erf/collection-address-soap.asp?ilangid=1",
+          "addressForm": {
+            "pcode": "{postcode}"
+          },
+          "addressPattern": "<a href=\"collection-result-soap[a-z0-9-]*\\.asp\\?ilangid=1&uprn=(?<ref>\\d+)\">(?<label>[^<]+)</a>",
+          "scheduleSteps": [
+            {
+              "url": "https://www.conwy.gov.uk/Contensis-Forms/erf/collection-address-soap.asp?ilangid=1",
+              "form": {
+                "pcode": "{postcode}"
+              },
+              "pattern": "<a href=\"(?<result>collection-result-soap[a-z0-9-]*\\.asp)\\?ilangid=1&uprn={ref}\">"
+            }
+          ],
+          "scheduleUrl": "https://www.conwy.gov.uk/Contensis-Forms/erf/{result}?ilangid=1&uprn={ref}",
+          "blockPattern": "<div id=\"content\">\\s*(?<date>[A-Za-z]+, \\d{2}/\\d{2}/\\d{4})\\s*</div>(?<body>(?:(?!<div class=\"containererf\">|<div style=\"display: none;\">Calendar)[\\s\\S])*)",
+          "typePattern": "<li>(?<type>[^<(]+)",
+          "typeSplit": " & ",
+          "dateFormat": "weekday-dd/MM/yyyy"
+        }
+      }
     }
   ]
 }
