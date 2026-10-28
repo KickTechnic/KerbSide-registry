@@ -12506,6 +12506,78 @@
           "dateFormat": "weekday-dd/MM/yyyy"
         }
       }
+    },
+    {
+      "gss": "E07000078",
+      "name": "Cheltenham Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Cheltenham Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "cardboard",
+            "type": "PAPER"
+          },
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "plastic",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "recycling box",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS",
+              "PAPER"
+            ]
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "liberty",
+        "liberty": {
+          "startUrl": "https://cheltenham-host01.oncreate.app/w/webpage/collection-lookup",
+          "xhr": true,
+          "rowPattern": "data-fragment_id=\"PCF0019703GBCNH1\"[^>]*?data-current_value=\"\\s*(?<type>[^\"]+)\"(?:(?!</tr>)[\\s\\S])*?data-fragment_id=\"PCF0019809GBCNH1\"[^>]*?data-current_value=\"(?<last>[^\"]*)\"(?:(?!</tr>)[\\s\\S])*?data-fragment_id=\"PCF0019810GBCNH1\"[^>]*?data-current_value=\"(?<date>\\d{2}/\\d{2}/\\d{4})\"",
+          "dateFormat": "dd/MM/yyyy",
+          "search": {
+            "component": "CSC0000042GBCNH1",
+            "action": "search",
+            "params": {
+              "search_item": "{postcode}"
+            },
+            "items": "response.options[*]",
+            "id": "id",
+            "label": "summary_address"
+          },
+          "eventLabel": "Search for bin collection dates"
+        }
+      }
     }
   ]
 }
