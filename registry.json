@@ -12707,6 +12707,70 @@
           "dateFormat": "iso-datetime"
         }
       }
+    },
+    {
+      "gss": "E07000070",
+      "name": "Chelmsford City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Chelmsford City Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "black bin",
+            "type": "REFUSE"
+          },
+          {
+            "match": "brown bin",
+            "type": "GARDEN"
+          },
+          {
+            "match": "green box",
+            "type": "GLASS"
+          },
+          {
+            "match": "paper sack",
+            "type": "PAPER"
+          },
+          {
+            "match": "card sack",
+            "type": "PAPER"
+          },
+          {
+            "match": "plastic",
+            "type": "RECYCLING"
+          }
+        ],
+        "optInMatch": [
+          "brown bin"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.chelmsford.gov.uk/bins-and-recycling/check-your-kerbside-collection-day/?14532_keyword={postcode}",
+          "addressPattern": "<tr>\\s*<td>(?<ref>(?<label>[^<]+))</td>\\s*<td><p>This property is covered by the [A-Za-z]+ [AB] collection round",
+          "addressNextPattern": "<a href=\"(?<next>[^\"]+)\" data-page=\"\\d+\" data-block-id=\"\\d+\">\\s*Next\\s*</a>",
+          "scheduleUrl": "https://www.chelmsford.gov.uk/bins-and-recycling/check-your-kerbside-collection-day/{round}-collection-calendar/",
+          "scheduleSteps": [
+            {
+              "url": "https://www.chelmsford.gov.uk/bins-and-recycling/check-your-kerbside-collection-day/?14532_keyword={ref}",
+              "pattern": "<td>\\s*{ref}\\s*</td>\\s*<td><p>This property is covered by [^<]*<a href=\"https://www\\.chelmsford\\.gov\\.uk/bins-and-recycling/check-your-(?:kerbside-)?collection-day/(?<round>(?:monday|tuesday|wednesday|thursday|friday|saturday)-[ab])-collection-calendar/\""
+            }
+          ],
+          "blockPattern": "<li>\\s*<p>\\s*[A-Za-z]+(?:\\s|&nbsp;)+(?<date>\\d{1,2}(?:st|nd|rd|th)?\\s+[A-Za-z]+)(?:\\s|&nbsp;)*:(?:\\s|&nbsp;)*(?<type>[^<]+?)\\s*</p>\\s*</li>",
+          "typeSplit": ", ",
+          "dateFormat": "weekday-day-ordinal-month-noyear",
+          "refIsFormValue": true
+        }
+      }
     }
   ]
 }
