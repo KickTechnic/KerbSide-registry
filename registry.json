@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-10-27",
+  "updated": "2026-10-28",
   "councils": [
     {
       "gss": "E07000240",
@@ -12387,6 +12387,61 @@
               "weekOne": "2026-10-26"
             }
           ]
+        }
+      }
+    },
+    {
+      "gss": "W06000009",
+      "name": "Pembrokeshire County Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Pembrokeshire County Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "residual",
+            "type": "REFUSE"
+          },
+          {
+            "match": "plastic",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "card",
+            "type": "PAPER"
+          },
+          {
+            "match": "paper",
+            "type": "PAPER"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://nearest.pembrokeshire.gov.uk/searchaddresses?query={postcode}",
+          "addressPattern": "\"value\":\"(?<label>[^\"]+)\",[^{}]*?\"data\":\"(?<ref>\\d+)\"",
+          "scheduleUrl": "https://nearest.pembrokeshire.gov.uk/property/{ref}",
+          "blockPattern": "<img src=\"\\s*https://cdn\\.pembrokeshire\\.gov\\.uk/images/[^\"]+\" title=\"(?<type>[^\"]+)\" /><br />[^<]*<br />[^<]*?<strong>(?<date>\\d{2}/\\d{2}/\\d{4})</strong>",
+          "dateFormat": "dd/MM/yyyy"
         }
       }
     }
