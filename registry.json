@@ -12653,6 +12653,60 @@
           ]
         }
       }
+    },
+    {
+      "gss": "E07000071",
+      "name": "Colchester City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Colchester City Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "mixed recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "non-recyclable",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "json-rows",
+        "version": 1,
+        "jsonRows": {
+          "addressUrl": "https://www.colchester.gov.uk/_api/new_llpgs?$select=new_llpgid,new_saon,new_paon,new_street,new_postcoide,new_name&$filter=(new_postcoide%20eq%20'{postcode}')",
+          "addressRowsPath": "value[*]",
+          "addressLabelPath": "new_name",
+          "addressRefPath": "new_llpgid",
+          "scheduleUrl": "https://new-llpg-app.azurewebsites.net/api/calendar/{ref}",
+          "scheduleRowsPath": "Weeks[*]",
+          "weekCycle": {
+            "daysPath": "Rows",
+            "namePath": "Name",
+            "anchorsPath": "DatesOfFirstCollectionDays"
+          },
+          "dateFormat": "iso-datetime"
+        }
+      }
     }
   ]
 }
