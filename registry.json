@@ -12578,6 +12578,81 @@
           "eventLabel": "Search for bin collection dates"
         }
       }
+    },
+    {
+      "gss": "E06000057",
+      "name": "Northumberland County Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Northumberland County Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "general waste",
+            "type": "REFUSE"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressPrimeUrl": "https://bincollection.northumberland.gov.uk/postcode",
+          "addressPrimePattern": "name=\"_csrf\" value=\"(?<csrf>[^\"]+)\"[\\s\\S]*?name=\"__ncforminfo\" value=\"(?<nc>[^\"]+)\"",
+          "addressUrl": "https://bincollection.northumberland.gov.uk/postcode",
+          "addressForm": {
+            "_csrf": "{csrf}",
+            "postcode": "{postcode}",
+            "__ncforminfo": "{nc}"
+          },
+          "addressPattern": "<option value=\"(?<ref>\\d+)\">(?<label>[^<]+)</option>",
+          "scheduleUrl": "https://bincollection.northumberland.gov.uk/address-select",
+          "scheduleForm": {
+            "_csrf": "{csrf}",
+            "address": "{ref}",
+            "__ncforminfo": "{nc}"
+          },
+          "cookieSession": true,
+          "schedulePrimeUrl": "https://bincollection.northumberland.gov.uk/postcode",
+          "schedulePrimePattern": "name=\"_csrf\" value=\"(?<csrf>[^\"]+)\"[\\s\\S]*?name=\"__ncforminfo\" value=\"(?<nc>[^\"]+)\"",
+          "blockPattern": "<th scope=\"row\" class=\"govuk-table__header\">(?<date>\\d{1,2} [A-Z][a-z]+)</th>\\s*<td class=\"govuk-table__cell\">[^<]*</td>\\s*<td class=\"govuk-table__cell\">(?<body>[^<]+)</td>",
+          "typePattern": "(?<type>[^,]+)",
+          "typeSplit": " and ",
+          "dateFormat": "weekday-day-ordinal-month-noyear",
+          "scheduleSteps": [
+            {
+              "url": "https://bincollection.northumberland.gov.uk/postcode",
+              "form": {
+                "_csrf": "{csrf}",
+                "postcode": "{postcode}",
+                "__ncforminfo": "{nc}"
+              },
+              "pattern": "name=\"_csrf\" value=\"(?<csrf>[^\"]+)\"[\\s\\S]*?<option value=\"{ref}\">[\\s\\S]*?name=\"__ncforminfo\" value=\"(?<nc>[^\"]+)\""
+            }
+          ]
+        }
+      }
     }
   ]
 }
