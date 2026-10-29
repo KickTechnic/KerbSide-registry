@@ -12821,6 +12821,72 @@
           "dateFormat": "month-day-year"
         }
       }
+    },
+    {
+      "gss": "E07000076",
+      "name": "Tendring District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Tendring District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "dmr",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS"
+            ]
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "tendring-self.achieveservice.com",
+          "sessionUrl": "https://tendring-self.achieveservice.com/authapi/isauthenticated?uri=https%253A%252F%252Ftendring-self.achieveservice.com%252Fen%252Fservice%252FRubbish_and_recycling_collection_days&hostname=tendring-self.achieveservice.com&withCredentials=true",
+          "scheduleLookupId": "6347acbadc425",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Select address\":{\"selectedUPRN\":{\"value\":\"{ref}\"}}}}",
+          "scheduleRows": {
+            "mode": "fixed-fields",
+            "dateSuffixPattern": "(?:Next|Previous)Col",
+            "intervalSuffix": "Week",
+            "intervalDays": {
+              "a": 14,
+              "b": 14,
+              "weekly": 7
+            }
+          },
+          "dateFormat": "dd/MM/yyyy HH:mm:ss",
+          "addressLookupId": "5bacce91c0d86",
+          "addressBodyTemplate": "{\"formValues\":{\"Section 1\":{\"postcode_search\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "uprn"
+          }
+        }
+      }
     }
   ]
 }
