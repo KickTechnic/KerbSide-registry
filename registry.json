@@ -12889,6 +12889,68 @@
       }
     },
     {
+      "gss": "E07000072",
+      "name": "Epping Forest District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Epping Forest District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "foodwaste",
+            "type": "FOOD"
+          },
+          {
+            "match": "gardenwaste",
+            "type": "GARDEN"
+          },
+          {
+            "match": "generalwaste",
+            "type": "REFUSE"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          }
+        ],
+        "optInMatch": [
+          "gardenwaste"
+        ],
+        "unpublished": [
+          {
+            "type": "TEXTILES",
+            "name": "Small electricals, batteries, textiles and shoes",
+            "intervalWeeks": 1,
+            "onCollectionDay": true,
+            "source": "https://www.eppingforestdc.gov.uk/recycling-and-rubbish/check-your-collection/"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "eppingforestdc-self.achieveservice.com",
+          "sessionUrl": "https://eppingforestdc-self.achieveservice.com/authapi/isauthenticated?uri=https%253A%252F%252Feppingforestdc-self.achieveservice.com%252Fservice%252FCheck_your_collection_day&hostname=eppingforestdc-self.achieveservice.com&withCredentials=true",
+          "scheduleLookupId": "6651dfb99a74d",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Section 1\":{\"LookupUPRN\":{\"value\":\"{ref}\"}}}}",
+          "scheduleRows": {
+            "mode": "fixed-fields",
+            "dateSuffix": "ServiceNextCollection"
+          },
+          "dateFormat": "iso-datetime",
+          "addressLookupId": "603e231fa2367",
+          "addressBodyTemplate": "{\"formValues\":{\"Section 1\":{\"search\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "uprn"
+          }
+        }
+      }
+    },
+    {
       "gss": "W06000012",
       "name": "Neath Port Talbot Council",
       "tier": 1,
