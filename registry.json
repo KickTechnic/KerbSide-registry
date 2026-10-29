@@ -12887,6 +12887,84 @@
           }
         }
       }
+    },
+    {
+      "gss": "W06000012",
+      "name": "Neath Port Talbot Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Neath Port Talbot Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "plastic",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressPrimeUrl": "https://www.npt.gov.uk/bins-and-recycling/equipment-and-collections/bin-day-finder/",
+          "addressPrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"[\\s\\S]*?name=\"ufprt\" type=\"hidden\" value=\"(?<ufprt>[^\"]+)\"",
+          "addressUrl": "https://www.npt.gov.uk/bins-and-recycling/equipment-and-collections/bin-day-finder/",
+          "addressForm": {
+            "PostCode": "{postcode}",
+            "action": "Find address",
+            "__RequestVerificationToken": "{token}",
+            "ufprt": "{ufprt}"
+          },
+          "addressPattern": "<option value=\"(?<ref>\\d+)\">(?<label>[^<]+)</option>",
+          "scheduleUrl": "https://www.npt.gov.uk/bins-and-recycling/equipment-and-collections/bin-day-finder/",
+          "scheduleForm": {
+            "Address": "{ref}",
+            "action": "Find bin day",
+            "__RequestVerificationToken": "{token}",
+            "ufprt": "{ufprt}"
+          },
+          "cookieSession": true,
+          "schedulePrimeUrl": "https://www.npt.gov.uk/bins-and-recycling/equipment-and-collections/bin-day-finder/",
+          "schedulePrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"[\\s\\S]*?name=\"ufprt\" type=\"hidden\" value=\"(?<ufprt>[^\"]+)\"",
+          "blockPattern": "<h2>(?<date>[A-Za-z]+, \\d{1,2}&nbsp;[A-Za-z]+)[^<]*</h2>(?<body>(?:(?!<h2>|<footer)[\\s\\S])*)",
+          "typePattern": "class=\"stretched-link[^\"]*\">(?<type>[^<]+)</a>",
+          "dateFormat": "weekday-day-ordinal-month-noyear",
+          "scheduleSteps": [
+            {
+              "url": "https://www.npt.gov.uk/bins-and-recycling/equipment-and-collections/bin-day-finder/",
+              "form": {
+                "PostCode": "{postcode}",
+                "action": "Find address",
+                "__RequestVerificationToken": "{token}",
+                "ufprt": "{ufprt}"
+              },
+              "pattern": "<option value=\"{ref}\">[\\s\\S]*?name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"[\\s\\S]*?name=\"ufprt\" type=\"hidden\" value=\"(?<ufprt>[^\"]+)\""
+            }
+          ]
+        }
+      }
     }
   ]
 }
