@@ -13017,6 +13017,81 @@
           "dateFormat": "weekday-day-ordinal-month-noyear"
         }
       }
+    },
+    {
+      "gss": "E09000020",
+      "name": "Royal Borough of Kensington and Chelsea",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "street"
+      ],
+      "attribution": "Collection data from the Royal Borough of Kensington and Chelsea",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "general waste",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressPrimeUrl": "https://www.rbkc.gov.uk/bincollections/default.aspx",
+          "addressPrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"",
+          "streetOptionPattern": "<option value=\"(?<street>[^\"]+)\">",
+          "addressUrl": "https://www.rbkc.gov.uk/bincollections/default.aspx",
+          "addressForm": {
+            "Street": "{street}",
+            "__RequestVerificationToken": "{token}"
+          },
+          "addressPattern": "<tr>\\s*<td class=\"table__cell\">(?<label>(?<road>[^<]*[^< ]))\\s*</td>\\s*<td class=\"table__cell\">(?<label2>(?<numbers>[^<]+))</td>\\s*<td class=\"table__cell\">(?<label3>(?<side>[^<]+))</td>\\s*<td class=\"table__cell\">(?<label4>[^<]*)</td>",
+          "refParts": [
+            "road",
+            "side",
+            "numbers"
+          ],
+          "refIsFormValue": true,
+          "schedulePrimeUrl": "https://www.rbkc.gov.uk/bincollections/default.aspx",
+          "schedulePrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"",
+          "scheduleUrl": "https://www.rbkc.gov.uk/bincollections/default.aspx",
+          "scheduleForm": {
+            "Street": "{road}",
+            "__RequestVerificationToken": "{token}"
+          },
+          "scheduleRowPattern": "<tr>\\s*<td class=\"table__cell\">{road} *</td>\\s*<td class=\"table__cell\">{numbers}</td>\\s*<td class=\"table__cell\">{side}</td>[\\s\\S]*?</tr>",
+          "weekCodes": [
+            {
+              "name": "General waste",
+              "pattern": "<tr>\\s*(?:<td class=\"table__cell\">[^<]*</td>\\s*){4}<td class=\"table__cell\">(?<day>[^<]+)</td>",
+              "weekOne": "2026-10-26",
+              "nextDateOnly": true
+            },
+            {
+              "name": "Recycling",
+              "pattern": "<tr>\\s*(?:<td class=\"table__cell\">[^<]*</td>\\s*){4}<td class=\"table__cell\">(?<day>[^<]+)</td>",
+              "weekOne": "2026-10-26",
+              "nextDateOnly": true
+            },
+            {
+              "name": "Food waste",
+              "pattern": "<tr>\\s*(?:<td class=\"table__cell\">[^<]*</td>\\s*){5}<td class=\"table__cell\">(?<day>[^<]+)</td>",
+              "weekOne": "2026-10-26",
+              "nextDateOnly": true
+            }
+          ]
+        }
+      }
     }
   ]
 }
