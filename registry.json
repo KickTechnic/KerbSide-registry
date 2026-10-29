@@ -12965,6 +12965,58 @@
           ]
         }
       }
+    },
+    {
+      "gss": "E07000193",
+      "name": "East Staffordshire Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from East Staffordshire Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "brown bin",
+            "type": "GARDEN"
+          },
+          {
+            "match": "blue bag",
+            "type": "PAPER"
+          },
+          {
+            "match": "blue bin",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS"
+            ]
+          },
+          {
+            "match": "grey bin",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "brown bin"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.eaststaffsbc.gov.uk/bins-rubbish-recycling/collection-dates?postal_code={postcode}",
+          "addressPattern": "<a href=\"/bins-rubbish-recycling/collection-dates/(?<ref>\\d+)\">(?<label>[^<]+)</a>",
+          "addressNextPattern": "<a href=\"(?<next>[^\"]+)\" title=\"Go to next page\" rel=\"next\">",
+          "scheduleUrl": "https://www.eaststaffsbc.gov.uk/bins-rubbish-recycling/collection-dates/{ref}",
+          "blockPattern": "(?:<span class=\"subtitle\">[^<]*</span>|<li>)\\s*(?<date>[A-Za-z]+, \\d{1,2}[a-z]{2} [A-Za-z]+)\\s*(?:</h2>)?\\s*<ul class=\"containers\">(?<body>[\\s\\S]*?)</ul>",
+          "typePattern": "field__item\">(?<type>[^<]+)</div>",
+          "dateFormat": "weekday-day-ordinal-month-noyear"
+        }
+      }
     }
   ]
 }
