@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-10-28",
+  "updated": "2026-10-29",
   "councils": [
     {
       "gss": "E07000240",
@@ -12769,6 +12769,56 @@
           "typeSplit": ", ",
           "dateFormat": "weekday-day-ordinal-month-noyear",
           "refIsFormValue": true
+        }
+      }
+    },
+    {
+      "gss": "E07000091",
+      "name": "New Forest District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from New Forest District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycle",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "general",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "ebase",
+        "version": 1,
+        "ebase": {
+          "startUrl": "https://forms.newforest.gov.uk/ufs/FIND_MY_BIN_BAR.eb",
+          "postcodeField": "CTRL:JmLqCKl2:_:A",
+          "searchButton": "CTRL:EBTnjgwK:_",
+          "addressControl": "KOeKcmrC",
+          "addressButton": "CTRL:QxB4NyYs:_",
+          "blockPattern": "data-eb-colheader=\"Collection date\"[^>]*>\\s*<div[^>]*>\\s*<div[^>]*>\\s*[A-Za-z]+ (?<date>[A-Za-z]+ \\d{1,2}, \\d{4})\\s*</div>(?<body>[\\s\\S]*?)</tr>",
+          "typePattern": "data-eb-colheader=\"Container type\"[^>]*>\\s*<div[^>]*>\\s*<div[^>]*>\\s*(?<type>[^<]+?)(?:\\s+\\d+\\s*L)?\\s*</div>",
+          "dateFormat": "month-day-year"
         }
       }
     }
