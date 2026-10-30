@@ -14382,6 +14382,107 @@
           "dateFormat": "weekday-day-shortmonth-year"
         }
       }
+    },
+    {
+      "gss": "S12000039",
+      "name": "West Dunbartonshire Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from West Dunbartonshire Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "brown bin",
+            "type": "FOOD",
+            "color": "#8B4513",
+            "alsoCarries": [
+              "GARDEN"
+            ]
+          },
+          {
+            "match": "blue bin",
+            "type": "RECYCLING",
+            "color": "#1A1876"
+          },
+          {
+            "match": "non-recyclable",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.west-dunbarton.gov.uk/recycling-and-waste/bin-collection-day?postcode={postcode}",
+          "addressPattern": "<option value=\"(?<ref>\\d+)\">\\s*(?<label>[^<]+?)\\s*</option>",
+          "scheduleUrl": "https://www.west-dunbarton.gov.uk/recycling-and-waste/bin-collection-day?uprn={ref}",
+          "blockPattern": "<div class=\"round-name\">\\s*(?<type>[^<]+?)\\s*</div>(?<body>(?:(?!<div class=\"round-info\"|calendar-link)[\\s\\S])*)",
+          "datePattern": "<span class=\"date-string\">\\s*(?<date>[^<]+?)\\s*</span>",
+          "dateFormat": "weekday-day-month-year",
+          "streamAliases": {
+            "Blue": "Blue Bin"
+          }
+        }
+      }
+    },
+    {
+      "gss": "E07000142",
+      "name": "West Lindsey District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from West Lindsey District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food waste",
+            "type": "FOOD"
+          },
+          {
+            "match": "purple-lidded",
+            "type": "PAPER"
+          },
+          {
+            "match": "green bin",
+            "type": "GARDEN"
+          },
+          {
+            "match": "blue bin",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "black bin",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "green bin"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://wlnk.statmap.co.uk/map/Cluster.svc/findLocation?callback=cb&script=%5CCluster%5CCluster.AuroraScript%24&address={postcode}",
+          "addressPattern": "\"Description\":\"(?<label>[^\"]+)\"[^{}]*?\"Id\":\"(?<ref>\\d+)\"",
+          "scheduleUrl": "https://wlnk.statmap.co.uk/map/Cluster.svc/getpage?script=%5CCluster%5CCluster.AuroraScript%24&taskId=bins&format=js&updateOnly=true&query=id%3D{ref}",
+          "blockPattern": "waster(?<type>[A-Z]+)\\\\u0027\\\\u003e[A-Z]+\\\\u003c/span\\\\u003e bin is (?<body>(?:(?!\\\\u003c/li)[^\\n])*)",
+          "datePattern": "(?<date>\\d{1,2}/\\d{1,2})",
+          "dateFormat": "dd/MM-noyear",
+          "streamAliases": {
+            "BLACK": "Black bin",
+            "BLUE": "Blue bin",
+            "PURPLE": "Purple-lidded bin",
+            "ORANGE": "Food waste bin",
+            "GREEN": "Green bin"
+          }
+        }
+      }
     }
   ]
 }
