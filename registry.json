@@ -13635,6 +13635,130 @@
           "dateFormat": "iso-local-date"
         }
       }
+    },
+    {
+      "gss": "E07000083",
+      "name": "Tewkesbury Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Tewkesbury Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://api-2.tewkesbury.gov.uk/incab/properties/{postcode}/lookup",
+          "addressPattern": "\"uprn\":\\s*\"(?<ref>\\d+)\"[^{}]*?\"fullAddress\":\\s*\"(?<label>[^\"]+)\"",
+          "scheduleUrl": "https://api-2.tewkesbury.gov.uk/incab/rounds/{ref}/next-collection",
+          "blockPattern": "\"(?<type>[a-z]+)\":\\s*\\{[^{}]*?\"nextCollectionDate\":\\s*\"(?<date>[^\"]+)\"[^{}]*?\"roundInformation\":\\s*\"(?<every>[^\"]+)\"",
+          "cadence": [
+            {
+              "match": "W$",
+              "days": 7
+            },
+            {
+              "match": "[12]$",
+              "days": 14
+            }
+          ],
+          "dateFormat": "iso-instant-london"
+        }
+      },
+      "unpublished": [
+        {
+          "type": "TEXTILES",
+          "name": "Small electrical items",
+          "intervalWeeks": 2,
+          "onCollectionDay": true,
+          "source": "https://tewkesbury.gov.uk/services/waste-and-recycling/recycling-and-food-waste/"
+        }
+      ]
+    },
+    {
+      "gss": "E07000089",
+      "name": "Hart District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Hart District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.hart.gov.uk/bbd-whitespace/list-addresses?postalCode={postcode}",
+          "addressJsonPath": "[*].data",
+          "addressPattern": "<option class=\"address-item\" value=\"(?<ref>\\d+)\"[^>]*>\\s*(?<label>[^<]+?)\\s*</option>",
+          "scheduleUrl": "https://www.hart.gov.uk/bbd-whitespace/next-collection-dates?uprn={ref}&uri=entity%3Anode%2F172&text=View%20the%20calendar",
+          "scheduleJsonPath": "[*].data",
+          "blockPattern": "<td class=\"bin-service [^\"]*\">\\s*(?<type>[^<]+?)\\s*</td>[\\s\\S]*?<td class=\"bin-service-date\">\\s*(?<date>[^<]+?)\\s*</td>",
+          "typeSplit": " & ",
+          "dateFormat": "weekday-day-ordinal-month-noyear"
+        }
+      },
+      "unpublished": [
+        {
+          "type": "GLASS",
+          "name": "Glass box",
+          "intervalWeeks": 2,
+          "onCollectionDay": false,
+          "source": "https://www.hart.gov.uk/waste-and-recycling/glass-recycling-green-box"
+        },
+        {
+          "type": "TEXTILES",
+          "name": "Small electrical items",
+          "intervalWeeks": 1,
+          "onCollectionDay": true,
+          "source": "https://www.hart.gov.uk/small-electricals-collection"
+        }
+      ]
     }
   ]
 }
