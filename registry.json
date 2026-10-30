@@ -13759,6 +13759,226 @@
           "source": "https://www.hart.gov.uk/small-electricals-collection"
         }
       ]
+    },
+    {
+      "gss": "E07000212",
+      "name": "Runnymede Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Runnymede Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.runnymede.gov.uk/homepage/150/check-your-bin-collection-day?postcode={postcode}&submit=Find",
+          "addressPattern": "value=\"(?<ref>\\d+)\"\\s*>\\s*(?<label>[^<]+?)\\s*</option>",
+          "scheduleUrl": "https://www.runnymede.gov.uk/homepage/150/check-your-bin-collection-day?address={ref}&submit=Find",
+          "blockPattern": "<td><span class=\"icon[^\"]*\"></span>\\s*(?<type>[^<]+?)\\s*</td><td>(?<date>[^<]+)</td>",
+          "dateFormat": "weekday-day-month-year"
+        }
+      }
+    },
+    {
+      "gss": "W06000021",
+      "name": "Monmouthshire County Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Monmouthshire County Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden",
+          "nappy"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://maps.monmouthshire.gov.uk/getdata.aspx?RequestType=LocationSearch&location={postcode}&pagesize=100&startnum=1&gettotals=false&type=json&mapsource=Monmouthshire/MyHouse",
+          "addressPattern": "\\[\\s*\"(?<ref>\\d+)\", \"[^\"]*\", \"[^\"]*\", \"mcc_eng\", \"[^\"]*\", \"[^\"]*\", \"[^\"]*\", \"(?<label>[^\"]+)\"",
+          "scheduleUrl": "https://maps.monmouthshire.gov.uk/getdata.aspx?RequestType=LocalInfo&ms=Monmouthshire/MyHouse&format=JSONP&group=Waste%20Collections&uid={ref}",
+          "blockPattern": "<h4>(?<type>[^<]+)</h4>(?:(?!<h4>)[\\s\\S])*?<strong>(?<date>[A-Z][a-z]+day \\d{1,2}[a-z]{2} [A-Z][a-z]+)\\s*</strong>(?:(?:(?!<h4>)[\\s\\S])*?Usual collection:[^-]*- (?<every>[A-Za-z]+))?",
+          "cadence": [
+            {
+              "match": "Weekly",
+              "days": 7
+            },
+            {
+              "match": "Fortnightly",
+              "days": 14
+            }
+          ],
+          "dateFormat": "weekday-day-ordinal-month-noyear"
+        }
+      }
+    },
+    {
+      "gss": "E07000064",
+      "name": "Rother District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Rother District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.rother.gov.uk/wp-admin/admin-ajax.php",
+          "addressForm": {
+            "action": "get_address_for_postcode",
+            "postcodeSearch": "{postcode}"
+          },
+          "addressJsonPath": "data",
+          "addressPattern": "<option value=\"(?<ref>\\d+)\">(?<label>[^<]+)</option>",
+          "scheduleUrl": "https://www.rother.gov.uk/wp-admin/admin-ajax.php",
+          "scheduleForm": {
+            "action": "get_address_data",
+            "uprn": "{ref}",
+            "context": "full-page"
+          },
+          "scheduleJsonPath": "data",
+          "blockPattern": "<h3[^>]*>(?<type>[^<:]+):</h3>\\s*<span class=\"[^\"]*find-my-nearest-bindays-date[^\"]*\">\\s*(?<date>[A-Z][a-z]+day \\d{1,2}[a-z]{2} [A-Z][a-z]+)\\s*</span>",
+          "dateFormat": "weekday-day-ordinal-month-noyear"
+        }
+      }
+    },
+    {
+      "gss": "E07000215",
+      "name": "Tandridge District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Tandridge District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "textiles",
+            "type": "TEXTILES"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "domestic waste",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://tdcws01.tandridge.gov.uk/TDCWebAppsPublic/WebServices/wsLLPGSearch2018/LLPGQuery_v2_3.asmx/SearchByAllAddressDetails",
+          "addressForm": {
+            "SearchAddress": "",
+            "SearchTownName": "",
+            "SearchLocalityName": "",
+            "SearchPostCode": "{postcode}",
+            "SearchReference": "",
+            "SearchXPos": "",
+            "SearchYPos": "",
+            "SearchDistance": "",
+            "ReturnMaxRecords": "",
+            "MustHaveRefType": "",
+            "ShowXrefTypes": "",
+            "sUseDate": "",
+            "sSearchAlternatives": "1,3,6",
+            "sBLPUClass": "",
+            "sPrimaryClassifications": "",
+            "sSecondaryClassifications": "",
+            "sTertiaryClassifications": "",
+            "ShowNonAddressable": "",
+            "AllowSearchOrganisations": ""
+          },
+          "addressPattern": "<UPRN>(?<ref>\\d+)</UPRN>(?:(?!</BS7666Format>)[\\s\\S])*?<HouseAddress>(?<label>[^<]+)</HouseAddress>",
+          "scheduleUrl": "https://tdcws01.tandridge.gov.uk/TDCWebAppsPublic/TDCMiddleware/RESTAPI/WhiteSpaceAPI/GetCompleteRecordByUPRN",
+          "scheduleJson": {
+            "UPRN": "{ref}"
+          },
+          "blockPattern": "\"Service\":\\s*\"(?<type>[^\"]+?)\\s*\",[^{}]*?\"Date\":\\s*\"(?<date>\\d{2}/\\d{2}/\\d{4} \\d{2}:\\d{2}:\\d{2})\"",
+          "dateFormat": "dd/MM/yyyy HH:mm:ss"
+        }
+      }
     }
   ]
 }
