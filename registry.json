@@ -14158,6 +14158,230 @@
           "dateFormat": "dd/MM/yyyy"
         }
       }
+    },
+    {
+      "gss": "S12000020",
+      "name": "Moray Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Moray Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "orange box",
+            "type": "GLASS"
+          },
+          {
+            "match": "blue bin",
+            "type": "PAPER"
+          },
+          {
+            "match": "brown bin",
+            "type": "FOOD",
+            "alsoCarries": [
+              "GARDEN"
+            ]
+          },
+          {
+            "match": "purple bin",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "green bin",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://bindayfinder.moray.gov.uk/refuse_roads.php?pcode={postcode}",
+          "addressPattern": "<a href=\"disp_bins\\.php\\?id=(?<ref>\\d+)\">(?<label>[^<]+)</a>",
+          "scheduleUrl": "https://bindayfinder.moray.gov.uk/disp_bins.php?id={ref}",
+          "scheduleLinkPattern": "href='[^']*?(?<link>cal_\\d{4}_view\\.php\\?id=\\d+)'",
+          "blockPattern": "Collections for (?<year>\\d{4})</span>|<h2>(?<month>[A-Za-z]+)</h2>|<div class='(?:[^']* )?(?<type>[A-Z]+)'>(?<day>\\d{1,2})</div>",
+          "dateTemplate": "{day} {month} {year}",
+          "dateFormat": "weekday-day-month-year",
+          "typeSplit": "",
+          "streamAliases": {
+            "G": "Green Bin",
+            "B": "Brown Bin",
+            "P": "Purple Bin",
+            "C": "Blue Bin",
+            "O": "Orange Box"
+          }
+        }
+      }
+    },
+    {
+      "gss": "E07000210",
+      "name": "Mole Valley District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Mole Valley District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD",
+            "alsoCarries": [
+              "TEXTILES"
+            ]
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://myproperty.molevalley.gov.uk/molevalley/api/live_addresses/{postcode}?format=json&page_size=100",
+          "addressPattern": "\"blpu_uprn\":\"(?<ref>\\d+)\"[^{}]*?\"address_string\":\"(?<label>[^\"]+)\"",
+          "scheduleUrl": "https://myproperty.molevalley.gov.uk/molevalley/api/live_addresses/{postcode}?format=json&page_size=100",
+          "scheduleRowPattern": "\"blpu_uprn\":\"{ref}\"[^{}]*?\"three_column_layout_html\":\"[\\s\\S]*?(?<!\\\\)\"",
+          "blockPattern": "<strong>(?<type>[^<]+)<\\\\?/strong>(?:\\\\[nt]|\\s)*<p>Next collection - <strong>\\([A-Za-z]+\\) (?<date>\\d{2}/\\d{2}/\\d{4})",
+          "dateFormat": "dd/MM/yyyy"
+        }
+      }
+    },
+    {
+      "gss": "E07000069",
+      "name": "Castle Point Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "street"
+      ],
+      "attribution": "Collection data from Castle Point Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "blue sacks",
+            "type": "PAPER"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "pink sacks",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "black sacks",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://apps.castlepoint.gov.uk/cpapps/index.cfm?fa=mystreet.search",
+          "addressForm": {
+            "searchterm": "{street}"
+          },
+          "addressPattern": "fa=myStreet\\.displayDetails&(?:amp;)?roadID=(?<ref>\\d+)\">\\s*(?<label>[^<]+?)\\s*</a>",
+          "scheduleUrl": "https://apps.castlepoint.gov.uk/cpapps/index.cfm?fa=myStreet.displayDetails&roadID={ref}",
+          "blockPattern": "<th colspan=\"7\">(?<month>[A-Za-z]+)</th>|<td class=\"(?<type>normal|pink)\\b[^\"]*\">(?<day>\\d{1,2})</td>",
+          "dateTemplate": "{day} {month}",
+          "dateFormat": "weekday-day-ordinal-month-noyear",
+          "streamAliases": {
+            "pink": "Blue sacks|Pink sacks|Food waste|Garden waste|Glass",
+            "normal": "Black sacks|Food waste|Garden waste"
+          }
+        }
+      }
+    },
+    {
+      "gss": "E07000073",
+      "name": "Harlow Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Harlow Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "green waste",
+            "type": "GARDEN"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "non-recycling",
+            "type": "REFUSE"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          }
+        ],
+        "optInMatch": [
+          "green waste",
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressPrimeUrl": "https://selfserve.harlow.gov.uk/authapi/isauthenticated?uri=https%253A%252F%252Fselfserve.harlow.gov.uk%252Ffillform%252F%253Fiframe_id%253Dcollectionaddress&hostname=selfserve.harlow.gov.uk&withCredentials=true",
+          "addressPrimePattern": "\"auth-session\":\"(?<sid>[^\"]+)\"",
+          "addressUrl": "https://selfserve.harlow.gov.uk/apibroker/runLookup?id=59280e1d88c9d&repeat_against=&noRetry=true&getOnlyTokens=undefined&log_id=&app_name=AF-Renderer%3A%3ASelf&sid={sid}",
+          "addressJson": {
+            "formValues": {
+              "Section 1": {
+                "postcode_search": {
+                  "value": "{postcode}"
+                }
+              }
+            }
+          },
+          "addressPattern": "\"(?<ref>\\d{6,})\":\\{\"display\":\"(?<label>[^\"]+)\"",
+          "scheduleUrl": "https://selfserve.harlow.gov.uk/appshost/firmstep/self/apps/custompage/bincollectionsecho?uprn={ref}",
+          "blockPattern": "<div class=\"col-xs-4 col-sm-4\">(?<type>[^<]+)</div>[^<]*<div class=\"col-sm-6 col-xs-6\">[A-Za-z]+ - (?<date>\\d{1,2} [A-Za-z]{3,4} \\d{4})",
+          "dateFormat": "weekday-day-shortmonth-year"
+        }
+      }
     }
   ]
 }
