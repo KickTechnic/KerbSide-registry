@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-10-29",
+  "updated": "2026-10-30",
   "councils": [
     {
       "gss": "E07000240",
@@ -12335,6 +12335,162 @@
               "weekOne": "2026-10-26"
             }
           ]
+        }
+      }
+    },
+    {
+      "gss": "E07000081",
+      "name": "Gloucester City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Gloucester City Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "household recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "food waste",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden waste",
+            "type": "GARDEN"
+          },
+          {
+            "match": "household waste",
+            "type": "REFUSE"
+          },
+          {
+            "match": "refuse sack",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden waste"
+        ],
+        "unpublished": [
+          {
+            "type": "TEXTILES",
+            "name": "Small electrical items",
+            "intervalWeeks": 1,
+            "onCollectionDay": true,
+            "source": "https://www.gloucester.gov.uk/environment-waste-recycling/waste-recycling-street-cleaning/bins-recycling/collection-services/small-electrical-items/"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "gloucester-self.achieveservice.com",
+          "sessionUrl": "https://gloucester-self.achieveservice.com/authapi/isauthenticated?uri=https%253A%252F%252Fgloucester-self.achieveservice.com%252Fservice%252FBins___Check_your_bin_day&hostname=gloucester-self.achieveservice.com&withCredentials=true",
+          "scheduleChain": {
+            "section": "Your waste collections",
+            "refField": "binUprn",
+            "lookups": [
+              {
+                "id": "63f72ddc8ca25",
+                "input": "binUprn"
+              },
+              {
+                "id": "63f731d2b50d7",
+                "input": "RefuseId"
+              },
+              {
+                "id": "640b19496f299",
+                "input": "RefuseSackId"
+              },
+              {
+                "id": "63f89f73018c0",
+                "input": "RecyclingId"
+              },
+              {
+                "id": "63f8a11714712",
+                "input": "FoodId"
+              },
+              {
+                "id": "63f8a15776b5d",
+                "input": "GardenId"
+              },
+              {
+                "id": "63ca72c70c3b1",
+                "input": "Refuse1"
+              },
+              {
+                "id": "63f8d0e552216",
+                "input": "Refuse2"
+              },
+              {
+                "id": "640b1a2ad1e75",
+                "input": "Refuse_Sack1"
+              },
+              {
+                "id": "6450dee4161c8",
+                "input": "Refuse_Sack2"
+              },
+              {
+                "id": "63cfcf4756b5d",
+                "input": "Recycling1"
+              },
+              {
+                "id": "63fca080e1e30",
+                "input": "Recycling2"
+              },
+              {
+                "id": "63cfcf8ac7877",
+                "input": "Food1"
+              },
+              {
+                "id": "63fca11534482",
+                "input": "Food2"
+              },
+              {
+                "id": "63cfcfc1c486c",
+                "input": "Garden1"
+              }
+            ]
+          },
+          "scheduleRows": {
+            "mode": "fixed-fields",
+            "dateSuffix": "DateISO",
+            "streamAliases": {
+              "NextRefuse1": "Household waste",
+              "NextRefuse2": "Household waste",
+              "Refuse": "Household waste",
+              "NextRefuseSack1": "Refuse sack",
+              "NextRefuseSack2": "Refuse sack",
+              "NextRecycling1": "Household recycling",
+              "NextRecycling2": "Household recycling",
+              "Recycling": "Household recycling",
+              "NextFood1": "Food waste",
+              "NextFood2": "Food waste",
+              "Food": "Food waste",
+              "NextGarden1": "Garden waste",
+              "Garden": "Garden waste"
+            },
+            "intervalSuffix": "_Schedule1",
+            "cadence": [
+              {
+                "match": "Weekly",
+                "days": 7
+              },
+              {
+                "match": "Week [12]",
+                "days": 14
+              }
+            ]
+          },
+          "dateFormat": "iso-local-date",
+          "addressLookupId": "57fb9bf5aa4b8",
+          "addressBodyTemplate": "{\"formValues\":{\"Your waste collections\":{\"find_postcode\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "uprn"
+          }
         }
       }
     },
