@@ -13592,6 +13592,49 @@
           "dateFormat": "weekday-day-month-year"
         }
       }
+    },
+    {
+      "gss": "E07000220",
+      "name": "Rugby Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Rugby Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://apps.cloud9technologies.com/rugby/citizenmobile/openapi/addresses?postcode={postcode}",
+          "addressPattern": "\"UPRN\":\"(?<ref>\\d+)\"[^{}]*?\"FullAddress\":\"(?<label>[^\"]+)\"",
+          "scheduleUrl": "https://apps.cloud9technologies.com/rugby/citizenmobile/openapi/wastecollections/{ref}",
+          "blockPattern": "\"ContainerDescription\":\"(?<type>[^\"]+)\"[^{}]*?\"CollectionDate\":\"(?<date>\\d{4}-\\d{2}-\\d{2})",
+          "dateFormat": "iso-local-date"
+        }
+      }
     }
   ]
 }
