@@ -13310,6 +13310,148 @@
           ]
         }
       }
+    },
+    {
+      "gss": "E07000043",
+      "name": "North Devon Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from North Devon Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "black bin",
+            "type": "REFUSE",
+            "color": "#111111"
+          },
+          {
+            "match": "green bin",
+            "type": "GARDEN",
+            "color": "#1C6610"
+          },
+          {
+            "match": "black box",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "blue box",
+            "type": "GLASS"
+          },
+          {
+            "match": "green bag",
+            "type": "PAPER",
+            "alsoCarries": [
+              "TEXTILES"
+            ]
+          },
+          {
+            "match": "brown bag",
+            "type": "PAPER"
+          },
+          {
+            "match": "kerbside caddy",
+            "type": "FOOD"
+          }
+        ],
+        "exclude": [
+          "clinical",
+          "trade"
+        ],
+        "optInMatch": [
+          "green bin"
+        ]
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "my.northdevon.gov.uk",
+          "sessionUrl": "https://my.northdevon.gov.uk/authapi/isauthenticated?uri=https%253A%252F%252Fmy.northdevon.gov.uk%252Fservice%252FWasteRecyclingCollectionCalendar&hostname=my.northdevon.gov.uk&withCredentials=true",
+          "tokenLookupId": "59e606ee95b7a",
+          "tokenField": "liveToken",
+          "tokenMethod": "POST",
+          "tokenBody": "{\"formValues\":{}}",
+          "scheduleLookupId": "61091d927cd81",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Calendar\":{\"token\":{\"value\":\"{token}\"},\"uPRN\":{\"value\":\"{ref}\"},\"calstartDate\":{\"value\":\"{dateMin}\"},\"calendDate\":{\"value\":\"{dateMax}\"}}}}",
+          "bodyDateMaxDays": 92,
+          "scheduleRows": {
+            "mode": "combined-field",
+            "combinedField": "ServiceDetail",
+            "entryPattern": "^(?:Empty (?:Bin )?)?(?<type>.+)/(?<date>\\d{2}/\\d{2}/\\d{4})$"
+          },
+          "dateFormat": "dd/MM/yyyy",
+          "addressLookupId": "5849617f4ce25",
+          "addressBodyTemplate": "{\"formValues\":{\"Your address\":{\"postcode_search\":{\"value\":\"{postcodeNoSpace}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "uprn"
+          }
+        }
+      }
+    },
+    {
+      "gss": "S12000019",
+      "name": "Midlothian Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Midlothian Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "residual",
+            "type": "REFUSE"
+          },
+          {
+            "match": "card",
+            "type": "PAPER"
+          },
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "my.midlothian.gov.uk",
+          "sessionUrl": "https://my.midlothian.gov.uk/authapi/isauthenticated?uri=https%253A%252F%252Fmy.midlothian.gov.uk%252Fservice%252FBin_Collection_Dates&hostname=my.midlothian.gov.uk&withCredentials=true",
+          "scheduleLookupId": "69948bdca6012",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Section 1\":{\"UPRN\":{\"value\":\"{ref}\"},\"fromDate\":{\"value\":\"{dateMin}\"},\"toDate\":{\"value\":\"{dateMax}\"}}}}",
+          "scheduleRows": {
+            "mode": "dict-rows",
+            "typeField": "Service",
+            "dateField": "Date"
+          },
+          "dateFormat": "dd/MM/yyyy HH:mm:ss",
+          "addressLookupId": "68f7a2ca3325e",
+          "addressBodyTemplate": "{\"formValues\":{\"Section 1\":{\"postcode\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "uprn"
+          }
+        }
+      }
     }
   ]
 }
