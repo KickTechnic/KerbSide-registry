@@ -14483,6 +14483,284 @@
           }
         }
       }
+    },
+    {
+      "gss": "E07000199",
+      "name": "Tamworth Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Lichfield District Council, which runs Tamworth's bin collections",
+      "streams": {
+        "matches": [
+          {
+            "match": "blue bag",
+            "type": "PAPER"
+          },
+          {
+            "match": "purple bin",
+            "type": "PAPER"
+          },
+          {
+            "match": "blue bin",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "brown bin",
+            "type": "GARDEN"
+          },
+          {
+            "match": "green bin",
+            "type": "GARDEN"
+          },
+          {
+            "match": "black bin",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "brown bin",
+          "green bin"
+        ]
+      },
+      "unpublished": [
+        {
+          "type": "FOOD",
+          "name": "Food waste",
+          "intervalWeeks": 1,
+          "onCollectionDay": true,
+          "source": "https://www.lichfielddc.gov.uk/homepage/6/bin-collection-dates"
+        }
+      ],
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.lichfielddc.gov.uk/bartec_ajax/{postcode}",
+          "addressForm": {},
+          "addressPattern": "\"uprn\":\"(?<ref>\\d+)\"[^{}]*?\"label\":\"(?<label>[^\"]+)\"",
+          "scheduleUrl": "https://www.lichfielddc.gov.uk/homepage/6/bin-collection-dates?uprn={ref}",
+          "blockPattern": "<h3 class=\"bin-collection-tasks__heading\">(?:<span class=\"visually-hidden\">[^<]*</span>)?(?<type>[^<]+)(?:(?!</li>)[\\s\\S])*?<p class=\"bin-collection-tasks__date\">(?<date>[^<]+)</p>",
+          "dateFormat": "weekday-day-ordinal-month-noyear"
+        }
+      }
+    },
+    {
+      "gss": "E07000074",
+      "name": "Maldon District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Maldon District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "green",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "green"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://maldon.suez.co.uk/maldon/AddressLookup/LookupAddresses?Search={postcode}",
+          "addressPattern": "<option value=\"(?<ref>\\d+)\">(?<label>[^<]+)</option>",
+          "scheduleUrl": "https://maldon.suez.co.uk/maldon/ServiceSummary?uprn={ref}",
+          "blockPattern": "<h2 class=\"panel-title\">\\s*<strong>(?<type>[^<]+)</strong>\\s*</h2>(?<body>(?:(?!Normal Collection Schedule|<div class=\"panel panel-default\">)[\\s\\S])*)(?:Normal Collection Schedule</strong></div>\\s*<div class=\"col-sm-9\">\\s*(?<every>[^<]+?)\\s*</div>)?",
+          "datePattern": "<strong>(?:Last|Next) Collection</strong></div>\\s*<div class=\"col-sm-9\">\\s*(?<date>\\d{2}/\\d{2}/\\d{4})",
+          "dateFormat": "dd/MM/yyyy",
+          "cadence": [
+            {
+              "match": "every other week",
+              "days": 14
+            },
+            {
+              "match": "every week",
+              "days": 7
+            }
+          ]
+        }
+      }
+    },
+    {
+      "gss": "E07000133",
+      "name": "Melton Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Melton Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://my.melton.gov.uk/collections?location=change&address={postcode}&rememberloc=&layer=",
+          "addressPattern": "set-location\\?id=(?<ref>\\d+)&redirect=collections&rememberloc=\"><strong>(?<label>[^<]+)</strong>",
+          "scheduleUrl": "https://my.melton.gov.uk/set-location?id={ref}&redirect=collections&rememberloc=",
+          "cookieSession": true,
+          "blockPattern": "<h2>(?<type>[^<]+)</h2>\\s*<p>Next [^<]*</p>\\s*<p><strong>(?<body>[^<]+)</strong>",
+          "datePattern": "(?<date>\\d{2}/\\d{2}/\\d{4})",
+          "dateFormat": "dd/MM/yyyy"
+        }
+      }
+    },
+    {
+      "gss": "W06000024",
+      "name": "Merthyr Tydfil County Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Merthyr Tydfil County Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "household",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "unpublished": [
+        {
+          "type": "FOOD",
+          "name": "Food waste",
+          "intervalWeeks": 1,
+          "onCollectionDay": true,
+          "source": "https://www.merthyr.gov.uk/media/11497/merthyr-recycling-guide-booklet.pdf"
+        }
+      ],
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.merthyr.gov.uk/umbraco/Surface/BinDaySurface/GetCollectionDay",
+          "addressForm": {
+            "postcode": "{postcode}"
+          },
+          "addressPattern": "<h4>Collection days for (?<label>[^<]+)</h4>",
+          "refIsPostcode": true,
+          "scheduleUrl": "https://www.merthyr.gov.uk/umbraco/Surface/BinDaySurface/GetCollectionDay",
+          "scheduleForm": {
+            "postcode": "{postcode}"
+          },
+          "currentWeekPattern": "This is week <strong>(?<week>[a-z]+)</strong>",
+          "weekCodes": [
+            {
+              "name": "Recycling",
+              "pattern": "Your recycling collection day is <strong>(?<day>[A-Za-z]+)</strong> every week"
+            },
+            {
+              "name": "Household waste",
+              "pattern": "Your household waste collection day is <strong>(?<day>[A-Za-z]+)</strong> in week <strong>(?<week>[a-z]+)</strong>",
+              "everyWeeks": 2,
+              "weeks": {
+                "one": 1,
+                "two": 2
+              }
+            },
+            {
+              "name": "Garden waste",
+              "pattern": "Your garden waste collection day is <strong>(?<day>[A-Za-z]+)</strong> in week <strong>(?<week>[a-z]+)</strong>",
+              "everyWeeks": 2,
+              "weeks": {
+                "one": 1,
+                "two": 2
+              },
+              "nextDateOnly": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "gss": "S12000005",
+      "name": "Clackmannanshire Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Clackmannanshire Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food caddy",
+            "type": "FOOD"
+          },
+          {
+            "match": "brown bin",
+            "type": "GARDEN"
+          },
+          {
+            "match": "grey bin",
+            "type": "PAPER"
+          },
+          {
+            "match": "blue bin",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "green bin",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "brown bin"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.clacks.gov.uk/environment/wastecollection/?pc={postcode}",
+          "addressPattern": "<a href=\"/environment/wastecollection/id/(?<ref>\\d+)/\"[^>]*>(?<label>[^<]+)</a>",
+          "scheduleUrl": "https://www.clacks.gov.uk/environment/wastecollection/id/{ref}/",
+          "scheduleLinkPattern": "href=\"(?<link>/document/[^\"]+/icsfiles/[^\"]+\\.ics)\"",
+          "scheduleIcal": true,
+          "blockPattern": "(?m)^(?<type>.+?)(?: \\d{4})?\\|(?<date>\\d{8})$",
+          "dateFormat": "ical-date",
+          "nextDateOnly": [
+            "brown bin"
+          ]
+        }
+      }
     }
   ]
 }
