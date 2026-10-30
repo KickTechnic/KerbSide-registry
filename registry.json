@@ -14761,6 +14761,319 @@
           ]
         }
       }
+    },
+    {
+      "gss": "E07000077",
+      "name": "Uttlesford District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Uttlesford District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "non-recyclable",
+            "type": "REFUSE"
+          },
+          {
+            "match": "recyclable",
+            "type": "RECYCLING"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "postcodeFormat": "nospace",
+          "addressUrl": "https://bins.uttlesford.gov.uk/result.php?postcode={postcode}",
+          "addressPattern": "<option value=\"(?<ref>\\d+-[A-Za-z]+)\">(?<label>[^<]+)</option>",
+          "scheduleUrl": "https://bins.uttlesford.gov.uk/collections.php?postcode={postcode}&house={ref}",
+          "blockPattern": "<tr><td>(?<body>(?:<img[^>]*>\\s*)+)</td>\\s*<td>(?<date>[A-Z][a-z]+ \\d{1,2}[a-z]{2} [A-Z][a-z]+)</td></tr>",
+          "typePattern": "key-(?<type>[a-z]+)\\.png",
+          "streamAliases": {
+            "black": "Non-recyclable waste",
+            "brown": "Recyclable food waste",
+            "green": "Recyclable dry waste"
+          },
+          "dateFormat": "weekday-day-ordinal-month-noyear"
+        }
+      }
+    },
+    {
+      "gss": "S12000030",
+      "name": "Stirling Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Stirling Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food and garden",
+            "type": "FOOD",
+            "alsoCarries": [
+              "GARDEN"
+            ]
+          },
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "plastic",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "non-recyclable",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "recollect",
+        "version": 1,
+        "recollect": {
+          "area": "StirlingUK",
+          "service": "50013"
+        }
+      }
+    },
+    {
+      "gss": "S12000035",
+      "name": "Argyll and Bute Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Argyll and Bute Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "general",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "accept": "text/html",
+          "addressPrimeUrl": "https://www.argyll-bute.gov.uk/rubbish-and-recycling/household-waste/bin-collection",
+          "addressPrimePattern": "name=\"form_build_id\" value=\"(?<buildId>form-[^\"]+)\"[^>]*>\\s*<input[^>]*name=\"form_id\" value=\"abc_bins_dates_lookup_form\"",
+          "addressUrl": "https://www.argyll-bute.gov.uk/rubbish-and-recycling/household-waste/bin-collection",
+          "addressForm": {
+            "postcode": "{postcode}",
+            "form_build_id": "{buildId}",
+            "form_id": "abc_bins_dates_lookup_form",
+            "op": "Search for my bin collection details"
+          },
+          "addressPattern": "<option value=\"(?<ref>\\d{6,})\"\\s*>(?<label>[^<]+)</option>",
+          "schedulePrimeUrl": "https://www.argyll-bute.gov.uk/rubbish-and-recycling/household-waste/bin-collection",
+          "schedulePrimePattern": "name=\"form_build_id\" value=\"(?<buildId>form-[^\"]+)\"[^>]*>\\s*<input[^>]*name=\"form_id\" value=\"abc_bins_dates_lookup_form\"",
+          "scheduleSteps": [
+            {
+              "url": "https://www.argyll-bute.gov.uk/rubbish-and-recycling/household-waste/bin-collection",
+              "form": {
+                "postcode": "{postcode}",
+                "form_build_id": "{buildId}",
+                "form_id": "abc_bins_dates_lookup_form",
+                "op": "Search for my bin collection details"
+              },
+              "pattern": "name=\"form_build_id\" value=\"(?<buildId>form-[^\"]+)\""
+            }
+          ],
+          "scheduleUrl": "https://www.argyll-bute.gov.uk/rubbish-and-recycling/household-waste/bin-collection",
+          "scheduleForm": {
+            "postcode": "{postcode}",
+            "address": "{ref}",
+            "form_build_id": "{buildId}",
+            "form_id": "abc_bins_dates_lookup_form",
+            "op": "Search for my bin collection details"
+          },
+          "blockPattern": "<tr class=\"[^\"]*\">\\s*<td>(?<type>[^<]+)</td>\\s*<td>(?<date>[A-Z][a-z]+ \\d{2} [A-Z][a-z]+)</td>",
+          "dateFormat": "weekday-day-ordinal-month-noyear"
+        }
+      }
+    },
+    {
+      "gss": "W06000008",
+      "name": "Ceredigion County Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Ceredigion County Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "non-recyclable",
+            "type": "REFUSE"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "ebase",
+        "version": 1,
+        "ebase": {
+          "startUrl": "https://forms.ceredigion.gov.uk/ebase/ufsmain?formid=REFUSE_ROUTES",
+          "postcodeField": "CTRL:LqOyNSK3:_:A",
+          "searchButton": "CTRL:65qHt59l:_",
+          "addressControl": "FAoCdSOy",
+          "addressButton": "CTRL:2SZqK9ha:_",
+          "addressByText": true,
+          "blockPattern": "<span class=\"[^\"]* h[23] [^\"]*\">(?<every>[^<]+)</span>\\s*<span[^>]*><strong>Next collection:</strong>\\s*(?<date>[^<]+)</span>(?<body>(?:(?!<span class=\"[^\"]* h[23] )[\\s\\S])*)",
+          "typePattern": "waste_image[^>]*>\\s*<img[^>]*>\\s*<div[^>]*>\\s*<span[^>]*>(?<type>[^<]+)</span>",
+          "dateFormat": "weekday-day-ordinal-month-noyear",
+          "cadence": [
+            {
+              "match": "(?i)^weekly",
+              "days": 7
+            },
+            {
+              "match": "(?i)every 2 weeks|fortnight",
+              "days": 14
+            },
+            {
+              "match": "(?i)every 3 weeks",
+              "days": 21
+            },
+            {
+              "match": "(?i)every 4 weeks",
+              "days": 28
+            }
+          ]
+        }
+      }
+    },
+    {
+      "gss": "E07000218",
+      "name": "North Warwickshire Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from North Warwickshire Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "green",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "green"
+        ]
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "nwarks-ss.achieveservice.com",
+          "sessionUrl": "https://nwarks-ss.achieveservice.com/authapi/isauthenticated?uri=https%253A%252F%252Fnwarks-ss.achieveservice.com%252Fservice%252FWaste_Collection_Calendar&hostname=nwarks-ss.achieveservice.com&withCredentials=true",
+          "tokenLookupId": "695fc5d469d65",
+          "tokenField": "AuthenticateResponse",
+          "tokenMethod": "POST",
+          "tokenBody": "{\"formValues\":{\"Collection Details\":{\"testOrLive\":{\"value\":\"Live\"}}}}",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Collection Details\":{\"AuthenticateResponse\":{\"value\":\"{token}\"},\"uprn\":{\"value\":\"{ref}\"},\"dateTodayFormatted\":{\"value\":\"{dateMin}\"},\"date4WeeksFormatted\":{\"value\":\"{dateMax}\"}}}}",
+          "bodyDateMaxDays": 80,
+          "scheduleLookups": [
+            {
+              "id": "6964f19d080c5",
+              "streamName": "Refuse 240L",
+              "rows": {
+                "mode": "dict-rows",
+                "typeField": "JobName",
+                "dateField": "Date"
+              }
+            },
+            {
+              "id": "6964f19bc2e2e",
+              "streamName": "Recycling 240L",
+              "rows": {
+                "mode": "dict-rows",
+                "typeField": "JobName",
+                "dateField": "Date"
+              }
+            },
+            {
+              "id": "6964f19aac313",
+              "streamName": "Food Waste Caddy 23L",
+              "rows": {
+                "mode": "dict-rows",
+                "typeField": "JobName",
+                "dateField": "Date"
+              }
+            },
+            {
+              "id": "695fc85344bb3",
+              "streamName": "Green 240L",
+              "rows": {
+                "mode": "dict-rows",
+                "typeField": "JobName",
+                "dateField": "Date"
+              }
+            }
+          ],
+          "scheduleRows": {
+            "mode": "dict-rows"
+          },
+          "dateFormat": "dd/MM/yyyy",
+          "addressLookupId": "58bd4de0ac7b8",
+          "addressBodyTemplate": "{\"formValues\":{\"Collection Details\":{\"postcode_search\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "uprn"
+          }
+        }
+      }
     }
   ]
 }
