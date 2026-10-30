@@ -13452,6 +13452,146 @@
           }
         }
       }
+    },
+    {
+      "gss": "E07000176",
+      "name": "Rushcliffe Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Rushcliffe Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "blue",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "grey",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ],
+        "unpublished": [
+          {
+            "type": "TEXTILES",
+            "name": "Small electricals and batteries",
+            "intervalWeeks": 2,
+            "onCollectionDay": true,
+            "source": "https://www.rushcliffe.gov.uk/recycling-and-waste/waste-collection/bin-collections/"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://selfservice.rushcliffe.gov.uk/core/addresslookup",
+          "addressPrimeUrl": "https://selfservice.rushcliffe.gov.uk/renderform?t=1242&k=86BDCD8DE8D868B9E23D10842A7A4FE0F1023CCA",
+          "addressPrimePattern": "name=\"FormGuid\" value=\"[^\"]+\"",
+          "addressForm": {
+            "query": "{postcode}",
+            "searchNlpg": "True",
+            "classification": ""
+          },
+          "addressPattern": "\"Key\":\"U(?<ref>\\d+)\"[^{}]*?\"Value\":\"(?<label>[^\"]+)\"",
+          "schedulePrimeUrl": "https://selfservice.rushcliffe.gov.uk/renderform?t=1242&k=86BDCD8DE8D868B9E23D10842A7A4FE0F1023CCA",
+          "schedulePrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"[^>]*>[^<]*<input type=\"hidden\" name=\"FormGuid\" value=\"(?<guid>[^\"]+)\"[\\s\\S]*?name=\"CurrentSectionID\" id=\"current-section-id\" value=\"(?<section>\\d+)\"",
+          "scheduleUrl": "https://selfservice.rushcliffe.gov.uk/renderform/Form",
+          "scheduleForm": {
+            "__RequestVerificationToken": "{token}",
+            "FormGuid": "{guid}",
+            "ObjectTemplateID": "1242",
+            "Trigger": "submit",
+            "CurrentSectionID": "{section}",
+            "TriggerCtl": "",
+            "FF3518": "U{ref}",
+            "FF3518lbltxt": "Your address:",
+            "FF3518-text": "{postcode}"
+          },
+          "blockPattern": "Your next <b>(?<type>[^<]+)</b>(?<body>[^<]*bin collections? will be <b>[^<]+</b>(?: and <b>[^<]+</b>)?)",
+          "datePattern": "<b>(?<date>[^<]+)</b>",
+          "dateFormat": "dd/MM/yyyy"
+        }
+      }
+    },
+    {
+      "gss": "E07000172",
+      "name": "Broxtowe Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Broxtowe Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "red",
+            "type": "GLASS"
+          },
+          {
+            "match": "brown",
+            "type": "GARDEN"
+          },
+          {
+            "match": "green",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "black",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "brown"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://selfservice.broxtowe.gov.uk/core/addresslookup",
+          "addressPrimeUrl": "https://selfservice.broxtowe.gov.uk/renderform?t=217&k=9D2EF214E144EE796430597FB475C3892C43C528",
+          "addressPrimePattern": "name=\"FormGuid\" value=\"[^\"]+\"",
+          "addressForm": {
+            "query": "{postcode}",
+            "searchNlpg": "True",
+            "classification": ""
+          },
+          "addressPattern": "\"Key\":\"U(?<ref>\\d+)\"[^{}]*?\"Value\":\"(?<label>[^\"]+)\"",
+          "schedulePrimeUrl": "https://selfservice.broxtowe.gov.uk/renderform?t=217&k=9D2EF214E144EE796430597FB475C3892C43C528",
+          "schedulePrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"[^>]*>[^<]*<input type=\"hidden\" name=\"FormGuid\" value=\"(?<guid>[^\"]+)\"[\\s\\S]*?name=\"CurrentSectionID\" id=\"current-section-id\" value=\"(?<section>\\d+)\"",
+          "scheduleUrl": "https://selfservice.broxtowe.gov.uk/renderform/Form",
+          "scheduleForm": {
+            "__RequestVerificationToken": "{token}",
+            "FormGuid": "{guid}",
+            "ObjectTemplateID": "217",
+            "Trigger": "submit",
+            "CurrentSectionID": "{section}",
+            "TriggerCtl": "",
+            "FF5683": "U{ref}",
+            "FF5683lbltxt": "Address",
+            "FF5683-text": "{postcode}"
+          },
+          "blockPattern": "<tr>[^<]*<td>(?<type>[^<]+)</td>[^<]*<td>[^<]*</td>[^<]*<td>[^<]*</td>[^<]*<td>(?<date>[^<]+)</td>",
+          "dateFormat": "weekday-day-month-year"
+        }
+      }
     }
   ]
 }
