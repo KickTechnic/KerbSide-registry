@@ -13979,6 +13979,185 @@
           "dateFormat": "dd/MM/yyyy HH:mm:ss"
         }
       }
+    },
+    {
+      "gss": "E07000044",
+      "name": "South Hams District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from South Hams District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "FOOD"
+            ]
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "xhr": true,
+          "addressPrimeUrl": "https://waste.southhams.gov.uk/mycollections",
+          "addressPrimePattern": "name=\"fcc_session_token\" value=\"(?<token>[^\"]+)\"",
+          "addressUrl": "https://waste.southhams.gov.uk/ajaxprocessor/getaddresses",
+          "addressForm": {
+            "postcode": "{postcode}",
+            "fcc_session_token": "{token}"
+          },
+          "addressPattern": "\\[\"(?<ref>\\d+)\",\"(?<label>[^\"]+)\"\\]",
+          "schedulePrimeUrl": "https://waste.southhams.gov.uk/mycollections",
+          "schedulePrimePattern": "name=\"fcc_session_token\" value=\"(?<token>[^\"]+)\"",
+          "scheduleUrl": "https://waste.southhams.gov.uk/mycollections/getcollectiondetails",
+          "scheduleForm": {
+            "fcc_session_token": "{token}",
+            "uprn": "{ref}"
+          },
+          "blockPattern": "<h3>(?<type>[^<]+)<\\\\?/h3>(?:(?:(?!<h3>)[\\s\\S])*?collection is <b>(?<every>[^<]+)<\\\\?/b>)?(?:(?!<h3>)[\\s\\S])*?next scheduled collection is <b>(?:to(?:day|morrow), )?(?<date>[^<]+)<",
+          "cadence": [
+            {
+              "match": "Weekly",
+              "days": 7
+            },
+            {
+              "match": "Fortnightly",
+              "days": 14
+            }
+          ],
+          "dateFormat": "weekday-day-month-year"
+        }
+      }
+    },
+    {
+      "gss": "E07000047",
+      "name": "West Devon Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from West Devon Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "xhr": true,
+          "addressPrimeUrl": "https://westdevon.fccenvironment.co.uk/mycollections",
+          "addressPrimePattern": "name=\"fcc_session_token\" value=\"(?<token>[^\"]+)\"",
+          "addressUrl": "https://westdevon.fccenvironment.co.uk/ajaxprocessor/getaddresses",
+          "addressForm": {
+            "postcode": "{postcode}",
+            "fcc_session_token": "{token}"
+          },
+          "addressPattern": "\\[\"(?<ref>\\d+)\",\"(?<label>[^\"]+)\"\\]",
+          "schedulePrimeUrl": "https://westdevon.fccenvironment.co.uk/mycollections",
+          "schedulePrimePattern": "name=\"fcc_session_token\" value=\"(?<token>[^\"]+)\"",
+          "scheduleUrl": "https://westdevon.fccenvironment.co.uk/ajaxprocessor/getcollectiondetails",
+          "scheduleForm": {
+            "fcc_session_token": "{token}",
+            "uprn": "{ref}"
+          },
+          "blockPattern": "<h3>(?<type>[^<]+)<\\\\?/h3>(?:(?:(?!<h3>)[\\s\\S])*?collection is <b>(?<every>[^<]+)<\\\\?/b>)?(?:(?!<h3>)[\\s\\S])*?next scheduled collection is <b>(?:to(?:day|morrow), )?(?<date>[^<]+)<",
+          "typeSplit": " and ",
+          "cadence": [
+            {
+              "match": "Weekly",
+              "days": 7
+            },
+            {
+              "match": "Fortnightly",
+              "days": 14
+            }
+          ],
+          "dateFormat": "weekday-day-month-year"
+        }
+      }
+    },
+    {
+      "gss": "W06000004",
+      "name": "Denbighshire County Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Denbighshire County Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "FOOD"
+            ]
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "headerPrime": {
+            "url": "https://refusecalendarapi.denbighshire.gov.uk/Csrf/token",
+            "bodyPattern": "\"token\":\"(?<csrf>[^\"]+)\""
+          },
+          "requestHeaders": {
+            "X-CSRF-TOKEN": "{csrf}"
+          },
+          "addressUrl": "https://refusecalendarapi.denbighshire.gov.uk/Calendar/addresses/{postcode}",
+          "addressPattern": "\"uprn\":\"(?<ref>\\d+)\",\"address\":\"(?<label>[^\",]*),?(?<label2>[^\",]*),?(?<label3>[^\",]*),?(?<label4>[^\",]*),?(?<label5>[^\"]*)\"",
+          "scheduleUrl": "https://refusecalendarapi.denbighshire.gov.uk/Calendar/{ref}",
+          "blockPattern": "\"(?<type>[a-zA-Z]+)Date\":\"(?<date>\\d{2}/\\d{2}/\\d{4})\"",
+          "streamAliases": {
+            "ahp": "Absorbent hygiene products",
+            "trade": "Trade waste"
+          },
+          "dateFormat": "dd/MM/yyyy"
+        }
+      }
     }
   ]
 }
