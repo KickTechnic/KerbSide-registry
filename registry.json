@@ -15355,6 +15355,151 @@
           ]
         }
       }
+    },
+    {
+      "gss": "S12000041",
+      "name": "Angus Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Angus Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "purple",
+            "type": "REFUSE"
+          },
+          {
+            "match": "grey",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "blue",
+            "type": "PAPER"
+          },
+          {
+            "match": "brown",
+            "type": "FOOD"
+          },
+          {
+            "match": "green",
+            "type": "GARDEN"
+          }
+        ],
+        "optInMatch": [
+          "green"
+        ]
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "myangus.angus.gov.uk",
+          "sessionUrl": "https://myangus.angus.gov.uk/authapi/isauthenticated?uri=https%253A%252F%252Fmyangus.angus.gov.uk%252Fservice%252FBin_collection_dates_V3&hostname=myangus.angus.gov.uk&withCredentials=true",
+          "scheduleLookupId": "66587d491feab",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Section 3\":{\"serviceUPRN\":{\"value\":\"{ref}\"},\"servicePostcode\":{\"value\":\"{postcode}\"},\"currentDate\":{\"value\":\"{dateMin}\"}}}}",
+          "scheduleRows": {
+            "mode": "dict-rows",
+            "typeField": "binTypeList",
+            "dateField": "binDate",
+            "intervalField": "binCollected",
+            "cadence": [
+              {
+                "match": "(?i)\\bweekly\\b",
+                "days": 7
+              },
+              {
+                "match": "(?i)every 2 weeks",
+                "days": 14
+              },
+              {
+                "match": "(?i)every 4 weeks",
+                "days": 28
+              }
+            ]
+          },
+          "dateFormat": "iso-local-date",
+          "addressLookupId": "65a5507c8d3e6",
+          "addressBodyTemplate": "{\"formValues\":{\"Section 3\":{\"formatted_search\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "UPRN"
+          }
+        }
+      }
+    },
+    {
+      "gss": "E07000085",
+      "name": "East Hampshire District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from East Hampshire District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "household waste",
+            "type": "REFUSE"
+          },
+          {
+            "match": "recycling collection",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "liberty",
+        "liberty": {
+          "startUrl": "https://waste.selfservice.easthants.gov.uk/w/webpage/waste-collection-day",
+          "xhr": true,
+          "rowPattern": "<h4\\b[^>]*>(?<type>[^<]+)</h4>(?:(?!<h4\\b)[\\s\\S])*?value-as-text\\\">(?<every>[^<]*)</span>(?:(?!<h4\\b)[\\s\\S])*?data-current_value=\\\"(?<date>\\d{2}/\\d{2}/\\d{4})\\\"",
+          "dateFormat": "dd/MM/yyyy",
+          "cadence": [
+            {
+              "match": "(?i)fortnight",
+              "days": 14
+            },
+            {
+              "match": "(?i)^weekly",
+              "days": 7
+            }
+          ],
+          "search": {
+            "component": "CSC0000135GBLLJ1",
+            "action": "search",
+            "params": {
+              "search_item": "{postcode}"
+            },
+            "items": "response.options[*]",
+            "id": "id",
+            "label": "summary_address"
+          },
+          "select": {
+            "component": "CSC0000135GBLLJ1",
+            "action": "address_selected",
+            "params": {
+              "selected": "{id}"
+            }
+          }
+        }
+      }
     }
   ]
 }
