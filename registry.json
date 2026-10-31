@@ -15500,6 +15500,73 @@
           }
         }
       }
+    },
+    {
+      "gss": "S12000018",
+      "name": "Inverclyde Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Inverclyde Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "general waste",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://maps.inverclyde.gov.uk/noticeboard8/quicksearch.asmx/GetResults",
+          "addressJson": {
+            "filter": "{postcode}",
+            "startIndex": 0,
+            "endIndex": 500
+          },
+          "addressPattern": "\"Value\":\"(?<label>[^\"\\\\]+)\\\\r\\\\n(?<label2>[^\"\\\\]+)(?:\\\\r\\\\n(?<label3>[^\"\\\\]+))?(?:\\\\r\\\\n(?<label4>[^\"\\\\]+))?(?:\\\\r\\\\n(?<label5>[^\"\\\\]+))?\",\"Name\":\"RESULTS\"\\},\\{\"Value\":(?<x>[\\d.]+),\"Name\":\"E\"\\},\\{\"Value\":(?<y>[\\d.]+),\"Name\":\"N\"\\}",
+          "refIsFormValue": true,
+          "refParts": [
+            "x",
+            "y"
+          ],
+          "scheduleUrl": "https://maps.inverclyde.gov.uk/noticeboard8/LocalKnowledge.asmx/AboutTheLocationForOverlay",
+          "scheduleJson": {
+            "localKnowledgeID": 3,
+            "overlayNo": 20,
+            "x": "{x}",
+            "y": "{y}"
+          },
+          "blockPattern": "\"Name\":\"top_bin_date2\",\"Value\":\"(?<date>[^\"]+)\".*?\"Name\":\"top_bin_graphic\",\"Value\":\"(?<body>(?:[^\"\\\\]|\\\\.)*)\"",
+          "secondBlockPattern": "\"Name\":\"bottom_bin_date2\",\"Value\":\"(?<date>[^\"]+)\".*?\"Name\":\"bottom_bin_graphic\",\"Value\":\"(?<body>(?:[^\"\\\\]|\\\\.)*)\"",
+          "typePattern": "img/refuse/(?<type>[a-z]+)\\.",
+          "streamAliases": {
+            "black": "General Waste Bin",
+            "food": "Food Bin",
+            "blue": "Recycling Bin",
+            "brown": "Garden Waste Bin"
+          },
+          "dateFormat": "weekday-ordinal-of-month-year"
+        }
+      }
     }
   ]
 }
