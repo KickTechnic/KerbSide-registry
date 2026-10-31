@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-10-30",
+  "updated": "2026-10-31",
   "councils": [
     {
       "gss": "E07000240",
@@ -15072,6 +15072,207 @@
             "addressField": "display",
             "refField": "uprn"
           }
+        }
+      }
+    },
+    {
+      "gss": "E06000037",
+      "name": "West Berkshire Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from West Berkshire Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.westberks.gov.uk/apiserver/ajaxlibrary/?jsonrpc=%7B%22id%22%3A1%2C%22method%22%3A%22location.westberks.echoPostcodeFinderFILTERED%22%2C%22params%22%3A%7B%22provider%22%3A%22%22%2C%22postcode%22%3A%22{postcode}%22%7D%7D&callback=cb",
+          "addressPattern": "\"udprn\":\"(?<ref>\\d+)\"[^{}]*?\"line1\":\"(?<label>[^\"]+)\"",
+          "scheduleUrl": "https://www.westberks.gov.uk/apiserver/ajaxlibrary/",
+          "scheduleJson": {
+            "jsonrpc": "2.0",
+            "method": "goss.echo.westberks.forms.getNextRubbishRecyclingFoodCollectionDate3wkly",
+            "params": {
+              "uprn": "{ref}"
+            },
+            "id": "1",
+            "name": "V2 AJAX End Point Library Worker"
+          },
+          "blockPattern": "\"next(?<type>Rubbish|Recycling|FoodWaste)DateText\":\"(?<date>[^\"]+)\"[^{}]*?scheduleDescription\":\"(?<every>[^\"]*)\"",
+          "dateFormat": "weekday-day-ordinal-month-noyear-relative",
+          "streamAliases": {
+            "FoodWaste": "Food waste"
+          },
+          "cadence": [
+            {
+              "match": "(?i)every 3rd week",
+              "days": 21
+            },
+            {
+              "match": "(?i)every other week",
+              "days": 14
+            },
+            {
+              "match": "(?i)every week",
+              "days": 7
+            }
+          ]
+        }
+      }
+    },
+    {
+      "gss": "S12000023",
+      "name": "Orkney Islands Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Orkney Islands Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "black/grey",
+            "type": "REFUSE",
+            "alsoCarries": [
+              "FOOD"
+            ]
+          },
+          {
+            "match": "paper/thin card",
+            "type": "PAPER",
+            "alsoCarries": [
+              "RECYCLING"
+            ]
+          },
+          {
+            "match": "glass and plastic",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS"
+            ]
+          }
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.orkney.gov.uk/actions/_orkney/address/search?q={postcode}",
+          "addressPattern": "\"addressId\":\"(?<ref>\\d+)\",\"address\":\"(?<label>[^\"]+)\"",
+          "scheduleUrl": "https://www.orkney.gov.uk/actions/_orkney/bin-collection/lookup-address?addressId={ref}",
+          "blockPattern": "\"date\":\"(?<date>\\d{4}-\\d{2}-\\d{2})\",\"summary\":\"(?:Area [^\"]*? - )?(?<type>[^\"]+)\"",
+          "dateFormat": "iso-local-date"
+        }
+      }
+    },
+    {
+      "gss": "E07000124",
+      "name": "Ribble Valley Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Ribble Valley Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "white sack",
+            "type": "PAPER"
+          },
+          {
+            "match": "green bin",
+            "type": "GARDEN"
+          },
+          {
+            "match": "blue bin",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "burgundy bin",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "jadu-directory",
+        "version": 1,
+        "jaduDirectory": {
+          "site": "www.ribblevalley.gov.uk",
+          "directories": [
+            "1"
+          ],
+          "postcodeSearch": true,
+          "codes": [
+            {
+              "name": "Burgundy Bin",
+              "directory": "1",
+              "heading": "Collection Day",
+              "pattern": "(?<day>[A-Za-z]{3,9})",
+              "weekOne": "2026-04-06"
+            },
+            {
+              "name": "Blue Bin",
+              "directory": "1",
+              "heading": "Collection Day",
+              "pattern": "(?<day>[A-Za-z]{3,9})",
+              "everyWeeks": 2,
+              "weekOne": "2026-04-06",
+              "weekHeading": "White Sack Collection Week (green/blue bin week)",
+              "weeks": {
+                "Blue": 1,
+                "Green": 1
+              },
+              "extraWeeks": [
+                "2026-12-21"
+              ]
+            },
+            {
+              "name": "Green Bin",
+              "directory": "1",
+              "heading": "Collection Day",
+              "pattern": "(?<day>[A-Za-z]{3,9})",
+              "everyWeeks": 2,
+              "weekOne": "2026-04-13",
+              "weekHeading": "White Sack Collection Week (green/blue bin week)",
+              "weeks": {
+                "Blue": 1,
+                "Green": 1
+              },
+              "offWeeks": [
+                "2026-12-21"
+              ]
+            },
+            {
+              "name": "White Sack",
+              "directory": "1",
+              "heading": "Collection Day",
+              "pattern": "(?<day>[A-Za-z]{3,9})",
+              "everyWeeks": 2,
+              "weekOne": "2026-04-06",
+              "weekHeading": "White Sack Collection Week (green/blue bin week)",
+              "weeks": {
+                "Blue": 1,
+                "Green": 2
+              }
+            }
+          ]
         }
       }
     }
