@@ -15275,6 +15275,86 @@
           ]
         }
       }
+    },
+    {
+      "gss": "S12000027",
+      "name": "Shetland Islands Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "street"
+      ],
+      "attribution": "Collection data from Shetland Islands Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "blue-lidded",
+            "type": "PAPER"
+          },
+          {
+            "match": "grey-lidded",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "non-recyclable",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "jadu-directory",
+        "version": 1,
+        "jaduDirectory": {
+          "site": "www.shetland.gov.uk",
+          "directories": [
+            "12"
+          ],
+          "codes": [
+            {
+              "name": "Non-recyclable rubbish",
+              "directory": "12",
+              "heading": "Rubbish Collection Day",
+              "pattern": "(?<day>[A-Za-z]{3,9})",
+              "everyWeeks": 2,
+              "weekOne": "2026-11-02",
+              "weekHeading": "Download {year} Collection Calendar",
+              "weekPattern": "(?<week>eastisles|centralnorthsouthwest)",
+              "weeks": {
+                "eastisles": 1,
+                "centralnorthsouthwest": 2
+              }
+            },
+            {
+              "name": "Blue-lidded bin (paper, card and cardboard)",
+              "directory": "12",
+              "heading": "Recycling Collection Day",
+              "pattern": "(?<day>[A-Za-z]{3,9})",
+              "everyWeeks": 4,
+              "weekOne": "2026-11-09",
+              "weekHeading": "Download {year} Collection Calendar",
+              "weekPattern": "(?<week>eastisles|centralnorthsouthwest)",
+              "weeks": {
+                "eastisles": 1,
+                "centralnorthsouthwest": 2
+              }
+            },
+            {
+              "name": "Grey-lidded bin (plastic bottles, cans, tins and cartons)",
+              "directory": "12",
+              "heading": "Recycling Collection Day",
+              "pattern": "(?<day>[A-Za-z]{3,9})",
+              "everyWeeks": 4,
+              "weekOne": "2026-11-23",
+              "weekHeading": "Download {year} Collection Calendar",
+              "weekPattern": "(?<week>eastisles|centralnorthsouthwest)",
+              "weeks": {
+                "eastisles": 1,
+                "centralnorthsouthwest": 2
+              }
+            }
+          ]
+        }
+      }
     }
   ]
 }
