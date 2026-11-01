@@ -1804,11 +1804,6 @@
       }
     },
     {
-      "gss": "E07000096",
-      "name": "Dacorum Borough Council",
-      "tier": 3
-    },
-    {
       "gss": "E07000102",
       "name": "Three Rivers District Council",
       "tier": 1,
@@ -15967,6 +15962,137 @@
               }
             }
           ]
+        }
+      }
+    },
+    {
+      "gss": "E07000096",
+      "name": "Dacorum Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Dacorum Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "green bin",
+            "type": "GARDEN"
+          },
+          {
+            "match": "blue bin",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "FOOD"
+            ]
+          },
+          {
+            "match": "grey bin",
+            "type": "REFUSE",
+            "alsoCarries": [
+              "FOOD"
+            ]
+          }
+        ],
+        "optInMatch": [
+          "green bin"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://webapps.dacorum.gov.uk/bincollections/",
+          "addressPrimeUrl": "https://webapps.dacorum.gov.uk/bincollections/",
+          "addressPrimePattern": "name=\"__VIEWSTATE\" id=\"__VIEWSTATE\" value=\"(?<viewState>[^\"]*)\"[\\s\\S]*?name=\"__VIEWSTATEGENERATOR\" id=\"__VIEWSTATEGENERATOR\" value=\"(?<generator>[^\"]*)\"[\\s\\S]*?name=\"__EVENTVALIDATION\" id=\"__EVENTVALIDATION\" value=\"(?<validation>[^\"]*)\"",
+          "addressForm": {
+            "__VIEWSTATE": "{viewState}",
+            "__VIEWSTATEGENERATOR": "{generator}",
+            "__EVENTVALIDATION": "{validation}",
+            "ctl00$MainContent$txtBxPCode": "{postcode}",
+            "ctl00$MainContent$btnFindAddr": "Find me"
+          },
+          "addressPattern": "<option value=\"(?<ref>[^\"]+;\\d{6,})\">(?<label>[^<]+)</option>",
+          "refIsFormValue": true,
+          "scheduleUrl": "https://webapps.dacorum.gov.uk/bincollections/",
+          "schedulePrimeUrl": "https://webapps.dacorum.gov.uk/bincollections/",
+          "schedulePrimePattern": "name=\"__VIEWSTATE\" id=\"__VIEWSTATE\" value=\"(?<viewState>[^\"]*)\"[\\s\\S]*?name=\"__VIEWSTATEGENERATOR\" id=\"__VIEWSTATEGENERATOR\" value=\"(?<generator>[^\"]*)\"[\\s\\S]*?name=\"__EVENTVALIDATION\" id=\"__EVENTVALIDATION\" value=\"(?<validation>[^\"]*)\"",
+          "scheduleSteps": [
+            {
+              "url": "https://webapps.dacorum.gov.uk/bincollections/",
+              "form": {
+                "__VIEWSTATE": "{viewState}",
+                "__VIEWSTATEGENERATOR": "{generator}",
+                "__EVENTVALIDATION": "{validation}",
+                "ctl00$MainContent$txtBxPCode": "{postcode}",
+                "ctl00$MainContent$btnFindAddr": "Find me"
+              },
+              "pattern": "name=\"__VIEWSTATE\" id=\"__VIEWSTATE\" value=\"(?<viewState>[^\"]*)\"[\\s\\S]*?name=\"__VIEWSTATEGENERATOR\" id=\"__VIEWSTATEGENERATOR\" value=\"(?<generator>[^\"]*)\"[\\s\\S]*?name=\"__EVENTVALIDATION\" id=\"__EVENTVALIDATION\" value=\"(?<validation>[^\"]*)\""
+            }
+          ],
+          "scheduleForm": {
+            "__VIEWSTATE": "{viewState}",
+            "__VIEWSTATEGENERATOR": "{generator}",
+            "__EVENTVALIDATION": "{validation}",
+            "ctl00$MainContent$lstBxAddrList": "{ref}",
+            "ctl00$MainContent$btnGetSchedules": "Continue"
+          },
+          "blockPattern": "<strong>(?<type>[^<]+)</strong></div>\\s*<div[^>]*>\\s*<div[^>]*>\\s*<div[^>]*>Next collection on:\\s*</div>\\s*<div[^>]*>[A-Za-z]{3}, (?<date>\\d{1,2} [A-Za-z]{3,4} \\d{4})</div>",
+          "dateFormat": "weekday-day-shortmonth-year"
+        }
+      }
+    },
+    {
+      "gss": "E07000032",
+      "name": "Amber Valley Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Amber Valley Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://info.ambervalley.gov.uk/WebServices/AVBCFeeds/GazetteerJSON.asmx/PropertyLookupFeed",
+          "addressForm": {
+            "srchText": "{postcode}"
+          },
+          "addressPattern": "\"uprn\":\"(?<ref>\\d{6,})\"(?:(?!\"uprn\":)[\\s\\S])*?\"addressComma\":\"(?<label>[^\"]+)\"",
+          "scheduleUrl": "https://info.ambervalley.gov.uk/WebServices/AVBCFeeds/WasteCollectionJSON.asmx/GetCollectionDetailsByUPRN?uprn={ref}",
+          "blockPattern": "\"(?<type>refuse|recycling|green|communalRef|communalRyc|NextFood)(?:NextDate|Date)\":\"(?<date>(?!0001-|1900-)\\d{4}-\\d{2}-\\d{2})T",
+          "streamAliases": {
+            "refuse": "Refuse",
+            "recycling": "Recycling",
+            "green": "Garden waste",
+            "NextFood": "Food waste",
+            "communalRef": "Communal refuse",
+            "communalRyc": "Communal recycling"
+          },
+          "dateFormat": "iso-local-date"
         }
       }
     }
