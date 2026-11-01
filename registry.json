@@ -16095,6 +16095,56 @@
           "dateFormat": "iso-local-date"
         }
       }
+    },
+    {
+      "gss": "E07000107",
+      "name": "Dartford Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Dartford Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN",
+            "color": "#A05028"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING",
+            "color": "#A0A0A0"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE",
+            "color": "#38A020"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "ebase",
+        "version": 1,
+        "ebase": {
+          "startUrl": "https://windmz.dartford.gov.uk/ufs/WS_CHECK_COLLECTIONS.eb",
+          "postcodeField": "CTRL:KseGry05:_:A",
+          "searchButton": "CTRL:2nvfUnaN:_",
+          "addressControl": "5IqPlilK",
+          "addressByText": true,
+          "addressOnChange": true,
+          "blockPattern": "data-eb-colheader=\"Collection Type\"[^>]*>\\s*<div[^>]*>\\s*<div[^>]*>\\s*(?<type>[^<]+?)\\s*</div>(?<body>[\\s\\S]*?)</tr>",
+          "datePattern": "data-eb-colheader=\"Date\"[^>]*>\\s*<div[^>]*>\\s*<div[^>]*>\\s*(?<date>\\d{2}/\\d{2}/\\d{4})\\s*</div>",
+          "dateFormat": "dd/MM/yyyy"
+        }
+      }
     }
   ]
 }
