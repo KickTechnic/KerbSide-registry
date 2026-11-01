@@ -11016,7 +11016,7 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://www.nelincs.gov.uk/wp-admin/admin-ajax.php?action=nelincs_search&nonce={nonce}&q={postcode}",
-          "addressPrimeUrl": "https://www.nelincs.gov.uk/refuse-collection-schedule/",
+          "addressPrimeUrl": "https://www.nelincs.gov.uk/refuse-collection-schedule/?app=kerbside",
           "addressPrimePattern": "\"nonce\":\"(?<nonce>[0-9a-f]+)\"",
           "addressPattern": "\"address\":\"(?<label>[^\"]+)\",\"uprn\":(?<ref>\\d+)",
           "scheduleUrl": "https://www.nelincs.gov.uk/refuse-collection-schedule/?uprn={ref}",
