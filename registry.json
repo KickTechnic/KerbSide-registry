@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-10-31",
+  "updated": "2026-11-01",
   "councils": [
     {
       "gss": "E07000240",
@@ -15565,6 +15565,232 @@
             "brown": "Garden Waste Bin"
           },
           "dateFormat": "weekday-ordinal-of-month-year"
+        }
+      }
+    },
+    {
+      "gss": "E07000068",
+      "name": "Brentwood Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Brentwood Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "cans",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "household waste",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://maps.brentwood.gov.uk/geoserver/BrentwoodAddresses/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=LLPG&outputFormat=application/json&maxFeatures=1000&propertyName=UPRN,address&sortBy=address&cql_filter=POSTCODE%3D%27{postcode}%27",
+          "addressPattern": "\"UPRN\":(?<ref>\\d+),[^{}]*?\"address\":\"(?<label>[^\"]+)\"",
+          "scheduleUrl": "https://maps.brentwood.gov.uk/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=geodata%3ARecycling%20and%20Waste&outputFormat=application/json&maxFeatures=5&propertyName=uprn,garden_round,glass_round,recycle_schedule,residual_day&cql_filter=uprn%3D%27{ref}%27",
+          "errorPattern": "<ows:ExceptionReport",
+          "weekCodes": [
+            {
+              "name": "Black sacks (household waste)",
+              "pattern": "\"recycle_schedule\":(?:\"(?<week>[^\"]+)\"|null)[^{}]*?\"residual_day\":(?:\"(?<day>[A-Z]+)\"|null)",
+              "weekOne": "2026-03-30",
+              "days": {
+                "1": "Monday",
+                "5": "Monday",
+                "6": "Tuesday",
+                "7": "Tuesday",
+                "3": "Wednesday",
+                "11": "Wednesday",
+                "9": "Thursday",
+                "10": "Thursday",
+                "4": "Friday",
+                "8": "Friday",
+                "2A": "Saturday",
+                "2B": "Saturday"
+              }
+            },
+            {
+              "name": "Food waste caddy",
+              "pattern": "\"recycle_schedule\":(?:\"(?<week>[^\"]+)\"|null)[^{}]*?\"residual_day\":(?:\"(?<day>[A-Z]+)\"|null)",
+              "weekOne": "2026-03-30",
+              "days": {
+                "1": "Monday",
+                "5": "Monday",
+                "6": "Tuesday",
+                "7": "Tuesday",
+                "3": "Wednesday",
+                "11": "Wednesday",
+                "9": "Thursday",
+                "10": "Thursday",
+                "4": "Friday",
+                "8": "Friday",
+                "2A": "Saturday",
+                "2B": "Saturday"
+              }
+            },
+            {
+              "name": "White sack (cans and plastic)",
+              "pattern": "\"recycle_schedule\":\"(?<week>[^\"]+)\"[^{}]*?\"residual_day\":(?:\"(?<day>[A-Z]+)\"|null)",
+              "everyWeeks": 2,
+              "weekOne": "2026-03-30",
+              "days": {
+                "1": "Monday",
+                "5": "Monday",
+                "6": "Tuesday",
+                "7": "Tuesday",
+                "3": "Wednesday",
+                "11": "Wednesday",
+                "9": "Thursday",
+                "10": "Thursday",
+                "4": "Friday",
+                "8": "Friday",
+                "2A": "Saturday",
+                "2B": "Saturday"
+              },
+              "weeks": {
+                "1": 1,
+                "2A": 1,
+                "2B": 1,
+                "3": 1,
+                "4": 1,
+                "5": 1,
+                "6": 1,
+                "7": 1,
+                "8": 1,
+                "9": 1,
+                "10": 1,
+                "11": 1
+              }
+            },
+            {
+              "name": "Blue sack (paper and cardboard)",
+              "pattern": "\"recycle_schedule\":\"(?<week>[^\"]+)\"[^{}]*?\"residual_day\":(?:\"(?<day>[A-Z]+)\"|null)",
+              "everyWeeks": 2,
+              "weekOne": "2026-03-30",
+              "days": {
+                "1": "Monday",
+                "5": "Monday",
+                "6": "Tuesday",
+                "7": "Tuesday",
+                "3": "Wednesday",
+                "11": "Wednesday",
+                "9": "Thursday",
+                "10": "Thursday",
+                "4": "Friday",
+                "8": "Friday",
+                "2A": "Saturday",
+                "2B": "Saturday"
+              },
+              "weeks": {
+                "1": 2,
+                "2A": 2,
+                "2B": 2,
+                "3": 2,
+                "4": 2,
+                "5": 2,
+                "6": 2,
+                "7": 2,
+                "8": 2,
+                "9": 2,
+                "10": 2,
+                "11": 2
+              }
+            },
+            {
+              "name": "Red box (glass)",
+              "pattern": "\"glass_round\":\"[^\"]+\"[^{}]*?\"recycle_schedule\":\"(?<week>[^\"]+)\"[^{}]*?\"residual_day\":(?:\"(?<day>[A-Z]+)\"|null)",
+              "everyWeeks": 2,
+              "weekOne": "2026-03-30",
+              "days": {
+                "1": "Monday",
+                "5": "Monday",
+                "6": "Tuesday",
+                "7": "Tuesday",
+                "3": "Wednesday",
+                "11": "Wednesday",
+                "9": "Thursday",
+                "10": "Thursday",
+                "4": "Friday",
+                "8": "Friday",
+                "2A": "Saturday",
+                "2B": "Saturday"
+              },
+              "weeks": {
+                "1": 1,
+                "2B": 1,
+                "4": 1,
+                "6": 1,
+                "10": 1,
+                "11": 1,
+                "2A": 2,
+                "3": 2,
+                "5": 2,
+                "7": 2,
+                "8": 2,
+                "9": 2
+              }
+            },
+            {
+              "name": "Brown bin or green sacks (garden waste)",
+              "pattern": "\"garden_round\":\"[^\"]+\"[^{}]*?\"recycle_schedule\":\"(?<week>[^\"]+)\"[^{}]*?\"residual_day\":(?:\"(?<day>[A-Z]+)\"|null)",
+              "everyWeeks": 2,
+              "weekOne": "2026-03-30",
+              "days": {
+                "1": "Monday",
+                "5": "Monday",
+                "6": "Tuesday",
+                "7": "Tuesday",
+                "3": "Wednesday",
+                "11": "Wednesday",
+                "9": "Thursday",
+                "10": "Thursday",
+                "4": "Friday",
+                "8": "Friday",
+                "2A": "Saturday",
+                "2B": "Saturday"
+              },
+              "weeks": {
+                "1": 1,
+                "2B": 1,
+                "4": 1,
+                "6": 1,
+                "10": 1,
+                "11": 1,
+                "2A": 2,
+                "3": 2,
+                "5": 2,
+                "7": 2,
+                "8": 2,
+                "9": 2
+              }
+            }
+          ]
         }
       }
     }
