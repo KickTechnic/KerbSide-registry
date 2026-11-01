@@ -16206,6 +16206,61 @@
           }
         }
       }
+    },
+    {
+      "gss": "E07000239",
+      "name": "Wyre Forest District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "street"
+      ],
+      "attribution": "Collection data from Wyre Forest District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "http://www.wyreforest.gov.uk/querybin.asp?txtStreetName={street}&locality=%20&town=&select=",
+          "addressPattern": "<A HREF='querybin\\.asp\\?txtStreetName=(?<name>[^&']+)&locality=(?<locality>[^&']*)&town=(?<town>[^&']*)&select=(?<select>yes)'>(?<label>[^<]+)</A>",
+          "singleAddressPattern": "details for <font color=\"red\">(?<label>(?<name>[^<]+))</font>",
+          "refParts": [
+            "select",
+            "locality",
+            "town",
+            "name"
+          ],
+          "refBlankParts": [
+            "select",
+            "locality",
+            "town"
+          ],
+          "refIsFormValue": true,
+          "scheduleUrl": "http://www.wyreforest.gov.uk/querybin.asp?txtStreetName={name}&locality={locality}&town={town}&select={select}",
+          "blockPattern": "(?:(?<every>alternate weeks)[\\s\\S]*?)?Next (?<body>Rubbish) Collection[\\s\\S]*?<font color=\"#539253\"><b>[^<]*</b>[\\s\\S]*?<font color=\"#539253\"><b>(?<date>[^<]+)</b>",
+          "secondBlockPattern": "(?:(?<every>alternate weeks)[\\s\\S]*?)?Next (?<body>Recycling) Collection[\\s\\S]*?<font color=\"#539253\"><b>[^<]*</b>[\\s\\S]*?<font color=\"#539253\"><b>[^<]*</b>[\\s\\S]*?<font color=\"#539253\"><b>(?<date>[^<]+)</b>",
+          "typePattern": "(?<type>Rubbish|Recycling)",
+          "dateFormat": "today-this-next-weekday-or-date",
+          "cadence": [
+            {
+              "match": "(?i)alternate",
+              "days": 14
+            }
+          ]
+        }
+      }
     }
   ]
 }
