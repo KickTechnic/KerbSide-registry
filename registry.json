@@ -16145,6 +16145,67 @@
           "dateFormat": "dd/MM/yyyy"
         }
       }
+    },
+    {
+      "gss": "E06000026",
+      "name": "Plymouth City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Plymouth City Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "residual",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": []
+      },
+      "platform": {
+        "kind": "achieve",
+        "version": 1,
+        "achieve": {
+          "host": "plymouth-self.achieveservice.com",
+          "sessionUrl": "https://plymouth-self.achieveservice.com/authapi/isauthenticated?uri=https%253A%252F%252Fplymouth-self.achieveservice.com%252Fen%252FAchieveForms%252F%253Fform_uri%253Dsandbox-publish%253A%252F%252FAF-Process-31283f9a-3ae7-4225-af71-bf3884e0ac1b%252FAF-Stagedba4a7d5-e916-46b6-abdb-643d38bec875%252Fdefinition.json%2526redirectlink%253D%25252Fen%2526cancelRedirectLink%253D%25252Fen%2526consentMessage%253Dyes&hostname=plymouth-self.achieveservice.com&withCredentials=true",
+          "tokenLookupId": "6936e38f6d376",
+          "tokenField": "collectiveKey",
+          "tokenMethod": "POST",
+          "tokenBody": "{\"formValues\":{\"Section 1\":{}}}",
+          "scheduleLookupId": "698b9c49a3c13",
+          "scheduleBodyTemplate": "{\"formValues\":{\"Section 1\":{\"collectiveKey\":{\"value\":\"{token}\"},\"collectiveUPRN\":{\"value\":\"{ref}\"},\"collectiveGetJobStartDate\":{\"value\":\"{dateMin}\"},\"collectiveGetJobEndDate\":{\"value\":\"{dateMax}\"}}}}",
+          "bodyDateFormat": "iso-datetime",
+          "scheduleRows": {
+            "mode": "dict-rows",
+            "typeField": "collectiveWasteType",
+            "dateField": "collectiveCollectionDate",
+            "typePattern": "^(?:Empty )?(?<type>.+?)(?: \\d+L)?$"
+          },
+          "nextDateOnly": [
+            "garden"
+          ],
+          "dateFormat": "dd/MM/yyyy",
+          "addressLookupId": "560d5266e930f",
+          "addressBodyTemplate": "{\"formValues\":{\"Section 1\":{\"postcode_search\":{\"value\":\"{postcode}\"}}}}",
+          "addressRows": {
+            "addressField": "display",
+            "refField": "uprn"
+          }
+        }
+      }
     }
   ]
 }
