@@ -15793,6 +15793,174 @@
           ]
         }
       }
+    },
+    {
+      "gss": "E07000125",
+      "name": "Rossendale Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Rossendale Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "paper and cardboard",
+            "type": "PAPER"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "glass cans",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS"
+            ]
+          },
+          {
+            "match": "recycling waste",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "PAPER",
+              "GLASS"
+            ]
+          },
+          {
+            "match": "general waste",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "jadu-directory",
+        "version": 1,
+        "jaduDirectory": {
+          "site": "www.rossendale.gov.uk",
+          "directories": [
+            "10094"
+          ],
+          "postcodeSearch": true,
+          "movedDates": {
+            "2026-12-25": "2026-12-29",
+            "2026-12-29": "2026-12-30",
+            "2026-12-30": "2026-12-31",
+            "2026-12-31": "2027-01-04",
+            "2027-01-01": "2027-01-05",
+            "2027-01-05": "2027-01-06",
+            "2027-01-06": "2027-01-07",
+            "2027-01-07": "2027-01-08",
+            "2027-01-08": "2027-01-09"
+          },
+          "codes": [
+            {
+              "name": "General Waste",
+              "directory": "10094",
+              "heading": "Link",
+              "pattern": "/zone-(?<day>[1-4])(?<week>[ab])-",
+              "everyWeeks": 2,
+              "weekOne": "2026-03-30",
+              "dayCodes": {
+                "1": "Tuesday",
+                "2": "Wednesday",
+                "3": "Thursday",
+                "4": "Friday"
+              },
+              "weeks": {
+                "b": 1,
+                "a": 2
+              }
+            },
+            {
+              "name": "General Waste",
+              "directory": "10094",
+              "heading": "Link",
+              "pattern": "/weekly-(?<day>[1-4])[ab]-",
+              "weekOne": "2026-03-30",
+              "dayCodes": {
+                "1": "Tuesday",
+                "2": "Wednesday",
+                "3": "Thursday",
+                "4": "Friday"
+              }
+            },
+            {
+              "name": "General Waste",
+              "directory": "10094",
+              "heading": "Link",
+              "pattern": "/(?<week>(?<day>tuesday|wednesday|thursday|friday))-",
+              "everyWeeks": 2,
+              "weekOne": "2026-03-30",
+              "weeks": {
+                "tuesday": 2,
+                "wednesday": 2,
+                "thursday": 2,
+                "friday": 2
+              }
+            },
+            {
+              "name": "Recycling Waste",
+              "directory": "10094",
+              "heading": "Link",
+              "pattern": "/(?:zone|weekly)-(?<day>[1-4])(?<week>[ab])-",
+              "everyWeeks": 2,
+              "weekOne": "2026-03-30",
+              "dayCodes": {
+                "1": "Tuesday",
+                "2": "Wednesday",
+                "3": "Thursday",
+                "4": "Friday"
+              },
+              "weeks": {
+                "a": 1,
+                "b": 2
+              }
+            },
+            {
+              "name": "Glass Cans and Plastics Recycling",
+              "directory": "10094",
+              "heading": "Link",
+              "pattern": "/(?<week>(?<day>tuesday|wednesday|thursday|friday))-",
+              "everyWeeks": 4,
+              "weekOne": "2026-03-30",
+              "weeks": {
+                "tuesday": 1,
+                "wednesday": 1,
+                "thursday": 1,
+                "friday": 1
+              }
+            },
+            {
+              "name": "Paper and Cardboard Recycling",
+              "directory": "10094",
+              "heading": "Link",
+              "pattern": "/(?<week>(?<day>tuesday|wednesday|thursday|friday))-",
+              "everyWeeks": 4,
+              "weekOne": "2026-03-30",
+              "weeks": {
+                "tuesday": 3,
+                "wednesday": 3,
+                "thursday": 3,
+                "friday": 3
+              }
+            },
+            {
+              "name": "Food Waste",
+              "directory": "10094",
+              "heading": "Link",
+              "pattern": "/(?:(?:zone|weekly)-)?(?<day>[1-4]|tuesday|wednesday|thursday|friday)[ab]?-",
+              "weekOne": "2026-03-30",
+              "dayCodes": {
+                "1": "Tuesday",
+                "2": "Wednesday",
+                "3": "Thursday",
+                "4": "Friday"
+              }
+            }
+          ]
+        }
+      }
     }
   ]
 }
