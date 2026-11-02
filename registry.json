@@ -16575,6 +16575,156 @@
           "dateFormat": "dd/MM/yyyy"
         }
       }
+    },
+    {
+      "gss": "S12000013",
+      "name": "Comhairle nan Eilean Siar",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "street"
+      ],
+      "attribution": "Collection data from Comhairle nan Eilean Siar",
+      "streams": {
+        "matches": [
+          {
+            "match": "food and garden",
+            "type": "FOOD",
+            "alsoCarries": [
+              "GARDEN"
+            ]
+          },
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "plastic",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "mixed recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "non-recyclable",
+            "type": "REFUSE"
+          },
+          {
+            "match": "residual",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "round-pages",
+        "version": 1,
+        "roundPages": {
+          "regions": [
+            {
+              "postcodes": "^HS[1-5] ?\\d",
+              "rounds": [
+                {
+                  "key": "blue",
+                  "name": "Organic food and garden waste (grey bin with yellow sticker) and mixed recycling (blue bin)",
+                  "url": "https://www.cne-siar.gov.uk/bins-and-recycling/waste-recycling-collections-lewis-and-harris/organic-food-and-garden-waste-and-mixed-recycling-blue-bin/{day}-collections",
+                  "days": [
+                    "monday",
+                    "tuesday",
+                    "wednesday",
+                    "thursday",
+                    "friday"
+                  ],
+                  "bins": [
+                    "Organic food and garden waste",
+                    "Mixed recycling"
+                  ]
+                },
+                {
+                  "key": "grey",
+                  "name": "Non-recyclable waste (grey bin with purple sticker)",
+                  "url": "https://www.cne-siar.gov.uk/bins-and-recycling/waste-recycling-collections-lewis-and-harris/non-recyclable-waste-grey-bin-purple-sticker/{day}-collections",
+                  "days": [
+                    "monday",
+                    "tuesday",
+                    "wednesday",
+                    "thursday",
+                    "friday"
+                  ],
+                  "bins": [
+                    "Non-recyclable waste"
+                  ]
+                },
+                {
+                  "key": "glass",
+                  "name": "Glass (green bin)",
+                  "url": "https://www.cne-siar.gov.uk/bins-and-recycling/waste-recycling-collections-lewis-and-harris/glass-green-bin-collections/{day}-collections",
+                  "days": [
+                    "thursday",
+                    "friday"
+                  ],
+                  "bins": [
+                    "Glass"
+                  ]
+                }
+              ]
+            },
+            {
+              "postcodes": "^HS[6-9] ?\\d",
+              "rounds": [
+                {
+                  "key": "black",
+                  "name": "Residual waste (black bin)",
+                  "url": "https://www.cne-siar.gov.uk/bins-and-recycling/uist-and-barra/waste-recycling-collections-uist-and-barra/residual-bins-black-bins/{day}-collections",
+                  "days": [
+                    "tuesday",
+                    "thursday"
+                  ],
+                  "bins": [
+                    "Residual waste"
+                  ]
+                },
+                {
+                  "key": "recycling",
+                  "name": "Recycling (black bin with a blue or green sticker)",
+                  "url": "https://www.cne-siar.gov.uk/bins-and-recycling/waste-recycling-collections-uist-and-barra/recycling-bins-blue-and-green/{day}-collections",
+                  "days": [
+                    "monday",
+                    "tuesday",
+                    "wednesday"
+                  ]
+                }
+              ]
+            }
+          ],
+          "spellings": {
+            "rd": "road",
+            "st": "street",
+            "adabrock": "adabroc",
+            "airidhbhruaich": "airidh a bruaich",
+            "ardmor": "ardmore",
+            "ardnamoine": "ardnamonie",
+            "bulnacraig": "builnacraig",
+            "dunganachy": "dunganichy",
+            "garrynamoine": "garrynamonie",
+            "gerinish": "geirinish",
+            "heather hill": "heatherhill",
+            "ivor hill": "ivorhill",
+            "maccallum": "mccallum",
+            "macsween street": "macqueen street",
+            "morison": "morrison",
+            "moss park": "mosspark",
+            "stonefield": "stoneyfield",
+            "urquart": "urquhart",
+            "uskevagh": "uiskevagh"
+          },
+          "notHousehold": "(?:(?:all|weekly|twice weekly|3 weekly) )?(?:stornoway|tarbert|lochmaddy|daliburgh|liniclate / balivanich) commercials"
+        }
+      }
     }
   ]
 }
