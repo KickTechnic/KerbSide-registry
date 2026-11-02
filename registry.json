@@ -17537,6 +17537,98 @@
           "dateFormat": "weekday-day-month-year"
         }
       }
+    },
+    {
+      "gss": "E06000018",
+      "name": "Nottingham City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Nottingham City Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN",
+            "color": "#A3823C"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING",
+            "color": "#A9A9A9"
+          },
+          {
+            "match": "general",
+            "type": "REFUSE",
+            "color": "#21BD24"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "recollect",
+        "version": 1,
+        "recollect": {
+          "area": "NottinghamCityCoun",
+          "service": "50003",
+          "nextDateOnly": [
+            "garden"
+          ]
+        }
+      }
+    },
+    {
+      "gss": "E07000170",
+      "name": "Ashfield District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Ashfield District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "glass",
+            "type": "GLASS",
+            "color": "#1E90FF"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING",
+            "color": "#2E8B57"
+          },
+          {
+            "match": "residual",
+            "type": "REFUSE",
+            "color": "#DC143C"
+          }
+        ],
+        "optInMatch": [
+          "garden",
+          "clinical"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.ashfield.gov.uk/api/address/search/{postcode}",
+          "addressPattern": "\"UPRN\"\\s*:\\s*\"(?<ref>\\d+)\"[^{}]*?\"ADDRESS\"\\s*:\\s*\"(?<label>[^\"]+)\"",
+          "scheduleUrl": "https://www.ashfield.gov.uk/api/address/collections/{ref}",
+          "blockPattern": "\"service\":\\s*\"(?<type>[^\"]+)\"[^{}]*?\"date\":\\s*\"(?<date>\\d{2}/\\d{2}/\\d{4} \\d{2}:\\d{2}:\\d{2})",
+          "dateFormat": "dd/MM/yyyy HH:mm:ss",
+          "nextDateOnly": [
+            "garden"
+          ]
+        }
+      }
     }
   ]
 }
