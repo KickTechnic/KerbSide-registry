@@ -16454,6 +16454,127 @@
           ]
         }
       }
+    },
+    {
+      "gss": "E07000088",
+      "name": "Gosport Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Gosport Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING",
+            "color": "#2C5E00"
+          },
+          {
+            "match": "domestic waste",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "accept": "text/html",
+          "cookieSession": true,
+          "addressPrimeUrl": "https://www.gosport.gov.uk/refuserecyclingdays",
+          "addressPrimePattern": "processsubmission\\?pageSessionId=(?<psid>[0-9a-f-]+)&amp;fsid=(?<fsid>[0-9a-f-]+)&amp;fsn=(?<fsn>[0-9a-f-]+)\"[\\s\\S]*?name=\"QUERYWARDSCOLLECTIONSWS_PAGESESSIONID\" value=\"(?<pagesession>[^\"]*)\"[\\s\\S]*?name=\"QUERYWARDSCOLLECTIONSWS_SESSIONID\" value=\"(?<session>[^\"]*)\"[\\s\\S]*?name=\"QUERYWARDSCOLLECTIONSWS_NONCE\" value=\"(?<nonce>[^\"]*)\"",
+          "addressSteps": [
+            {
+              "url": "https://www.gosport.gov.uk/apiserver/formsservice/http/processsubmission?pageSessionId={psid}&fsid={fsid}&fsn={fsn}",
+              "form": {
+                "QUERYWARDSCOLLECTIONSWS_PAGESESSIONID": "{pagesession}",
+                "QUERYWARDSCOLLECTIONSWS_SESSIONID": "{session}",
+                "QUERYWARDSCOLLECTIONSWS_NONCE": "{nonce}",
+                "QUERYWARDSCOLLECTIONSWS_VARIABLES": "",
+                "QUERYWARDSCOLLECTIONSWS_PAGENAME": "PAGE1",
+                "QUERYWARDSCOLLECTIONSWS_PAGEINSTANCE": "0",
+                "QUERYWARDSCOLLECTIONSWS_PAGE1_SEARCHED": "NO",
+                "QUERYWARDSCOLLECTIONSWS_PAGE1_SEARCHADDRESS": "YES",
+                "QUERYWARDSCOLLECTIONSWS_PAGE1_NEXTPAGE": "PAGE2",
+                "QUERYWARDSCOLLECTIONSWS_PAGE1_POSTCODE": "{postcode}",
+                "QUERYWARDSCOLLECTIONSWS_FORMACTION_NEXT": "QUERYWARDSCOLLECTIONSWS_PAGE1_GETADDRESSES"
+              },
+              "pattern": "processsubmission\\?pageSessionId=[0-9a-f-]+&amp;fsid=[0-9a-f-]+&amp;fsn=(?<bouncedFsn>[0-9a-f-]+)\"[\\s\\S]*?name=\"QUERYWARDSCOLLECTIONSWS_NONCE\" value=\"(?<bouncedNonce>[^\"]*)\""
+            }
+          ],
+          "addressUrl": "https://www.gosport.gov.uk/apiserver/formsservice/http/processsubmission?pageSessionId={psid}&fsid={fsid}&fsn={bouncedFsn}",
+          "addressForm": {
+            "QUERYWARDSCOLLECTIONSWS_PAGESESSIONID": "{pagesession}",
+            "QUERYWARDSCOLLECTIONSWS_SESSIONID": "{session}",
+            "QUERYWARDSCOLLECTIONSWS_NONCE": "{bouncedNonce}",
+            "QUERYWARDSCOLLECTIONSWS_VARIABLES": "",
+            "QUERYWARDSCOLLECTIONSWS_PAGENAME": "PAGE1",
+            "QUERYWARDSCOLLECTIONSWS_PAGEINSTANCE": "1",
+            "QUERYWARDSCOLLECTIONSWS_PAGE1_SEARCHED": "NO",
+            "QUERYWARDSCOLLECTIONSWS_PAGE1_SEARCHADDRESS": "YES",
+            "QUERYWARDSCOLLECTIONSWS_PAGE1_NEXTPAGE": "PAGE2",
+            "QUERYWARDSCOLLECTIONSWS_PAGE1_POSTCODE": "{postcode}",
+            "QUERYWARDSCOLLECTIONSWS_FORMACTION_NEXT": "QUERYWARDSCOLLECTIONSWS_PAGE1_GETADDRESSES",
+            "QUERYWARDSCOLLECTIONSWS_PAGE1_PROPERTY": "",
+            "QUERYWARDSCOLLECTIONSWS_PAGE1_REFNO": "",
+            "QUERYWARDSCOLLECTIONSWS_PAGE1_UPRN": ""
+          },
+          "addressBase64Pattern": "QUERYWARDSCOLLECTIONSWSSerializedVariables = \"(?<data>[A-Za-z0-9+/=]+)\"",
+          "addressPattern": "\\[\"(?<ref>\\d+)\",\"\\s*(?<label>[^\"]+?), \\d+\",",
+          "schedulePrimeUrl": "https://www.gosport.gov.uk/refuserecyclingdays",
+          "schedulePrimePattern": "processsubmission\\?pageSessionId=(?<psid>[0-9a-f-]+)&amp;fsid=(?<fsid>[0-9a-f-]+)&amp;fsn=(?<fsn>[0-9a-f-]+)\"[\\s\\S]*?name=\"QUERYWARDSCOLLECTIONSWS_PAGESESSIONID\" value=\"(?<pagesession>[^\"]*)\"[\\s\\S]*?name=\"QUERYWARDSCOLLECTIONSWS_SESSIONID\" value=\"(?<session>[^\"]*)\"[\\s\\S]*?name=\"QUERYWARDSCOLLECTIONSWS_NONCE\" value=\"(?<nonce>[^\"]*)\"",
+          "scheduleSteps": [
+            {
+              "url": "https://www.gosport.gov.uk/apiserver/formsservice/http/processsubmission?pageSessionId={psid}&fsid={fsid}&fsn={fsn}",
+              "form": {
+                "QUERYWARDSCOLLECTIONSWS_PAGESESSIONID": "{pagesession}",
+                "QUERYWARDSCOLLECTIONSWS_SESSIONID": "{session}",
+                "QUERYWARDSCOLLECTIONSWS_NONCE": "{nonce}",
+                "QUERYWARDSCOLLECTIONSWS_VARIABLES": "",
+                "QUERYWARDSCOLLECTIONSWS_PAGENAME": "PAGE1",
+                "QUERYWARDSCOLLECTIONSWS_PAGEINSTANCE": "0",
+                "QUERYWARDSCOLLECTIONSWS_PAGE1_SEARCHED": "NO",
+                "QUERYWARDSCOLLECTIONSWS_PAGE1_SEARCHADDRESS": "YES",
+                "QUERYWARDSCOLLECTIONSWS_PAGE1_NEXTPAGE": "PAGE2",
+                "QUERYWARDSCOLLECTIONSWS_PAGE1_POSTCODE": "{postcode}",
+                "QUERYWARDSCOLLECTIONSWS_FORMACTION_NEXT": "QUERYWARDSCOLLECTIONSWS_PAGE1_GETADDRESSES"
+              },
+              "pattern": "processsubmission\\?pageSessionId=[0-9a-f-]+&amp;fsid=[0-9a-f-]+&amp;fsn=(?<bouncedFsn>[0-9a-f-]+)\"[\\s\\S]*?name=\"QUERYWARDSCOLLECTIONSWS_NONCE\" value=\"(?<bouncedNonce>[^\"]*)\""
+            }
+          ],
+          "scheduleUrl": "https://www.gosport.gov.uk/apiserver/formsservice/http/processsubmission?pageSessionId={psid}&fsid={fsid}&fsn={bouncedFsn}",
+          "base64Values": {
+            "variables": "{\"SEARCHREF\":{\"value\":\"{ref}\",\"scope\":\"SERVERCLIENTWITHUPDATE\"},\"SEARCHUPRN\":{\"value\":\"{ref}\",\"scope\":\"SERVERCLIENTWITHUPDATE\"}}"
+          },
+          "scheduleForm": {
+            "QUERYWARDSCOLLECTIONSWS_PAGESESSIONID": "{pagesession}",
+            "QUERYWARDSCOLLECTIONSWS_SESSIONID": "{session}",
+            "QUERYWARDSCOLLECTIONSWS_NONCE": "{bouncedNonce}",
+            "QUERYWARDSCOLLECTIONSWS_VARIABLES": "{variables}",
+            "QUERYWARDSCOLLECTIONSWS_PAGENAME": "PAGE1",
+            "QUERYWARDSCOLLECTIONSWS_PAGEINSTANCE": "1",
+            "QUERYWARDSCOLLECTIONSWS_PAGE1_SEARCHED": "YES",
+            "QUERYWARDSCOLLECTIONSWS_PAGE1_SEARCHADDRESS": "NO",
+            "QUERYWARDSCOLLECTIONSWS_PAGE1_NEXTPAGE": "PAGE2",
+            "QUERYWARDSCOLLECTIONSWS_PAGE1_POSTCODE": "{postcode}",
+            "QUERYWARDSCOLLECTIONSWS_PAGE1_PROPERTY": "{ref}",
+            "QUERYWARDSCOLLECTIONSWS_PAGE1_REFNO": "{ref}",
+            "QUERYWARDSCOLLECTIONSWS_PAGE1_UPRN": "{ref}",
+            "QUERYWARDSCOLLECTIONSWS_FORMACTION_NEXT": "QUERYWARDSCOLLECTIONSWS_PAGE1_FIELD9"
+          },
+          "errorPattern": "_PAGE2_RESULTS\">Exception:",
+          "blockPattern": "The <b>(?<type>[^<]+)</b> is scheduled to be collected on <b>(?<date>[^<]+)</b>",
+          "dateFormat": "dd/MM/yyyy"
+        }
+      }
     }
   ]
 }
