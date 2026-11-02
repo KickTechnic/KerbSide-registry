@@ -17094,6 +17094,178 @@
           "dateFormat": "iso-instant-london"
         }
       }
+    },
+    {
+      "gss": "E06000043",
+      "name": "Brighton & Hove City Council",
+      "tier": 1,
+      "attribution": "Collection data from Brighton & Hove City Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "mendix",
+        "version": 1,
+        "mendix": {
+          "site": "https://enviroservices.brighton-hove.gov.uk",
+          "link": "/link/collections",
+          "search": {
+            "operationId": "tglPIXhcJ1abaQ1fhKJvYA",
+            "params": {
+              "Address": "BHCCTheme.Address"
+            },
+            "set": {
+              "BHCCTheme.Address": {
+                "SearchString": "{postcode}"
+              }
+            }
+          },
+          "addresses": {
+            "entity": "BHCCTheme.AddressTempTable",
+            "label": "display",
+            "ref": "uprn",
+            "companions": [
+              "BHCCTheme.CentralHub_Results"
+            ]
+          },
+          "steps": [
+            {
+              "operationId": "e0vap2Ppt1qKtqKsrXkgeQ",
+              "params": {
+                "Collection": "Collections.Collection",
+                "Address": "BHCCTheme.Address"
+              },
+              "set": {
+                "BHCCTheme.Address": {
+                  "BHCCTheme.AddressTemp_SelectedAddress": "{pick}"
+                }
+              }
+            },
+            {
+              "operationId": "DExhrgP93VCBOks+s8GjTQ",
+              "params": {
+                "Collection": "Collections.Collection"
+              }
+            }
+          ],
+          "rows": {
+            "entity": "Collections.CollectionsReturned",
+            "type": "Collection_type",
+            "date": "Formatted_collection",
+            "skip": {
+              "BartecStatus": "not currently subscribed"
+            }
+          },
+          "dateFormat": "weekday-day-month-year"
+        }
+      }
+    },
+    {
+      "gss": "E08000011",
+      "name": "Knowsley Council",
+      "tier": 1,
+      "attribution": "Collection data from Knowsley Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food caddy",
+            "type": "FOOD"
+          },
+          {
+            "match": "blue bin",
+            "type": "GARDEN"
+          },
+          {
+            "match": "grey bin",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "maroon bin",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "mendix",
+        "version": 1,
+        "mendix": {
+          "site": "https://knowsleytransaction.mendixcloud.com",
+          "link": "/link/youarebeingredirected?target=bincollectioninformation",
+          "opening": [
+            {
+              "microflow": "Service_YouAreBeingRedirected.SUB_YouAreBeingRedirected",
+              "entity": "Service_YouAreBeingRedirected.YouAreBeingRedirected_Redirect"
+            }
+          ],
+          "search": {
+            "operationId": "bOqZgC0wC0y8aT1LQdP23A",
+            "params": {
+              "OS_MissedBinEnquiry": "OnlineServices.OS_vmBinCollectionEnquiry"
+            },
+            "set": {
+              "OnlineServices.OS_vmBinCollectionEnquiry": {
+                "EnquiryPostcodeOrStreetName": "{postcode}"
+              }
+            }
+          },
+          "addresses": {
+            "entity": "OnlineServices.OS_vmGeneric_Address",
+            "label": "FullAddress",
+            "ref": "UPRN",
+            "companions": [
+              "AddressSearch_2021.JsonObject"
+            ]
+          },
+          "steps": [
+            {
+              "operationId": "1SCOaJ6HYkenXIYYJa+yFQ",
+              "params": {
+                "Generic_Address": "{pick}"
+              }
+            }
+          ],
+          "fields": [
+            {
+              "entity": "OnlineServices.OS_vmBinCollectionEnquiry",
+              "attribute": "NextMaroon",
+              "name": "Maroon bin"
+            },
+            {
+              "entity": "OnlineServices.OS_vmBinCollectionEnquiry",
+              "attribute": "NextGrey",
+              "name": "Grey bin"
+            },
+            {
+              "entity": "OnlineServices.OS_vmBinCollectionEnquiry",
+              "attribute": "NextBlue",
+              "name": "Blue bin"
+            },
+            {
+              "entity": "OnlineServices.OS_vmBinCollectionEnquiry",
+              "attribute": "NextFood",
+              "name": "Food caddy"
+            }
+          ],
+          "dateFormat": "weekday-dd/MM/yyyy"
+        }
+      }
     }
   ]
 }
