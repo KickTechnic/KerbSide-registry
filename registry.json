@@ -16346,6 +16346,58 @@
           ]
         }
       }
+    },
+    {
+      "gss": "E07000128",
+      "name": "Wyre Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Wyre Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food caddy",
+            "type": "FOOD"
+          },
+          {
+            "match": "green bin",
+            "type": "GARDEN"
+          },
+          {
+            "match": "blue bin",
+            "type": "PAPER"
+          },
+          {
+            "match": "red bin",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS"
+            ]
+          },
+          {
+            "match": "grey bin",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "green bin"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.wyre.gov.uk/singlepoint_ajax/{postcode}",
+          "addressForm": {},
+          "addressPattern": "\"uprn\":\"(?<ref>\\d+)\",\"label\":\"(?![^\"]*\\d+m From )(?<label>[^\"]+)\"",
+          "xhr": true,
+          "scheduleUrl": "https://www.wyre.gov.uk/bincollections?uprn={ref}",
+          "blockPattern": "bin-collection-tasks__heading\"><span class=\"visually-hidden\">Your next </span>(?<type>[^<]+)<span class=\"visually-hidden\"> collection</span></h3>[^<]*<div class=\"bin-collection-tasks__content\">[^<]*<p class=\"bin-collection-tasks__day\">[^<]*</p>[^<]*<p class=\"bin-collection-tasks__date\">(?<date>[^<]+)</p>",
+          "dateFormat": "weekday-day-ordinal-month-noyear"
+        }
+      }
     }
   ]
 }
