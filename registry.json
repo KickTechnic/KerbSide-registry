@@ -8798,7 +8798,7 @@
     {
       "gss": "E07000110",
       "name": "Maidstone Borough Council",
-      "tier": 3,
+      "tier": 1,
       "inputNeeds": [
         "postcode"
       ],
@@ -8822,7 +8822,7 @@
             "type": "RECYCLING"
           },
           {
-            "match": "residual",
+            "match": "refuse",
             "type": "REFUSE"
           }
         ],
@@ -8845,7 +8845,24 @@
           "scheduleRows": {
             "mode": "fixed-fields",
             "dateSuffixPattern": "(?<!_Default)_(?:Last|Next)CollectionDate",
-            "rowKey": "{ref}"
+            "rowKey": "{ref}",
+            "streamAliases": {
+              "DomesticResidual": "Black Bin (Refuse)",
+              "DomesticRecycling": "Green Bin (Recycling)",
+              "DomesticFood": "Black/Orange Lid Bin (Food Waste)",
+              "GardenWaste": "Green/Yellow Stripe or Brown Bin (Garden Waste)",
+              "CommunalResidual": "Communal Refuse Bin",
+              "CommunalRecycling": "Communal Recycling Bin",
+              "CommunalFood": "Communal Food Bin",
+              "ClinicalWaste": "Clinical Waste Collection",
+              "BulkyWaste": "Bulky Item Collection"
+            },
+            "intervalSuffix": "_Frequency",
+            "intervalDays": {
+              "7": 7,
+              "14": 14
+            },
+            "answeredField": "SuezPropertyReference"
           },
           "dateFormat": "weekday-day-shortmonth-year",
           "addressLookupId": "5a0032c96c6cf",
