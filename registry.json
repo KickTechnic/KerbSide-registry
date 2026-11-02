@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-11-01",
+  "updated": "2026-11-02",
   "councils": [
     {
       "gss": "E07000240",
@@ -1865,7 +1865,92 @@
     {
       "gss": "E07000098",
       "name": "Hertsmere Borough Council",
-      "tier": 3
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Hertsmere Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food waste",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden waste",
+            "type": "GARDEN"
+          },
+          {
+            "match": "mixed recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "non-recyclable",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "liberty",
+        "liberty": {
+          "startUrl": "https://hertsmere-services.onmats.com/w/webpage/round-search",
+          "xhr": true,
+          "submitAnswers": true,
+          "weekCodes": [
+            {
+              "name": "Black bin (non-recyclable)",
+              "pattern": "<span class=\"value-as-text\">Refuse</span>(?:(?!</tr>)[\\s\\S])*?<span class=\"value-as-text\">(?<day>[A-Z][a-z]+day)</span>(?:(?!</tr>)[\\s\\S])*?<span class=\"value-as-text\">(?![^<]*WKLY)(?:[^<]*? )??(?<week>[AB]|Narrow)(?: [^<]*)?</span>",
+              "everyWeeks": 2,
+              "weekOne": "2026-07-06",
+              "weeks": {
+                "A": 1,
+                "B": 2,
+                "Narrow": 1
+              }
+            },
+            {
+              "name": "Black bin (non-recyclable)",
+              "pattern": "<span class=\"value-as-text\">Refuse</span>(?:(?!</tr>)[\\s\\S])*?<span class=\"value-as-text\">(?<day>[A-Z][a-z]+day)</span>(?:(?!</tr>)[\\s\\S])*?<span class=\"value-as-text\">[^<]*\\bWKLY\\b",
+              "weekOne": "2026-07-06"
+            },
+            {
+              "name": "Brown bin (mixed recycling)",
+              "pattern": "<span class=\"value-as-text\">Recycling</span>(?:(?!</tr>)[\\s\\S])*?<span class=\"value-as-text\">(?<day>[A-Z][a-z]+day)</span>(?:(?!</tr>)[\\s\\S])*?<span class=\"value-as-text\">(?![^<]*WKLY)(?:[^<]*? )??(?<week>[AB]|Narrow)(?: [^<]*)?</span>",
+              "everyWeeks": 2,
+              "weekOne": "2026-07-13",
+              "weeks": {
+                "A": 1,
+                "B": 2,
+                "Narrow": 1
+              }
+            },
+            {
+              "name": "Brown bin (mixed recycling)",
+              "pattern": "<span class=\"value-as-text\">Recycling</span>(?:(?!</tr>)[\\s\\S])*?<span class=\"value-as-text\">(?<day>[A-Z][a-z]+day)</span>(?:(?!</tr>)[\\s\\S])*?<span class=\"value-as-text\">[^<]*\\bWKLY\\b",
+              "weekOne": "2026-07-06"
+            },
+            {
+              "name": "Silver bin (food waste)",
+              "pattern": "<span class=\"value-as-text\">Food</span>(?:(?!</tr>)[\\s\\S])*?<span class=\"value-as-text\">(?<day>[A-Z][a-z]+day)</span>(?:(?!</tr>)[\\s\\S])*?<span class=\"value-as-text\">Food ",
+              "weekOne": "2026-07-06"
+            },
+            {
+              "name": "Green bin (garden waste)",
+              "pattern": "<span class=\"value-as-text\">Green</span>(?:(?!</tr>)[\\s\\S])*?<span class=\"value-as-text\">(?<day>[A-Z][a-z]+day)</span>(?:(?!</tr>)[\\s\\S])*?<span class=\"value-as-text\">(?![^<]*WKLY)(?:[^<]*? )??(?<week>[AB]|Narrow)(?: [^<]*)?</span>",
+              "everyWeeks": 2,
+              "weekOne": "2026-07-13",
+              "weeks": {
+                "A": 1,
+                "B": 2,
+                "Narrow": 1
+              }
+            }
+          ]
+        }
+      }
     },
     {
       "gss": "E07000099",
