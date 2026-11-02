@@ -8875,6 +8875,72 @@
       }
     },
     {
+      "gss": "E07000112",
+      "name": "Folkestone & Hythe District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Folkestone & Hythe District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "general",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://service.folkestone-hythe.gov.uk/webapp/myarea/index.php?searchFor={postcode}",
+          "addressPattern": "<option\\s+class='[^']*'\\s+value\\s*=\\s*'(?<ref>\\d+)'\\s*>(?<label>[^<]+)</option>",
+          "scheduleUrl": "https://service.folkestone-hythe.gov.uk/webapp/myarea/api_collections.php?uprn={uprn}",
+          "cookieSession": true,
+          "scheduleSteps": [
+            {
+              "url": "https://service.folkestone-hythe.gov.uk/webapp/myarea/index.php?uprn={ref}&tab=collections",
+              "pattern": "class=\"tabs\" data-uprn=\"(?<uprn>{ref})\""
+            }
+          ],
+          "errorPattern": "could not retrieve you(?:r)? collection details",
+          "blockPattern": "<h3 class=\"service-title\">(?<type>[^<]+)</h3>\\s*(?:<p class=\"service-schedule\">\\((?<every>[^)]*)\\)</p>)?(?<body>(?:(?!</article>)[\\s\\S])*)",
+          "cadence": [
+            {
+              "match": "every other week",
+              "days": 14
+            },
+            {
+              "match": "every week",
+              "days": 7
+            }
+          ],
+          "datePattern": "<time datetime=\"(?<date>\\d{4}-\\d{2}-\\d{2})",
+          "dateFormat": "iso-local-date"
+        }
+      }
+    },
+    {
       "gss": "E07000143",
       "name": "Breckland Council",
       "tier": 1,
