@@ -12459,17 +12459,17 @@
         ],
         "optInMatch": [
           "garden waste"
-        ],
-        "unpublished": [
-          {
-            "type": "TEXTILES",
-            "name": "Small electrical items",
-            "intervalWeeks": 1,
-            "onCollectionDay": true,
-            "source": "https://www.gloucester.gov.uk/environment-waste-recycling/waste-recycling-street-cleaning/bins-recycling/collection-services/small-electrical-items/"
-          }
         ]
       },
+      "unpublished": [
+        {
+          "type": "TEXTILES",
+          "name": "Small electrical items",
+          "intervalWeeks": 1,
+          "onCollectionDay": true,
+          "source": "https://www.gloucester.gov.uk/environment-waste-recycling/waste-recycling-street-cleaning/bins-recycling/collection-services/small-electrical-items/"
+        }
+      ],
       "platform": {
         "kind": "achieve",
         "version": 1,
@@ -13161,17 +13161,17 @@
         ],
         "optInMatch": [
           "gardenwaste"
-        ],
-        "unpublished": [
-          {
-            "type": "TEXTILES",
-            "name": "Small electricals, batteries, textiles and shoes",
-            "intervalWeeks": 1,
-            "onCollectionDay": true,
-            "source": "https://www.eppingforestdc.gov.uk/recycling-and-rubbish/check-your-collection/"
-          }
         ]
       },
+      "unpublished": [
+        {
+          "type": "TEXTILES",
+          "name": "Small electricals, batteries, textiles and shoes",
+          "intervalWeeks": 1,
+          "onCollectionDay": true,
+          "source": "https://www.eppingforestdc.gov.uk/recycling-and-rubbish/check-your-collection/"
+        }
+      ],
       "platform": {
         "kind": "achieve",
         "version": 1,
@@ -13570,17 +13570,17 @@
         ],
         "optInMatch": [
           "garden"
-        ],
-        "unpublished": [
-          {
-            "type": "TEXTILES",
-            "name": "Small electricals and batteries",
-            "intervalWeeks": 2,
-            "onCollectionDay": true,
-            "source": "https://www.rushcliffe.gov.uk/recycling-and-waste/waste-collection/bin-collections/"
-          }
         ]
       },
+      "unpublished": [
+        {
+          "type": "TEXTILES",
+          "name": "Small electricals and batteries",
+          "intervalWeeks": 2,
+          "onCollectionDay": true,
+          "source": "https://www.rushcliffe.gov.uk/recycling-and-waste/waste-collection/bin-collections/"
+        }
+      ],
       "platform": {
         "kind": "html-regex",
         "version": 1,
@@ -16396,6 +16396,62 @@
           "scheduleUrl": "https://www.wyre.gov.uk/bincollections?uprn={ref}",
           "blockPattern": "bin-collection-tasks__heading\"><span class=\"visually-hidden\">Your next </span>(?<type>[^<]+)<span class=\"visually-hidden\"> collection</span></h3>[^<]*<div class=\"bin-collection-tasks__content\">[^<]*<p class=\"bin-collection-tasks__day\">[^<]*</p>[^<]*<p class=\"bin-collection-tasks__date\">(?<date>[^<]+)</p>",
           "dateFormat": "weekday-day-ordinal-month-noyear"
+        }
+      }
+    },
+    {
+      "gss": "E09000033",
+      "name": "Westminster City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "street"
+      ],
+      "attribution": "Collection data from Westminster City Council",
+      "unpublished": [
+        {
+          "type": "GARDEN",
+          "name": "Garden waste",
+          "intervalWeeks": 2,
+          "source": "https://www.westminster.gov.uk/recycling-and-rubbish/recycling-and-rubbish-collections/garden-waste-recycling-trial/using-garden-waste-service"
+        }
+      ],
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "street-report",
+        "version": 1,
+        "streetReport": {
+          "streetsUrl": "https://transact.westminster.gov.uk/env/streetsearch.aspx",
+          "streetPattern": "<option value=\"(?<usrn>\\d+)\">(?<street>[^<]+)</option>",
+          "reportUrl": "https://transact.westminster.gov.uk/env/streetreport.aspx?USRN={usrn}",
+          "rubbishName": "Rubbish",
+          "rubbishPanel": "pnlrubbishcollection",
+          "recyclingPanel": "pnlrecyclingcollections",
+          "noRecordsPanel": "pnlnorecords",
+          "cleaningPanel": "pnlstreetcleaning",
+          "notHousehold": [
+            "commercial",
+            "rear of",
+            "business",
+            "micro recycling centre",
+            "evening",
+            "(eve)"
+          ]
         }
       }
     }
