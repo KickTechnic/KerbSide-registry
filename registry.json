@@ -2014,7 +2014,56 @@
     {
       "gss": "E07000095",
       "name": "Broxbourne Borough Council",
-      "tier": 3
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Broxbourne Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "green waste",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "PAPER",
+              "GLASS"
+            ]
+          },
+          {
+            "match": "domestic",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "green waste"
+        ]
+      },
+      "platform": {
+        "kind": "xfp",
+        "version": 1,
+        "xfp": {
+          "host": "www.broxbourne.gov.uk",
+          "formId": "205",
+          "rows": {
+            "mode": "html-table",
+            "tableHeader": "Collection Date",
+            "typeColumn": 1,
+            "dateColumn": 0
+          },
+          "dateFormat": "weekday-day-ordinal-shortmonth-noyear",
+          "postcodeAddress": {
+            "EN11 8EH": "148028774"
+          }
+        }
+      }
     },
     {
       "gss": "E07000241",
