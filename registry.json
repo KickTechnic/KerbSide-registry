@@ -16725,6 +16725,375 @@
           "notHousehold": "(?:(?:all|weekly|twice weekly|3 weekly) )?(?:stornoway|tarbert|lochmaddy|daliburgh|liniclate / balivanich) commercials"
         }
       }
+    },
+    {
+      "gss": "E07000181",
+      "name": "West Oxfordshire District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from West Oxfordshire District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "recycling box",
+            "type": "GLASS"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressPrimeUrl": "https://community.westoxon.gov.uk/s/waste-collection-enquiry",
+          "addressPrimePattern": "fwuid%22%3A%22(?<fwuid>[A-Za-z0-9_-]+)%22%2C%22loaded%22%3A%7B%22APPLICATION%40markup%3A%2F%2Fsiteforce%3AcommunityApp%22%3A%22(?<loaded>[A-Za-z0-9_-]+)%22",
+          "addressUrl": "https://community.westoxon.gov.uk/s/sfsites/aura?r=2&aura.LookupController.getLookupRecords=1",
+          "addressForm": {
+            "message": "{\"actions\":[{\"id\":\"2;a\",\"descriptor\":\"aura://LookupController/ACTION$getLookupRecords\",\"callingDescriptor\":\"UNKNOWN\",\"params\":{\"objectApiName\":\"Case\",\"fieldApiName\":\"Property__c\",\"searchType\":\"TypeAhead\",\"pageParam\":1,\"pageSize\":100,\"q\":\"{postcode}\",\"targetApiName\":\"Property__c\"}}]}",
+            "aura.context": "{\"mode\":\"PROD\",\"fwuid\":\"{fwuid}\",\"app\":\"siteforce:communityApp\",\"loaded\":{\"APPLICATION@markup://siteforce:communityApp\":\"{loaded}\"},\"dn\":[],\"globals\":{},\"uad\":true}",
+            "aura.pageURI": "/s/waste-collection-enquiry",
+            "aura.token": "null"
+          },
+          "addressPattern": "\"Name\":\\{[^{}]*\"value\":\"(?<label>[^\"]+)\"\\}(?:[^{}]|\\{[^{}]*\\})*\\},\"id\":\"(?<ref>a0K[A-Za-z0-9]+)\"",
+          "schedulePrimeUrl": "https://community.westoxon.gov.uk/s/waste-collection-enquiry",
+          "schedulePrimePattern": "fwuid%22%3A%22(?<fwuid>[A-Za-z0-9_-]+)%22%2C%22loaded%22%3A%7B%22APPLICATION%40markup%3A%2F%2Fsiteforce%3AcommunityApp%22%3A%22(?<loaded>[A-Za-z0-9_-]+)%22",
+          "scheduleSteps": [
+            {
+              "url": "https://community.westoxon.gov.uk/s/sfsites/aura?r=1&aura.FlowRuntimeConnect.startFlow=1",
+              "form": {
+                "message": "{\"actions\":[{\"id\":\"1;a\",\"descriptor\":\"aura://FlowRuntimeConnectController/ACTION$startFlow\",\"callingDescriptor\":\"UNKNOWN\",\"params\":{\"flowDevName\":\"WebFormAlloyWasteCollectionEnquiry\",\"arguments\":\"[{\\\"name\\\":\\\"vClientCode\\\",\\\"type\\\":\\\"String\\\",\\\"value\\\":\\\"WOD\\\"}]\",\"enableTrace\":false,\"enableRollbackMode\":false,\"useLatestSubflow\":false,\"isBuilderDebug\":false}}]}",
+                "aura.context": "{\"mode\":\"PROD\",\"fwuid\":\"{fwuid}\",\"app\":\"siteforce:communityApp\",\"loaded\":{\"APPLICATION@markup://siteforce:communityApp\":\"{loaded}\"},\"dn\":[],\"globals\":{},\"uad\":true}",
+                "aura.pageURI": "/s/waste-collection-enquiry",
+                "aura.token": "null"
+              },
+              "pattern": "\"serializedEncodedState\":\"(?<state1>[^\"]+)\""
+            },
+            {
+              "url": "https://community.westoxon.gov.uk/s/sfsites/aura?r=3&aura.FlowRuntimeConnect.navigateFlow=1",
+              "form": {
+                "message": "{\"actions\":[{\"id\":\"3;a\",\"descriptor\":\"aura://FlowRuntimeConnectController/ACTION$navigateFlow\",\"callingDescriptor\":\"UNKNOWN\",\"params\":{\"request\":{\"action\":\"NEXT\",\"serializedState\":\"{state1}\",\"fields\":[{\"field\":\"Property.recordId\",\"isVisible\":true,\"value\":\"{ref}\"}],\"uiElementVisited\":false,\"enableTrace\":false,\"lcErrors\":{},\"isBuilderDebug\":false}}}]}",
+                "aura.context": "{\"mode\":\"PROD\",\"fwuid\":\"{fwuid}\",\"app\":\"siteforce:communityApp\",\"loaded\":{\"APPLICATION@markup://siteforce:communityApp\":\"{loaded}\"},\"dn\":[],\"globals\":{},\"uad\":true}",
+                "aura.pageURI": "/s/waste-collection-enquiry",
+                "aura.token": "null"
+              },
+              "pattern": "\"serializedEncodedState\":\"(?<state2>[^\"]+)\""
+            },
+            {
+              "url": "https://community.westoxon.gov.uk/s/sfsites/aura?r=4&aura.FlowRuntimeConnect.navigateFlow=1",
+              "form": {
+                "message": "{\"actions\":[{\"id\":\"4;a\",\"descriptor\":\"aura://FlowRuntimeConnectController/ACTION$navigateFlow\",\"callingDescriptor\":\"UNKNOWN\",\"params\":{\"request\":{\"action\":\"CONTINUE_AFTER_COMMIT\",\"serializedState\":\"{state2}\",\"fields\":[],\"uiElementVisited\":false,\"enableTrace\":false,\"lcErrors\":{},\"isBuilderDebug\":false}}}]}",
+                "aura.context": "{\"mode\":\"PROD\",\"fwuid\":\"{fwuid}\",\"app\":\"siteforce:communityApp\",\"loaded\":{\"APPLICATION@markup://siteforce:communityApp\":\"{loaded}\"},\"dn\":[],\"globals\":{},\"uad\":true}",
+                "aura.pageURI": "/s/waste-collection-enquiry",
+                "aura.token": "null"
+              },
+              "pattern": "\"serializedEncodedState\":\"(?<state3>[^\"]+)\""
+            }
+          ],
+          "scheduleUrl": "https://community.westoxon.gov.uk/s/sfsites/aura?r=5&aura.FlowRuntimeConnect.navigateFlow=1",
+          "scheduleForm": {
+            "message": "{\"actions\":[{\"id\":\"5;a\",\"descriptor\":\"aura://FlowRuntimeConnectController/ACTION$navigateFlow\",\"callingDescriptor\":\"UNKNOWN\",\"params\":{\"request\":{\"action\":\"CONTINUE_AFTER_COMMIT\",\"serializedState\":\"{state3}\",\"fields\":[],\"uiElementVisited\":false,\"enableTrace\":false,\"lcErrors\":{},\"isBuilderDebug\":false}}}]}",
+            "aura.context": "{\"mode\":\"PROD\",\"fwuid\":\"{fwuid}\",\"app\":\"siteforce:communityApp\",\"loaded\":{\"APPLICATION@markup://siteforce:communityApp\":\"{loaded}\"},\"dn\":[],\"globals\":{},\"uad\":true}",
+            "aura.pageURI": "/s/waste-collection-enquiry",
+            "aura.token": "null"
+          },
+          "errorPattern": "action not available for interview|\"state\":\"ERROR\"",
+          "blockPattern": "\\\\?\"col2\\\\?\":\\\\?\"(?<date>[^\"\\\\]+)\\\\?\",\\\\?\"col1\\\\?\":\\\\?\"(?<type>[^\"\\\\]+)\\\\?\"",
+          "dateFormat": "weekday-day-ordinal-month-noyear-relative"
+        }
+      }
+    },
+    {
+      "gss": "E07000079",
+      "name": "Cotswold District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Cotswold District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "recycling box",
+            "type": "GLASS",
+            "alsoCarries": [
+              "PAPER"
+            ]
+          },
+          {
+            "match": "white bag",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "blue bag",
+            "type": "PAPER"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressPrimeUrl": "https://community.cotswold.gov.uk/s/waste-collection-enquiry",
+          "addressPrimePattern": "fwuid%22%3A%22(?<fwuid>[A-Za-z0-9_-]+)%22%2C%22loaded%22%3A%7B%22APPLICATION%40markup%3A%2F%2Fsiteforce%3AcommunityApp%22%3A%22(?<loaded>[A-Za-z0-9_-]+)%22",
+          "addressUrl": "https://community.cotswold.gov.uk/s/sfsites/aura?r=2&aura.LookupController.getLookupRecords=1",
+          "addressForm": {
+            "message": "{\"actions\":[{\"id\":\"2;a\",\"descriptor\":\"aura://LookupController/ACTION$getLookupRecords\",\"callingDescriptor\":\"UNKNOWN\",\"params\":{\"objectApiName\":\"Case\",\"fieldApiName\":\"Property__c\",\"searchType\":\"TypeAhead\",\"pageParam\":1,\"pageSize\":100,\"q\":\"{postcode}\",\"targetApiName\":\"Property__c\"}}]}",
+            "aura.context": "{\"mode\":\"PROD\",\"fwuid\":\"{fwuid}\",\"app\":\"siteforce:communityApp\",\"loaded\":{\"APPLICATION@markup://siteforce:communityApp\":\"{loaded}\"},\"dn\":[],\"globals\":{},\"uad\":true}",
+            "aura.pageURI": "/s/waste-collection-enquiry",
+            "aura.token": "null"
+          },
+          "addressPattern": "\"Name\":\\{[^{}]*\"value\":\"(?<label>[^\"]+)\"\\}(?:[^{}]|\\{[^{}]*\\})*\\},\"id\":\"(?<ref>a0K[A-Za-z0-9]+)\"",
+          "schedulePrimeUrl": "https://community.cotswold.gov.uk/s/waste-collection-enquiry",
+          "schedulePrimePattern": "fwuid%22%3A%22(?<fwuid>[A-Za-z0-9_-]+)%22%2C%22loaded%22%3A%7B%22APPLICATION%40markup%3A%2F%2Fsiteforce%3AcommunityApp%22%3A%22(?<loaded>[A-Za-z0-9_-]+)%22",
+          "scheduleSteps": [
+            {
+              "url": "https://community.cotswold.gov.uk/s/sfsites/aura?r=1&aura.FlowRuntimeConnect.startFlow=1",
+              "form": {
+                "message": "{\"actions\":[{\"id\":\"1;a\",\"descriptor\":\"aura://FlowRuntimeConnectController/ACTION$startFlow\",\"callingDescriptor\":\"UNKNOWN\",\"params\":{\"flowDevName\":\"WebFormAlloyWasteCollectionEnquiry\",\"arguments\":\"[{\\\"name\\\":\\\"vClientCode\\\",\\\"type\\\":\\\"String\\\",\\\"value\\\":\\\"CDC\\\"}]\",\"enableTrace\":false,\"enableRollbackMode\":false,\"useLatestSubflow\":false,\"isBuilderDebug\":false}}]}",
+                "aura.context": "{\"mode\":\"PROD\",\"fwuid\":\"{fwuid}\",\"app\":\"siteforce:communityApp\",\"loaded\":{\"APPLICATION@markup://siteforce:communityApp\":\"{loaded}\"},\"dn\":[],\"globals\":{},\"uad\":true}",
+                "aura.pageURI": "/s/waste-collection-enquiry",
+                "aura.token": "null"
+              },
+              "pattern": "\"serializedEncodedState\":\"(?<state1>[^\"]+)\""
+            },
+            {
+              "url": "https://community.cotswold.gov.uk/s/sfsites/aura?r=3&aura.FlowRuntimeConnect.navigateFlow=1",
+              "form": {
+                "message": "{\"actions\":[{\"id\":\"3;a\",\"descriptor\":\"aura://FlowRuntimeConnectController/ACTION$navigateFlow\",\"callingDescriptor\":\"UNKNOWN\",\"params\":{\"request\":{\"action\":\"NEXT\",\"serializedState\":\"{state1}\",\"fields\":[{\"field\":\"Property.recordId\",\"isVisible\":true,\"value\":\"{ref}\"}],\"uiElementVisited\":false,\"enableTrace\":false,\"lcErrors\":{},\"isBuilderDebug\":false}}}]}",
+                "aura.context": "{\"mode\":\"PROD\",\"fwuid\":\"{fwuid}\",\"app\":\"siteforce:communityApp\",\"loaded\":{\"APPLICATION@markup://siteforce:communityApp\":\"{loaded}\"},\"dn\":[],\"globals\":{},\"uad\":true}",
+                "aura.pageURI": "/s/waste-collection-enquiry",
+                "aura.token": "null"
+              },
+              "pattern": "\"serializedEncodedState\":\"(?<state2>[^\"]+)\""
+            },
+            {
+              "url": "https://community.cotswold.gov.uk/s/sfsites/aura?r=4&aura.FlowRuntimeConnect.navigateFlow=1",
+              "form": {
+                "message": "{\"actions\":[{\"id\":\"4;a\",\"descriptor\":\"aura://FlowRuntimeConnectController/ACTION$navigateFlow\",\"callingDescriptor\":\"UNKNOWN\",\"params\":{\"request\":{\"action\":\"CONTINUE_AFTER_COMMIT\",\"serializedState\":\"{state2}\",\"fields\":[],\"uiElementVisited\":false,\"enableTrace\":false,\"lcErrors\":{},\"isBuilderDebug\":false}}}]}",
+                "aura.context": "{\"mode\":\"PROD\",\"fwuid\":\"{fwuid}\",\"app\":\"siteforce:communityApp\",\"loaded\":{\"APPLICATION@markup://siteforce:communityApp\":\"{loaded}\"},\"dn\":[],\"globals\":{},\"uad\":true}",
+                "aura.pageURI": "/s/waste-collection-enquiry",
+                "aura.token": "null"
+              },
+              "pattern": "\"serializedEncodedState\":\"(?<state3>[^\"]+)\""
+            }
+          ],
+          "scheduleUrl": "https://community.cotswold.gov.uk/s/sfsites/aura?r=5&aura.FlowRuntimeConnect.navigateFlow=1",
+          "scheduleForm": {
+            "message": "{\"actions\":[{\"id\":\"5;a\",\"descriptor\":\"aura://FlowRuntimeConnectController/ACTION$navigateFlow\",\"callingDescriptor\":\"UNKNOWN\",\"params\":{\"request\":{\"action\":\"CONTINUE_AFTER_COMMIT\",\"serializedState\":\"{state3}\",\"fields\":[],\"uiElementVisited\":false,\"enableTrace\":false,\"lcErrors\":{},\"isBuilderDebug\":false}}}]}",
+            "aura.context": "{\"mode\":\"PROD\",\"fwuid\":\"{fwuid}\",\"app\":\"siteforce:communityApp\",\"loaded\":{\"APPLICATION@markup://siteforce:communityApp\":\"{loaded}\"},\"dn\":[],\"globals\":{},\"uad\":true}",
+            "aura.pageURI": "/s/waste-collection-enquiry",
+            "aura.token": "null"
+          },
+          "errorPattern": "action not available for interview|\"state\":\"ERROR\"",
+          "blockPattern": "\\\\?\"col2\\\\?\":\\\\?\"(?<date>[^\"\\\\]+)\\\\?\",\\\\?\"col1\\\\?\":\\\\?\"(?<type>[^\"\\\\]+)\\\\?\"",
+          "dateFormat": "weekday-day-ordinal-month-noyear-relative"
+        }
+      }
+    },
+    {
+      "gss": "E07000080",
+      "name": "Forest of Dean District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Forest of Dean District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "recycling box",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS",
+              "TEXTILES"
+            ]
+          },
+          {
+            "match": "blue bag",
+            "type": "PAPER"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressPrimeUrl": "https://community.fdean.gov.uk/s/waste-collection-enquiry",
+          "addressPrimePattern": "fwuid%22%3A%22(?<fwuid>[A-Za-z0-9_-]+)%22%2C%22loaded%22%3A%7B%22APPLICATION%40markup%3A%2F%2Fsiteforce%3AcommunityApp%22%3A%22(?<loaded>[A-Za-z0-9_-]+)%22",
+          "addressUrl": "https://community.fdean.gov.uk/s/sfsites/aura?r=2&aura.LookupController.getLookupRecords=1",
+          "addressForm": {
+            "message": "{\"actions\":[{\"id\":\"2;a\",\"descriptor\":\"aura://LookupController/ACTION$getLookupRecords\",\"callingDescriptor\":\"UNKNOWN\",\"params\":{\"objectApiName\":\"Case\",\"fieldApiName\":\"Property__c\",\"searchType\":\"TypeAhead\",\"pageParam\":1,\"pageSize\":100,\"q\":\"{postcode}\",\"targetApiName\":\"Property__c\"}}]}",
+            "aura.context": "{\"mode\":\"PROD\",\"fwuid\":\"{fwuid}\",\"app\":\"siteforce:communityApp\",\"loaded\":{\"APPLICATION@markup://siteforce:communityApp\":\"{loaded}\"},\"dn\":[],\"globals\":{},\"uad\":true}",
+            "aura.pageURI": "/s/waste-collection-enquiry",
+            "aura.token": "null"
+          },
+          "addressPattern": "\"Name\":\\{[^{}]*\"value\":\"(?<label>[^\"]+)\"\\}(?:[^{}]|\\{[^{}]*\\})*\\},\"id\":\"(?<ref>a0K[A-Za-z0-9]+)\"",
+          "schedulePrimeUrl": "https://community.fdean.gov.uk/s/waste-collection-enquiry",
+          "schedulePrimePattern": "fwuid%22%3A%22(?<fwuid>[A-Za-z0-9_-]+)%22%2C%22loaded%22%3A%7B%22APPLICATION%40markup%3A%2F%2Fsiteforce%3AcommunityApp%22%3A%22(?<loaded>[A-Za-z0-9_-]+)%22",
+          "scheduleSteps": [
+            {
+              "url": "https://community.fdean.gov.uk/s/sfsites/aura?r=1&aura.FlowRuntimeConnect.startFlow=1",
+              "form": {
+                "message": "{\"actions\":[{\"id\":\"1;a\",\"descriptor\":\"aura://FlowRuntimeConnectController/ACTION$startFlow\",\"callingDescriptor\":\"UNKNOWN\",\"params\":{\"flowDevName\":\"WebFormAlloyWasteCollectionEnquiry\",\"arguments\":\"[{\\\"name\\\":\\\"vClientCode\\\",\\\"type\\\":\\\"String\\\",\\\"value\\\":\\\"FOD\\\"}]\",\"enableTrace\":false,\"enableRollbackMode\":false,\"useLatestSubflow\":false,\"isBuilderDebug\":false}}]}",
+                "aura.context": "{\"mode\":\"PROD\",\"fwuid\":\"{fwuid}\",\"app\":\"siteforce:communityApp\",\"loaded\":{\"APPLICATION@markup://siteforce:communityApp\":\"{loaded}\"},\"dn\":[],\"globals\":{},\"uad\":true}",
+                "aura.pageURI": "/s/waste-collection-enquiry",
+                "aura.token": "null"
+              },
+              "pattern": "\"serializedEncodedState\":\"(?<state1>[^\"]+)\""
+            },
+            {
+              "url": "https://community.fdean.gov.uk/s/sfsites/aura?r=3&aura.FlowRuntimeConnect.navigateFlow=1",
+              "form": {
+                "message": "{\"actions\":[{\"id\":\"3;a\",\"descriptor\":\"aura://FlowRuntimeConnectController/ACTION$navigateFlow\",\"callingDescriptor\":\"UNKNOWN\",\"params\":{\"request\":{\"action\":\"NEXT\",\"serializedState\":\"{state1}\",\"fields\":[{\"field\":\"Property.recordId\",\"isVisible\":true,\"value\":\"{ref}\"}],\"uiElementVisited\":false,\"enableTrace\":false,\"lcErrors\":{},\"isBuilderDebug\":false}}}]}",
+                "aura.context": "{\"mode\":\"PROD\",\"fwuid\":\"{fwuid}\",\"app\":\"siteforce:communityApp\",\"loaded\":{\"APPLICATION@markup://siteforce:communityApp\":\"{loaded}\"},\"dn\":[],\"globals\":{},\"uad\":true}",
+                "aura.pageURI": "/s/waste-collection-enquiry",
+                "aura.token": "null"
+              },
+              "pattern": "\"serializedEncodedState\":\"(?<state2>[^\"]+)\""
+            },
+            {
+              "url": "https://community.fdean.gov.uk/s/sfsites/aura?r=4&aura.FlowRuntimeConnect.navigateFlow=1",
+              "form": {
+                "message": "{\"actions\":[{\"id\":\"4;a\",\"descriptor\":\"aura://FlowRuntimeConnectController/ACTION$navigateFlow\",\"callingDescriptor\":\"UNKNOWN\",\"params\":{\"request\":{\"action\":\"CONTINUE_AFTER_COMMIT\",\"serializedState\":\"{state2}\",\"fields\":[],\"uiElementVisited\":false,\"enableTrace\":false,\"lcErrors\":{},\"isBuilderDebug\":false}}}]}",
+                "aura.context": "{\"mode\":\"PROD\",\"fwuid\":\"{fwuid}\",\"app\":\"siteforce:communityApp\",\"loaded\":{\"APPLICATION@markup://siteforce:communityApp\":\"{loaded}\"},\"dn\":[],\"globals\":{},\"uad\":true}",
+                "aura.pageURI": "/s/waste-collection-enquiry",
+                "aura.token": "null"
+              },
+              "pattern": "\"serializedEncodedState\":\"(?<state3>[^\"]+)\""
+            }
+          ],
+          "scheduleUrl": "https://community.fdean.gov.uk/s/sfsites/aura?r=5&aura.FlowRuntimeConnect.navigateFlow=1",
+          "scheduleForm": {
+            "message": "{\"actions\":[{\"id\":\"5;a\",\"descriptor\":\"aura://FlowRuntimeConnectController/ACTION$navigateFlow\",\"callingDescriptor\":\"UNKNOWN\",\"params\":{\"request\":{\"action\":\"CONTINUE_AFTER_COMMIT\",\"serializedState\":\"{state3}\",\"fields\":[],\"uiElementVisited\":false,\"enableTrace\":false,\"lcErrors\":{},\"isBuilderDebug\":false}}}]}",
+            "aura.context": "{\"mode\":\"PROD\",\"fwuid\":\"{fwuid}\",\"app\":\"siteforce:communityApp\",\"loaded\":{\"APPLICATION@markup://siteforce:communityApp\":\"{loaded}\"},\"dn\":[],\"globals\":{},\"uad\":true}",
+            "aura.pageURI": "/s/waste-collection-enquiry",
+            "aura.token": "null"
+          },
+          "errorPattern": "action not available for interview|\"state\":\"ERROR\"",
+          "blockPattern": "\\\\?\"col2\\\\?\":\\\\?\"(?<date>[^\"\\\\]+)\\\\?\",\\\\?\"col1\\\\?\":\\\\?\"(?<type>[^\"\\\\]+)\\\\?\"",
+          "dateFormat": "weekday-day-ordinal-month-noyear-relative"
+        }
+      }
+    },
+    {
+      "gss": "E07000209",
+      "name": "Guildford Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Guildford Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "unpublished": [
+        {
+          "type": "TEXTILES",
+          "name": "Textiles",
+          "intervalWeeks": 1,
+          "onCollectionDay": true,
+          "source": "https://www.guildford.gov.uk/whatgoesinmybins"
+        }
+      ],
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressPrimeUrl": "https://my.guildford.gov.uk/customers/s/view-bin-collections",
+          "addressPrimePattern": "fwuid%22%3A%22(?<fwuid>[A-Za-z0-9_-]+)%22%2C%22loaded%22%3A%7B%22APPLICATION%40markup%3A%2F%2Fsiteforce%3AcommunityApp%22%3A%22(?<loaded>[A-Za-z0-9_-]+)%22",
+          "addressUrl": "https://my.guildford.gov.uk/customers/s/sfsites/aura?r=2&aura.ApexAction.execute=1",
+          "addressForm": {
+            "message": "{\"actions\":[{\"id\":\"2;a\",\"descriptor\":\"apex://AddressLookupController/ACTION$searchAddress\",\"callingDescriptor\":\"markup://c:AddressLookup\",\"params\":{\"searchCriteria\":\"{postcode}\",\"searchType\":\"1STEP\"}}]}",
+            "aura.context": "{\"mode\":\"PROD\",\"fwuid\":\"{fwuid}\",\"app\":\"siteforce:communityApp\",\"loaded\":{\"APPLICATION@markup://siteforce:communityApp\":\"{loaded}\"},\"dn\":[],\"globals\":{},\"uad\":true}",
+            "aura.pageURI": "/customers/s/view-bin-collections",
+            "aura.token": "null"
+          },
+          "addressPattern": "\"FullAddress\":\"(?<label>[^\"]+)\"[^{}]*?\"UPRN\":(?<ref>\\d+)",
+          "schedulePrimeUrl": "https://my.guildford.gov.uk/customers/s/view-bin-collections",
+          "schedulePrimePattern": "fwuid%22%3A%22(?<fwuid>[A-Za-z0-9_-]+)%22%2C%22loaded%22%3A%7B%22APPLICATION%40markup%3A%2F%2Fsiteforce%3AcommunityApp%22%3A%22(?<loaded>[A-Za-z0-9_-]+)%22",
+          "scheduleUrl": "https://my.guildford.gov.uk/customers/s/sfsites/aura?r=2&aura.ApexAction.execute=1",
+          "scheduleForm": {
+            "message": "{\"actions\":[{\"id\":\"5;a\",\"descriptor\":\"apex://BinScheduleDisplayCmpController/ACTION$GetBinSchedules\",\"callingDescriptor\":\"markup://c:BinScheduleDisplay\",\"params\":{\"database\":\"domestic\",\"UPRN\":{ref}}}]}",
+            "aura.context": "{\"mode\":\"PROD\",\"fwuid\":\"{fwuid}\",\"app\":\"siteforce:communityApp\",\"loaded\":{\"APPLICATION@markup://siteforce:communityApp\":\"{loaded}\"},\"dn\":[],\"globals\":{},\"uad\":true}",
+            "aura.pageURI": "/customers/s/view-bin-collections",
+            "aura.token": "null"
+          },
+          "errorPattern": "\"state\":\"ERROR\"",
+          "blockPattern": "\"FeatureName\":\"(?<type>[^\"]+)\",\"FormalFeatureName\"(?<body>[^{}]*)",
+          "datePattern": "\"(?:NextDate|PreviousDate)\":\"(?<date>[^\"]+)\"",
+          "dateFormat": "iso-instant-london"
+        }
+      }
     }
   ]
 }
