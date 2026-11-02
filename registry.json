@@ -17266,6 +17266,135 @@
           "dateFormat": "weekday-dd/MM/yyyy"
         }
       }
+    },
+    {
+      "gss": "E07000224",
+      "name": "Arun District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Arun District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressPrimeUrl": "https://www1.arun.gov.uk/when-are-my-bins-collected/",
+          "addressPrimePattern": "href=\"/when-are-my-bins-collected/postcode\"",
+          "addressUrl": "https://www1.arun.gov.uk/when-are-my-bins-collected/postcode",
+          "addressForm": {
+            "postcode": "{postcode}"
+          },
+          "addressPattern": "<option value=\"(?<ref>\\d+)\">(?<label>[^<]+)</option>",
+          "scheduleUrl": "https://www1.arun.gov.uk/when-are-my-bins-collected/select",
+          "scheduleForm": {
+            "address": "{ref}"
+          },
+          "cookieSession": true,
+          "schedulePrimeUrl": "https://www1.arun.gov.uk/when-are-my-bins-collected/",
+          "schedulePrimePattern": "href=\"/when-are-my-bins-collected/postcode\"",
+          "blockPattern": "<th scope=\"row\" class=\"govuk-table__header\"\\s*>(?<type>[^<]+)</th>\\s*<td class=\"govuk-table__cell\"\\s*>(?<date>\\d{2}/\\d{2}/\\d{4})</td>",
+          "dateFormat": "dd/MM/yyyy",
+          "scheduleSteps": [
+            {
+              "url": "https://www1.arun.gov.uk/when-are-my-bins-collected/postcode",
+              "form": {
+                "postcode": "{postcode}"
+              },
+              "pattern": "<option value=\"{ref}\">"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "gss": "E07000034",
+      "name": "Chesterfield Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Chesterfield Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "general waste",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden",
+          "clinical"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressPrimeUrl": "https://myaccount.chesterfield.gov.uk/anonymous/c/cbc_VE_CollectionDaysLO.app",
+          "addressPrimePattern": "fwuid%22%3A%22(?<fwuid>[A-Za-z0-9_-]+)%22%2C%22loaded%22%3A%7B%22APPLICATION%40markup%3A%2F%2Fc%3Acbc_VE_CollectionDaysLO%22%3A%22(?<loaded>[A-Za-z0-9_-]+)%22",
+          "addressUrl": "https://myaccount.chesterfield.gov.uk/anonymous/aura?r=1&aura.ApexAction.execute=1",
+          "addressForm": {
+            "message": "{\"actions\":[{\"id\":\"1;a\",\"descriptor\":\"aura://ApexActionController/ACTION$execute\",\"callingDescriptor\":\"UNKNOWN\",\"params\":{\"namespace\":\"\",\"classname\":\"CBC_VE_CollectionDays\",\"method\":\"getAddressListFromPostCode\",\"params\":{\"postCode\":\"{postcode}\"},\"cacheable\":false,\"isContinuation\":false}}]}",
+            "aura.context": "{\"mode\":\"PROD\",\"fwuid\":\"{fwuid}\",\"app\":\"c:cbc_VE_CollectionDaysLO\",\"loaded\":{\"APPLICATION@markup://c:cbc_VE_CollectionDaysLO\":\"{loaded}\"},\"dn\":[],\"globals\":{},\"uad\":true}",
+            "aura.pageURI": "/bins-and-recycling/bin-collections/check-bin-collections",
+            "aura.token": "null"
+          },
+          "addressPattern": "label\\\\\":\\\\\"(?<label>[^\\\\]+)\\\\\",\\\\\"value\\\\\":\\\\\"(?<ref>\\d+)",
+          "schedulePrimeUrl": "https://myaccount.chesterfield.gov.uk/anonymous/c/cbc_VE_CollectionDaysLO.app",
+          "schedulePrimePattern": "fwuid%22%3A%22(?<fwuid>[A-Za-z0-9_-]+)%22%2C%22loaded%22%3A%7B%22APPLICATION%40markup%3A%2F%2Fc%3Acbc_VE_CollectionDaysLO%22%3A%22(?<loaded>[A-Za-z0-9_-]+)%22",
+          "scheduleUrl": "https://myaccount.chesterfield.gov.uk/anonymous/aura?r=1&aura.ApexAction.execute=1",
+          "scheduleForm": {
+            "message": "{\"actions\":[{\"id\":\"1;a\",\"descriptor\":\"aura://ApexActionController/ACTION$execute\",\"callingDescriptor\":\"UNKNOWN\",\"params\":{\"namespace\":\"\",\"classname\":\"CBC_VE_CollectionDays\",\"method\":\"getServicesByUPRN\",\"params\":{\"propertyUprn\":\"{ref}\",\"executedFrom\":\"Main Website\"},\"cacheable\":false,\"isContinuation\":false}}]}",
+            "aura.context": "{\"mode\":\"PROD\",\"fwuid\":\"{fwuid}\",\"app\":\"c:cbc_VE_CollectionDaysLO\",\"loaded\":{\"APPLICATION@markup://c:cbc_VE_CollectionDaysLO\":\"{loaded}\"},\"dn\":[],\"globals\":{},\"uad\":true}",
+            "aura.pageURI": "/bins-and-recycling/bin-collections/check-bin-collections",
+            "aura.token": "null"
+          },
+          "errorPattern": "\"state\":\"ERROR\"",
+          "blockPattern": "\"cbcFriendlyServiceName\":\"(?<type>[^\"]+)\"(?<body>[\\s\\S]*?)\"gwServiceExpiry\"",
+          "datePattern": "\"(?:last|next)Instance\":\\{[^{}]*?\"currentScheduledDate\":\"(?<date>[^\"]+)\"",
+          "dateFormat": "iso-instant-london"
+        }
+      }
     }
   ]
 }
