@@ -17395,6 +17395,99 @@
           "dateFormat": "iso-instant-london"
         }
       }
+    },
+    {
+      "gss": "E08000007",
+      "name": "Stockport Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Stockport Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN",
+            "alsoCarries": [
+              "FOOD"
+            ]
+          },
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "plastic",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS"
+            ]
+          },
+          {
+            "match": "non-recyclable",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressPrimeUrl": "https://forms.stockport.gov.uk/bin-collections",
+          "addressPrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"",
+          "addressUrl": "https://forms.stockport.gov.uk/bin-collections/address",
+          "addressForm": {
+            "__RequestVerificationToken": "{token}",
+            "yourAddress-postcode": "{postcode}",
+            "Path": "address"
+          },
+          "addressPattern": "<option value=\"(?<ref>\\d+\\|[^\"]+)\">(?<label>[^<]+)</option>",
+          "resolve": [
+            {
+              "url": "https://forms.stockport.gov.uk/bin-collections",
+              "pattern": "/bin-collections/address"
+            },
+            {
+              "url": "https://forms.stockport.gov.uk/bin-collections/address",
+              "pattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\""
+            },
+            {
+              "url": "https://forms.stockport.gov.uk/bin-collections/address",
+              "form": {
+                "__RequestVerificationToken": "{token}",
+                "yourAddress-postcode": "{postcode}",
+                "Path": "address"
+              },
+              "pattern": "/bin-collections/address/automatic"
+            },
+            {
+              "url": "https://forms.stockport.gov.uk/bin-collections/address/automatic",
+              "pattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\""
+            },
+            {
+              "url": "https://forms.stockport.gov.uk/bin-collections/address/automatic",
+              "form": {
+                "__RequestVerificationToken": "{token}",
+                "yourAddress-postcode": "{postcode}",
+                "yourAddress-address": "{ref}",
+                "Path": "address"
+              },
+              "pattern": "/bin-collections/bin-collections"
+            },
+            {
+              "url": "https://forms.stockport.gov.uk/bin-collections/bin-collections",
+              "pattern": "bin-collections/show/(?<ref>\\d+)/"
+            }
+          ],
+          "scheduleUrl": "https://myaccount.stockport.gov.uk/bin-collections/show/{ref}",
+          "cookieSession": true,
+          "accept": "text/html",
+          "errorPattern": "<title>\\s*Error - Stockport Council",
+          "blockPattern": "<p class=\"sub-title\">(?<type>[^<]+)</p>\\s*<p>\\s*(?<date>[A-Z][a-z]+, \\d{1,2} [A-Z][a-z]+ \\d{4})\\s*</p>",
+          "dateFormat": "weekday-day-month-year"
+        }
+      }
     }
   ]
 }
