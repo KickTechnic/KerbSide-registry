@@ -17629,6 +17629,58 @@
           ]
         }
       }
+    },
+    {
+      "gss": "E07000139",
+      "name": "North Kesteven District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from North Kesteven District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "residual",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.n-kesteven.org.uk/bins",
+          "addressForm": {
+            "postcode": "{postcode}",
+            "submit": ""
+          },
+          "addressPattern": "<option value=\"(?<ref>\\d+)\">(?![^<]*Stc/)\\s*(?<label>[^<]+?)\\s*</option>",
+          "scheduleUrl": "https://www.n-kesteven.org.uk/bins/display?uprn={ref}",
+          "cookieSession": true,
+          "blockPattern": "<li class=\"text-large\">(?<type><span[^>]*>[^<]+</span>\\s*\\([^)]+\\))\\s*bin on <strong>(?<date>[^<]+)</strong>",
+          "dateFormat": "weekday-day-month-year"
+        }
+      }
     }
   ]
 }
