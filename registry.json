@@ -6960,6 +6960,12 @@
               "pattern": "garden-waste-calendar-(?<day>[a-z]+)-(?<week>[12])",
               "everyWeeks": 2,
               "weekOne": "2026-01-05",
+              "offWeeks": [
+                "2026-12-14",
+                "2026-12-21",
+                "2026-12-28",
+                "2027-01-04"
+              ],
               "nextDateOnly": true
             }
           ]
