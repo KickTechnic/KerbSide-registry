@@ -17917,6 +17917,85 @@
           "dateFormat": "iso-local-date"
         }
       }
+    },
+    {
+      "gss": "E06000046",
+      "name": "Isle of Wight Council",
+      "tier": 1,
+      "attribution": "Collection data from Isle of Wight Council",
+      "holidayPolicy": {
+        "mode": "NONE"
+      },
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "general waste",
+            "type": "REFUSE"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "PAPER",
+              "TEXTILES"
+            ]
+          }
+        ]
+      },
+      "platform": {
+        "kind": "blazor-server",
+        "version": 1,
+        "blazorServer": {
+          "page": "https://digitalservices.iow.gov.uk/wasteday",
+          "accept": "text/html",
+          "postcodeInput": "Postcode",
+          "findButton": "Find address",
+          "addressSelect": "SelectAddress",
+          "countPattern": "\\d+ addresses? found",
+          "calendarButton": "View Collection Calendar",
+          "download": "triggerFileDownload",
+          "notServedPattern": "(?i)no waste collection details",
+          "challengePattern": "(?i)captcha|turnstile",
+          "answers": {
+            "checkLocalStorageAccess": "true"
+          },
+          "weekCodes": [
+            {
+              "name": "Recycling",
+              "pattern": "calendars\\\\?/(?<day>[A-Za-z]+?)(?<week>East|West)\\.pdf",
+              "everyWeeks": 2,
+              "weekOne": "2026-05-04",
+              "weeks": {
+                "East": 1,
+                "West": 2
+              }
+            },
+            {
+              "name": "General Waste",
+              "pattern": "calendars\\\\?/(?<day>[A-Za-z]+?)(?<week>East|West)\\.pdf",
+              "everyWeeks": 2,
+              "weekOne": "2026-05-04",
+              "weeks": {
+                "East": 2,
+                "West": 1
+              }
+            },
+            {
+              "name": "Food waste",
+              "pattern": "calendars\\\\?/(?<day>[A-Za-z]+?)(?:East|West)\\.pdf",
+              "weekOne": "2026-05-04"
+            }
+          ],
+          "movedDates": {
+            "2026-12-25": "2026-12-27",
+            "2027-01-01": "2027-01-02"
+          }
+        }
+      }
     }
   ]
 }
