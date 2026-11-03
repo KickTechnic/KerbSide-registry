@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-11-02",
+  "updated": "2026-11-03",
   "councils": [
     {
       "gss": "E07000240",
@@ -17768,6 +17768,45 @@
           "cookieSession": true,
           "blockPattern": "<li class=\"text-large\">(?<type><span[^>]*>[^<]+</span>\\s*\\([^)]+\\))\\s*bin on <strong>(?<date>[^<]+)</strong>",
           "dateFormat": "weekday-day-month-year"
+        }
+      }
+    },
+    {
+      "gss": "E08000035",
+      "name": "Leeds City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Leeds City Council, under the Open Government Licence v3.0",
+      "streams": {
+        "matches": [
+          {
+            "match": "black",
+            "type": "REFUSE"
+          },
+          {
+            "match": "green",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS"
+            ]
+          },
+          {
+            "match": "brown",
+            "type": "GARDEN"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "open-data",
+        "version": 1,
+        "openData": {
+          "url": "https://raw.githubusercontent.com/KickTechnic/KerbSide-registry/data/leeds/{sector}.json",
+          "maxAgeDays": 28,
+          "nextDateOnly": [
+            "brown"
+          ]
         }
       }
     }
