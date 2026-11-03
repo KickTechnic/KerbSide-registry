@@ -6888,6 +6888,9 @@
       "gss": "S12000036",
       "name": "The City of Edinburgh Council",
       "tier": 1,
+      "holidayPolicy": {
+        "mode": "NONE"
+      },
       "inputNeeds": [
         "postcode",
         "street"
@@ -11861,6 +11864,9 @@
       "gss": "E07000219",
       "name": "Nuneaton and Bedworth Borough Council",
       "tier": 1,
+      "holidayPolicy": {
+        "mode": "NONE"
+      },
       "inputNeeds": [
         "postcode",
         "street"
@@ -16034,6 +16040,9 @@
       "gss": "E07000125",
       "name": "Rossendale Borough Council",
       "tier": 1,
+      "holidayPolicy": {
+        "mode": "NONE"
+      },
       "inputNeeds": [
         "postcode"
       ],
