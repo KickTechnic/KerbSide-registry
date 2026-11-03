@@ -366,8 +366,18 @@
             "dateSuffix": "Date",
             "excludeFields": [
               "gardenEndDate"
+            ],
+            "intervalSuffix": "RoundSchedule",
+            "cadence": [
+              {
+                "match": "^\\S+ (?:G_)?(Mon|Tue|Wed|Thu|Fri)Fort[12]$",
+                "days": 14
+              }
             ]
           },
+          "nextDateOnly": [
+            "garden"
+          ],
           "dateFormat": "iso-local-date",
           "addressLookupId": "3c9f54d0cf944",
           "addressBodyTemplate": "{\"formValues\":{\"My bins\":{\"postcode_search\":{\"value\":\"{postcode}\"}}}}",
