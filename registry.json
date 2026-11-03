@@ -17828,6 +17828,95 @@
           ]
         }
       }
+    },
+    {
+      "gss": "E07000117",
+      "name": "Burnley Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Burnley Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN",
+            "color": "#5E3E1A"
+          },
+          {
+            "match": "food",
+            "type": "FOOD",
+            "color": "#D3D3D3"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "PAPER"
+            ]
+          },
+          {
+            "match": "domestic",
+            "type": "REFUSE",
+            "color": "#7F1734"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressPrimeUrl": "https://burnleycouncil.my.site.com/resident2/s/find-bin-days",
+          "addressPrimePattern": "fwuid%22%3A%22(?<fwuid>[A-Za-z0-9_-]+)%22%2C%22loaded%22%3A%7B%22APPLICATION%40markup%3A%2F%2Fsiteforce%3AcommunityApp%22%3A%22(?<loaded>[A-Za-z0-9_-]+)%22",
+          "addressUrl": "https://burnleycouncil.my.site.com/resident2/s/sfsites/aura?r=4&aura.ApexAction.execute=1",
+          "addressForm": {
+            "message": "{\"actions\":[{\"id\":\"4;a\",\"descriptor\":\"aura://ApexActionController/ACTION$execute\",\"callingDescriptor\":\"UNKNOWN\",\"params\":{\"namespace\":\"arcshared\",\"classname\":\"InputAddressCont\",\"method\":\"customSearch\",\"params\":{\"term\":\"{postcode}\",\"serviceName\":\"arcusgazetteer.GazetteerLocationService\"},\"cacheable\":false,\"isContinuation\":false}}]}",
+            "aura.context": "{\"mode\":\"PROD\",\"fwuid\":\"{fwuid}\",\"app\":\"siteforce:communityApp\",\"loaded\":{\"APPLICATION@markup://siteforce:communityApp\":\"{loaded}\"},\"dn\":[],\"globals\":{},\"uad\":true}",
+            "aura.pageURI": "/resident2/s/guest-flow-form?service_ref=DSHLC_Hybrid_Find_Bin_Days",
+            "aura.token": "null"
+          },
+          "addressPattern": "\"Address\":\"(?<label>[^\"]+)\",[^{}]*?\"Id\":\"a0V[A-Za-z0-9]{12,15}\",[^{}]*?\"LPI\":\"(?<ref>[0-9A-Z]+)\"",
+          "schedulePrimeUrl": "https://burnleycouncil.my.site.com/resident2/s/find-bin-days",
+          "schedulePrimePattern": "fwuid%22%3A%22(?<fwuid>[A-Za-z0-9_-]+)%22%2C%22loaded%22%3A%7B%22APPLICATION%40markup%3A%2F%2Fsiteforce%3AcommunityApp%22%3A%22(?<loaded>[A-Za-z0-9_-]+)%22",
+          "scheduleSteps": [
+            {
+              "url": "https://burnleycouncil.my.site.com/resident2/s/sfsites/aura?r=4&aura.ApexAction.execute=1",
+              "form": {
+                "message": "{\"actions\":[{\"id\":\"4;a\",\"descriptor\":\"aura://ApexActionController/ACTION$execute\",\"callingDescriptor\":\"UNKNOWN\",\"params\":{\"namespace\":\"arcshared\",\"classname\":\"InputAddressCont\",\"method\":\"customSearch\",\"params\":{\"term\":\"{postcode}\",\"serviceName\":\"arcusgazetteer.GazetteerLocationService\"},\"cacheable\":false,\"isContinuation\":false}}]}",
+                "aura.context": "{\"mode\":\"PROD\",\"fwuid\":\"{fwuid}\",\"app\":\"siteforce:communityApp\",\"loaded\":{\"APPLICATION@markup://siteforce:communityApp\":\"{loaded}\"},\"dn\":[],\"globals\":{},\"uad\":true}",
+                "aura.pageURI": "/resident2/s/guest-flow-form?service_ref=DSHLC_Hybrid_Find_Bin_Days",
+                "aura.token": "null"
+              },
+              "pattern": "\"Id\":\"(?<rid>a0V[A-Za-z0-9]{12,15})\",[^{}]*?\"LPI\":\"{ref}\""
+            },
+            {
+              "url": "https://burnleycouncil.my.site.com/resident2/s/sfsites/aura?r=1&aura.FlowRuntimeConnect.startFlow=1",
+              "form": {
+                "message": "{\"actions\":[{\"id\":\"1;a\",\"descriptor\":\"aura://FlowRuntimeConnectController/ACTION$startFlow\",\"callingDescriptor\":\"UNKNOWN\",\"params\":{\"flowDevName\":\"DSHLC_Hybrid_Find_Bin_Days\",\"arguments\":\"[]\",\"enableTrace\":false,\"enableRollbackMode\":false,\"useLatestSubflow\":false,\"isBuilderDebug\":false}}]}",
+                "aura.context": "{\"mode\":\"PROD\",\"fwuid\":\"{fwuid}\",\"app\":\"siteforce:communityApp\",\"loaded\":{\"APPLICATION@markup://siteforce:communityApp\":\"{loaded}\"},\"dn\":[],\"globals\":{},\"uad\":true}",
+                "aura.pageURI": "/resident2/s/guest-flow-form?service_ref=DSHLC_Hybrid_Find_Bin_Days",
+                "aura.token": "null"
+              },
+              "pattern": "\"serializedEncodedState\":\"(?<state1>[^\"]+)\""
+            }
+          ],
+          "scheduleUrl": "https://burnleycouncil.my.site.com/resident2/s/sfsites/aura?r=3&aura.FlowRuntimeConnect.navigateFlow=1",
+          "scheduleForm": {
+            "message": "{\"actions\":[{\"id\":\"3;a\",\"descriptor\":\"aura://FlowRuntimeConnectController/ACTION$navigateFlow\",\"callingDescriptor\":\"UNKNOWN\",\"params\":{\"request\":{\"action\":\"NEXT\",\"serializedState\":\"{state1}\",\"fields\":[{\"field\":\"Applicant_address_details_lookup.addressId\",\"isVisible\":true,\"value\":\"{rid}\"}],\"uiElementVisited\":false,\"enableTrace\":false,\"lcErrors\":{},\"isBuilderDebug\":false}}}]}",
+            "aura.context": "{\"mode\":\"PROD\",\"fwuid\":\"{fwuid}\",\"app\":\"siteforce:communityApp\",\"loaded\":{\"APPLICATION@markup://siteforce:communityApp\":\"{loaded}\"},\"dn\":[],\"globals\":{},\"uad\":true}",
+            "aura.pageURI": "/resident2/s/guest-flow-form?service_ref=DSHLC_Hybrid_Find_Bin_Days",
+            "aura.token": "null"
+          },
+          "errorPattern": "\"state\":\"ERROR\"",
+          "blockPattern": "\\\\?\"typeFriendlyLabel\\\\?\":\\\\?\"(?<type>[^\"\\\\]+)\\\\?\"(?<body>[^{}]*)",
+          "datePattern": "(?:next|following)CollectionDate\\\\?\":\\\\?\"(?<date>\\d{4}-\\d{2}-\\d{2})",
+          "dateFormat": "iso-local-date"
+        }
+      }
     }
   ]
 }
