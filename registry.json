@@ -11479,9 +11479,15 @@
           "searchFunction": "searchPostcode",
           "addressControl": "FIIjpkcH",
           "scheduleUrl": "https://forms.southandvale.gov.uk/api/property/bins/{ref}",
-          "blockPattern": "\"collection_date\"\\s*:\\s*\"(?<date>\\d{2}/\\d{2}/\\d{4})\"(?<body>(?:(?!\"collection_date\")[\\s\\S])*)",
+          "blockPattern": "(?:\"collection_cycle\"\\s*:\\s*\"(?<every>[A-Z]+)\"[^{}]*\\{[^{}]*?)?\"collection_date\"\\s*:\\s*\"(?<date>\\d{2}/\\d{2}/\\d{4})\"(?<body>(?:(?!\"collection_date\"|\"collection_cycle\")[\\s\\S])*)",
           "typePattern": "\"bin_type\"\\s*:\\s*\"(?<type>[^\"]+)\"",
-          "dateFormat": "dd/MM/yyyy"
+          "dateFormat": "dd/MM/yyyy",
+          "cadence": [
+            {
+              "match": "^(?:REFUSE|RECYCLE)$",
+              "days": 14
+            }
+          ]
         }
       }
     },
@@ -11536,9 +11542,15 @@
           "searchFunction": "searchPostcode",
           "addressControl": "FIIjpkcH",
           "scheduleUrl": "https://forms.southandvale.gov.uk/api/property/bins/{ref}",
-          "blockPattern": "\"collection_date\"\\s*:\\s*\"(?<date>\\d{2}/\\d{2}/\\d{4})\"(?<body>(?:(?!\"collection_date\")[\\s\\S])*)",
+          "blockPattern": "(?:\"collection_cycle\"\\s*:\\s*\"(?<every>[A-Z]+)\"[^{}]*\\{[^{}]*?)?\"collection_date\"\\s*:\\s*\"(?<date>\\d{2}/\\d{2}/\\d{4})\"(?<body>(?:(?!\"collection_date\"|\"collection_cycle\")[\\s\\S])*)",
           "typePattern": "\"bin_type\"\\s*:\\s*\"(?<type>[^\"]+)\"",
-          "dateFormat": "dd/MM/yyyy"
+          "dateFormat": "dd/MM/yyyy",
+          "cadence": [
+            {
+              "match": "^(?:REFUSE|RECYCLE)$",
+              "days": 14
+            }
+          ]
         }
       }
     },
