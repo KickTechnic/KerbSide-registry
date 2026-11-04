@@ -18311,6 +18311,74 @@
           "dateFormat": "weekday-dd/MM/yyyy"
         }
       }
+    },
+    {
+      "gss": "N09000011",
+      "name": "Ards and North Down Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Ards and North Down Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "brown bin",
+            "type": "GARDEN",
+            "alsoCarries": [
+              "FOOD"
+            ]
+          },
+          {
+            "match": "blue bin",
+            "type": "RECYCLING",
+            "color": "#3493DF"
+          },
+          {
+            "match": "grey bin",
+            "type": "REFUSE",
+            "color": "#828282"
+          }
+        ],
+        "exclude": [
+          "trade"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://ardsandnorthdownbincalendar.azurewebsites.net/api/addresses/{postcode}",
+          "postcodeFormat": "nospace",
+          "addressPattern": "\"uprn\":\"(?<ref>\\d+)\"[^{}]*?\"addressText\":\"(?<label>[^\"]+)\"",
+          "scheduleUrl": "https://ardsandnorthdownbincalendar.azurewebsites.net/api/calendarhtml/{ref}",
+          "scheduleJsonPath": "calendarHTML",
+          "blockPattern": "<strong>(?<type>[^<]+)</strong>: (?<date>Today|Tomorrow|[A-Z][a-z]{2} \\d{1,2} [A-Z][a-z]{2})(?<every> then every [^<]*)?<br>",
+          "cadence": [
+            {
+              "match": "(?i)every\\s+(?:alternate|other)\\b",
+              "days": 14
+            },
+            {
+              "match": "(?i)every\\s+third\\b",
+              "days": 21
+            },
+            {
+              "match": "(?i)every\\s+fourth\\b",
+              "days": 28
+            },
+            {
+              "match": "(?i)^then every\\s+(?:mon|tue|wed|thu|fri|sat|sun)[a-z]*$",
+              "days": 7
+            }
+          ],
+          "dateFormat": "relative-day-phrase"
+        }
+      }
     }
   ]
 }
