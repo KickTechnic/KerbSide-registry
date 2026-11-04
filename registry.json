@@ -18167,6 +18167,110 @@
           }
         }
       }
+    },
+    {
+      "gss": "N09000003",
+      "name": "Belfast City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Belfast City Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "compost",
+            "type": "GARDEN",
+            "alsoCarries": [
+              "FOOD"
+            ]
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "general waste",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://online.belfastcity.gov.uk/find-bin-collection-day/Default.aspx",
+          "addressPrimeUrl": "https://online.belfastcity.gov.uk/find-bin-collection-day/Default.aspx",
+          "addressPrimePattern": "name=\"__VIEWSTATE\" id=\"__VIEWSTATE\" value=\"(?<viewState>[^\"]*)\"[\\s\\S]*?name=\"__VIEWSTATEGENERATOR\" id=\"__VIEWSTATEGENERATOR\" value=\"(?<generator>[^\"]*)\"[\\s\\S]*?name=\"__EVENTVALIDATION\" id=\"__EVENTVALIDATION\" value=\"(?<validation>[^\"]*)\"",
+          "addressForm": {
+            "__EVENTTARGET": "",
+            "__EVENTARGUMENT": "",
+            "__VIEWSTATE": "{viewState}",
+            "__VIEWSTATEGENERATOR": "{generator}",
+            "__SCROLLPOSITIONX": "0",
+            "__SCROLLPOSITIONY": "0",
+            "__EVENTVALIDATION": "{validation}",
+            "ctl00$MainContent$searchBy_radio": "P",
+            "ctl00$MainContent$Street_textbox": "",
+            "ctl00$MainContent$Postcode_textbox": "{postcode}",
+            "ctl00$MainContent$AddressLookup_button": "Find address"
+          },
+          "addressPattern": "<option value=\"(?<ref>\\d{6,})\">(?<label>[^<]+)</option>",
+          "cookieSession": true,
+          "scheduleUrl": "https://online.belfastcity.gov.uk/find-bin-collection-day/Default.aspx",
+          "schedulePrimeUrl": "https://online.belfastcity.gov.uk/find-bin-collection-day/Default.aspx",
+          "schedulePrimePattern": "name=\"__VIEWSTATE\" id=\"__VIEWSTATE\" value=\"(?<viewState>[^\"]*)\"[\\s\\S]*?name=\"__VIEWSTATEGENERATOR\" id=\"__VIEWSTATEGENERATOR\" value=\"(?<generator>[^\"]*)\"[\\s\\S]*?name=\"__EVENTVALIDATION\" id=\"__EVENTVALIDATION\" value=\"(?<validation>[^\"]*)\"",
+          "scheduleSteps": [
+            {
+              "url": "https://online.belfastcity.gov.uk/find-bin-collection-day/Default.aspx",
+              "form": {
+                "__EVENTTARGET": "",
+                "__EVENTARGUMENT": "",
+                "__VIEWSTATE": "{viewState}",
+                "__VIEWSTATEGENERATOR": "{generator}",
+                "__SCROLLPOSITIONX": "0",
+                "__SCROLLPOSITIONY": "0",
+                "__EVENTVALIDATION": "{validation}",
+                "ctl00$MainContent$searchBy_radio": "P",
+                "ctl00$MainContent$Street_textbox": "",
+                "ctl00$MainContent$Postcode_textbox": "{postcode}",
+                "ctl00$MainContent$AddressLookup_button": "Find address"
+              },
+              "pattern": "name=\"__VIEWSTATE\" id=\"__VIEWSTATE\" value=\"(?<viewState>[^\"]*)\"[\\s\\S]*?name=\"__VIEWSTATEGENERATOR\" id=\"__VIEWSTATEGENERATOR\" value=\"(?<generator>[^\"]*)\"[\\s\\S]*?name=\"__EVENTVALIDATION\" id=\"__EVENTVALIDATION\" value=\"(?<validation>[^\"]*)\""
+            }
+          ],
+          "scheduleForm": {
+            "__EVENTTARGET": "",
+            "__EVENTARGUMENT": "",
+            "__VIEWSTATE": "{viewState}",
+            "__VIEWSTATEGENERATOR": "{generator}",
+            "__SCROLLPOSITIONX": "0",
+            "__SCROLLPOSITIONY": "0",
+            "__EVENTVALIDATION": "{validation}",
+            "ctl00$MainContent$searchBy_radio": "P",
+            "ctl00$MainContent$Street_textbox": "",
+            "ctl00$MainContent$Postcode_textbox": "{postcode}",
+            "ctl00$MainContent$lstAddresses": "{ref}",
+            "ctl00$MainContent$SelectAddress_button": "Select address"
+          },
+          "blockPattern": "<tr>[^<]*<td>(?<type>[^<]+)</td><td>[^<]*</td><td>(?<every>[^<]*)</td><td>(?<date>[^<]+)</td>",
+          "cadence": [
+            {
+              "match": "(?i)^fortnightly$",
+              "days": 14
+            },
+            {
+              "match": "(?i)^weekly$",
+              "days": 7
+            }
+          ],
+          "dateFormat": "weekday-shortmonth-day-year"
+        }
+      }
     }
   ]
 }
