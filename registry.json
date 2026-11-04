@@ -18271,6 +18271,46 @@
           "dateFormat": "weekday-shortmonth-day-year"
         }
       }
+    },
+    {
+      "gss": "N09000002",
+      "name": "Armagh City, Banbridge and Craigavon Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Armagh City, Banbridge and Craigavon Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden",
+            "type": "GARDEN",
+            "alsoCarries": [
+              "FOOD"
+            ]
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "domestic collections",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://www.armaghbanbridgecraigavon.gov.uk/resident/binday-address/?postcode={postcode}",
+          "addressPattern": "<option value=\"(?<ref>\\d+)\"> *(?<label>[^<]+)</option>",
+          "scheduleUrl": "https://www.armaghbanbridgecraigavon.gov.uk/resident/binday-result/?address={ref}",
+          "blockPattern": "<div class=\"heading bg-[a-z]+\"><h2><i class=\"fa fa-[a-z-]+\" aria-hidden=\"true\"></i> (?<type>[^<]+)</h2></div>(?<body>[\\s\\S]*?)(?=<div class=\"heading bg-|<div class=\"container-fluid buttons-row\")",
+          "datePattern": "fa-calendar\" aria-hidden=\"true\"></i> (?<date>[A-Za-z]+ \\d{2}/\\d{2}/\\d{4})",
+          "dateFormat": "weekday-dd/MM/yyyy"
+        }
+      }
     }
   ]
 }
