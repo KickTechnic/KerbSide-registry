@@ -8266,6 +8266,10 @@
           {
             "match": "recyclables",
             "type": "RECYCLING"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
           }
         ]
       },
@@ -8312,16 +8316,7 @@
           "blockPattern": "waste-collection__day\">[^<]*<td[^>]*><time datetime=\"(?<date>\\d{4}-\\d{2}-\\d{2})\">[^<]*</time></td>[^<]*<td[^>]*>(?<type>[^<]+)</td>",
           "dateFormat": "iso-local-date"
         }
-      },
-      "unpublished": [
-        {
-          "type": "FOOD",
-          "name": "Food caddy",
-          "intervalWeeks": 1,
-          "onCollectionDay": true,
-          "source": "https://www.rochford.gov.uk/bins-and-collections"
-        }
-      ]
+      }
     },
     {
       "gss": "E09000011",
