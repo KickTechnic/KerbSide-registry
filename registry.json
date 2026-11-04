@@ -18379,6 +18379,100 @@
           "dateFormat": "relative-day-phrase"
         }
       }
+    },
+    {
+      "gss": "N09000007",
+      "name": "Lisburn & Castlereagh City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Lisburn & Castlereagh City Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "brownbin",
+            "type": "GARDEN",
+            "alsoCarries": [
+              "FOOD"
+            ]
+          },
+          {
+            "match": "recyclebin",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS"
+            ]
+          },
+          {
+            "match": "residualbin",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://lisburn.isl-fusion.com/address/{postcode}",
+          "addressJsonPath": "html",
+          "addressPattern": "<a href=\"/view/(?<ref>[A-Za-z0-9]{16})/\">(?<label>[^<]+)</a>",
+          "addressCap": 50,
+          "scheduleUrl": "https://lisburn.isl-fusion.com/calendar/{ref}/{from}",
+          "blockPattern": "\"name\":\"(?<type>[^\"]+)\"(?:[^{}]|\\{[^{}]*\\})*?\"dates\":\\{(?<body>[^{}]*)\\}",
+          "datePattern": "\"(?<date>\\d{4}-\\d{2}-\\d{2})\"",
+          "dateFormat": "iso-local-date"
+        }
+      }
+    },
+    {
+      "gss": "N09000006",
+      "name": "Fermanagh and Omagh District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Fermanagh and Omagh District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "brown composting",
+            "type": "GARDEN",
+            "alsoCarries": [
+              "FOOD"
+            ]
+          },
+          {
+            "match": "blue recycling",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS"
+            ]
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "landfill",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://fermanaghomagh.isl-fusion.com/address/{postcode}",
+          "addressJsonPath": "html",
+          "addressPattern": "<a href=\"/view/(?<ref>[A-Za-z0-9]{16})/\">(?<label>[^<]+)</a>",
+          "addressCap": 50,
+          "scheduleUrl": "https://fermanaghomagh.isl-fusion.com/calendar/{ref}/{from}",
+          "blockPattern": "\"name\":\"(?<type>[^\"]+)\"(?:[^{}]|\\{[^{}]*\\})*?\"dates\":\\{(?<body>[^{}]*)\\}",
+          "datePattern": "\"(?<date>\\d{4}-\\d{2}-\\d{2})\"",
+          "dateFormat": "iso-local-date"
+        }
+      }
     }
   ]
 }
