@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-11-03",
+  "updated": "2026-11-04",
   "councils": [
     {
       "gss": "E07000240",
@@ -12439,6 +12439,170 @@
           "blockPattern": "<div class=\"ibc-calendar-entry__date\">(?<date>\\d{1,2}(?:<span class=\"ibc-visually-hidden\">[a-z]{2}</span>)?</div>[^<]*<div class=\"ibc-calendar-entry__month\">[A-Za-z]+ \\d{4})</div></dt>[^<]*<dd class=\"ibc-calendar-entry__details\">(?<body>[\\s\\S]*?)</dd>",
           "typePattern": "<li class=\"[a-z]+\">(?<type>[^<]+)</li>",
           "dateFormat": "weekday-ordinal-of-month-year"
+        }
+      }
+    },
+    {
+      "gss": "E07000203",
+      "name": "Mid Suffolk District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Mid Suffolk District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressPrimeUrl": "https://www.midsuffolk.gov.uk/check-your-collection-day",
+          "addressPrimePattern": "getCompanyId: function\\(\\) \\{\\s*return '(?<companyId>\\d+)'[\\s\\S]*?Liferay\\.authToken = '(?<pauth>[^']+)'",
+          "addressUrl": "https://www.midsuffolk.gov.uk/api/jsonws/invoke",
+          "addressForm": {
+            "cmd": "{\"/placecube_digitalplace.addresscontext/search-address-by-postcode\":{\"companyId\":\"{companyId}\",\"postcode\":\"{postcode}\",\"fallbackToNationalLookup\":false}}",
+            "p_auth": "{pauth}"
+          },
+          "addressPattern": "\"UPRN\":\"(?<uprn>\\d+)\"[^{}]*?\"fullAddress\":\"(?<address>(?<label>[^\"]+))\"",
+          "refParts": [
+            "uprn",
+            "address"
+          ],
+          "refIsFormValue": true,
+          "schedulePrimeUrl": "https://www.midsuffolk.gov.uk/check-your-collection-day",
+          "schedulePrimePattern": "name=\"_com_placecube_digitalplace_local_waste_portlet_CollectionDayFinderPortlet_formDate\"\\s+type=\"hidden\" value=\"(?<formDate>\\d+)\"",
+          "scheduleUrl": "https://www.midsuffolk.gov.uk/check-your-collection-day?p_p_id=com_placecube_digitalplace_local_waste_portlet_CollectionDayFinderPortlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_com_placecube_digitalplace_local_waste_portlet_CollectionDayFinderPortlet_mvcRenderCommandName=%2Fcollection_day_finder%2Fget_days",
+          "scheduleForm": {
+            "_com_placecube_digitalplace_local_waste_portlet_CollectionDayFinderPortlet_formDate": "{formDate}",
+            "_com_placecube_digitalplace_local_waste_portlet_CollectionDayFinderPortlet_postcode": "{postcode}",
+            "_com_placecube_digitalplace_local_waste_portlet_CollectionDayFinderPortlet_uprn": "{uprn}",
+            "_com_placecube_digitalplace_local_waste_portlet_CollectionDayFinderPortlet_fullAddress": "{address}"
+          },
+          "cookieSession": true,
+          "errorPattern": "<div class=\"alert alert-danger\">[^<]*temporarily unavailable",
+          "blockPattern": "<tr>[^<]*<td>(?<type>[^<]+)</td>[^<]*<td>[^<]*?(?<date>[A-Z][a-z]+ \\d{1,2} [A-Z][a-z]{2,3} \\d{4})[^<]*</td>[^<]*<td>(?<every>[^<]*)</td>",
+          "cadence": [
+            {
+              "match": "(?i)^\\s*[a-z]+day\\s*week\\s*[1-3]\\s*$",
+              "days": 21
+            },
+            {
+              "match": "(?i)^\\s*[a-z]+day\\s+fortnightly\\s*$",
+              "days": 14
+            },
+            {
+              "match": "(?i)^\\s*[a-z]+day\\s*$",
+              "days": 7
+            }
+          ],
+          "dateFormat": "weekday-day-shortmonth-year"
+        }
+      }
+    },
+    {
+      "gss": "E07000200",
+      "name": "Babergh District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Babergh District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "garden",
+            "type": "GARDEN"
+          },
+          {
+            "match": "paper",
+            "type": "PAPER"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "refuse",
+            "type": "REFUSE"
+          }
+        ],
+        "optInMatch": [
+          "garden"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressPrimeUrl": "https://www.babergh.gov.uk/check-your-collection-day",
+          "addressPrimePattern": "getCompanyId: function\\(\\) \\{\\s*return '(?<companyId>\\d+)'[\\s\\S]*?Liferay\\.authToken = '(?<pauth>[^']+)'",
+          "addressUrl": "https://www.babergh.gov.uk/api/jsonws/invoke",
+          "addressForm": {
+            "cmd": "{\"/placecube_digitalplace.addresscontext/search-address-by-postcode\":{\"companyId\":\"{companyId}\",\"postcode\":\"{postcode}\",\"fallbackToNationalLookup\":false}}",
+            "p_auth": "{pauth}"
+          },
+          "addressPattern": "\"UPRN\":\"(?<uprn>\\d+)\"[^{}]*?\"fullAddress\":\"(?<address>(?<label>[^\"]+))\"",
+          "refParts": [
+            "uprn",
+            "address"
+          ],
+          "refIsFormValue": true,
+          "schedulePrimeUrl": "https://www.babergh.gov.uk/check-your-collection-day",
+          "schedulePrimePattern": "name=\"_com_placecube_digitalplace_local_waste_portlet_CollectionDayFinderPortlet_formDate\"\\s+type=\"hidden\" value=\"(?<formDate>\\d+)\"",
+          "scheduleUrl": "https://www.babergh.gov.uk/check-your-collection-day?p_p_id=com_placecube_digitalplace_local_waste_portlet_CollectionDayFinderPortlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_com_placecube_digitalplace_local_waste_portlet_CollectionDayFinderPortlet_mvcRenderCommandName=%2Fcollection_day_finder%2Fget_days",
+          "scheduleForm": {
+            "_com_placecube_digitalplace_local_waste_portlet_CollectionDayFinderPortlet_formDate": "{formDate}",
+            "_com_placecube_digitalplace_local_waste_portlet_CollectionDayFinderPortlet_postcode": "{postcode}",
+            "_com_placecube_digitalplace_local_waste_portlet_CollectionDayFinderPortlet_uprn": "{uprn}",
+            "_com_placecube_digitalplace_local_waste_portlet_CollectionDayFinderPortlet_fullAddress": "{address}"
+          },
+          "cookieSession": true,
+          "errorPattern": "<div class=\"alert alert-danger\">[^<]*temporarily unavailable",
+          "blockPattern": "<tr>[^<]*<td>(?<type>[^<]+)</td>[^<]*<td>[^<]*?(?<date>[A-Z][a-z]+ \\d{1,2} [A-Z][a-z]{2,3} \\d{4})[^<]*</td>[^<]*<td>(?<every>[^<]*)</td>",
+          "cadence": [
+            {
+              "match": "(?i)^\\s*[a-z]+day\\s*week\\s*[1-3]\\s*$",
+              "days": 21
+            },
+            {
+              "match": "(?i)^\\s*[a-z]+day\\s+fortnightly\\s*$",
+              "days": 14
+            },
+            {
+              "match": "(?i)^\\s*[a-z]+day\\s*$",
+              "days": 7
+            }
+          ],
+          "dateFormat": "weekday-day-shortmonth-year"
         }
       }
     },
