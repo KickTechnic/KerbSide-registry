@@ -18475,6 +18475,61 @@
           "dateFormat": "iso-local-date"
         }
       }
+    },
+    {
+      "gss": "N09000001",
+      "name": "Antrim and Newtownabbey Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Antrim and Newtownabbey Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "brown bin",
+            "type": "GARDEN",
+            "alsoCarries": [
+              "FOOD"
+            ]
+          },
+          {
+            "match": "wheelie box",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS",
+              "PAPER",
+              "TEXTILES"
+            ]
+          },
+          {
+            "match": "black bin",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://antrimandnewtownabbey.gov.uk/binchecker/",
+          "addressPrimeUrl": "https://antrimandnewtownabbey.gov.uk/binchecker/",
+          "addressPrimePattern": "name=\"__CMSCsrfToken\" id=\"__CMSCsrfToken\" value=\"(?<csrf>[^\"]*)\"[\\s\\S]*?name=\"__VIEWSTATE\" id=\"__VIEWSTATE\" value=\"(?<viewState>[^\"]*)\"[\\s\\S]*?name=\"lng\" id=\"lng\" value=\"(?<lng>[^\"]*)\"[\\s\\S]*?name=\"__VIEWSTATEGENERATOR\" id=\"__VIEWSTATEGENERATOR\" value=\"(?<generator>[^\"]*)\"",
+          "addressForm": {
+            "__CMSCsrfToken": "{csrf}",
+            "__VIEWSTATE": "{viewState}",
+            "lng": "{lng}",
+            "__VIEWSTATEGENERATOR": "{generator}",
+            "p$lt$ctl07$pageplaceholder$p$lt$ctl02$BinCollectionLookup$txtBinSearch": "{postcode}",
+            "p$lt$ctl07$pageplaceholder$p$lt$ctl02$BinCollectionLookup$btnBinSearch": "Go"
+          },
+          "addressPattern": "<option value=\"(?<ref>\\d+)\">(?<label>[^<]+)</option>",
+          "scheduleUrl": "https://antrimandnewtownabbey.gov.uk/binchecker/?Size=20&Id={ref}",
+          "blockPattern": "<p class=\"date\"><span id=\"[^\"]*_lblDate\">(?<date>[^<]+)</span></p>(?<body>[\\s\\S]*?)</ul>",
+          "typePattern": "<p><strong>(?<type>[^<]+)</strong></p>",
+          "dateFormat": "weekday-day-shortmonth-comma-year"
+        }
+      }
     }
   ]
 }
