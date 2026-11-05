@@ -18884,6 +18884,60 @@
           ]
         }
       }
+    },
+    {
+      "gss": "S12000028",
+      "name": "South Ayrshire Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from South Ayrshire Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "food bin",
+            "type": "FOOD"
+          },
+          {
+            "match": "anthracite bin",
+            "type": "PAPER"
+          },
+          {
+            "match": "blue bin",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "purple bin",
+            "type": "GLASS"
+          },
+          {
+            "match": "green bin",
+            "type": "REFUSE"
+          },
+          {
+            "match": "brown bin",
+            "type": "GARDEN"
+          }
+        ],
+        "optInMatch": [
+          "brown bin"
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://gisext.south-ayrshire.gov.uk/server/rest/services/Public/PublicMapLayers/MapServer/110/query?f=json&outFields=address%2Cuprn&orderByFields=address&returnGeometry=false&geometry={gridEasting}%2C{gridNorthing}&geometryType=esriGeometryPoint&inSR=27700&distance=1500&units=esriSRUnit_Meter&spatialRel=esriSpatialRelIntersects&where=address%20LIKE%20%27%25{postcode}%25%27",
+          "addressPattern": "\"address\":\"(?<label>[^\"]+)\",\"uprn\":\"0*(?<ref>\\d+)\"",
+          "scheduleUrl": "https://www.sac-bins.co.uk/get_calendar.php?rn={ref}&postcode={postcode}",
+          "blockPattern": "\\{\"title\":\"(?<type>[^\"]+)\",\"start\":\"(?<date>\\d{4}-\\d{2}-\\d{2})\"",
+          "nextDateOnly": [
+            "brown"
+          ],
+          "dateFormat": "iso-local-date"
+        }
+      }
     }
   ]
 }
