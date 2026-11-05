@@ -19336,6 +19336,215 @@
           }
         }
       }
+    },
+    {
+      "gss": "E09000013",
+      "name": "London Borough of Hammersmith and Fulham",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "area"
+      ],
+      "attribution": "Weekly collections as Hammersmith & Fulham Council publishes them; the collection day is the household's own",
+      "streams": {
+        "matches": [
+          {
+            "match": "food waste",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "PAPER",
+              "GLASS"
+            ]
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "area-weeks",
+        "version": 1,
+        "areaWeeks": {
+          "prompt": "day",
+          "areas": [
+            {
+              "key": "all",
+              "name": "Hammersmith & Fulham",
+              "weekOne": "2026-01-05"
+            }
+          ],
+          "days": [
+            "MONDAY",
+            "TUESDAY",
+            "WEDNESDAY",
+            "THURSDAY",
+            "FRIDAY",
+            "SATURDAY"
+          ],
+          "bins": [
+            {
+              "name": "Rubbish",
+              "week": 1,
+              "everyWeeks": 1
+            },
+            {
+              "name": "Recycling",
+              "week": 1,
+              "everyWeeks": 1
+            },
+            {
+              "name": "Food waste",
+              "week": 1,
+              "everyWeeks": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "gss": "E09000016",
+      "name": "London Borough of Havering",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "area"
+      ],
+      "attribution": "Weekly collections as the London Borough of Havering publishes them; the collection day is the household's own",
+      "streams": {
+        "matches": [
+          {
+            "match": "orange sacks",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "black sacks",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "area-weeks",
+        "version": 1,
+        "areaWeeks": {
+          "prompt": "day",
+          "areas": [
+            {
+              "key": "all",
+              "name": "Havering",
+              "weekOne": "2026-01-05"
+            }
+          ],
+          "days": [
+            "MONDAY",
+            "TUESDAY",
+            "WEDNESDAY",
+            "THURSDAY",
+            "FRIDAY"
+          ],
+          "bins": [
+            {
+              "name": "Black sacks",
+              "week": 1,
+              "everyWeeks": 1
+            },
+            {
+              "name": "Orange sacks",
+              "week": 1,
+              "everyWeeks": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "gss": "E07000208",
+      "name": "Epsom and Ewell Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "area"
+      ],
+      "attribution": "Weekly collections as Epsom and Ewell Borough Council publishes them (Simply Weekly Recycling); the collection day is the household's own",
+      "streams": {
+        "matches": [
+          {
+            "match": "food waste caddy",
+            "type": "FOOD"
+          },
+          {
+            "match": "glass box",
+            "type": "GLASS"
+          },
+          {
+            "match": "green recycling bin",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "PAPER"
+            ]
+          },
+          {
+            "match": "textiles",
+            "type": "TEXTILES"
+          },
+          {
+            "match": "black refuse bin",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "area-weeks",
+        "version": 1,
+        "areaWeeks": {
+          "prompt": "day",
+          "areas": [
+            {
+              "key": "all",
+              "name": "Epsom & Ewell",
+              "weekOne": "2026-01-05"
+            }
+          ],
+          "days": [
+            "MONDAY",
+            "TUESDAY",
+            "WEDNESDAY",
+            "THURSDAY",
+            "FRIDAY"
+          ],
+          "bins": [
+            {
+              "name": "Black refuse bin",
+              "week": 1,
+              "everyWeeks": 1
+            },
+            {
+              "name": "Green recycling bin",
+              "week": 1,
+              "everyWeeks": 1
+            },
+            {
+              "name": "Glass box",
+              "week": 1,
+              "everyWeeks": 1
+            },
+            {
+              "name": "Textiles bag",
+              "week": 1,
+              "everyWeeks": 1
+            },
+            {
+              "name": "Food waste caddy",
+              "week": 1,
+              "everyWeeks": 1
+            }
+          ]
+        }
+      }
     }
   ]
 }
