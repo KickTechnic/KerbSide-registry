@@ -18694,6 +18694,91 @@
           }
         }
       }
+    },
+    {
+      "gss": "N09000004",
+      "name": "Causeway Coast and Glens Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "area"
+      ],
+      "attribution": "Collection weeks from Causeway Coast and Glens Borough Council's area calendars",
+      "streams": {
+        "matches": [
+          {
+            "match": "blue bin",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS"
+            ],
+            "color": "#0B9DD9"
+          },
+          {
+            "match": "black bin",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "unpublished": [
+        {
+          "type": "FOOD",
+          "name": "Brown bin (food and garden waste)",
+          "intervalWeeks": 2,
+          "onCollectionDay": false,
+          "source": "https://causewaycoastandglens.gov.uk/live/bins-and-recycling/bin-collections/collection-calendars"
+        }
+      ],
+      "platform": {
+        "kind": "area-weeks",
+        "version": 1,
+        "areaWeeks": {
+          "areas": [
+            {
+              "key": "ballymoney",
+              "name": "Ballymoney",
+              "weekOne": "2026-01-05"
+            },
+            {
+              "key": "coleraine",
+              "name": "Coleraine",
+              "places": "Portrush, Portstewart, Kilrea, Garvagh",
+              "weekOne": "2026-01-05"
+            },
+            {
+              "key": "limavady",
+              "name": "Limavady",
+              "places": "Dungiven, Ballykelly",
+              "weekOne": "2025-12-29"
+            },
+            {
+              "key": "moyle",
+              "name": "Moyle",
+              "places": "Ballycastle, the Glens",
+              "weekOne": "2025-12-29"
+            }
+          ],
+          "days": [
+            "MONDAY",
+            "TUESDAY",
+            "WEDNESDAY",
+            "THURSDAY",
+            "FRIDAY"
+          ],
+          "bins": [
+            {
+              "name": "Blue bin",
+              "week": 1,
+              "everyWeeks": 2
+            },
+            {
+              "name": "Black bin",
+              "week": 2,
+              "everyWeeks": 2
+            }
+          ]
+        }
+      }
     }
   ]
 }
