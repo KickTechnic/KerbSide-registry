@@ -18594,6 +18594,106 @@
           "dateFormat": "relative-day-phrase"
         }
       }
+    },
+    {
+      "gss": "N09000010",
+      "name": "Newry, Mourne and Down District Council",
+      "tier": 1,
+      "holidayPolicy": {
+        "mode": "NONE"
+      },
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Newry, Mourne and Down District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "brown bin",
+            "type": "GARDEN",
+            "alsoCarries": [
+              "FOOD"
+            ],
+            "color": "#785448"
+          },
+          {
+            "match": "blue bin",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS"
+            ],
+            "color": "#1875D1"
+          },
+          {
+            "match": "black bin",
+            "type": "REFUSE",
+            "color": "#000000"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressPrimeUrl": "https://www.newrymournedown.org/weekly-bin-collection-and-calendar",
+          "addressPrimePattern": "name=\"PostcodeEND\"",
+          "addressUrl": "https://www.newrymournedown.org/weekly-bin-collection-and-calendar",
+          "addressForm": {
+            "PostcodeBT": "{outcode}",
+            "PostcodeEND": "{incode}",
+            "postback": "1",
+            "submit_btn": "Search"
+          },
+          "addressPattern": "<li>\\s*(?<ref>(?<label>[^<]+?)) <div class=\"floatright\"><a href=\"https://www\\.newrymournedown\\.org/bin-collections/",
+          "refIsFormValue": true,
+          "schedulePrimeUrl": "https://www.newrymournedown.org/weekly-bin-collection-and-calendar",
+          "schedulePrimePattern": "name=\"PostcodeEND\"",
+          "scheduleUrl": "https://www.newrymournedown.org/weekly-bin-collection-and-calendar",
+          "scheduleForm": {
+            "PostcodeBT": "{outcode}",
+            "PostcodeEND": "{incode}",
+            "postback": "1",
+            "submit_btn": "Search"
+          },
+          "scheduleRowPattern": "<li>\\s*{ref} <div class=\"floatright\"><a href=\"[^\"]*/bin-collections/[^\"]*\"",
+          "weekCodes": [
+            {
+              "name": "Black Bin (Non-recycling waste)",
+              "pattern": "bin-collections/(?<day>[A-Z]{3,5}?)-(?<week>Z\\d+)\\.pdf",
+              "everyWeeks": 2,
+              "weekOne": "2026-03-30",
+              "weeks": {
+                "Z1": 1,
+                "Z2": 1
+              }
+            },
+            {
+              "name": "Blue Bin (Dry recycling material)",
+              "pattern": "bin-collections/(?<day>[A-Z]{3,5}?)-(?<week>Z\\d+)\\.pdf",
+              "everyWeeks": 2,
+              "weekOne": "2026-03-30",
+              "weeks": {
+                "Z1": 2,
+                "Z2": 2
+              }
+            },
+            {
+              "name": "Brown Bin (Food and garden waste)",
+              "pattern": "bin-collections/(?<day>[A-Z]{3,5}?)-(?<week>Z\\d+)\\.pdf",
+              "everyWeeks": 2,
+              "weekOne": "2026-03-30",
+              "weeks": {
+                "Z1": 1,
+                "Z2": 2
+              }
+            }
+          ],
+          "movedDates": {
+            "2026-12-25": "2026-12-28",
+            "2027-01-01": "2027-01-04"
+          }
+        }
+      }
     }
   ]
 }
