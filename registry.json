@@ -18779,6 +18779,111 @@
           ]
         }
       }
+    },
+    {
+      "gss": "N09000008",
+      "name": "Mid and East Antrim Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "area"
+      ],
+      "attribution": "Collection data from Mid and East Antrim Borough Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "organic brown bin",
+            "type": "GARDEN",
+            "alsoCarries": [
+              "FOOD"
+            ]
+          },
+          {
+            "match": "brown routes",
+            "type": "GARDEN",
+            "alsoCarries": [
+              "FOOD"
+            ]
+          },
+          {
+            "match": "blue routes",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS"
+            ]
+          },
+          {
+            "match": "refuse black bin",
+            "type": "REFUSE"
+          },
+          {
+            "match": "residual waste",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "unpublished": [
+        {
+          "type": "RECYCLING",
+          "name": "Kerbside recycling boxes (Bryson Recycling)",
+          "intervalWeeks": 1,
+          "onCollectionDay": false,
+          "source": "https://brysonrecycling.org/northern-ireland/mid-and-east-antrim-borough-council/collection-day/",
+          "areas": [
+            "ballymena",
+            "carrickfergus"
+          ]
+        }
+      ],
+      "platform": {
+        "kind": "by-area",
+        "version": 1,
+        "byArea": {
+          "areas": [
+            {
+              "key": "ballymena",
+              "name": "Ballymena",
+              "platform": {
+                "kind": "whitespace-portal",
+                "version": 1,
+                "whitespacePortal": {
+                  "host": "https://nimea-wrp.whitespacews.com"
+                }
+              }
+            },
+            {
+              "key": "carrickfergus",
+              "name": "Carrickfergus",
+              "platform": {
+                "kind": "whitespace-portal",
+                "version": 1,
+                "whitespacePortal": {
+                  "host": "https://nimea-wrp.whitespacews.com"
+                }
+              }
+            },
+            {
+              "key": "larne",
+              "name": "Larne",
+              "platform": {
+                "kind": "html-regex",
+                "version": 1,
+                "htmlRegex": {
+                  "addressUrl": "https://larne.isl-fusion.com/address/{postcode}",
+                  "addressJsonPath": "html",
+                  "addressPattern": "<a href=\"/view/(?<ref>[A-Za-z0-9]{16})/\">(?<label>[^<]+)</a>",
+                  "addressCap": 50,
+                  "addressTextUrl": "https://larne.isl-fusion.com/address/{addressText}",
+                  "scheduleUrl": "https://larne.isl-fusion.com/calendar/{ref}/{from}",
+                  "blockPattern": "\"name\":\"(?<type>[^\"]+)\"(?:[^{}]|\\{[^{}]*\\})*?\"dates\":\\{(?<body>[^{}]*)\\}",
+                  "datePattern": "\"(?<date>\\d{4}-\\d{2}-\\d{2})\"",
+                  "dateFormat": "iso-local-date"
+                }
+              }
+            }
+          ]
+        }
+      }
     }
   ]
 }
