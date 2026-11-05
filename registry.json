@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-11-04",
+  "updated": "2026-11-05",
   "councils": [
     {
       "gss": "E07000240",
@@ -18528,6 +18528,70 @@
           "blockPattern": "<p class=\"date\"><span id=\"[^\"]*_lblDate\">(?<date>[^<]+)</span></p>(?<body>[\\s\\S]*?)</ul>",
           "typePattern": "<p><strong>(?<type>[^<]+)</strong></p>",
           "dateFormat": "weekday-day-shortmonth-comma-year"
+        }
+      }
+    },
+    {
+      "gss": "N09000009",
+      "name": "Mid Ulster District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode"
+      ],
+      "attribution": "Collection data from Mid Ulster District Council",
+      "streams": {
+        "matches": [
+          {
+            "match": "garden and food waste bin",
+            "type": "GARDEN",
+            "alsoCarries": [
+              "FOOD"
+            ]
+          },
+          {
+            "match": "recycling bin",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS"
+            ],
+            "color": "#3493DF"
+          },
+          {
+            "match": "general waste bin",
+            "type": "REFUSE",
+            "color": "#000000"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "html-regex",
+        "version": 1,
+        "htmlRegex": {
+          "addressUrl": "https://midulsterbincalendar.azurewebsites.net/api/addresses/{postcode}",
+          "postcodeFormat": "nospace",
+          "addressPattern": "\"uprn\":\"(?<ref>\\d+)\"[^{}]*?\"addressText\":\"(?<label>[^\"]+)\"",
+          "scheduleUrl": "https://midulsterbincalendar.azurewebsites.net/api/calendarhtml/{ref}",
+          "scheduleJsonPath": "calendarHTML",
+          "blockPattern": "<strong>(?<type>[^<]+)</strong>: (?<date>Today|Tomorrow|[A-Z][a-z]{2} \\d{1,2} [A-Z][a-z]{2})(?<every> then every [^<]*)?<br>",
+          "cadence": [
+            {
+              "match": "(?i)every\\s+(?:alternate|other)\\b",
+              "days": 14
+            },
+            {
+              "match": "(?i)every\\s+third\\b",
+              "days": 21
+            },
+            {
+              "match": "(?i)every\\s+fourth\\b",
+              "days": 28
+            },
+            {
+              "match": "(?i)^then every\\s+(?:mon|tue|wed|thu|fri|sat|sun)[a-z]*$",
+              "days": 7
+            }
+          ],
+          "dateFormat": "relative-day-phrase"
         }
       }
     }
