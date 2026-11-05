@@ -19081,6 +19081,261 @@
           ]
         }
       }
+    },
+    {
+      "gss": "E06000004",
+      "name": "Stockton-on-Tees Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "area"
+      ],
+      "attribution": "Collection weeks from Stockton-on-Tees Borough Council's red and blue week calendar",
+      "streams": {
+        "matches": [
+          {
+            "match": "food caddy",
+            "type": "FOOD"
+          },
+          {
+            "match": "white recycling bag",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "PAPER",
+              "GLASS"
+            ]
+          },
+          {
+            "match": "white bag",
+            "type": "PAPER"
+          },
+          {
+            "match": "blue bag",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "blue box",
+            "type": "GLASS"
+          },
+          {
+            "match": "general waste",
+            "type": "REFUSE"
+          },
+          {
+            "match": "green bin",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "unpublished": [
+        {
+          "type": "TEXTILES",
+          "name": "Clothes and shoes, and small electrical items: one carrier bag of each",
+          "intervalWeeks": 1,
+          "onCollectionDay": true,
+          "source": "https://www.stockton.gov.uk/waste-and-recycling-improvements",
+          "areas": [
+            "red",
+            "blue"
+          ]
+        }
+      ],
+      "platform": {
+        "kind": "area-weeks",
+        "version": 1,
+        "areaWeeks": {
+          "prompt": "label",
+          "areas": [
+            {
+              "key": "red",
+              "name": "Red week",
+              "weekOne": "2025-12-29"
+            },
+            {
+              "key": "blue",
+              "name": "Blue week",
+              "weekOne": "2026-01-05"
+            },
+            {
+              "key": "remote",
+              "name": "Hard-to-reach areas and farms",
+              "weekOne": "2025-12-29",
+              "bins": [
+                {
+                  "name": "General waste",
+                  "week": 1,
+                  "everyWeeks": 2
+                },
+                {
+                  "name": "White recycling bag",
+                  "week": 2,
+                  "everyWeeks": 2
+                },
+                {
+                  "name": "Food caddy",
+                  "week": 1,
+                  "everyWeeks": 1
+                }
+              ]
+            }
+          ],
+          "days": [
+            "TUESDAY",
+            "WEDNESDAY",
+            "THURSDAY",
+            "FRIDAY"
+          ],
+          "bins": [
+            {
+              "name": "Green bin",
+              "week": 1,
+              "everyWeeks": 2
+            },
+            {
+              "name": "Blue bag",
+              "week": 1,
+              "everyWeeks": 1
+            },
+            {
+              "name": "White bag",
+              "week": 1,
+              "everyWeeks": 1
+            },
+            {
+              "name": "Blue box",
+              "week": 1,
+              "everyWeeks": 1
+            },
+            {
+              "name": "Food caddy",
+              "week": 1,
+              "everyWeeks": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "gss": "E07000197",
+      "name": "Stafford Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "area"
+      ],
+      "attribution": "Collection weeks from Stafford Borough Council's Day 1 to Day 10 collection calendars",
+      "holidayPolicy": {
+        "mode": "NONE"
+      },
+      "streams": {
+        "matches": [
+          {
+            "match": "food waste caddy",
+            "type": "FOOD"
+          },
+          {
+            "match": "blue bin",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS"
+            ],
+            "color": "#0075BE"
+          },
+          {
+            "match": "blue bag",
+            "type": "PAPER",
+            "color": "#0075BE"
+          },
+          {
+            "match": "green bin",
+            "type": "REFUSE",
+            "color": "#83BB26"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "area-weeks",
+        "version": 1,
+        "areaWeeks": {
+          "prompt": "label",
+          "areas": [
+            {
+              "key": "day1to5",
+              "name": "Calendar Day 1 to Day 5",
+              "weekOne": "2026-01-05"
+            },
+            {
+              "key": "day6to10",
+              "name": "Calendar Day 6 to Day 10",
+              "weekOne": "2026-01-12"
+            }
+          ],
+          "days": [
+            "MONDAY",
+            "TUESDAY",
+            "WEDNESDAY",
+            "THURSDAY",
+            "FRIDAY"
+          ],
+          "bins": [
+            {
+              "name": "Blue bin",
+              "week": 1,
+              "everyWeeks": 2
+            },
+            {
+              "name": "Blue bag",
+              "week": 1,
+              "everyWeeks": 2
+            },
+            {
+              "name": "Green bin",
+              "week": 2,
+              "everyWeeks": 2
+            },
+            {
+              "name": "Food waste caddy",
+              "week": 1,
+              "everyWeeks": 1
+            }
+          ],
+          "movedDates": {
+            "2026-01-01": "2026-01-02",
+            "2026-01-02": "2026-01-03",
+            "2026-04-06": "2026-04-07",
+            "2026-04-07": "2026-04-08",
+            "2026-04-08": "2026-04-09",
+            "2026-04-09": "2026-04-10",
+            "2026-04-10": "2026-04-11",
+            "2026-05-04": "2026-05-05",
+            "2026-05-05": "2026-05-06",
+            "2026-05-06": "2026-05-07",
+            "2026-05-07": "2026-05-08",
+            "2026-05-08": "2026-05-09",
+            "2026-05-25": "2026-05-26",
+            "2026-05-26": "2026-05-27",
+            "2026-05-27": "2026-05-28",
+            "2026-05-28": "2026-05-29",
+            "2026-05-29": "2026-05-30",
+            "2026-08-31": "2026-09-01",
+            "2026-09-01": "2026-09-02",
+            "2026-09-02": "2026-09-03",
+            "2026-09-03": "2026-09-04",
+            "2026-09-04": "2026-09-05",
+            "2026-12-21": "2026-12-19",
+            "2026-12-22": "2026-12-21",
+            "2026-12-23": "2026-12-22",
+            "2026-12-24": "2026-12-23",
+            "2026-12-25": "2026-12-24",
+            "2026-12-28": "2026-12-29",
+            "2026-12-29": "2026-12-30",
+            "2026-12-30": "2026-12-31",
+            "2026-12-31": "2027-01-02",
+            "2027-01-01": "2027-01-04",
+            "2027-01-04": "2027-01-05"
+          }
+        }
+      }
     }
   ]
 }
