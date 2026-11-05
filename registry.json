@@ -18938,6 +18938,149 @@
           "dateFormat": "iso-local-date"
         }
       }
+    },
+    {
+      "gss": "E07000090",
+      "name": "Havant Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "area"
+      ],
+      "attribution": "Collection weeks from Havant Borough Council's North and South area calendars",
+      "streams": {
+        "matches": [
+          {
+            "match": "food waste bin",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling bin",
+            "type": "RECYCLING",
+            "color": "#8DC63F"
+          },
+          {
+            "match": "rubbish bin",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "area-weeks",
+        "version": 1,
+        "areaWeeks": {
+          "areas": [
+            {
+              "key": "north",
+              "name": "North area",
+              "places": "Waterlooville, Cowplain, Purbrook, Widley, Crookhorn, Stakes, Wecock Farm",
+              "weekOne": "2026-01-05"
+            },
+            {
+              "key": "south",
+              "name": "South area",
+              "places": "Leigh Park, Bedhampton, Emsworth, Hayling Island, Warblington, Denvilles, Langstone",
+              "weekOne": "2025-12-29"
+            }
+          ],
+          "days": [
+            "MONDAY",
+            "TUESDAY",
+            "WEDNESDAY",
+            "THURSDAY",
+            "FRIDAY"
+          ],
+          "bins": [
+            {
+              "name": "Rubbish bin",
+              "week": 1,
+              "everyWeeks": 2
+            },
+            {
+              "name": "Recycling bin",
+              "week": 2,
+              "everyWeeks": 2
+            },
+            {
+              "name": "Food waste bin",
+              "week": 1,
+              "everyWeeks": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "gss": "E06000017",
+      "name": "Rutland County Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "area"
+      ],
+      "attribution": "Collection weeks from Rutland County Council's collection calendars",
+      "streams": {
+        "matches": [
+          {
+            "match": "food waste caddy",
+            "type": "FOOD"
+          },
+          {
+            "match": "grey bin",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS"
+            ],
+            "color": "#A6A6A6"
+          },
+          {
+            "match": "black bin",
+            "type": "REFUSE"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "area-weeks",
+        "version": 1,
+        "areaWeeks": {
+          "areas": [
+            {
+              "key": "main",
+              "name": "Main bin routes",
+              "weekOne": "2026-03-30"
+            },
+            {
+              "key": "farms",
+              "name": "Farms and lodges",
+              "weekOne": "2026-04-06"
+            }
+          ],
+          "days": [
+            "MONDAY",
+            "TUESDAY",
+            "WEDNESDAY",
+            "THURSDAY",
+            "FRIDAY"
+          ],
+          "bins": [
+            {
+              "name": "Black bin",
+              "week": 1,
+              "everyWeeks": 2
+            },
+            {
+              "name": "Grey bin",
+              "week": 2,
+              "everyWeeks": 2
+            },
+            {
+              "name": "Food waste caddy",
+              "week": 1,
+              "everyWeeks": 1
+            }
+          ]
+        }
+      }
     }
   ]
 }
