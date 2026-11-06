@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-11-05",
+  "updated": "2026-11-06",
   "councils": [
     {
       "gss": "E07000240",
@@ -19543,6 +19543,216 @@
               "everyWeeks": 1
             }
           ]
+        }
+      }
+    },
+    {
+      "gss": "W06000020",
+      "name": "Torfaen County Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "area"
+      ],
+      "attribution": "Collection weeks from Torfaen County Borough Council's Round A to D collection calendars",
+      "holidayPolicy": {
+        "mode": "NONE"
+      },
+      "streams": {
+        "matches": [
+          {
+            "match": "red bag",
+            "type": "RECYCLING",
+            "color": "#D2232A"
+          },
+          {
+            "match": "blue bag",
+            "type": "PAPER",
+            "color": "#0079C1"
+          },
+          {
+            "match": "black box",
+            "type": "GLASS",
+            "alsoCarries": [
+              "PAPER",
+              "TEXTILES"
+            ],
+            "color": "#231F20"
+          },
+          {
+            "match": "brown caddy",
+            "type": "FOOD",
+            "color": "#734D3B"
+          },
+          {
+            "match": "purple lidded bin",
+            "type": "REFUSE"
+          },
+          {
+            "match": "green bin",
+            "type": "GARDEN",
+            "color": "#508329"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "area-weeks",
+        "version": 1,
+        "areaWeeks": {
+          "prompt": "label",
+          "areas": [
+            {
+              "key": "a",
+              "name": "Round A",
+              "weekOne": "2026-09-28"
+            },
+            {
+              "key": "b",
+              "name": "Round B",
+              "weekOne": "2026-09-28"
+            },
+            {
+              "key": "c",
+              "name": "Round C",
+              "weekOne": "2026-09-28",
+              "bins": [
+                {
+                  "name": "Purple lidded bin",
+                  "week": 1,
+                  "everyWeeks": 2
+                },
+                {
+                  "name": "Green bin",
+                  "week": 2,
+                  "everyWeeks": 2,
+                  "offWeeks": [
+                    "2026-12-14",
+                    "2026-12-28",
+                    "2027-01-11",
+                    "2027-01-25",
+                    "2027-02-08",
+                    "2027-02-22"
+                  ]
+                },
+                {
+                  "name": "Red bag",
+                  "week": 1,
+                  "everyWeeks": 1
+                },
+                {
+                  "name": "Blue bag",
+                  "week": 1,
+                  "everyWeeks": 1
+                },
+                {
+                  "name": "Black box",
+                  "week": 1,
+                  "everyWeeks": 1
+                },
+                {
+                  "name": "Brown caddy",
+                  "week": 1,
+                  "everyWeeks": 1
+                }
+              ]
+            },
+            {
+              "key": "d",
+              "name": "Round D",
+              "weekOne": "2026-09-28",
+              "bins": [
+                {
+                  "name": "Purple lidded bin",
+                  "week": 1,
+                  "everyWeeks": 2
+                },
+                {
+                  "name": "Green bin",
+                  "week": 2,
+                  "everyWeeks": 2,
+                  "offWeeks": [
+                    "2026-12-14",
+                    "2026-12-28",
+                    "2027-01-11",
+                    "2027-01-25",
+                    "2027-02-08",
+                    "2027-02-22"
+                  ]
+                },
+                {
+                  "name": "Red bag",
+                  "week": 1,
+                  "everyWeeks": 1
+                },
+                {
+                  "name": "Blue bag",
+                  "week": 1,
+                  "everyWeeks": 1
+                },
+                {
+                  "name": "Black box",
+                  "week": 1,
+                  "everyWeeks": 1
+                },
+                {
+                  "name": "Brown caddy",
+                  "week": 1,
+                  "everyWeeks": 1
+                }
+              ]
+            }
+          ],
+          "days": [
+            "MONDAY",
+            "TUESDAY",
+            "WEDNESDAY",
+            "THURSDAY",
+            "FRIDAY"
+          ],
+          "bins": [
+            {
+              "name": "Purple lidded bin",
+              "week": 2,
+              "everyWeeks": 2
+            },
+            {
+              "name": "Green bin",
+              "week": 1,
+              "everyWeeks": 2,
+              "offWeeks": [
+                "2026-12-07",
+                "2026-12-21",
+                "2027-01-04",
+                "2027-01-18",
+                "2027-02-01",
+                "2027-02-15"
+              ]
+            },
+            {
+              "name": "Red bag",
+              "week": 1,
+              "everyWeeks": 1
+            },
+            {
+              "name": "Blue bag",
+              "week": 1,
+              "everyWeeks": 1
+            },
+            {
+              "name": "Black box",
+              "week": 1,
+              "everyWeeks": 1
+            },
+            {
+              "name": "Brown caddy",
+              "week": 1,
+              "everyWeeks": 1
+            }
+          ],
+          "movedDates": {
+            "2026-12-25": "2026-12-27",
+            "2027-01-01": "2027-01-03"
+          }
         }
       }
     }
