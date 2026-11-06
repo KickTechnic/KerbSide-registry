@@ -19980,6 +19980,129 @@
           }
         }
       }
+    },
+    {
+      "gss": "E07000122",
+      "name": "Pendle Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "area"
+      ],
+      "attribution": "Collection weeks from Pendle Borough Council's Zone 1 to Zone 10 calendars for 2026/27",
+      "holidayPolicy": {
+        "mode": "NONE"
+      },
+      "streams": {
+        "matches": [
+          {
+            "match": "general waste",
+            "type": "REFUSE",
+            "color": "#6F7073"
+          },
+          {
+            "match": "glass/plastic/cans/foil",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS"
+            ],
+            "color": "#BE6929"
+          },
+          {
+            "match": "paper and cardboard",
+            "type": "PAPER",
+            "color": "#4169B2"
+          },
+          {
+            "match": "garden waste",
+            "type": "GARDEN",
+            "color": "#009E49"
+          },
+          {
+            "match": "food waste",
+            "type": "FOOD"
+          }
+        ],
+        "optInMatch": [
+          "garden waste"
+        ]
+      },
+      "platform": {
+        "kind": "area-weeks",
+        "version": 1,
+        "areaWeeks": {
+          "prompt": "label",
+          "areas": [
+            {
+              "key": "zones1to5",
+              "name": "Zones 1 to 5",
+              "weekOne": "2026-12-07"
+            },
+            {
+              "key": "zones6to10",
+              "name": "Zones 6 to 10",
+              "weekOne": "2026-11-30"
+            }
+          ],
+          "days": [
+            "MONDAY",
+            "TUESDAY",
+            "WEDNESDAY",
+            "THURSDAY",
+            "FRIDAY"
+          ],
+          "bins": [
+            {
+              "name": "General waste",
+              "week": 1,
+              "everyWeeks": 2
+            },
+            {
+              "name": "Paper and cardboard",
+              "week": 2,
+              "everyWeeks": 4
+            },
+            {
+              "name": "Glass/plastic/cans/foil",
+              "week": 4,
+              "everyWeeks": 4
+            },
+            {
+              "name": "Garden waste",
+              "week": 2,
+              "everyWeeks": 2,
+              "offWeeks": [
+                "2026-11-30",
+                "2026-12-07",
+                "2026-12-14",
+                "2026-12-21",
+                "2026-12-28",
+                "2027-01-04",
+                "2027-01-11",
+                "2027-01-18",
+                "2027-01-25",
+                "2027-02-01",
+                "2027-02-08",
+                "2027-02-15",
+                "2027-02-22"
+              ]
+            },
+            {
+              "name": "Food waste",
+              "week": 1,
+              "everyWeeks": 1
+            }
+          ],
+          "movedDates": {
+            "2026-12-21": "2026-12-19",
+            "2026-12-22": "2026-12-21",
+            "2026-12-23": "2026-12-22",
+            "2026-12-24": "2026-12-23",
+            "2026-12-25": "2026-12-24",
+            "2027-01-01": "2027-01-02"
+          }
+        }
+      }
     }
   ]
 }
