@@ -20103,6 +20103,152 @@
           }
         }
       }
+    },
+    {
+      "gss": "E06000023",
+      "name": "Bristol City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "area"
+      ],
+      "attribution": "Collection weeks from Bristol Waste's 2025-26 collection calendars (reference codes MON/A to FRI/W)",
+      "holidayPolicy": {
+        "mode": "NONE"
+      },
+      "streams": {
+        "matches": [
+          {
+            "match": "black wheelie bin",
+            "type": "REFUSE",
+            "color": "#535353"
+          },
+          {
+            "match": "black box",
+            "type": "GLASS",
+            "color": "#535353"
+          },
+          {
+            "match": "blue bag",
+            "type": "PAPER",
+            "color": "#189BD8"
+          },
+          {
+            "match": "red bag",
+            "type": "RECYCLING",
+            "color": "#E21B20"
+          },
+          {
+            "match": "brown food waste bin",
+            "type": "FOOD",
+            "color": "#946038"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "area-weeks",
+        "version": 1,
+        "areaWeeks": {
+          "prompt": "label",
+          "areas": [
+            {
+              "key": "a",
+              "name": "A week",
+              "weekOne": "2026-11-09"
+            },
+            {
+              "key": "b",
+              "name": "B week",
+              "weekOne": "2026-11-02"
+            },
+            {
+              "key": "weekly",
+              "name": "Weekly",
+              "weekOne": "2026-11-02",
+              "bins": [
+                {
+                  "name": "Black wheelie bin",
+                  "week": 1,
+                  "everyWeeks": 1
+                },
+                {
+                  "name": "Black box",
+                  "week": 1,
+                  "everyWeeks": 1
+                },
+                {
+                  "name": "Blue bag",
+                  "week": 1,
+                  "everyWeeks": 1
+                },
+                {
+                  "name": "Red bag",
+                  "week": 1,
+                  "everyWeeks": 1
+                },
+                {
+                  "name": "Brown food waste bin",
+                  "week": 1,
+                  "everyWeeks": 1
+                }
+              ]
+            }
+          ],
+          "days": [
+            "MONDAY",
+            "TUESDAY",
+            "WEDNESDAY",
+            "THURSDAY",
+            "FRIDAY"
+          ],
+          "bins": [
+            {
+              "name": "Black wheelie bin",
+              "week": 1,
+              "everyWeeks": 2
+            },
+            {
+              "name": "Black box",
+              "week": 1,
+              "everyWeeks": 1
+            },
+            {
+              "name": "Blue bag",
+              "week": 1,
+              "everyWeeks": 1
+            },
+            {
+              "name": "Red bag",
+              "week": 1,
+              "everyWeeks": 1
+            },
+            {
+              "name": "Brown food waste bin",
+              "week": 1,
+              "everyWeeks": 1
+            }
+          ],
+          "movedDates": {
+            "2025-12-25": "2025-12-29",
+            "2025-12-26": "2025-12-30",
+            "2025-12-29": "2025-12-31",
+            "2025-12-30": "2026-01-02",
+            "2025-12-31": "2026-01-03",
+            "2026-01-01": "2026-01-05",
+            "2026-01-02": "2026-01-06",
+            "2026-01-05": "2026-01-07",
+            "2026-01-06": "2026-01-08",
+            "2026-01-07": "2026-01-09",
+            "2026-01-08": "2026-01-10",
+            "2026-01-09": "2026-01-12",
+            "2026-01-12": "2026-01-13",
+            "2026-01-13": "2026-01-14",
+            "2026-01-14": "2026-01-15",
+            "2026-01-15": "2026-01-16",
+            "2026-01-16": "2026-01-17"
+          }
+        }
+      }
     }
   ]
 }
