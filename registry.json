@@ -21069,6 +21069,78 @@
           ]
         }
       }
+    },
+    {
+      "gss": "E07000145",
+      "name": "Great Yarmouth Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "area"
+      ],
+      "attribution": "Collection cycle from Great Yarmouth Borough Council's pages (the black and green bins on alternate weeks, on your collection day); your week is the one you choose",
+      "streams": {
+        "matches": [
+          {
+            "match": "black bin",
+            "type": "REFUSE"
+          },
+          {
+            "match": "green bin",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS",
+              "PAPER"
+            ]
+          }
+        ]
+      },
+      "unpublished": [
+        {
+          "type": "GARDEN",
+          "name": "Garden waste (by subscription)",
+          "intervalWeeks": 2,
+          "source": "https://www.great-yarmouth.gov.uk/policies/waste-collection/garden-waste"
+        }
+      ],
+      "platform": {
+        "kind": "area-weeks",
+        "areaWeeks": {
+          "prompt": "phase",
+          "askBin": "Black bin",
+          "areas": [
+            {
+              "key": "a",
+              "name": "Great Yarmouth",
+              "weekOne": "2026-11-02"
+            },
+            {
+              "key": "b",
+              "name": "Great Yarmouth",
+              "weekOne": "2026-11-09"
+            }
+          ],
+          "days": [
+            "MONDAY",
+            "TUESDAY",
+            "WEDNESDAY",
+            "THURSDAY",
+            "FRIDAY"
+          ],
+          "bins": [
+            {
+              "name": "Black bin",
+              "week": 1,
+              "everyWeeks": 2
+            },
+            {
+              "name": "Green bin",
+              "week": 2,
+              "everyWeeks": 2
+            }
+          ]
+        }
+      }
     }
   ]
 }
