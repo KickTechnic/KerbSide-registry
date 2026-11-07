@@ -21294,6 +21294,81 @@
           ]
         }
       }
+    },
+    {
+      "gss": "E07000221",
+      "name": "Stratford-on-Avon District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "area"
+      ],
+      "attribution": "Collection cycle from Stratford-on-Avon District Council's pages (the grey bin every three weeks, the blue-lidded bin every two, the food bin weekly, on your collection day); the week each bin goes out is the one you choose",
+      "streams": {
+        "matches": [
+          {
+            "match": "grey bin",
+            "type": "REFUSE"
+          },
+          {
+            "match": "blue-lidded bin",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS",
+              "PAPER"
+            ]
+          },
+          {
+            "match": "food bin",
+            "type": "FOOD"
+          }
+        ]
+      },
+      "unpublished": [
+        {
+          "type": "GARDEN",
+          "name": "Garden waste (by subscription)",
+          "intervalWeeks": 2,
+          "source": "https://www.stratford.gov.uk/waste-recycling/what-we-collect.cfm"
+        }
+      ],
+      "platform": {
+        "kind": "area-weeks",
+        "areaWeeks": {
+          "prompt": "weeks",
+          "areas": [
+            {
+              "key": "stratford",
+              "name": "Stratford-on-Avon",
+              "weekOne": "2026-11-02"
+            }
+          ],
+          "days": [
+            "MONDAY",
+            "TUESDAY",
+            "WEDNESDAY",
+            "THURSDAY",
+            "FRIDAY"
+          ],
+          "bins": [
+            {
+              "name": "Grey bin",
+              "week": 1,
+              "everyWeeks": 3
+            },
+            {
+              "name": "Blue-lidded bin",
+              "week": 1,
+              "everyWeeks": 2
+            },
+            {
+              "name": "Food bin",
+              "week": 1,
+              "everyWeeks": 1
+            }
+          ]
+        }
+      }
     }
   ]
 }
