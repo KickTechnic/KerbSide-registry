@@ -21210,6 +21210,90 @@
           ]
         }
       }
+    },
+    {
+      "gss": "E08000009",
+      "name": "Trafford Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "area"
+      ],
+      "attribution": "Collection cycle from Trafford Council's pages (the grey bin every two weeks, the black and blue bins every four, the green bin weekly, on your collection day); the week each bin goes out is the one you choose",
+      "streams": {
+        "matches": [
+          {
+            "match": "grey general waste bin",
+            "type": "REFUSE"
+          },
+          {
+            "match": "black mixed recycling bin",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS"
+            ]
+          },
+          {
+            "match": "blue paper and card bin",
+            "type": "PAPER"
+          },
+          {
+            "match": "green food and garden waste bin",
+            "type": "FOOD"
+          }
+        ]
+      },
+      "unpublished": [
+        {
+          "type": "GARDEN",
+          "name": "Garden waste in the green bin (by permit)",
+          "intervalWeeks": 1,
+          "onCollectionDay": true,
+          "source": "https://www.trafford.gov.uk/rubbish-and-recycling/food-and-garden-waste"
+        }
+      ],
+      "platform": {
+        "kind": "area-weeks",
+        "areaWeeks": {
+          "prompt": "weeks",
+          "areas": [
+            {
+              "key": "trafford",
+              "name": "Trafford",
+              "weekOne": "2026-11-02"
+            }
+          ],
+          "days": [
+            "MONDAY",
+            "TUESDAY",
+            "WEDNESDAY",
+            "THURSDAY",
+            "FRIDAY"
+          ],
+          "bins": [
+            {
+              "name": "Grey general waste bin",
+              "week": 1,
+              "everyWeeks": 2
+            },
+            {
+              "name": "Black mixed recycling bin",
+              "week": 1,
+              "everyWeeks": 4
+            },
+            {
+              "name": "Blue paper and card bin",
+              "week": 1,
+              "everyWeeks": 4
+            },
+            {
+              "name": "Green food and garden waste bin",
+              "week": 1,
+              "everyWeeks": 1
+            }
+          ]
+        }
+      }
     }
   ]
 }
