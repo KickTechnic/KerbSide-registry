@@ -21141,6 +21141,75 @@
           ]
         }
       }
+    },
+    {
+      "gss": "E08000037",
+      "name": "Gateshead Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "area"
+      ],
+      "attribution": "Collection cycle from Gateshead Council's pages (the household waste and blue recycling bins each every fortnight, on your collection day); the week each bin goes out is the one you choose",
+      "streams": {
+        "matches": [
+          {
+            "match": "household waste bin",
+            "type": "REFUSE",
+            "alsoCarries": [
+              "FOOD"
+            ]
+          },
+          {
+            "match": "blue recycling bin",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS",
+              "PAPER"
+            ]
+          }
+        ]
+      },
+      "unpublished": [
+        {
+          "type": "GARDEN",
+          "name": "Garden waste (by subscription, April to October)",
+          "intervalWeeks": 2,
+          "source": "https://www.gateshead.gov.uk/article/3146/Garden-waste-bin"
+        }
+      ],
+      "platform": {
+        "kind": "area-weeks",
+        "areaWeeks": {
+          "prompt": "weeks",
+          "areas": [
+            {
+              "key": "gateshead",
+              "name": "Gateshead",
+              "weekOne": "2026-11-02"
+            }
+          ],
+          "days": [
+            "MONDAY",
+            "TUESDAY",
+            "WEDNESDAY",
+            "THURSDAY",
+            "FRIDAY"
+          ],
+          "bins": [
+            {
+              "name": "Household waste bin",
+              "week": 1,
+              "everyWeeks": 2
+            },
+            {
+              "name": "Blue recycling bin",
+              "week": 1,
+              "everyWeeks": 2
+            }
+          ]
+        }
+      }
     }
   ]
 }
