@@ -20381,6 +20381,89 @@
           }
         }
       }
+    },
+    {
+      "gss": "E07000140",
+      "name": "South Holland District Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "area"
+      ],
+      "attribution": "Collection weeks from South Holland District Council's new waste and recycling service poster (from 9 November 2026)",
+      "streams": {
+        "matches": [
+          {
+            "match": "black-lidded",
+            "type": "REFUSE"
+          },
+          {
+            "match": "blue-lidded",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS"
+            ]
+          },
+          {
+            "match": "purple-lidded",
+            "type": "PAPER"
+          },
+          {
+            "match": "food waste",
+            "type": "FOOD"
+          }
+        ]
+      },
+      "unpublished": [
+        {
+          "type": "GARDEN",
+          "name": "Garden waste (by subscription)",
+          "intervalWeeks": 2,
+          "source": "https://www.sholland.gov.uk/GardenWaste"
+        }
+      ],
+      "platform": {
+        "kind": "area-weeks",
+        "areaWeeks": {
+          "prompt": "day",
+          "areas": [
+            {
+              "key": "all",
+              "name": "South Holland",
+              "weekOne": "2026-11-09"
+            }
+          ],
+          "days": [
+            "MONDAY",
+            "TUESDAY",
+            "WEDNESDAY",
+            "THURSDAY",
+            "FRIDAY"
+          ],
+          "bins": [
+            {
+              "name": "Black-lidded bin",
+              "week": 1,
+              "everyWeeks": 2
+            },
+            {
+              "name": "Blue-lidded bin",
+              "week": 2,
+              "everyWeeks": 4
+            },
+            {
+              "name": "Purple-lidded bin",
+              "week": 4,
+              "everyWeeks": 4
+            },
+            {
+              "name": "Food waste caddy",
+              "week": 1,
+              "everyWeeks": 1
+            }
+          ]
+        }
+      }
     }
   ]
 }
