@@ -20576,6 +20576,106 @@
           ]
         }
       }
+    },
+    {
+      "gss": "E06000066",
+      "name": "Somerset Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "area"
+      ],
+      "attribution": "Collection cycle from Somerset Council's bin pages (recycling and food every week, the household waste bin every three weeks, on your collection day); your week is the one you choose",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          },
+          {
+            "match": "box 1",
+            "type": "PAPER"
+          },
+          {
+            "match": "box 2",
+            "type": "GLASS"
+          },
+          {
+            "match": "blue bag",
+            "type": "RECYCLING"
+          }
+        ]
+      },
+      "unpublished": [
+        {
+          "type": "GARDEN",
+          "name": "Garden waste (by subscription)",
+          "intervalWeeks": 2,
+          "source": "https://www.somerset.gov.uk/bins-recycling-and-waste/garden-waste-collections/"
+        }
+      ],
+      "platform": {
+        "kind": "area-weeks",
+        "areaWeeks": {
+          "prompt": "phase",
+          "askBin": "Rubbish bin",
+          "areas": [
+            {
+              "key": "a",
+              "name": "Somerset",
+              "weekOne": "2026-11-02"
+            },
+            {
+              "key": "b",
+              "name": "Somerset",
+              "weekOne": "2026-11-09"
+            },
+            {
+              "key": "c",
+              "name": "Somerset",
+              "weekOne": "2026-11-16"
+            }
+          ],
+          "days": [
+            "MONDAY",
+            "TUESDAY",
+            "WEDNESDAY",
+            "THURSDAY",
+            "FRIDAY"
+          ],
+          "bins": [
+            {
+              "name": "Rubbish bin",
+              "week": 1,
+              "everyWeeks": 3
+            },
+            {
+              "name": "Bright Blue Bag",
+              "week": 1,
+              "everyWeeks": 1
+            },
+            {
+              "name": "Box 1 (paper and cardboard)",
+              "week": 1,
+              "everyWeeks": 1
+            },
+            {
+              "name": "Box 2 (glass and cartons)",
+              "week": 1,
+              "everyWeeks": 1
+            },
+            {
+              "name": "Food waste bin",
+              "week": 1,
+              "everyWeeks": 1
+            }
+          ]
+        }
+      }
     }
   ]
 }
