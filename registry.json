@@ -20676,6 +20676,203 @@
           ]
         }
       }
+    },
+    {
+      "gss": "E07000094",
+      "name": "Winchester City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "area"
+      ],
+      "attribution": "Collection cycle from Winchester City Council's pages and collection calendar (black and green bins on alternate weeks, the glass box every four weeks alongside the green bin, food every week on the same day); your week is the one you choose",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "glass",
+            "type": "GLASS"
+          },
+          {
+            "match": "black bin",
+            "type": "REFUSE"
+          },
+          {
+            "match": "green bin",
+            "type": "RECYCLING"
+          }
+        ]
+      },
+      "unpublished": [
+        {
+          "type": "GARDEN",
+          "name": "Garden waste (by subscription)",
+          "intervalWeeks": 2,
+          "onCollectionDay": true,
+          "source": "https://www.winchester.gov.uk/waste-recycling/food-waste"
+        }
+      ],
+      "platform": {
+        "kind": "area-weeks",
+        "areaWeeks": {
+          "prompt": "phase",
+          "askBin": "Glass box",
+          "areas": [
+            {
+              "key": "a",
+              "name": "Winchester",
+              "weekOne": "2026-11-02"
+            },
+            {
+              "key": "b",
+              "name": "Winchester",
+              "weekOne": "2026-11-09"
+            },
+            {
+              "key": "c",
+              "name": "Winchester",
+              "weekOne": "2026-11-16"
+            },
+            {
+              "key": "d",
+              "name": "Winchester",
+              "weekOne": "2026-11-23"
+            }
+          ],
+          "days": [
+            "MONDAY",
+            "TUESDAY",
+            "WEDNESDAY",
+            "THURSDAY",
+            "FRIDAY"
+          ],
+          "bins": [
+            {
+              "name": "Glass box",
+              "week": 1,
+              "everyWeeks": 4
+            },
+            {
+              "name": "Green bin",
+              "week": 1,
+              "everyWeeks": 2
+            },
+            {
+              "name": "Black bin",
+              "week": 2,
+              "everyWeeks": 2
+            },
+            {
+              "name": "Food waste bin",
+              "week": 1,
+              "everyWeeks": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "gss": "E07000120",
+      "name": "Hyndburn Borough Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "area"
+      ],
+      "attribution": "Collection cycle from Hyndburn Borough Council's pages and recycling FAQs (the grey bin every other week, the blue and brown bins taking turns on the weeks between, food every week on the same day); your week is the one you choose",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "grey bin",
+            "type": "REFUSE"
+          },
+          {
+            "match": "blue bin",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS"
+            ]
+          },
+          {
+            "match": "brown bin",
+            "type": "PAPER"
+          }
+        ]
+      },
+      "unpublished": [
+        {
+          "type": "GARDEN",
+          "name": "Garden waste (by subscription)",
+          "intervalWeeks": 2,
+          "onCollectionDay": true,
+          "source": "https://www.hyndburnbc.gov.uk/garden-waste-subscription/"
+        }
+      ],
+      "platform": {
+        "kind": "area-weeks",
+        "areaWeeks": {
+          "prompt": "phase",
+          "askBin": "Blue bin",
+          "areas": [
+            {
+              "key": "a",
+              "name": "Hyndburn",
+              "weekOne": "2026-11-02"
+            },
+            {
+              "key": "b",
+              "name": "Hyndburn",
+              "weekOne": "2026-11-09"
+            },
+            {
+              "key": "c",
+              "name": "Hyndburn",
+              "weekOne": "2026-11-16"
+            },
+            {
+              "key": "d",
+              "name": "Hyndburn",
+              "weekOne": "2026-11-23"
+            }
+          ],
+          "days": [
+            "MONDAY",
+            "TUESDAY",
+            "WEDNESDAY",
+            "THURSDAY",
+            "FRIDAY"
+          ],
+          "bins": [
+            {
+              "name": "Blue bin",
+              "week": 1,
+              "everyWeeks": 4
+            },
+            {
+              "name": "Grey bin",
+              "week": 2,
+              "everyWeeks": 2
+            },
+            {
+              "name": "Brown bin",
+              "week": 3,
+              "everyWeeks": 4
+            },
+            {
+              "name": "Food waste caddy",
+              "week": 1,
+              "everyWeeks": 1
+            }
+          ]
+        }
+      }
     }
   ]
 }
