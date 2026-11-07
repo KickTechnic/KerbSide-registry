@@ -4034,56 +4034,91 @@
     {
       "gss": "W06000011",
       "name": "Swansea Council",
-      "tier": 3,
+      "tier": 1,
       "inputNeeds": [
-        "postcode"
+        "postcode",
+        "area"
       ],
-      "attribution": "Collection data from Swansea Council",
+      "attribution": "Collection cycle from Swansea Council's kerbside collections page (green and black bags on your green week, pink bags on your pink week, food every week); your week is the one you choose",
       "streams": {
         "matches": [
           {
-            "match": "pink week",
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "black bag",
             "type": "REFUSE"
           },
           {
-            "match": "green week",
+            "match": "green bag",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS",
+              "PAPER"
+            ]
+          },
+          {
+            "match": "pink bag",
             "type": "RECYCLING"
           }
-        ],
-        "optInMatch": []
+        ]
       },
+      "unpublished": [
+        {
+          "type": "GARDEN",
+          "name": "Garden waste (white bags, seasonal)",
+          "intervalWeeks": 2,
+          "onCollectionDay": true,
+          "source": "https://www.swansea.gov.uk/gardenwaste"
+        }
+      ],
       "platform": {
-        "kind": "html-regex",
-        "version": 1,
-        "htmlRegex": {
-          "addressUrl": "https://www1.swansea.gov.uk/recyclingsearch/",
-          "addressPrimeUrl": "https://www1.swansea.gov.uk/recyclingsearch/",
-          "addressPrimePattern": "name=\"__VIEWSTATE\" id=\"__VIEWSTATE\" value=\"(?<viewState>[^\"]*)\"[\\s\\S]*?name=\"__VIEWSTATEGENERATOR\" id=\"__VIEWSTATEGENERATOR\" value=\"(?<generator>[^\"]*)\"[\\s\\S]*?name=\"__EVENTVALIDATION\" id=\"__EVENTVALIDATION\" value=\"(?<validation>[^\"]*)\"",
-          "addressForm": {
-            "__VIEWSTATE": "{viewState}",
-            "__VIEWSTATEGENERATOR": "{generator}",
-            "__VIEWSTATEENCRYPTED": "",
-            "__EVENTVALIDATION": "{validation}",
-            "txtRoadName": "",
-            "txtPostCode": "{postcode}",
-            "btnSearch": "Search"
-          },
-          "addressPattern": "id=\"lblAddress\"[^>]*><b><font[^>]*>(?<label>[^<]+)<",
-          "refIsPostcode": true,
-          "scheduleUrl": "https://www1.swansea.gov.uk/recyclingsearch/",
-          "scheduleForm": {
-            "__VIEWSTATE": "{viewState}",
-            "__VIEWSTATEGENERATOR": "{generator}",
-            "__VIEWSTATEENCRYPTED": "",
-            "__EVENTVALIDATION": "{validation}",
-            "txtRoadName": "",
-            "txtPostCode": "{postcode}",
-            "btnSearch": "Search"
-          },
-          "schedulePrimeUrl": "https://www1.swansea.gov.uk/recyclingsearch/",
-          "schedulePrimePattern": "name=\"__VIEWSTATE\" id=\"__VIEWSTATE\" value=\"(?<viewState>[^\"]*)\"[\\s\\S]*?name=\"__VIEWSTATEGENERATOR\" id=\"__VIEWSTATEGENERATOR\" value=\"(?<generator>[^\"]*)\"[\\s\\S]*?name=\"__EVENTVALIDATION\" id=\"__EVENTVALIDATION\" value=\"(?<validation>[^\"]*)\"",
-          "blockPattern": ">Next (?<type>[^<]+?) Collection: </font></span>\\s*<span id=\"lblNext\\w+\"[^>]*><b><font[^>]*>(?<date>[^<]+)<",
-          "dateFormat": "dd/MM/yyyy"
+        "kind": "area-weeks",
+        "areaWeeks": {
+          "prompt": "phase",
+          "askBin": "Black bag collection",
+          "areas": [
+            {
+              "key": "a",
+              "name": "Swansea",
+              "weekOne": "2026-11-02"
+            },
+            {
+              "key": "b",
+              "name": "Swansea",
+              "weekOne": "2026-11-09"
+            }
+          ],
+          "days": [
+            "MONDAY",
+            "TUESDAY",
+            "WEDNESDAY",
+            "THURSDAY",
+            "FRIDAY"
+          ],
+          "bins": [
+            {
+              "name": "Black bag collection",
+              "week": 1,
+              "everyWeeks": 2
+            },
+            {
+              "name": "Green bag collection",
+              "week": 1,
+              "everyWeeks": 2
+            },
+            {
+              "name": "Pink bag collection",
+              "week": 2,
+              "everyWeeks": 2
+            },
+            {
+              "name": "Food waste collection",
+              "week": 1,
+              "everyWeeks": 1
+            }
+          ]
         }
       }
     },
