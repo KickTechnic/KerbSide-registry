@@ -20960,6 +20960,115 @@
           ]
         }
       }
+    },
+    {
+      "gss": "W06000022",
+      "name": "Newport City Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "area"
+      ],
+      "attribution": "Collection cycle from Newport City Council's bin pages (recycling and food every week, the household waste bin every three weeks, on your collection day); your week is the one you choose",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "household waste",
+            "type": "REFUSE"
+          },
+          {
+            "match": "red bag",
+            "type": "RECYCLING"
+          },
+          {
+            "match": "blue bag",
+            "type": "PAPER"
+          },
+          {
+            "match": "green box",
+            "type": "GLASS"
+          },
+          {
+            "match": "clothing",
+            "type": "TEXTILES"
+          }
+        ]
+      },
+      "unpublished": [
+        {
+          "type": "GARDEN",
+          "name": "Garden waste",
+          "intervalWeeks": 3,
+          "source": "https://www.newport.gov.uk/recycling-and-waste/collections/what-goes-where"
+        }
+      ],
+      "platform": {
+        "kind": "area-weeks",
+        "areaWeeks": {
+          "prompt": "phase",
+          "askBin": "Household waste bin",
+          "areas": [
+            {
+              "key": "a",
+              "name": "Newport",
+              "weekOne": "2026-11-02"
+            },
+            {
+              "key": "b",
+              "name": "Newport",
+              "weekOne": "2026-11-09"
+            },
+            {
+              "key": "c",
+              "name": "Newport",
+              "weekOne": "2026-11-16"
+            }
+          ],
+          "days": [
+            "MONDAY",
+            "TUESDAY",
+            "WEDNESDAY",
+            "THURSDAY",
+            "FRIDAY"
+          ],
+          "bins": [
+            {
+              "name": "Household waste bin",
+              "week": 1,
+              "everyWeeks": 3
+            },
+            {
+              "name": "Red bag (plastic and metal)",
+              "week": 1,
+              "everyWeeks": 1
+            },
+            {
+              "name": "Blue bag (cardboard and paper)",
+              "week": 1,
+              "everyWeeks": 1
+            },
+            {
+              "name": "Green box (glass and small electricals)",
+              "week": 1,
+              "everyWeeks": 1
+            },
+            {
+              "name": "Clothing (in a bag next to recycling)",
+              "week": 1,
+              "everyWeeks": 1
+            },
+            {
+              "name": "Food waste caddy",
+              "week": 1,
+              "everyWeeks": 1
+            }
+          ]
+        }
+      }
     }
   ]
 }
