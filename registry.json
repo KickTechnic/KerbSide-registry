@@ -20464,6 +20464,83 @@
           ]
         }
       }
+    },
+    {
+      "gss": "E06000058",
+      "name": "BCP Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "area"
+      ],
+      "attribution": "Collection cycle from BCP Council's bin pages (rubbish and recycling every 2 weeks on alternate weeks, food every week on the same day); your week is the one you choose",
+      "streams": {
+        "matches": [
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "rubbish",
+            "type": "REFUSE"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          }
+        ]
+      },
+      "unpublished": [
+        {
+          "type": "GARDEN",
+          "name": "Garden waste (by subscription)",
+          "intervalWeeks": 2,
+          "source": "https://www.bcpcouncil.gov.uk/bins-waste-and-recycling/garden-waste-service"
+        }
+      ],
+      "platform": {
+        "kind": "area-weeks",
+        "areaWeeks": {
+          "prompt": "phase",
+          "askBin": "Rubbish bin",
+          "areas": [
+            {
+              "key": "a",
+              "name": "Bournemouth, Christchurch and Poole",
+              "weekOne": "2026-11-02"
+            },
+            {
+              "key": "b",
+              "name": "Bournemouth, Christchurch and Poole",
+              "weekOne": "2026-11-09"
+            }
+          ],
+          "days": [
+            "MONDAY",
+            "TUESDAY",
+            "WEDNESDAY",
+            "THURSDAY",
+            "FRIDAY"
+          ],
+          "bins": [
+            {
+              "name": "Rubbish bin",
+              "week": 1,
+              "everyWeeks": 2
+            },
+            {
+              "name": "Recycling bin",
+              "week": 2,
+              "everyWeeks": 2
+            },
+            {
+              "name": "Food waste bin",
+              "week": 1,
+              "everyWeeks": 1
+            }
+          ]
+        }
+      }
     }
   ]
 }
