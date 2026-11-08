@@ -7749,7 +7749,26 @@
             "bodyTemplate": "{\"formValues\":{\"Section 2\":{\"TH_uprn\":{\"value\":\"{ref}\"},\"howCheck\":{\"value\":\"property\"},\"Timeband_street\":{\"value\":\"\"}}}}",
             "markerFields": [
               "single_AM_Timeband",
+              "single_PM_Timeband",
+              "AM_Timeband1",
+              "PM_Timeband1"
+            ],
+            "windowFields": [
+              "single_AM_Timeband",
               "single_PM_Timeband"
+            ],
+            "days": [
+              "MONDAY",
+              "TUESDAY",
+              "WEDNESDAY",
+              "THURSDAY",
+              "FRIDAY",
+              "SATURDAY",
+              "SUNDAY"
+            ],
+            "streamNames": [
+              "General Waste",
+              "Recycling"
             ]
           }
         }
