@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-11-07",
+  "updated": "2026-11-08",
   "councils": [
     {
       "gss": "E07000240",
@@ -21367,6 +21367,145 @@
               "everyWeeks": 1
             }
           ]
+        }
+      }
+    },
+    {
+      "gss": "E06000060",
+      "name": "Buckinghamshire Council",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "area"
+      ],
+      "attribution": "Collection cycle from Buckinghamshire Council's 2026 collection policy (general waste and recycling every two weeks, and in the South the paper and card box too, food weekly, on your collection day); your area and the week each bin goes out are the ones you choose",
+      "streams": {
+        "matches": [
+          {
+            "match": "green general waste bin",
+            "type": "REFUSE"
+          },
+          {
+            "match": "black general waste bin",
+            "type": "REFUSE"
+          },
+          {
+            "match": "blue-lidded recycling bin",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS",
+              "PAPER"
+            ]
+          },
+          {
+            "match": "blue recycling bin",
+            "type": "RECYCLING",
+            "alsoCarries": [
+              "GLASS"
+            ]
+          },
+          {
+            "match": "black paper and card box",
+            "type": "PAPER"
+          },
+          {
+            "match": "food waste bin",
+            "type": "FOOD"
+          }
+        ]
+      },
+      "unpublished": [
+        {
+          "type": "GARDEN",
+          "name": "Garden waste (by subscription)",
+          "intervalWeeks": 2,
+          "source": "https://www.buckinghamshire.gov.uk/waste-and-recycling/bin-collections/household-waste-collection-policy-2026/"
+        },
+        {
+          "type": "TEXTILES",
+          "name": "Batteries, vapes and small electricals (in a carrier bag on a bin lid)",
+          "intervalWeeks": 1,
+          "onCollectionDay": true,
+          "source": "https://www.buckinghamshire.gov.uk/waste-and-recycling/bin-collections/household-waste-collection-policy-2026/",
+          "areas": [
+            "north"
+          ]
+        },
+        {
+          "type": "TEXTILES",
+          "name": "Textiles (red sacks), and batteries, vapes and small electricals (in a carrier bag)",
+          "intervalWeeks": 2,
+          "source": "https://www.buckinghamshire.gov.uk/waste-and-recycling/bin-collections/household-waste-collection-policy-2026/",
+          "areas": [
+            "south"
+          ]
+        }
+      ],
+      "platform": {
+        "kind": "area-weeks",
+        "areaWeeks": {
+          "prompt": "weeks",
+          "areas": [
+            {
+              "key": "north",
+              "name": "North (Aylesbury Vale area)",
+              "places": "Aylesbury, Buckingham",
+              "weekOne": "2026-11-02",
+              "bins": [
+                {
+                  "name": "Green general waste bin",
+                  "week": 1,
+                  "everyWeeks": 2
+                },
+                {
+                  "name": "Blue-lidded recycling bin",
+                  "week": 1,
+                  "everyWeeks": 2
+                },
+                {
+                  "name": "Green food waste bin",
+                  "week": 1,
+                  "everyWeeks": 1
+                }
+              ]
+            },
+            {
+              "key": "south",
+              "name": "South (Chiltern, Wycombe and South Bucks areas)",
+              "places": "High Wycombe, Marlow, Amersham, Chesham, Beaconsfield, Burnham",
+              "weekOne": "2026-11-02",
+              "bins": [
+                {
+                  "name": "Black general waste bin",
+                  "week": 1,
+                  "everyWeeks": 2
+                },
+                {
+                  "name": "Blue recycling bin",
+                  "week": 1,
+                  "everyWeeks": 2
+                },
+                {
+                  "name": "Black paper and card box",
+                  "week": 1,
+                  "everyWeeks": 2
+                },
+                {
+                  "name": "Brown food waste bin",
+                  "week": 1,
+                  "everyWeeks": 1
+                }
+              ]
+            }
+          ],
+          "days": [
+            "MONDAY",
+            "TUESDAY",
+            "WEDNESDAY",
+            "THURSDAY",
+            "FRIDAY"
+          ],
+          "bins": []
         }
       }
     }
