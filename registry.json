@@ -17046,7 +17046,8 @@
             "micro recycling centre",
             "evening",
             "(eve)"
-          ]
+          ],
+          "putOutPattern": "out up to (?<minutes>\\d+) minutes before the start of the collection period"
         }
       }
     },
