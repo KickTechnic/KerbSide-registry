@@ -17723,7 +17723,7 @@
           "site": "https://enviroservices.brighton-hove.gov.uk",
           "link": "/link/collections",
           "search": {
-            "operationId": "tglPIXhcJ1abaQ1fhKJvYA",
+            "caption": "Find address",
             "params": {
               "Address": "BHCCTheme.Address"
             },
@@ -17743,7 +17743,6 @@
           },
           "steps": [
             {
-              "operationId": "e0vap2Ppt1qKtqKsrXkgeQ",
               "params": {
                 "Collection": "Collections.Collection",
                 "Address": "BHCCTheme.Address"
@@ -17755,7 +17754,7 @@
               }
             },
             {
-              "operationId": "DExhrgP93VCBOks+s8GjTQ",
+              "caption": "Next collections",
               "params": {
                 "Collection": "Collections.Collection"
               }
@@ -17811,7 +17810,7 @@
             }
           ],
           "search": {
-            "operationId": "vXmx1OPE90CcgM4qzQtwDA",
+            "caption": "Search for address",
             "params": {
               "OS_MissedBinEnquiry": "OnlineServices.OS_vmBinCollectionEnquiry"
             },
@@ -17831,7 +17830,7 @@
           },
           "steps": [
             {
-              "operationId": "981wZm0oVUGYs0bmr9N4vw",
+              "caption": "Choose this address",
               "params": {
                 "Generic_Address": "{pick}"
               }
