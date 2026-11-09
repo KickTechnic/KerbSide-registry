@@ -8554,6 +8554,210 @@
       }
     },
     {
+      "gss": "E09000001",
+      "name": "City of London Corporation",
+      "tier": 1,
+      "inputNeeds": [
+        "postcode",
+        "area"
+      ],
+      "attribution": "Collection days as the City of London Corporation publishes them for each kind of home",
+      "holidayPolicy": {
+        "mode": "CANCELLED"
+      },
+      "streams": {
+        "matches": [
+          {
+            "match": "general waste",
+            "type": "REFUSE"
+          },
+          {
+            "match": "food",
+            "type": "FOOD"
+          },
+          {
+            "match": "recycling",
+            "type": "RECYCLING"
+          }
+        ]
+      },
+      "platform": {
+        "kind": "area-weeks",
+        "version": 1,
+        "areaWeeks": {
+          "prompt": "home",
+          "areas": [
+            {
+              "key": "street",
+              "name": "Private flats without bin store",
+              "weekOne": "2026-01-05",
+              "bins": [
+                {
+                  "name": "General waste bags",
+                  "week": 1,
+                  "everyWeeks": 1,
+                  "days": ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"],
+                  "window": {
+                    "from": "18:00",
+                    "to": "20:00"
+                  }
+                },
+                {
+                  "name": "Clear recycling bags",
+                  "week": 1,
+                  "everyWeeks": 1,
+                  "days": ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"],
+                  "window": {
+                    "from": "18:00",
+                    "to": "20:00"
+                  }
+                },
+                {
+                  "name": "Food waste",
+                  "week": 1,
+                  "everyWeeks": 1,
+                  "days": ["MONDAY", "WEDNESDAY", "FRIDAY"],
+                  "window": {
+                    "from": "18:00",
+                    "to": "20:00"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "bin-store",
+              "name": "Private block of flats with bin store",
+              "weekOne": "2026-01-05",
+              "bins": [
+                {
+                  "name": "Recycling",
+                  "week": 1,
+                  "everyWeeks": 1,
+                  "days": ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"]
+                }
+              ]
+            },
+            {
+              "key": "barbican",
+              "name": "Barbican Estate",
+              "weekOne": "2026-01-05",
+              "bins": [
+                {
+                  "name": "General waste",
+                  "week": 1,
+                  "everyWeeks": 1,
+                  "days": ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY"],
+                  "window": {
+                    "to": "08:00"
+                  }
+                },
+                {
+                  "name": "Recycling",
+                  "week": 1,
+                  "everyWeeks": 1,
+                  "days": ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY"],
+                  "window": {
+                    "to": "08:00"
+                  }
+                },
+                {
+                  "name": "Food waste",
+                  "week": 1,
+                  "everyWeeks": 1,
+                  "days": ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY"],
+                  "window": {
+                    "to": "08:00"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "golden-lane",
+              "name": "Golden Lane Estate",
+              "weekOne": "2026-01-05",
+              "bins": [
+                {
+                  "name": "Recycling",
+                  "week": 1,
+                  "everyWeeks": 1,
+                  "days": ["MONDAY", "THURSDAY"],
+                  "window": {
+                    "to": "09:00"
+                  },
+                  "dated": true
+                },
+                {
+                  "name": "Food waste",
+                  "week": 1,
+                  "everyWeeks": 1,
+                  "days": ["MONDAY", "THURSDAY"],
+                  "window": {
+                    "to": "09:00"
+                  },
+                  "dated": true
+                }
+              ]
+            },
+            {
+              "key": "mansell-street",
+              "name": "Mansell Street Estate",
+              "weekOne": "2026-01-05",
+              "bins": [
+                {
+                  "name": "Recycling",
+                  "week": 1,
+                  "everyWeeks": 1,
+                  "days": ["TUESDAY", "FRIDAY"],
+                  "window": {
+                    "to": "12:30"
+                  },
+                  "dated": true
+                },
+                {
+                  "name": "Food waste",
+                  "week": 1,
+                  "everyWeeks": 1,
+                  "days": ["TUESDAY", "FRIDAY"],
+                  "window": {
+                    "to": "12:30"
+                  },
+                  "dated": true
+                }
+              ]
+            },
+            {
+              "key": "middlesex-street",
+              "name": "Middlesex Street Estate",
+              "weekOne": "2026-01-05",
+              "bins": [
+                {
+                  "name": "Recycling",
+                  "week": 1,
+                  "everyWeeks": 1,
+                  "days": ["TUESDAY", "FRIDAY"],
+                  "window": {
+                    "to": "09:00"
+                  },
+                  "dated": true
+                },
+                {
+                  "name": "Food waste",
+                  "week": 1,
+                  "everyWeeks": 1,
+                  "days": ["TUESDAY", "FRIDAY"],
+                  "window": {
+                    "to": "09:00"
+                  },
+                  "dated": true
+                }
+              ]
+            }
+          ],
+          "bins": []
+        }
+      }
+    },
+    {
       "gss": "E09000002",
       "name": "Barking and Dagenham Council",
       "tier": 1,
