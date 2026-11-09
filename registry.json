@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-11-08",
+  "updated": "2026-11-09",
   "councils": [
     {
       "gss": "E07000240",
@@ -4684,7 +4684,16 @@
           "blockPattern": "<div class=\"bin-day-container (?<typeFallback>[A-Za-z]+)\">\\s*<p class=\"[^\"]*font1\"><span class=\"[^\"]*\"></span>\\s*(?:Your next )?(?<type>[^<]*?)(?: collection)?\\s*</p>\\s*<p class=\"font11 text-center\">(?<date>[^<]+)</p>",
           "dateFormat": "weekday-dd/MM/yyyy"
         }
-      }
+      },
+      "unpublished": [
+        {
+          "type": "RECYCLING",
+          "name": "Food waste, glass and recycling",
+          "intervalWeeks": 1,
+          "onCollectionDay": false,
+          "source": "https://newsroom.carmarthenshire.gov.wales/2026/10/new-separated-recycling-service-to-launch-in-parts-of-carmarthenshire-in-november-2026/"
+        }
+      ]
     },
     {
       "gss": "E07000012",
@@ -6387,7 +6396,7 @@
             "xref1": "",
             "xref2": ""
           },
-          "addressPattern": "\"value\":\"(?<ref>\\d{6,12})\",\"label\":\"(?<label>(?:[^\"\\\\]|\\\\.)+)\"",
+          "addressPattern": "\"label\":\"(?<label>(?:[^\"\\\\]|\\\\.)+)\"(?:[^{}]|\\{[^{}]*\\})*?\"value\":\"(?<ref>\\d{6,12})\"",
           "resolve": [
             {
               "url": "https://manchester.form.uk.empro.verintcloudservices.com/api/custom?action=retrieve-property&actionedby=_KDF_optionSelected&loadform=true&access=citizen&locale=en",
@@ -6513,7 +6522,7 @@
             "xref1": "",
             "xref2": ""
           },
-          "addressPattern": "\"value\":\"(?<ref>\\d{6,12})\",\"label\":\"(?<label>(?:[^\"\\\\]|\\\\.)+)\"",
+          "addressPattern": "\"label\":\"(?<label>(?:[^\"\\\\]|\\\\.)+)\"(?:[^{}]|\\{[^{}]*\\})*?\"value\":\"(?<ref>\\d{6,12})\"",
           "resolve": [
             {
               "url": "https://fife.form.uk.empro.verintcloudservices.com/api/getobjectdata?objecttype=property&objectid={ref}",
@@ -12301,7 +12310,7 @@
             "xref1": "",
             "xref2": ""
           },
-          "addressPattern": "\"value\":\"(?<ref>\\d{6,12})\",\"label\":\"(?<label>(?:[^\"\\\\]|\\\\.)+)\"",
+          "addressPattern": "\"label\":\"(?<label>(?:[^\"\\\\]|\\\\.)+)\"(?:[^{}]|\\{[^{}]*\\})*?\"value\":\"(?<ref>\\d{6,12})\"",
           "resolve": [
             {
               "url": "https://bolton.form.uk.empro.verintcloudservices.com/api/getobjectdata?objecttype=property&objectid={ref}",
@@ -17597,7 +17606,7 @@
             }
           ],
           "search": {
-            "operationId": "bOqZgC0wC0y8aT1LQdP23A",
+            "operationId": "vXmx1OPE90CcgM4qzQtwDA",
             "params": {
               "OS_MissedBinEnquiry": "OnlineServices.OS_vmBinCollectionEnquiry"
             },
@@ -17617,7 +17626,7 @@
           },
           "steps": [
             {
-              "operationId": "1SCOaJ6HYkenXIYYJa+yFQ",
+              "operationId": "981wZm0oVUGYs0bmr9N4vw",
               "params": {
                 "Generic_Address": "{pick}"
               }
