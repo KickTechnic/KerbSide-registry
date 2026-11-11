@@ -5301,7 +5301,15 @@
             "SelectedPostcode": "{postcode}",
             "__RequestVerificationToken": "{token}"
           },
-          "addressPattern": "\"UPRN\": (?<ref>\\d+)(?:\\.0)?,[^{}]*?\"Premises\": \"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "after": "DataUtil\\.parse\\.isJson\\(",
+            "rows": "[*]",
+            "ref": "UPRN",
+            "refPattern": "(?<ref>\\d+)(?:\\.0)?",
+            "labels": [
+              "Premises"
+            ]
+          },
           "cookieSession": true,
           "schedulePrimeUrl": "https://waste.slough.gov.uk/PublicDashboard",
           "schedulePrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"",
@@ -5369,7 +5377,15 @@
             "SelectedPostcode": "{postcode}",
             "__RequestVerificationToken": "{token}"
           },
-          "addressPattern": "\"UPRN\": (?<ref>\\d+)(?:\\.0)?,[^{}]*?\"Premises\": \"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "after": "DataUtil\\.parse\\.isJson\\(",
+            "rows": "[*]",
+            "ref": "UPRN",
+            "refPattern": "(?<ref>\\d+)(?:\\.0)?",
+            "labels": [
+              "Premises"
+            ]
+          },
           "cookieSession": true,
           "schedulePrimeUrl": "https://recyclingandrubbish.portsmouth.gov.uk/PublicDashboard",
           "schedulePrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"",
@@ -5427,7 +5443,15 @@
             "SelectedPostcode": "{postcode}",
             "__RequestVerificationToken": "{token}"
           },
-          "addressPattern": "\"UPRN\": (?<ref>\\d+)(?:\\.0)?,[^{}]*?\"Premises\": \"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "after": "DataUtil\\.parse\\.isJson\\(",
+            "rows": "[*]",
+            "ref": "UPRN",
+            "refPattern": "(?<ref>\\d+)(?:\\.0)?",
+            "labels": [
+              "Premises"
+            ]
+          },
           "cookieSession": true,
           "schedulePrimeUrl": "https://bins.highpeak.gov.uk/PublicDashboard",
           "schedulePrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"",
@@ -5486,7 +5510,15 @@
             "SelectedPostcode": "{postcode}",
             "__RequestVerificationToken": "{token}"
           },
-          "addressPattern": "\"UPRN\": (?<ref>\\d+)(?:\\.0)?,[^{}]*?\"Premises\": \"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "after": "DataUtil\\.parse\\.isJson\\(",
+            "rows": "[*]",
+            "ref": "UPRN",
+            "refPattern": "(?<ref>\\d+)(?:\\.0)?",
+            "labels": [
+              "Premises"
+            ]
+          },
           "cookieSession": true,
           "schedulePrimeUrl": "https://bins.staffsmoorlands.gov.uk/PublicDashboard",
           "schedulePrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"",
@@ -5599,7 +5631,15 @@
             "SelectedPostcode": "{postcode}",
             "__RequestVerificationToken": "{token}"
           },
-          "addressPattern": "\"UPRN\": (?<ref>\\d+)(?:\\.0)?,[^{}]*?\"Premises\": \"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "after": "DataUtil\\.parse\\.isJson\\(",
+            "rows": "[*]",
+            "ref": "UPRN",
+            "refPattern": "(?<ref>\\d+)(?:\\.0)?",
+            "labels": [
+              "Premises"
+            ]
+          },
           "cookieSession": true,
           "schedulePrimeUrl": "https://scotborders-live-portal.bartecmunicipal.com/Embeddable/CollectionCalendar",
           "schedulePrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"",
@@ -6396,7 +6436,14 @@
             "xref1": "",
             "xref2": ""
           },
-          "addressPattern": "\"label\":\"(?<label>(?:[^\"\\\\]|\\\\.)+)\"(?:[^{}]|\\{[^{}]*\\})*?\"value\":\"(?<ref>\\d{6,12})\"",
+          "addressRows": {
+            "rows": "data.prop_search_results[*]",
+            "ref": "value",
+            "refPattern": "(?<ref>\\d{6,12})",
+            "labels": [
+              "label"
+            ]
+          },
           "resolve": [
             {
               "url": "https://manchester.form.uk.empro.verintcloudservices.com/api/custom?action=retrieve-property&actionedby=_KDF_optionSelected&loadform=true&access=citizen&locale=en",
@@ -6522,7 +6569,14 @@
             "xref1": "",
             "xref2": ""
           },
-          "addressPattern": "\"label\":\"(?<label>(?:[^\"\\\\]|\\\\.)+)\"(?:[^{}]|\\{[^{}]*\\})*?\"value\":\"(?<ref>\\d{6,12})\"",
+          "addressRows": {
+            "rows": "data[*]",
+            "ref": "value",
+            "refPattern": "(?<ref>\\d{6,12})",
+            "labels": [
+              "label"
+            ]
+          },
           "resolve": [
             {
               "url": "https://fife.form.uk.empro.verintcloudservices.com/api/getobjectdata?objecttype=property&objectid={ref}",
@@ -12514,7 +12568,14 @@
             "xref1": "",
             "xref2": ""
           },
-          "addressPattern": "\"label\":\"(?<label>(?:[^\"\\\\]|\\\\.)+)\"(?:[^{}]|\\{[^{}]*\\})*?\"value\":\"(?<ref>\\d{6,12})\"",
+          "addressRows": {
+            "rows": "data[*]",
+            "ref": "value",
+            "refPattern": "(?<ref>\\d{6,12})",
+            "labels": [
+              "label"
+            ]
+          },
           "resolve": [
             {
               "url": "https://bolton.form.uk.empro.verintcloudservices.com/api/getobjectdata?objecttype=property&objectid={ref}",
