@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-11-09",
+  "updated": "2026-11-11",
   "councils": [
     {
       "gss": "E07000240",
@@ -19608,6 +19608,7 @@
       "gss": "E09000013",
       "name": "London Borough of Hammersmith and Fulham",
       "tier": 1,
+      "lookupNeeds": "access",
       "inputNeeds": [
         "postcode",
         "area"
@@ -19677,6 +19678,7 @@
       "gss": "E09000016",
       "name": "London Borough of Havering",
       "tier": 1,
+      "lookupNeeds": "key",
       "inputNeeds": [
         "postcode",
         "area"
@@ -19732,6 +19734,7 @@
       "gss": "E07000208",
       "name": "Epsom and Ewell Borough Council",
       "tier": 1,
+      "lookupNeeds": "key",
       "inputNeeds": [
         "postcode",
         "area"
@@ -19817,6 +19820,7 @@
       "gss": "W06000020",
       "name": "Torfaen County Borough Council",
       "tier": 1,
+      "lookupNeeds": "key",
       "inputNeeds": [
         "postcode",
         "area"
@@ -20375,6 +20379,7 @@
       "gss": "E06000023",
       "name": "Bristol City Council",
       "tier": 1,
+      "lookupNeeds": "key",
       "inputNeeds": [
         "postcode",
         "area"
@@ -20521,6 +20526,7 @@
       "gss": "E07000093",
       "name": "Test Valley Borough Council",
       "tier": 1,
+      "lookupNeeds": "key",
       "inputNeeds": [
         "postcode",
         "area"
@@ -20736,6 +20742,7 @@
       "gss": "E06000058",
       "name": "BCP Council",
       "tier": 1,
+      "lookupNeeds": "key",
       "inputNeeds": [
         "postcode",
         "area"
@@ -20813,6 +20820,7 @@
       "gss": "E06000066",
       "name": "Somerset Council",
       "tier": 1,
+      "lookupNeeds": "key",
       "inputNeeds": [
         "postcode",
         "area"
@@ -20913,6 +20921,7 @@
       "gss": "E07000094",
       "name": "Winchester City Council",
       "tier": 1,
+      "lookupNeeds": "key",
       "inputNeeds": [
         "postcode",
         "area"
@@ -21010,6 +21019,7 @@
       "gss": "E07000120",
       "name": "Hyndburn Borough Council",
       "tier": 1,
+      "lookupNeeds": "key",
       "inputNeeds": [
         "postcode",
         "area"
@@ -21197,6 +21207,7 @@
       "gss": "W06000022",
       "name": "Newport City Council",
       "tier": 1,
+      "lookupNeeds": "key",
       "inputNeeds": [
         "postcode",
         "area"
@@ -21531,6 +21542,7 @@
       "gss": "E07000221",
       "name": "Stratford-on-Avon District Council",
       "tier": 1,
+      "lookupNeeds": "access",
       "inputNeeds": [
         "postcode",
         "area"
@@ -21606,6 +21618,7 @@
       "gss": "E06000060",
       "name": "Buckinghamshire Council",
       "tier": 1,
+      "lookupNeeds": "key",
       "inputNeeds": [
         "postcode",
         "area"
@@ -21740,6 +21753,42 @@
           "bins": []
         }
       }
+    },
+    {
+      "gss": "W06000015",
+      "name": "Cardiff Council",
+      "tier": 3,
+      "lookupNeeds": "access"
+    },
+    {
+      "gss": "W06000019",
+      "name": "Blaenau Gwent County Borough Council",
+      "tier": 3,
+      "lookupNeeds": "key"
+    },
+    {
+      "gss": "E06000011",
+      "name": "East Riding of Yorkshire Council",
+      "tier": 3,
+      "lookupNeeds": "key"
+    },
+    {
+      "gss": "E07000174",
+      "name": "Mansfield District Council",
+      "tier": 3,
+      "lookupNeeds": "key"
+    },
+    {
+      "gss": "E07000106",
+      "name": "Canterbury City Council",
+      "tier": 3,
+      "lookupNeeds": "access"
+    },
+    {
+      "gss": "E06000010",
+      "name": "Kingston upon Hull City Council",
+      "tier": 3,
+      "lookupNeeds": "access"
     }
   ]
 }
