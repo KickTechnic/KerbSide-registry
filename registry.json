@@ -3930,7 +3930,14 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://services.southwark.gov.uk/llpg/lookup?postcode={postcode}&classification=R",
-          "addressPattern": "\"Uprn\":\"(?<ref>\\d+)\".*?\"AddressLine1\":\"(?<label>[^\"]*)\",\"AddressLine2\":\"(?<label2>[^\"]*)\"",
+          "addressRows": {
+            "rows": "[*]",
+            "ref": "Uprn",
+            "labels": [
+              "AddressLine1",
+              "AddressLine2"
+            ]
+          },
           "scheduleUrl": "https://services.southwark.gov.uk/bins/lookup/{ref}",
           "errorPattern": "<div class=\"errorMessage\">[^<]",
           "blockPattern": "id=\"\\w+CollectionTitle\">(?<type>[^<]+)</p>(?<body>[\\s\\S]*?)</div>",
@@ -5271,7 +5278,14 @@
           "addressForm": {
             "postcode": "{postcode}"
           },
-          "addressPattern": "\"uprn\":\"?(?<ref>\\d{6,})\"?,\"label\":\"(?<label>(?:[^\"\\\\]|\\\\.)+)\"",
+          "addressRows": {
+            "rows": "[*]",
+            "ref": "uprn",
+            "refPattern": "(?<ref>\\d{6,})",
+            "labels": [
+              "label"
+            ]
+          },
           "scheduleUrl": "https://www.cherwell.gov.uk/homepage/129/bin-collection-search?uprn={ref}",
           "blockPattern": "<h3 class=\"bin-collection-tasks__heading\">(?:<span class=\"visually-hidden\">[^<]*</span>)?(?<type>[^<]+)(?:(?!</li>)[\\s\\S])*?<p class=\"bin-collection-tasks__date\">(?<date>[^<]+)</p>",
           "dateFormat": "weekday-day-ordinal-month-noyear"
@@ -6161,7 +6175,16 @@
         "htmlRegex": {
           "addressUrl": "https://huntingdonshire.gov.uk/address/search?postcode={postcode}&authority=HDC",
           "postcodeFormat": "nospace",
-          "addressPattern": "\"id\":\"(?<ref>\\d{6,})\",\"houseNumber\":(?:\"(?<label>(?:[^\"\\\\]|\\\\.)*)\"|null),\"street\":(?:\"(?<label2>(?:[^\"\\\\]|\\\\.)*)\"|null),\"town\":(?:\"(?<label3>(?:[^\"\\\\]|\\\\.)*)\"|null)",
+          "addressRows": {
+            "rows": "addresses[*]",
+            "ref": "id",
+            "refPattern": "(?<ref>\\d{6,})",
+            "labels": [
+              "houseNumber",
+              "street",
+              "town"
+            ]
+          },
           "scheduleUrl": "https://www.huntingdonshire.gov.uk/refuse-calendar/results?uprn={ref}",
           "blockPattern": "<tr class=\"month-name\"><th[^>]*>(?<month>[A-Za-z]+)</th>|<td class=\"(?<type>[a-z]+(?:-[a-z]+)*)\">(?<day>\\d{1,2})</td>",
           "dateTemplate": "{day} {month}",
@@ -6276,7 +6299,14 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://recycling.falkirk.gov.uk/osg/search/{postcode}",
-          "addressPattern": "\"uprn\":\"(?<ref>\\d{6,})\",\"address\":\"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "rows": "[*]",
+            "ref": "uprn",
+            "refPattern": "(?<ref>\\d{6,})",
+            "labels": [
+              "address"
+            ]
+          },
           "scheduleUrl": "https://recycling.falkirk.gov.uk/api/collections/{ref}",
           "blockPattern": "\"type\":\\s*\"(?<type>[^\"]+)\"[^\\[\\]]*\"dates\":\\s*\\[(?<body>[^\\]]*)\\]",
           "datePattern": "\"(?<date>\\d{4}-\\d{2}-\\d{2})\"",
@@ -6320,7 +6350,14 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://my.charnwood.gov.uk/data/ac/addresses.json?term={postcode}",
-          "addressPattern": "\"label\":\"(?<label>(?:[^\"\\\\]|\\\\.)+)\",\"value\":\"(?<ref>cbc\\d{6,})\"",
+          "addressRows": {
+            "rows": "[*]",
+            "ref": "value",
+            "refPattern": "(?<ref>cbc\\d{6,})",
+            "labels": [
+              "label"
+            ]
+          },
           "scheduleUrl": "https://my.charnwood.gov.uk/location?put={ref}&rememberme=0&redirect=%2F",
           "cookieSession": true,
           "blockPattern": "<strong class=\"date\">(?<date>[^<]+)</strong>\\s*<a class=\"[^\"]*\"[^>]*>(?<type>[^<]+)</a>",
@@ -6364,7 +6401,14 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://my.oadby-wigston.gov.uk/data/ac/addresses.json?term={postcode}",
-          "addressPattern": "\"label\":\"(?<label>(?:[^\"\\\\]|\\\\.)+)\",\"value\":\"(?<ref>ow\\d{6,})\"",
+          "addressRows": {
+            "rows": "[*]",
+            "ref": "value",
+            "refPattern": "(?<ref>ow\\d{6,})",
+            "labels": [
+              "label"
+            ]
+          },
           "scheduleUrl": "https://my.oadby-wigston.gov.uk/location?put={ref}&rememberme=0&redirect=%2F",
           "cookieSession": true,
           "blockPattern": "<strong class=\"date\">(?<date>[^<]+)</strong>\\s*<a class=\"[^\"]*\"[^>]*>(?<type>[^<]+)</a>",
@@ -9698,7 +9742,14 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://api.bathnes.gov.uk/webapi/api/AddressesAPI/v2/search/{postcode}/150/true",
-          "addressPattern": "\"uprn\":(?<ref>\\d+)(?:\\.0)?,[^{}]*?\"full_Address\":\"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "rows": "[*]",
+            "ref": "uprn",
+            "refPattern": "(?<ref>\\d+)(?:\\.0)?",
+            "labels": [
+              "full_Address"
+            ]
+          },
           "scheduleUrl": "https://api.bathnes.gov.uk/webapi/api/BinsAPI/v2/BartecFeaturesandSchedules/CollectionSummary/{ref}",
           "blockPattern": "\"nextCollectionDate\":\"(?<iso>\\d{4}-\\d{2}-\\d{2})|\"featureDisplayName\":\"(?<type>[^\"]+)\"",
           "dateTemplate": "{iso}",
@@ -10136,7 +10187,14 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://my.nwleics.gov.uk/data/ac/addresses.json?term={postcode}",
-          "addressPattern": "\"label\":\"(?<label>(?:[^\"\\\\]|\\\\.)+)\",\"value\":\"(?<ref>nwl\\d{6,})\"",
+          "addressRows": {
+            "rows": "[*]",
+            "ref": "value",
+            "refPattern": "(?<ref>nwl\\d{6,})",
+            "labels": [
+              "label"
+            ]
+          },
           "scheduleUrl": "https://my.nwleics.gov.uk/location?put={ref}&rememberme=0&redirect=%2F",
           "cookieSession": true,
           "blockPattern": "<strong class=\"date\">(?<date>[^<]+)</strong>\\s*<a class=\"[^\"]*\"[^>]*>(?<type>[^<]+)</a>",
@@ -10901,7 +10959,14 @@
             "searchNlpg": "False",
             "classification": ""
           },
-          "addressPattern": "\"Key\":\"U(?<ref>\\d+)\",\"Value\":\"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "rows": "[*]",
+            "ref": "Key",
+            "refPattern": "U(?<ref>\\d+)",
+            "labels": [
+              "Value"
+            ]
+          },
           "schedulePrimeUrl": "https://selfservice-torbay.servicebuilder.co.uk/renderform?t=62&k=09B72FF904A21A4B01A72AB6CCF28DC95105031C",
           "schedulePrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"[^>]*>[^<]*<input type=\"hidden\" name=\"FormGuid\" value=\"(?<guid>[^\"]+)\"",
           "scheduleUrl": "https://selfservice-torbay.servicebuilder.co.uk/renderform/Form",
@@ -11661,7 +11726,14 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://www.maps.north-ayrshire.gov.uk/arcgis/rest/services/AGOL/CAG_VIEW/MapServer/0/query?f=json&outFields=ADDRESS%2CUPRN&orderByFields=ADDRESS%20ASC&returnGeometry=false&where=UPPER%28ADDRESS%29%20LIKE%20%27%25{postcode}%25%27",
-          "addressPattern": "\"ADDRESS\":\"(?<label>[^\"]+)\",\"UPRN\":\"0*(?<ref>\\d+)\"",
+          "addressRows": {
+            "rows": "features[*]",
+            "ref": "attributes.UPRN",
+            "refPattern": "0*(?<ref>\\d+)",
+            "labels": [
+              "attributes.ADDRESS"
+            ]
+          },
           "scheduleUrl": "https://www.maps.north-ayrshire.gov.uk/arcgis/rest/services/AGOL/YourLocationLive/MapServer/8/query?f=json&outFields=*&returnGeometry=false&where=UPRN%20%3D%20%27{ref}%27",
           "blockPattern": "\"(?<type>BLUE|GREY|PURPLE|BROWN)_DATE_TEXT\":\"(?<date>\\d{2}/\\d{2}/\\d{4})\"",
           "dateFormat": "dd/MM/yyyy"
@@ -14417,7 +14489,14 @@
             "searchNlpg": "True",
             "classification": ""
           },
-          "addressPattern": "\"Key\":\"U(?<ref>\\d+)\"[^{}]*?\"Value\":\"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "rows": "[*]",
+            "ref": "Key",
+            "refPattern": "U(?<ref>\\d+)",
+            "labels": [
+              "Value"
+            ]
+          },
           "schedulePrimeUrl": "https://selfservice.rushcliffe.gov.uk/renderform?t=1242&k=86BDCD8DE8D868B9E23D10842A7A4FE0F1023CCA",
           "schedulePrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"[^>]*>[^<]*<input type=\"hidden\" name=\"FormGuid\" value=\"(?<guid>[^\"]+)\"[\\s\\S]*?name=\"CurrentSectionID\" id=\"current-section-id\" value=\"(?<section>\\d+)\"",
           "scheduleUrl": "https://selfservice.rushcliffe.gov.uk/renderform/Form",
@@ -14485,7 +14564,14 @@
             "searchNlpg": "True",
             "classification": ""
           },
-          "addressPattern": "\"Key\":\"U(?<ref>\\d+)\"[^{}]*?\"Value\":\"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "rows": "[*]",
+            "ref": "Key",
+            "refPattern": "U(?<ref>\\d+)",
+            "labels": [
+              "Value"
+            ]
+          },
           "schedulePrimeUrl": "https://selfservice.broxtowe.gov.uk/renderform?t=217&k=9D2EF214E144EE796430597FB475C3892C43C528",
           "schedulePrimePattern": "name=\"__RequestVerificationToken\" type=\"hidden\" value=\"(?<token>[^\"]+)\"[^>]*>[^<]*<input type=\"hidden\" name=\"FormGuid\" value=\"(?<guid>[^\"]+)\"[\\s\\S]*?name=\"CurrentSectionID\" id=\"current-section-id\" value=\"(?<section>\\d+)\"",
           "scheduleUrl": "https://selfservice.broxtowe.gov.uk/renderform/Form",
@@ -15180,7 +15266,13 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://myproperty.molevalley.gov.uk/molevalley/api/live_addresses/{postcode}?format=json&page_size=100",
-          "addressPattern": "\"blpu_uprn\":\"(?<ref>\\d+)\"[^{}]*?\"address_string\":\"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "rows": "results.features[*]",
+            "ref": "properties.blpu_uprn",
+            "labels": [
+              "properties.address_string"
+            ]
+          },
           "scheduleUrl": "https://myproperty.molevalley.gov.uk/molevalley/api/live_addresses/{postcode}?format=json&page_size=100",
           "scheduleRowPattern": "\"blpu_uprn\":\"{ref}\"[^{}]*?\"three_column_layout_html\":\"[\\s\\S]*?(?<!\\\\)\"",
           "blockPattern": "<strong>(?<type>[^<]+)<\\\\?/strong>(?:\\\\[nt]|\\s)*<p>Next collection - <strong>\\([A-Za-z]+\\) (?<date>\\d{2}/\\d{2}/\\d{4})",
@@ -15300,7 +15392,14 @@
               }
             }
           },
-          "addressPattern": "\"(?<ref>\\d{6,})\":\\{\"display\":\"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "rows": "integration.transformed.rows_data.*",
+            "ref": "_key",
+            "refPattern": "(?<ref>\\d{6,})",
+            "labels": [
+              "display"
+            ]
+          },
           "scheduleUrl": "https://selfserve.harlow.gov.uk/appshost/firmstep/self/apps/custompage/bincollectionsecho?uprn={ref}",
           "blockPattern": "<div class=\"col-xs-4 col-sm-4\">(?<type>[^<]+)</div>[^<]*<div class=\"col-sm-6 col-xs-6\">[A-Za-z]+ - (?<date>\\d{1,2} [A-Za-z]{3,4} \\d{4})",
           "dateFormat": "weekday-day-shortmonth-year"
@@ -15393,7 +15492,13 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://wlnk.statmap.co.uk/map/Cluster.svc/findLocation?callback=cb&script=%5CCluster%5CCluster.AuroraScript%24&address={postcode}",
-          "addressPattern": "\"Description\":\"(?<label>[^\"]+)\"[^{}]*?\"Id\":\"(?<ref>\\d+)\"",
+          "addressRows": {
+            "rows": "Locations[*]",
+            "ref": "Id",
+            "labels": [
+              "Description"
+            ]
+          },
           "scheduleUrl": "https://wlnk.statmap.co.uk/map/Cluster.svc/getpage?script=%5CCluster%5CCluster.AuroraScript%24&taskId=bins&format=js&updateOnly=true&query=id%3D{ref}",
           "blockPattern": "waster(?<type>[A-Z]+)\\\\u0027\\\\u003e[A-Z]+\\\\u003c/span\\\\u003e bin is (?<body>(?:(?!\\\\u003c/li)[^\\n])*)",
           "datePattern": "(?<date>\\d{1,2}/\\d{1,2})",
@@ -16034,7 +16139,13 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://www.westberks.gov.uk/apiserver/ajaxlibrary/?jsonrpc=%7B%22id%22%3A1%2C%22method%22%3A%22location.westberks.echoPostcodeFinderFILTERED%22%2C%22params%22%3A%7B%22provider%22%3A%22%22%2C%22postcode%22%3A%22{postcode}%22%7D%7D&callback=cb",
-          "addressPattern": "\"udprn\":\"(?<ref>\\d+)\"[^{}]*?\"line1\":\"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "rows": "result[*]",
+            "ref": "udprn",
+            "labels": [
+              "line1"
+            ]
+          },
           "scheduleUrl": "https://www.westberks.gov.uk/apiserver/ajaxlibrary/",
           "scheduleJson": {
             "jsonrpc": "2.0",
@@ -16548,7 +16659,13 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://maps.brentwood.gov.uk/geoserver/BrentwoodAddresses/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=LLPG&outputFormat=application/json&maxFeatures=1000&propertyName=UPRN,address&sortBy=address&cql_filter=POSTCODE%3D%27{postcode}%27",
-          "addressPattern": "\"UPRN\":(?<ref>\\d+),[^{}]*?\"address\":\"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "rows": "features[*]",
+            "ref": "properties.UPRN",
+            "labels": [
+              "properties.address"
+            ]
+          },
           "scheduleUrl": "https://maps.brentwood.gov.uk/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=geodata%3ARecycling%20and%20Waste&outputFormat=application/json&maxFeatures=5&propertyName=uprn,garden_round,glass_round,recycle_schedule,residual_day&cql_filter=uprn%3D%27{ref}%27",
           "errorPattern": "<ows:ExceptionReport",
           "weekCodes": [
@@ -17017,7 +17134,14 @@
           "addressForm": {
             "srchText": "{postcode}"
           },
-          "addressPattern": "\"uprn\":\"(?<ref>\\d{6,})\"(?:(?!\"uprn\":)[\\s\\S])*?\"addressComma\":\"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "rows": "[*]",
+            "ref": "uprn",
+            "refPattern": "(?<ref>\\d{6,})",
+            "labels": [
+              "addressComma"
+            ]
+          },
           "scheduleUrl": "https://info.ambervalley.gov.uk/WebServices/AVBCFeeds/WasteCollectionJSON.asmx/GetCollectionDetailsByUPRN?uprn={ref}",
           "blockPattern": "\"(?<type>refuse|recycling|green|communalRef|communalRyc|NextFood)(?:NextDate|Date)\":\"(?<date>(?!0001-|1900-)\\d{4}-\\d{2}-\\d{2})T",
           "streamAliases": {
@@ -17242,7 +17366,16 @@
         "htmlRegex": {
           "addressUrl": "https://www.wyre.gov.uk/singlepoint_ajax/{postcode}",
           "addressForm": {},
-          "addressPattern": "\"uprn\":\"(?<ref>\\d+)\",\"label\":\"(?![^\"]*\\d+m From )(?<label>[^\"]+)\"",
+          "addressRows": {
+            "rows": ".*",
+            "ref": "uprn",
+            "labels": [
+              "label"
+            ],
+            "where": {
+              "label": "(?!.*\\d+m From ).+"
+            }
+          },
           "xhr": true,
           "scheduleUrl": "https://www.wyre.gov.uk/bincollections?uprn={ref}",
           "blockPattern": "bin-collection-tasks__heading\"><span class=\"visually-hidden\">Your next </span>(?<type>[^<]+)<span class=\"visually-hidden\"> collection</span></h3>[^<]*<div class=\"bin-collection-tasks__content\">[^<]*<p class=\"bin-collection-tasks__day\">[^<]*</p>[^<]*<p class=\"bin-collection-tasks__date\">(?<date>[^<]+)</p>",
@@ -19476,7 +19609,14 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://gisext.south-ayrshire.gov.uk/server/rest/services/Public/PublicMapLayers/MapServer/110/query?f=json&outFields=address%2Cuprn&orderByFields=address&returnGeometry=false&geometry={gridEasting}%2C{gridNorthing}&geometryType=esriGeometryPoint&inSR=27700&distance=1500&units=esriSRUnit_Meter&spatialRel=esriSpatialRelIntersects&where=address%20LIKE%20%27%25{postcode}%25%27",
-          "addressPattern": "\"address\":\"(?<label>[^\"]+)\",\"uprn\":\"0*(?<ref>\\d+)\"",
+          "addressRows": {
+            "rows": "features[*]",
+            "ref": "attributes.uprn",
+            "refPattern": "0*(?<ref>\\d+)",
+            "labels": [
+              "attributes.address"
+            ]
+          },
           "scheduleUrl": "https://www.sac-bins.co.uk/get_calendar.php?rn={ref}&postcode={postcode}",
           "blockPattern": "\\{\"title\":\"(?<type>[^\"]+)\",\"start\":\"(?<date>\\d{4}-\\d{2}-\\d{2})\"",
           "nextDateOnly": [
