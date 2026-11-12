@@ -8243,7 +8243,16 @@
             "id": "1",
             "name": "V2 AJAX End Point Library Worker"
           },
-          "addressPattern": "\"UPRN\":\"(?<uprn>[^\"]+)\"[^{}]*?\"Address\":\"(?<address>[^\"]+)\"[^{}]*?\"ShortAddress\":\"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "rows": "result.ReturnedList[*]",
+            "labels": [
+              "ShortAddress"
+            ],
+            "parts": {
+              "uprn": "UPRN",
+              "address": "Address"
+            }
+          },
           "refIsFormValue": true,
           "refParts": [
             "uprn",
@@ -8638,7 +8647,16 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://en.powys.gov.uk/apiserver/postcode?jsonrpc=%7B%22id%22%3A1%2C%22method%22%3A%22postcodeSearch%22%2C%22params%22%3A%7B%22provider%22%3A%22%22%2C%22postcode%22%3A%22{postcode}%22%7D%7D&callback=cb",
-          "addressPattern": "\"udprn\":\"(?<uprn>\\d+)\"[^{}]*?\"postalAddress\":\"(?<address>(?<label>[^\"]+))\"",
+          "addressRows": {
+            "rows": "result[*]",
+            "labels": [
+              "postalAddress"
+            ],
+            "parts": {
+              "uprn": "udprn",
+              "address": "postalAddress"
+            }
+          },
           "refParts": [
             "uprn",
             "address"
@@ -9519,7 +9537,16 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://digital.flintshire.gov.uk/FCC_BinDay/Home/FindAddresses?part=&pcode={postcode}",
-          "addressPattern": "\"AddLanguage\":\"ENG\"[^{}]*?\"FULLADD\":\"(?<label>[^\"]+)\"[^{}]*?\"UNIQUEIDENTIFIER\":\"(?<ref>\\d+)\"",
+          "addressRows": {
+            "rows": "[*]",
+            "ref": "UNIQUEIDENTIFIER",
+            "labels": [
+              "FULLADD"
+            ],
+            "where": {
+              "AddLanguage": "ENG"
+            }
+          },
           "scheduleUrl": "https://digital.flintshire.gov.uk/FCC_BinDay/Home/Details2/{ref}",
           "blockPattern": "<div class=\"col-lg-2 col-md-2 col-sm-2\">\\s*(?<date>\\d{2}/\\d{2}/\\d{4})\\s*</div>\\s*<div class=\"col-lg-2 col-md-2 col-sm-2\">[^<]*</div>\\s*<div class=\"col-lg-3 col-md-3 col-sm-3\">\\s*(?<type>[^<]*?)\\s*</div>",
           "typeSplit": "/",
@@ -10044,7 +10071,23 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://westlothian.gov.uk/apiserver/postcode?jsonrpc=%7B%22id%22%3A1%2C%22method%22%3A%22postcodeSearch%22%2C%22params%22%3A%7B%22provider%22%3A%22EndPoint%22%2C%22postcode%22%3A%22{postcode}%22%7D%7D&callback=cb",
-          "addressPattern": "\"udprn\":\"(?<uprn>\\d+)\"[^{}]*?\"company\":(?:null|\"(?<label2>[^\"]*)\")[^{}]*?\"department\":(?:null|\"(?<label>[^\"]*)\")[^{}]*?\"line1\":(?:null|\"(?<label3>[^\"]*)\")[^{}]*?\"line2\":(?:null|\"(?<label4>[^\"]*)\")[^{}]*?\"line3\":(?:null|\"(?<label5>[^\"]*)\")[^{}]*?\"line4\":(?:null|\"(?<label6>[^\"]*)\")[^{}]*?\"line5\":(?:null|\"(?<label7>[^\"]*)\")[^{}]*?\"town\":(?:null|\"(?<label8>[^\"]*)\")[^{}]*?\"county\":(?:null|\"(?<label9>[^\"]*)\")",
+          "addressRows": {
+            "rows": "result[*]",
+            "labels": [
+              "department",
+              "company",
+              "line1",
+              "line2",
+              "line3",
+              "line4",
+              "line5",
+              "town",
+              "county"
+            ],
+            "parts": {
+              "uprn": "udprn"
+            }
+          },
           "refParts": [
             "uprn",
             "address"
@@ -13054,7 +13097,16 @@
             "cmd": "{\"/placecube_digitalplace.addresscontext/search-address-by-postcode\":{\"companyId\":\"{companyId}\",\"postcode\":\"{postcode}\",\"fallbackToNationalLookup\":false}}",
             "p_auth": "{pauth}"
           },
-          "addressPattern": "\"UPRN\":\"(?<uprn>\\d+)\"[^{}]*?\"fullAddress\":\"(?<address>(?<label>[^\"]+))\"",
+          "addressRows": {
+            "rows": "[*]",
+            "labels": [
+              "fullAddress"
+            ],
+            "parts": {
+              "uprn": "UPRN",
+              "address": "fullAddress"
+            }
+          },
           "refParts": [
             "uprn",
             "address"
@@ -13136,7 +13188,16 @@
             "cmd": "{\"/placecube_digitalplace.addresscontext/search-address-by-postcode\":{\"companyId\":\"{companyId}\",\"postcode\":\"{postcode}\",\"fallbackToNationalLookup\":false}}",
             "p_auth": "{pauth}"
           },
-          "addressPattern": "\"UPRN\":\"(?<uprn>\\d+)\"[^{}]*?\"fullAddress\":\"(?<address>(?<label>[^\"]+))\"",
+          "addressRows": {
+            "rows": "[*]",
+            "labels": [
+              "fullAddress"
+            ],
+            "parts": {
+              "uprn": "UPRN",
+              "address": "fullAddress"
+            }
+          },
           "refParts": [
             "uprn",
             "address"
@@ -17759,7 +17820,14 @@
             "aura.pageURI": "/s/waste-collection-enquiry",
             "aura.token": "null"
           },
-          "addressPattern": "\"Name\":\\{[^{}]*\"value\":\"(?<label>[^\"]+)\"\\}(?:[^{}]|\\{[^{}]*\\})*\\},\"id\":\"(?<ref>a0K[A-Za-z0-9]+)\"",
+          "addressRows": {
+            "rows": "actions[0].returnValue.lookupResults.Property__c.records[*]",
+            "ref": "id",
+            "refPattern": "(?<ref>a0K[A-Za-z0-9]+)",
+            "labels": [
+              "fields.Name.value"
+            ]
+          },
           "schedulePrimeUrl": "https://community.westoxon.gov.uk/s/waste-collection-enquiry",
           "schedulePrimePattern": "fwuid%22%3A%22(?<fwuid>[A-Za-z0-9_-]+)%22%2C%22loaded%22%3A%7B%22APPLICATION%40markup%3A%2F%2Fsiteforce%3AcommunityApp%22%3A%22(?<loaded>[A-Za-z0-9_-]+)%22",
           "scheduleSteps": [
@@ -17862,7 +17930,14 @@
             "aura.pageURI": "/s/waste-collection-enquiry",
             "aura.token": "null"
           },
-          "addressPattern": "\"Name\":\\{[^{}]*\"value\":\"(?<label>[^\"]+)\"\\}(?:[^{}]|\\{[^{}]*\\})*\\},\"id\":\"(?<ref>a0K[A-Za-z0-9]+)\"",
+          "addressRows": {
+            "rows": "actions[0].returnValue.lookupResults.Property__c.records[*]",
+            "ref": "id",
+            "refPattern": "(?<ref>a0K[A-Za-z0-9]+)",
+            "labels": [
+              "fields.Name.value"
+            ]
+          },
           "schedulePrimeUrl": "https://community.cotswold.gov.uk/s/waste-collection-enquiry",
           "schedulePrimePattern": "fwuid%22%3A%22(?<fwuid>[A-Za-z0-9_-]+)%22%2C%22loaded%22%3A%7B%22APPLICATION%40markup%3A%2F%2Fsiteforce%3AcommunityApp%22%3A%22(?<loaded>[A-Za-z0-9_-]+)%22",
           "scheduleSteps": [
@@ -17962,7 +18037,14 @@
             "aura.pageURI": "/s/waste-collection-enquiry",
             "aura.token": "null"
           },
-          "addressPattern": "\"Name\":\\{[^{}]*\"value\":\"(?<label>[^\"]+)\"\\}(?:[^{}]|\\{[^{}]*\\})*\\},\"id\":\"(?<ref>a0K[A-Za-z0-9]+)\"",
+          "addressRows": {
+            "rows": "actions[0].returnValue.lookupResults.Property__c.records[*]",
+            "ref": "id",
+            "refPattern": "(?<ref>a0K[A-Za-z0-9]+)",
+            "labels": [
+              "fields.Name.value"
+            ]
+          },
           "schedulePrimeUrl": "https://community.fdean.gov.uk/s/waste-collection-enquiry",
           "schedulePrimePattern": "fwuid%22%3A%22(?<fwuid>[A-Za-z0-9_-]+)%22%2C%22loaded%22%3A%7B%22APPLICATION%40markup%3A%2F%2Fsiteforce%3AcommunityApp%22%3A%22(?<loaded>[A-Za-z0-9_-]+)%22",
           "scheduleSteps": [
@@ -18718,7 +18800,17 @@
             "aura.pageURI": "/resident2/s/guest-flow-form?service_ref=DSHLC_Hybrid_Find_Bin_Days",
             "aura.token": "null"
           },
-          "addressPattern": "\"Address\":\"(?<label>[^\"]+)\",[^{}]*?\"Id\":\"a0V[A-Za-z0-9]{12,15}\",[^{}]*?\"LPI\":\"(?<ref>[0-9A-Z]+)\"",
+          "addressRows": {
+            "rows": "actions[0].returnValue.returnValue[*]",
+            "ref": "LPI",
+            "refPattern": "(?<ref>[0-9A-Z]+)",
+            "labels": [
+              "Address"
+            ],
+            "where": {
+              "Id": "a0V[A-Za-z0-9]{12,15}"
+            }
+          },
           "schedulePrimeUrl": "https://burnleycouncil.my.site.com/resident2/s/find-bin-days",
           "schedulePrimePattern": "fwuid%22%3A%22(?<fwuid>[A-Za-z0-9_-]+)%22%2C%22loaded%22%3A%7B%22APPLICATION%40markup%3A%2F%2Fsiteforce%3AcommunityApp%22%3A%22(?<loaded>[A-Za-z0-9_-]+)%22",
           "scheduleSteps": [
