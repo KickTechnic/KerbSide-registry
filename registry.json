@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-11-11",
+  "updated": "2026-11-12",
   "councils": [
     {
       "gss": "E07000240",
@@ -4400,7 +4400,13 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://m.northlincs.gov.uk/findlocation/search.json?authority_code=2003&search_term={postcode}&maxRows=100",
-          "addressPattern": "\"display\"\\s*:\\s*\"(?<label>[^\"]+)\"[^{}]*?\"uprn\"\\s*:\\s*\"(?<ref>\\d+)\"",
+          "addressRows": {
+            "rows": "Results[*]",
+            "ref": "uprn",
+            "labels": [
+              "display"
+            ]
+          },
           "scheduleUrl": "https://m.northlincs.gov.uk/bin_collections?uprn={ref}&no_collections=8",
           "blockPattern": "\"CollectionDate\"\\s*:\\s*\"(?<date>[^\"]*)\"[^{}]*?\"BinCodeDescription\"\\s*:\\s*\"(?<type>[^\"]+)\"",
           "dateFormat": "iso-local-date"
@@ -4449,7 +4455,13 @@
             "cmd": "{\"/placecube_digitalplace.addresscontext/search-address-by-postcode\":{\"companyId\":\"{companyId}\",\"postcode\":\"{postcode}\",\"fallbackToNationalLookup\":false}}",
             "p_auth": "{pauth}"
           },
-          "addressPattern": "\"UPRN\":\"(?<ref>\\d+)\"[^{}]*?\"fullAddress\":\"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "rows": "[*]",
+            "ref": "UPRN",
+            "labels": [
+              "fullAddress"
+            ]
+          },
           "scheduleUrl": "https://geoapi.dorsetcouncil.gov.uk/v1/services/{service}/{ref}",
           "scheduleServices": [
             "refuseday",
@@ -4679,7 +4691,13 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://www.carmarthenshire.gov.wales/Umbraco/Api/ApiNewAddress/Get?postcode={postcode}&lang=en-GB",
-          "addressPattern": "\"text\":\"(?<label>[^\"]+)\",\"value\":\"(?<ref>\\d+)\"",
+          "addressRows": {
+            "rows": "[*]",
+            "ref": "value",
+            "labels": [
+              "text"
+            ]
+          },
           "scheduleUrl": "https://www.carmarthenshire.gov.wales/umbraco/Surface/SurfaceRecycling/Index/?uprn={ref}&lang=en-GB",
           "blockPattern": "<div class=\"bin-day-container (?<typeFallback>[A-Za-z]+)\">\\s*<p class=\"[^\"]*font1\"><span class=\"[^\"]*\"></span>\\s*(?:Your next )?(?<type>[^<]*?)(?: collection)?\\s*</p>\\s*<p class=\"font11 text-center\">(?<date>[^<]+)</p>",
           "dateFormat": "weekday-dd/MM/yyyy"
@@ -5085,7 +5103,13 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://api.reading.gov.uk/rbc/getaddresses/{postcode}",
-          "addressPattern": "\"SiteShortAddress\":\\s*\"(?<label>[^\"]+)\"[^{}]*?\"AccountSiteUprn\":\\s*\"(?<ref>\\d+)\"",
+          "addressRows": {
+            "rows": "Addresses[*]",
+            "ref": "AccountSiteUprn",
+            "labels": [
+              "SiteShortAddress"
+            ]
+          },
           "scheduleUrl": "https://api.reading.gov.uk/api/collections/{ref}",
           "blockPattern": "\"service\":\\s*\"(?<type>[^\"]+)\"[^{}]*?\"date\":\\s*\"(?<date>\\d{2}/\\d{2}/\\d{4})",
           "dateFormat": "dd/MM/yyyy"
@@ -5131,7 +5155,13 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://liverpool.gov.uk/Address/GetAddressesByPostcode/?postcode={postcode}",
-          "addressPattern": "\"uprn\":\"(?<ref>\\d+)\"[^{}]*?\"addressLines\":\"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "rows": "[*]",
+            "ref": "uprn",
+            "labels": [
+              "addressLines"
+            ]
+          },
           "scheduleUrl": "https://liverpool.gov.uk/Bins/BinDatesTable?UPRN={ref}",
           "blockPattern": "<th scope=\"row\">\\s*<span[^>]*>\\s*(?<type>[^<]*[^<\\s])\\s*</span>\\s*</th>(?<body>[\\s\\S]*?)</tr>",
           "datePattern": "<div class=\"bindate\">\\s*(?<date>[^<]*[^<\\s])\\s*</div>",
@@ -5896,7 +5926,13 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://portal.oldham.gov.uk/Common/GetAddressList?term={postcode}&type=Postcode",
-          "addressPattern": "\"UPRN\":\"(?<ref>\\d+)\"[^{}]*\"FULL_ADDRESS\":\"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "rows": "[*]",
+            "ref": "UPRN",
+            "labels": [
+              "FULL_ADDRESS"
+            ]
+          },
           "scheduleUrl": "https://portal.oldham.gov.uk/bincollectiondates/details?uprn={ref}",
           "blockPattern": "<th[^>]*><b>(?<type>[^<]+)</b></th>(?:(?!</table>)[\\s\\S])*?<b>Collection Date</b>\\s*</td>\\s*<td class=\"coltwo\">(?<date>[^<]+)</td>",
           "dateFormat": "dd/MM/yyyy"
@@ -6017,7 +6053,13 @@
             "QueryStr": "{postcode}",
             "__RequestVerificationToken": "{token}"
           },
-          "addressPattern": "\"uprn\":\"(?<ref>\\d+)\",\"address\":\"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "rows": "addresses[*]",
+            "ref": "uprn",
+            "labels": [
+              "address"
+            ]
+          },
           "scheduleUrl": "https://www.salford.gov.uk/bins-and-recycling/bin-collection-days/your-bin-collections/?UPRN={ref}",
           "blockPattern": "<p><strong>(?<type>[^<:]+):</strong></p>\\s*<ul>(?<body>[\\s\\S]*?)</ul>",
           "datePattern": "<li>(?<date>[^<]+)</li>",
@@ -7983,7 +8025,13 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://www.teignbridge.gov.uk/repositories/hidden-pages/address-finder?qtype=bins&term={postcode}",
-          "addressPattern": "\"label\":\"(?<label>[^\"]+)\",\"UPRN\":\"(?<ref>\\d+)\"",
+          "addressRows": {
+            "rows": "[*]",
+            "ref": "UPRN",
+            "labels": [
+              "label"
+            ]
+          },
           "scheduleUrl": "https://www.teignbridge.gov.uk/umbraco/surface/bincollection/GetCollections?uprn={ref}",
           "blockPattern": "<h3 class=\"binCollectionH3\">(?<when>\\d{1,2} [A-Za-z]+ \\d{4})|(?:</a></span>|</span></a>)\\s*(?<type>[^<]+?)\\s*</div>",
           "dateTemplate": "{when}",
@@ -8028,7 +8076,13 @@
         "htmlRegex": {
           "addressUrl": "https://lewisham.gov.uk/api/AddressFinder?postcodeOrStreet={postcode}&national=False",
           "addressForm": {},
-          "addressPattern": "\"Uprn\":(?<ref>\\d+)[^{}]*?\"Title\":\"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "rows": "[*]",
+            "ref": "Uprn",
+            "labels": [
+              "Title"
+            ]
+          },
           "scheduleUrl": "https://lewisham.gov.uk/api/roundsinformation?item=%7B23423835-d2a6-41b1-9637-29e5e8cc2df7%7D&uprn={ref}",
           "scheduleForm": {},
           "blockPattern": "<strong>(?<type>[^<]+)</strong>[^<]*?is collected[^<]*?(?<date><span[^>]*>(?<every>[A-Za-z]+)</span>(?:(?!<br>|<strong>)[\\s\\S])*)",
@@ -8354,7 +8408,13 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://exeter.gov.uk/repositories/hidden-pages/address-finder/?qsource=POSTCODE&qtype=bins&term={postcode}",
-          "addressPattern": "\"label\":\"(?<label>[^\"]+)\"[^{}]*?\"UPRN\":\"(?<ref>\\d+)\"",
+          "addressRows": {
+            "rows": "[*]",
+            "ref": "UPRN",
+            "labels": [
+              "label"
+            ]
+          },
           "scheduleUrl": "https://exeter.gov.uk/repositories/hidden-pages/address-finder/?qsource=UPRN&qtype=bins&term={ref}",
           "scheduleJsonPath": "[*].Results",
           "blockPattern": "<h2>(?<type>[^<]+)</h2>(?:(?!<h2)[\\s\\S])*?<h3>(?:<img[^>]*>)?(?<date>[^<]+)</h3>",
@@ -8846,7 +8906,13 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://www.lbbd.gov.uk/rest/bins/{postcode}",
-          "addressPattern": "\"id\":\"(?<ref>\\d+)\"[^{}]*?\"address\":\"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "rows": "results[*]",
+            "ref": "id",
+            "labels": [
+              "address"
+            ]
+          },
           "scheduleUrl": "https://www.lbbd.gov.uk/rest/bin/{ref}",
           "blockPattern": "\"bin_name\":\"(?<type>[^\"]+)\"[^{}]*?(?<body>\"nextcollection\":\"[^\"]*\"[^{}]*?\"futurecollections\":\\[[^\\]]*\\])",
           "datePattern": "\"(?<date>[A-Z][a-z]+day \\d{1,2} [A-Z][a-z]+ \\d{4})\"",
@@ -8888,7 +8954,16 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://bbcpro-jeapi.azurewebsites.net/api/addresssearch/bypostcode?Postcode={postcode}&Language=ENG",
-          "addressPattern": "\"uprn\":\"(?<ref>\\d+)\"[^{}]*?\"addressLine1\":\"(?<label>[^\"]*)\"[^{}]*?\"addressLine2\":\"(?<label2>[^\"]*)\"[^{}]*?\"addressLine3\":\"(?<label3>[^\"]*)\"[^{}]*?\"town\":\"(?<label4>[^\"]*)\"",
+          "addressRows": {
+            "rows": "data[*]",
+            "ref": "uprn",
+            "labels": [
+              "addressLine1",
+              "addressLine2",
+              "addressLine3",
+              "town"
+            ]
+          },
           "scheduleUrl": "https://bbaz-as-prod-bartecapi.azurewebsites.net/api/bincollections/residential/getbyuprn/{ref}",
           "blockPattern": "\"BinType\":\"(?<type>[^\"]+)\"[^{}]*?\"JobScheduledStart\":\"(?<date>[^\"]+)\"",
           "dateFormat": "iso-datetime"
@@ -8942,7 +9017,13 @@
           "addressJson": {
             "postcode": "{postcode}"
           },
-          "addressPattern": "\"uprn\":\"(?<ref>\\d+)\"[^{}]*?\"line1\":\"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "rows": "properties[*]",
+            "ref": "uprn",
+            "labels": [
+              "line1"
+            ]
+          },
           "scheduleUrl": "https://basildonportal.azurewebsites.net/api/getPropertyRefuseInformation",
           "scheduleJson": {
             "uprn": "{ref}"
@@ -9323,7 +9404,18 @@
               "environment": "live"
             }
           },
-          "addressPattern": "\"number\":\"(?<label2>[^\"]*)\"[^{}]*?\"name\":\"(?<label3>[^\"]*)\"[^{}]*?\"prefix\":\"(?<label>[^\"]*)\"[^{}]*?\"address1\":\"(?<label4>[^\"]*)\"[^{}]*?\"address2\":\"(?<label5>[^\"]*)\"[^{}]*?\"town\":\"(?<label6>[^\"]*)\"[^{}]*?\"uprn\":\"(?<ref>\\d+)\"",
+          "addressRows": {
+            "rows": "result[*]",
+            "ref": "uprn",
+            "labels": [
+              "prefix",
+              "number",
+              "name",
+              "address1",
+              "address2",
+              "town"
+            ]
+          },
           "scheduleUrl": "https://www.breckland.gov.uk/apiserver/ajaxlibrary",
           "scheduleJson": {
             "id": "1",
@@ -9475,7 +9567,13 @@
         "htmlRegex": {
           "addressUrl": "https://www.newcastle-staffs.gov.uk/bartec-ajax/{postcode}",
           "addressForm": {},
-          "addressPattern": "\"uprn\":\"(?<ref>\\d+)\"[^{}]*?\"label\":\"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "rows": "[*]",
+            "ref": "uprn",
+            "labels": [
+              "label"
+            ]
+          },
           "scheduleUrl": "https://www.newcastle-staffs.gov.uk/homepage/97/check-your-bin-day?uprn={ref}",
           "blockPattern": "<td>(?<when>[A-Za-z]+day \\d{1,2} [A-Za-z]+)</td>|(?:<td>|<br>)\\s*(?<type>[^<>\\s][^<>]*?)(?=<br>)",
           "dateTemplate": "{when}",
@@ -9644,7 +9742,13 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://apps.cloud9technologies.com/southend/citizenmobile/openapi/addresses?postcode={postcode}",
-          "addressPattern": "\"UPRN\":\"(?<ref>\\d+)\"[^{}]*?\"FullAddress\":\"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "rows": "Addresses[*]",
+            "ref": "UPRN",
+            "labels": [
+              "FullAddress"
+            ]
+          },
           "scheduleUrl": "https://apps.cloud9technologies.com/southend/citizenmobile/openapi/wastecollections/{ref}",
           "blockPattern": "\"ContainerDescription\":\"(?<type>[^\"]+)\"[^{}]*?\"CollectionDate\":\"(?<date>\\d{4}-\\d{2}-\\d{2})",
           "dateFormat": "iso-local-date"
@@ -10076,7 +10180,13 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://selfserve.worcester.gov.uk/sw2AddressLookupWS/jaxrs/PostCode?simple=T&pcode={postcode}&authority=WCC&historical=&hidedummyuprn=1",
-          "addressPattern": "\"UPRN\":\"(?<ref>\\d+)\"[^{}]*?\"Address_Short\":\"(?<label>(?:[^\"\\\\]|\\\\.)+)\"",
+          "addressRows": {
+            "rows": "jArray[*]",
+            "ref": "UPRN",
+            "labels": [
+              "Address_Short"
+            ]
+          },
           "scheduleUrl": "https://selfserve.worcester.gov.uk/wccroundlookup/HandleSearchScreen",
           "scheduleForm": {
             "nmalAddrtxt": "{postcode}",
@@ -10129,7 +10239,13 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://swict.malvernhills.gov.uk/sw2AddressLookupWS/jaxrs/PostCode?simple=T&pcode={postcode}&authority=MHDC&historical=&hidedummyuprn=1",
-          "addressPattern": "\"UPRN\":\"(?<ref>\\d+)\"[^{}]*?\"Address_Short\":\"(?<label>(?:[^\"\\\\]|\\\\.)+)\"",
+          "addressRows": {
+            "rows": "jArray[*]",
+            "ref": "UPRN",
+            "labels": [
+              "Address_Short"
+            ]
+          },
           "scheduleUrl": "https://swict.malvernhills.gov.uk/mhdcroundlookup/HandleSearchScreen",
           "scheduleForm": {
             "nmalAddrtxt": "{postcode}",
@@ -10191,7 +10307,13 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://selfservice.wychavon.gov.uk/sw2AddressLookupWS/jaxrs/PostCode?simple=T&pcode={postcode}&authority=WDC&historical=&hidedummyuprn=1",
-          "addressPattern": "\"UPRN\":\"(?<ref>\\d+)\"[^{}]*?\"Address_Short\":\"(?<label>(?:[^\"\\\\]|\\\\.)+)\"",
+          "addressRows": {
+            "rows": "jArray[*]",
+            "ref": "UPRN",
+            "labels": [
+              "Address_Short"
+            ]
+          },
           "scheduleUrl": "https://selfservice.wychavon.gov.uk/wdcroundlookup/HandleSearchScreen",
           "scheduleForm": {
             "nmalAddrtxt": "{postcode}",
@@ -10445,7 +10567,14 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://www.eastdunbarton.gov.uk/umbraco/api/bincollection/GetUPRNs?address={postcode}",
-          "addressPattern": "\"uprn\":\"(?<ref>\\d+)\"[^{}]*?\"addressLine1\":\"(?<label>(?:[^\"\\\\]|\\\\.)+)\"[^{}]*?\"town\":\"(?<label2>(?:[^\"\\\\]|\\\\.)+)\"",
+          "addressRows": {
+            "rows": "[*]",
+            "ref": "uprn",
+            "labels": [
+              "addressLine1",
+              "town"
+            ]
+          },
           "scheduleUrl": "https://www.eastdunbarton.gov.uk/services/a-z-of-services/bins-waste-and-recycling/bins-and-recycling/collections/?uprn={ref}",
           "blockPattern": "<td class=\"[a-z-]+\">(?<type>[^<]+)</td>(?:(?!</tr>)[\\s\\S])*?<span>(?<date>[^<]+)</span>",
           "dateFormat": "weekday-day-month-year"
@@ -10502,7 +10631,13 @@
         "htmlRegex": {
           "addressUrl": "https://www.lichfielddc.gov.uk/bartec_ajax/{postcode}",
           "addressForm": {},
-          "addressPattern": "\"uprn\":\"(?<ref>\\d+)\"[^{}]*?\"label\":\"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "rows": "addresses[*]",
+            "ref": "uprn",
+            "labels": [
+              "label"
+            ]
+          },
           "scheduleUrl": "https://www.lichfielddc.gov.uk/homepage/6/bin-collection-dates?uprn={ref}",
           "blockPattern": "<h3 class=\"bin-collection-tasks__heading\">(?:<span class=\"visually-hidden\">[^<]*</span>)?(?<type>[^<]+)(?:(?!</li>)[\\s\\S])*?<p class=\"bin-collection-tasks__date\">(?<date>[^<]+)</p>",
           "dateFormat": "weekday-day-ordinal-month-noyear"
@@ -10713,7 +10848,13 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://www.darlington.gov.uk/postaladdress/GetAddressesByPostcode/{postcode}?local=true",
-          "addressPattern": "\"id\":\"(?<ref>\\d+)\",\"description\":\"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "rows": "results[*]",
+            "ref": "id",
+            "labels": [
+              "description"
+            ]
+          },
           "scheduleUrl": "https://www.darlington.gov.uk/bins-waste-and-recycling/collection-day-lookup/?uprn={ref}",
           "blockPattern": "<div class=\"collection-results\">(?<body>(?:(?!<div class=\"refuse-results)[\\s\\S])*?)</div><!--/collection-results-->(?:(?!<div class=\"refuse-results)[\\s\\S])*?<div class=\"collectionDate[^\"]*\">[^<]*<p>(?<date>[A-Za-z]+ \\d{1,2} [A-Za-z]+ \\d{4})",
           "typePattern": "collection-result-text\">(?<type>[^<]+)</span>",
@@ -11565,7 +11706,13 @@
           "addressUrl": "https://www.nelincs.gov.uk/wp-admin/admin-ajax.php?action=nelincs_search&nonce={nonce}&q={postcode}",
           "addressPrimeUrl": "https://www.nelincs.gov.uk/refuse-collection-schedule/?app=kerbside",
           "addressPrimePattern": "\"nonce\":\"(?<nonce>[0-9a-f]+)\"",
-          "addressPattern": "\"address\":\"(?<label>[^\"]+)\",\"uprn\":(?<ref>\\d+)",
+          "addressRows": {
+            "rows": "addresses[*]",
+            "ref": "uprn",
+            "labels": [
+              "address"
+            ]
+          },
           "scheduleUrl": "https://www.nelincs.gov.uk/refuse-collection-schedule/?uprn={ref}",
           "blockPattern": "\\{title : '(?<type>[^']+)',start : '(?<date>\\d{4}-\\d{2}-\\d{2})'",
           "dateFormat": "iso-local-date"
@@ -11739,7 +11886,13 @@
           "addressJson": {
             "Postcode": "{postcode}"
           },
-          "addressPattern": "\"SiteShortAddress\":\"(?<label>[^\"]+)\"[^{}]*?\"AccountSiteUprn\":\"(?<ref>\\d+)\"",
+          "addressRows": {
+            "rows": "datas[*]",
+            "ref": "AccountSiteUprn",
+            "labels": [
+              "SiteShortAddress"
+            ]
+          },
           "scheduleUrl": "https://harborough.fccenvironment.co.uk/detail-address",
           "scheduleForm": {
             "Uprn": "{ref}"
@@ -12642,7 +12795,13 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://eastdevon.gov.uk/repositories/hidden-pages/address-finder/?qtype=bins&term={postcode}",
-          "addressPattern": "\"label\":\"(?<label>[^\"]+)\"[^{}]*?\"UPRN\":\"(?<ref>\\d+)\"",
+          "addressRows": {
+            "rows": "[*]",
+            "ref": "UPRN",
+            "labels": [
+              "label"
+            ]
+          },
           "scheduleUrl": "https://eastdevon.gov.uk/repositories/hidden-pages/address-finder/?qsource=UPRN&qtype=bins&term={ref}",
           "scheduleJsonPath": "[*].Results",
           "blockPattern": "<h2>Your (?<type>[^<]+)</h2>(?<body><p[^>]*>Your next (?:(?!<h2)[\\s\\S])*?every (?<every>(?:two |three |four )?weeks?)(?:(?!<h2)[\\s\\S])*)",
@@ -13271,7 +13430,13 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://www.stroud.gov.uk/webservice/getaddress?postcode={postcode}&page={page}",
-          "addressPattern": "\"uprn\":\"(?<ref>\\d+)\",[^{}]*?\"address\":\"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "rows": "addressList[*]",
+            "ref": "uprn",
+            "labels": [
+              "address"
+            ]
+          },
           "addressLastPagePattern": "\"pages\":(?<last>\\d+)",
           "scheduleUrl": "https://www.stroud.gov.uk/webservice/GazData?uprn={ref}&postcode=",
           "blockPattern": "\"next(?<type>rubbish|recycling)date\":\"(?<date>[^\"]+)\"|\"(?<typeFallback>gardenwaste)Day\":\"(?<body>[^\"]*)\"",
@@ -13335,7 +13500,13 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://nearest.pembrokeshire.gov.uk/searchaddresses?query={postcode}",
-          "addressPattern": "\"value\":\"(?<label>[^\"]+)\",[^{}]*?\"data\":\"(?<ref>\\d+)\"",
+          "addressRows": {
+            "rows": "suggestions[*]",
+            "ref": "data",
+            "labels": [
+              "value"
+            ]
+          },
           "scheduleUrl": "https://nearest.pembrokeshire.gov.uk/property/{ref}",
           "blockPattern": "<img src=\"\\s*https://cdn\\.pembrokeshire\\.gov\\.uk/images/[^\"]+\" title=\"(?<type>[^\"]+)\" /><br />[^<]*<br />[^<]*?<strong>(?<date>\\d{2}/\\d{2}/\\d{4})</strong>",
           "dateFormat": "dd/MM/yyyy"
@@ -14370,7 +14541,13 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://apps.cloud9technologies.com/rugby/citizenmobile/openapi/addresses?postcode={postcode}",
-          "addressPattern": "\"UPRN\":\"(?<ref>\\d+)\"[^{}]*?\"FullAddress\":\"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "rows": "Addresses[*]",
+            "ref": "UPRN",
+            "labels": [
+              "FullAddress"
+            ]
+          },
           "scheduleUrl": "https://apps.cloud9technologies.com/rugby/citizenmobile/openapi/wastecollections/{ref}",
           "blockPattern": "\"ContainerDescription\":\"(?<type>[^\"]+)\"[^{}]*?\"CollectionDate\":\"(?<date>\\d{4}-\\d{2}-\\d{2})",
           "dateFormat": "iso-local-date"
@@ -14413,7 +14590,13 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://api-2.tewkesbury.gov.uk/incab/properties/{postcode}/lookup",
-          "addressPattern": "\"uprn\":\\s*\"(?<ref>\\d+)\"[^{}]*?\"fullAddress\":\\s*\"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "rows": "body[*]",
+            "ref": "uprn",
+            "labels": [
+              "fullAddress"
+            ]
+          },
           "scheduleUrl": "https://api-2.tewkesbury.gov.uk/incab/rounds/{ref}/next-collection",
           "blockPattern": "\"(?<type>[a-z]+)\":\\s*\\{[^{}]*?\"nextCollectionDate\":\\s*\"(?<date>[^\"]+)\"[^{}]*?\"roundInformation\":\\s*\"(?<every>[^\"]+)\"",
           "cadence": [
@@ -15280,7 +15463,13 @@
         "htmlRegex": {
           "addressUrl": "https://www.lichfielddc.gov.uk/bartec_ajax/{postcode}",
           "addressForm": {},
-          "addressPattern": "\"uprn\":\"(?<ref>\\d+)\"[^{}]*?\"label\":\"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "rows": "addresses[*]",
+            "ref": "uprn",
+            "labels": [
+              "label"
+            ]
+          },
           "scheduleUrl": "https://www.lichfielddc.gov.uk/homepage/6/bin-collection-dates?uprn={ref}",
           "blockPattern": "<h3 class=\"bin-collection-tasks__heading\">(?:<span class=\"visually-hidden\">[^<]*</span>)?(?<type>[^<]+)(?:(?!</li>)[\\s\\S])*?<p class=\"bin-collection-tasks__date\">(?<date>[^<]+)</p>",
           "dateFormat": "weekday-day-ordinal-month-noyear"
@@ -15916,7 +16105,13 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://www.orkney.gov.uk/actions/_orkney/address/search?q={postcode}",
-          "addressPattern": "\"addressId\":\"(?<ref>\\d+)\",\"address\":\"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "rows": "addresses[*]",
+            "ref": "addressId",
+            "labels": [
+              "address"
+            ]
+          },
           "scheduleUrl": "https://www.orkney.gov.uk/actions/_orkney/bin-collection/lookup-address?addressId={ref}",
           "blockPattern": "\"date\":\"(?<date>\\d{4}-\\d{2}-\\d{2})\",\"summary\":\"(?:Area [^\"]*? - )?(?<type>[^\"]+)\"",
           "dateFormat": "iso-local-date"
@@ -17735,7 +17930,13 @@
             "aura.pageURI": "/customers/s/view-bin-collections",
             "aura.token": "null"
           },
-          "addressPattern": "\"FullAddress\":\"(?<label>[^\"]+)\"[^{}]*?\"UPRN\":(?<ref>\\d+)",
+          "addressRows": {
+            "rows": "actions[0].returnValue[*]",
+            "ref": "UPRN",
+            "labels": [
+              "FullAddress"
+            ]
+          },
           "schedulePrimeUrl": "https://my.guildford.gov.uk/customers/s/view-bin-collections",
           "schedulePrimePattern": "fwuid%22%3A%22(?<fwuid>[A-Za-z0-9_-]+)%22%2C%22loaded%22%3A%7B%22APPLICATION%40markup%3A%2F%2Fsiteforce%3AcommunityApp%22%3A%22(?<loaded>[A-Za-z0-9_-]+)%22",
           "scheduleUrl": "https://my.guildford.gov.uk/customers/s/sfsites/aura?r=2&aura.ApexAction.execute=1",
@@ -18227,7 +18428,13 @@
         "version": 1,
         "htmlRegex": {
           "addressUrl": "https://www.ashfield.gov.uk/api/address/search/{postcode}",
-          "addressPattern": "\"UPRN\"\\s*:\\s*\"(?<ref>\\d+)\"[^{}]*?\"ADDRESS\"\\s*:\\s*\"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "rows": "results[*]",
+            "ref": "DPA.UPRN",
+            "labels": [
+              "DPA.ADDRESS"
+            ]
+          },
           "scheduleUrl": "https://www.ashfield.gov.uk/api/address/collections/{ref}",
           "blockPattern": "\"service\":\\s*\"(?<type>[^\"]+)\"[^{}]*?\"date\":\\s*\"(?<date>\\d{2}/\\d{2}/\\d{4} \\d{2}:\\d{2}:\\d{2})",
           "dateFormat": "dd/MM/yyyy HH:mm:ss",
@@ -18682,7 +18889,13 @@
         "htmlRegex": {
           "addressUrl": "https://ardsandnorthdownbincalendar.azurewebsites.net/api/addresses/{postcode}",
           "postcodeFormat": "nospace",
-          "addressPattern": "\"uprn\":\"(?<ref>\\d+)\"[^{}]*?\"addressText\":\"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "rows": "addresses[*]",
+            "ref": "uprn",
+            "labels": [
+              "addressText"
+            ]
+          },
           "scheduleUrl": "https://ardsandnorthdownbincalendar.azurewebsites.net/api/calendarhtml/{ref}",
           "scheduleJsonPath": "calendarHTML",
           "blockPattern": "<strong>(?<type>[^<]+)</strong>: (?<date>Today|Tomorrow|[A-Z][a-z]{2} \\d{1,2} [A-Z][a-z]{2})(?<every> then every [^<]*)?<br>",
@@ -18897,7 +19110,13 @@
         "htmlRegex": {
           "addressUrl": "https://midulsterbincalendar.azurewebsites.net/api/addresses/{postcode}",
           "postcodeFormat": "nospace",
-          "addressPattern": "\"uprn\":\"(?<ref>\\d+)\"[^{}]*?\"addressText\":\"(?<label>[^\"]+)\"",
+          "addressRows": {
+            "rows": "addresses[*]",
+            "ref": "uprn",
+            "labels": [
+              "addressText"
+            ]
+          },
           "scheduleUrl": "https://midulsterbincalendar.azurewebsites.net/api/calendarhtml/{ref}",
           "scheduleJsonPath": "calendarHTML",
           "blockPattern": "<strong>(?<type>[^<]+)</strong>: (?<date>Today|Tomorrow|[A-Z][a-z]{2} \\d{1,2} [A-Z][a-z]{2})(?<every> then every [^<]*)?<br>",
