@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-11-12",
+  "updated": "2026-11-13",
   "councils": [
     {
       "gss": "E07000240",
@@ -18451,7 +18451,14 @@
             "aura.pageURI": "/bins-and-recycling/bin-collections/check-bin-collections",
             "aura.token": "null"
           },
-          "addressPattern": "label\\\\\":\\\\\"(?<label>[^\\\\]+)\\\\\",\\\\\"value\\\\\":\\\\\"(?<ref>\\d+)",
+          "addressRows": {
+            "stringPath": "actions[0].returnValue.returnValue",
+            "rows": "[*]",
+            "ref": "value",
+            "labels": [
+              "label"
+            ]
+          },
           "schedulePrimeUrl": "https://myaccount.chesterfield.gov.uk/anonymous/c/cbc_VE_CollectionDaysLO.app",
           "schedulePrimePattern": "fwuid%22%3A%22(?<fwuid>[A-Za-z0-9_-]+)%22%2C%22loaded%22%3A%7B%22APPLICATION%40markup%3A%2F%2Fc%3Acbc_VE_CollectionDaysLO%22%3A%22(?<loaded>[A-Za-z0-9_-]+)%22",
           "scheduleUrl": "https://myaccount.chesterfield.gov.uk/anonymous/aura?r=1&aura.ApexAction.execute=1",
